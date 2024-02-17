@@ -24,7 +24,6 @@ export function app(): express.Express {
   // Serve static files from /browser
   server.get(
     '*.*',
-    // eslint-disable-next-line import/no-named-as-default-member
     express.static(browserDistFolder, {
       maxAge: '1y',
     })
