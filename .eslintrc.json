@@ -2,6 +2,18 @@
   "root": true,
   "ignorePatterns": ["**/*"],
   "plugins": ["@nx", "@typescript-eslint", "@angular-eslint", "import"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": [
+          "./tsconfig.base.json",
+          "./apps/*/tsconfig.json",
+          "./libs/*/tsconfig.json"
+        ]
+      }
+    }
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
