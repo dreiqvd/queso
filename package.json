@@ -64,7 +64,7 @@
     "jest-preset-angular": "~13.1.4",
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "18.0.4",
-    "prettier": "^2.6.2",
+    "prettier": "^3.2.0",
     "tailwindcss": "^3.4.1",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
