@@ -20,7 +20,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "queso",
+            "prefix": "qs",
             "style": "camelCase"
           }
         ],
@@ -28,7 +28,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "queso",
+            "prefix": "qs",
             "style": "kebab-case"
           }
         ]
