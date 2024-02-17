@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "qs",
   "sourceRoot": "apps/portfolio/src",
-  "tags": [],
+  "tags": ["type:app", "scope:portfolio"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",

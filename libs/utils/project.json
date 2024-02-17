@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/utils/src",
   "prefix": "queso",
-  "tags": [],
+  "tags": ["type:utils", "scope:shared"],
   "projectType": "library",
   "targets": {}
 }
