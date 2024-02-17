@@ -1,7 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "@typescript-eslint", "@angular-eslint", "import"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -23,8 +23,56 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@nx/typescript",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:import/recommended",
+        "plugin:import/typescript"
+      ],
+      "rules": {
+        "import/no-unresolved": "error",
+        "import/order": [
+          "error",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              "internal",
+              ["sibling", "parent"],
+              "index",
+              "unknown"
+            ],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            },
+            "pathGroups": [
+              {
+                "pattern": "@/**",
+                "group": "internal",
+                "position": "after"
+              }
+            ],
+            "newlines-between": "always"
+          }
+        ],
+        "sort-imports": [
+          "error",
+          {
+            "allowSeparatedGroups": true,
+            "ignoreCase": true,
+            "ignoreDeclarationSort": true,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+          }
+        ],
+        "no-trailing-spaces": "error",
+        "semi": "error",
+        "quotes": [2, "single", { "avoidEscape": true }],
+        "@typescript-eslint/explicit-function-return-type": "error"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
@@ -37,6 +85,43 @@
         "jest": true
       },
       "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:@angular-eslint/template/accessibility"
+      ],
+      "rules": {
+        "@angular-eslint/template/alt-text": "error",
+        "@angular-eslint/template/attributes-order": "error",
+        "@angular-eslint/template/banana-in-box": "error",
+        "@angular-eslint/template/button-has-type": "error",
+        "@angular-eslint/template/click-events-have-key-events": "error",
+        "@angular-eslint/template/conditional-complexity": "error",
+        "@angular-eslint/template/cyclomatic-complexity": "error",
+        "@angular-eslint/template/elements-content": "error",
+        "@angular-eslint/template/eqeqeq": "error",
+        "@angular-eslint/template/interactive-supports-focus": "error",
+        "@angular-eslint/template/label-has-associated-control": "error",
+        "@angular-eslint/template/mouse-events-have-key-events": "error",
+        "@angular-eslint/template/no-any": "error",
+        "@angular-eslint/template/no-autofocus": "error",
+        // "@angular-eslint/template/no-call-expression": "error", // turning off for now due to angular signal conflict
+        "@angular-eslint/template/no-distracting-elements": "error",
+        "@angular-eslint/template/no-duplicate-attributes": "error",
+        "@angular-eslint/template/no-inline-styles": "error",
+        "@angular-eslint/template/no-interpolation-in-attributes": "error",
+        "@angular-eslint/template/no-negated-async": "error",
+        "@angular-eslint/template/no-positive-tabindex": "error",
+        "@angular-eslint/template/prefer-control-flow": "error",
+        "@angular-eslint/template/prefer-ngsrc": "error",
+        "@angular-eslint/template/prefer-self-closing-tags": "error",
+        "@angular-eslint/template/role-has-required-aria": "error",
+        "@angular-eslint/template/table-scope": "error",
+        "@angular-eslint/template/use-track-by-function": "error",
+        "@angular-eslint/template/valid-aria": "error"
+      }
     }
   ]
 }
