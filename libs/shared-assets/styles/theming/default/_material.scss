@@ -1,0 +1,39 @@
+@use '@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import 'palette';
+
+/** Colors **/
+$primary: mat.define-palette($yellow, 400);
+$accent: mat.define-palette($dark-blue, 400);
+$warn: mat.define-palette($red, 400);
+
+/** Typography **/
+$app-typography: mat.define-typography-config(
+  $font-family: 'Poppins, "Helvetica Neue", sans-serif',
+  $headline-5: mat.define-typography-level(2rem, normal, 700, 'Poppins'),
+  $headline-6: mat.define-typography-level(1.5rem, normal, 700, 'Poppins'),
+  $subtitle-1: mat.define-typography-level(1.125, normal, 600, 'Poppins'),
+  $subtitle-2: mat.define-typography-level(1.25rem, normal, 600, 'Poppins'),
+  $body-1: mat.define-typography-level(1rem),
+  $body-2: mat.define-typography-level(1rem),
+  $button: mat.define-typography-level(1rem),
+);
+
+/** Theme **/
+$app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    typography: $app-typography,
+    density: 0,
+  )
+);
+
+/** Configuration **/
+@include mat.core-theme($app-theme);
+@include mat.typography-hierarchy($app-typography);
+@include mat.core();

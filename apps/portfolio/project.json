@@ -18,9 +18,17 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/portfolio/src/favicon.ico",
-          "apps/portfolio/src/assets"
+          "apps/portfolio/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/shared-assets",
+            "output": "./assets"
+          }
         ],
-        "styles": ["apps/portfolio/src/styles.scss"],
+        "styles": [
+          "libs/shared-assets/styles/theming/default-theme.scss",
+          "apps/portfolio/src/styles.scss"
+        ],
         "scripts": [],
         "server": "apps/portfolio/src/main.server.ts",
         "prerender": true,

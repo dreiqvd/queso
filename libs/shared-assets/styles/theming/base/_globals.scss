@@ -1,0 +1,36 @@
+/** This file holds common global styles */
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  scroll-behavior: smooth;
+
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+}
+
+#cursor-container {
+  pointer-events: none;
+  position: fixed;
+  display: block;
+  border-radius: 0;
+  transform-origin: center center;
+  top: 0;
+  left: 0;
+  z-index: var(--zindex-always-on-top);
+  filter: url('#goo');
+
+  span {
+    position: absolute;
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 20px;
+    background-color: #f1756d;
+    transform-origin: center center;
+    transform: translate(-50%, -50%);
+  }
+}

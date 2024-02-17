@@ -1,0 +1,18 @@
+.animate__animated {
+  animation-fill-mode: both;
+}
+
+/** Fading Exit */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.animate__fadeOut {
+  animation-name: fadeOut;
+}
