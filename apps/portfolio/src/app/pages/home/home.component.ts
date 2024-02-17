@@ -1,11 +1,50 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, signal, ViewChild } from '@angular/core';
+import anime from 'animejs';
+
+import { AnimationsDirective } from '@queso/utils/directives';
+import { PlatformService } from '@queso/utils/services';
+
+import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
 
 @Component({
   selector: 'qs-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [AnimationsDirective, HomeHeroComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styles: `
+    .backdrop {
+      background-color: var(--accent-color);
+    }
+  `,
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  /** Element reference for the introductory backdrop */
+  @ViewChild('backdrop', { read: AnimationsDirective })
+  backdrop!: AnimationsDirective;
+
+  /** Determines if animated intro text should be visible */
+  readonly introVisibility = signal('visible');
+
+  /** Determines if main content should be visible */
+  readonly isContentVisible = signal(false);
+
+  constructor(private platformService: PlatformService) {}
+
+  ngOnInit(): void {
+    if (this.platformService.isUsingBrowser()) {
+      const duration = 1500;
+      anime({
+        targets: '#backdrop-svg-wrapper path',
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration,
+        direction: 'alternate',
+        delay: (_: HTMLElement, i: number) => i * 250,
+        begin: () => this.introVisibility.set('visible'),
+        complete: () => this.backdrop.animate(),
+      });
+
+      setTimeout(() => this.isContentVisible.set(true), duration * 3 + 1000);
+    }
+  }
+}
