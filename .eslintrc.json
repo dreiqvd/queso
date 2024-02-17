@@ -35,6 +35,10 @@
               {
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": ["type:utils"]
+              },
+              {
+                "sourceTag": "type:utils",
+                "onlyDependOnLibsWithTags": ["type:utils"]
               }
             ]
           }
