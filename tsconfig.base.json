@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@queso/utils": ["libs/utils/src/index.ts"]
+      "@queso/utils": ["libs/utils/src/index.ts"],
+      "@queso/utils/*": ["libs/utils/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
