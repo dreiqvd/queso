@@ -37,6 +37,10 @@
                 "onlyDependOnLibsWithTags": ["type:utils"]
               },
               {
+                "sourceTag": "type:ui",
+                "onlyDependOnLibsWithTags": ["type:utils", "type:ui"]
+              },
+              {
                 "sourceTag": "type:utils",
                 "onlyDependOnLibsWithTags": ["type:utils"]
               }

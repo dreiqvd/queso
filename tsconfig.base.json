@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@queso/common": ["libs/common/src/index.ts"],
+      "@queso/ui-kit": ["libs/ui-kit/src/index.ts"],
       "@queso/utils": ["libs/utils/src/index.ts"]
     }
   },
