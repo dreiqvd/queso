@@ -1,9 +1,9 @@
 {
-  "name": "shared",
+  "name": "common",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/src",
+  "sourceRoot": "libs/common/src",
   "prefix": "queso",
-  "tags": ["scope:shared", "type:utils"],
+  "tags": ["type:utils", "scope:shared"],
   "projectType": "library",
   "targets": {}
 }
