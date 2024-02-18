@@ -1,0 +1,7 @@
+{
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./src/index.ts",
+    "./icon": "./src/components/icon/index.ts"
+  }
+}
