@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, ViewChild } from '@angular/core';
 import anime from 'animejs';
 
-import { AnimationsDirective } from '@queso/utils/directives';
+import { AnimationsDirective, CursorDirective } from '@queso/utils/directives';
 import { PlatformService } from '@queso/utils/services';
 
 import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
@@ -9,7 +9,7 @@ import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
 @Component({
   selector: 'qs-home',
   standalone: true,
-  imports: [AnimationsDirective, HomeHeroComponent],
+  imports: [AnimationsDirective, CursorDirective, HomeHeroComponent],
   templateUrl: './home.component.html',
   styles: `
     .backdrop {
