@@ -1,8 +1,11 @@
 import { Component, OnInit, signal, ViewChild } from '@angular/core';
 import anime from 'animejs';
 
-import { AnimationsDirective, CursorDirective } from '@queso/utils/directives';
-import { PlatformService } from '@queso/utils/services';
+import {
+  AnimationsDirective,
+  CursorDirective,
+  PlatformService,
+} from '@queso/common';
 
 import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
 

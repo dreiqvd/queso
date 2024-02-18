@@ -2,7 +2,7 @@ import { ApplicationConfig } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideRouter, TitleStrategy } from '@angular/router';
 
-import { PageTitleStrategy } from '@queso/utils/strategies';
+import { PageTitleStrategy } from '@queso/common';
 
 import { appRoutes } from './app.routes';
 

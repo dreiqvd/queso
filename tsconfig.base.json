@@ -15,9 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@queso/shared": ["libs/shared/src/index.ts"],
-      "@queso/utils": ["libs/utils/src/index.ts"],
-      "@queso/utils/*": ["libs/utils/src/lib/*"]
+      "@queso/common": ["libs/common/src/index.ts"],
+      "@queso/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
