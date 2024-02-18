@@ -13,12 +13,13 @@ import { fromEvent } from 'rxjs';
 
 import { BREAKPOINTS, PlatformService } from '@queso/common';
 import { IconComponent } from '@queso/ui-kit/icon';
+import { ScrollCueComponent } from '@queso/ui-kit/scroll-cue';
 import { getViewportWidth } from '@queso/utils';
 
 @Component({
   selector: 'qs-home-hero',
   standalone: true,
-  imports: [NgTemplateOutlet, IconComponent],
+  imports: [NgTemplateOutlet, IconComponent, ScrollCueComponent],
   templateUrl: './home-hero.component.html',
   styleUrl: './home-hero.component.scss',
 })
