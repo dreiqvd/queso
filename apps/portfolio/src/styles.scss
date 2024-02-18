@@ -7,3 +7,64 @@ html {
   --accent-purple: #84609f;
   --accent-font: 'Inconsolata', sans-serif;
 }
+
+// Call-to-action button styling
+a.cta-btn,
+button.cta-btn {
+  height: 48px;
+  padding: 0 22px;
+  line-height: 0;
+  position: relative;
+  transition: all 0.2s ease;
+  gap: var(--spacing-sm);
+  display: inline-block;
+  color: var(--body-color);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+
+  * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 24px;
+    width: 48px;
+    height: 48px;
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+
+  .arrow-icon {
+    transform: translateX(0);
+    transition: all 0.3s ease;
+  }
+
+  &:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+
+  &.accent:before {
+    background-color: var(--accent-color);
+  }
+
+  &.primary:before {
+    background-color: var(--primary-color);
+  }
+
+  &.accent:hover:before {
+    width: 100%;
+    background: var(--accent-color);
+  }
+
+  &.primary:hover:before {
+    width: 100%;
+    background: var(--primary-color);
+  }
+}
