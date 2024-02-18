@@ -12,12 +12,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent } from 'rxjs';
 
 import { BREAKPOINTS, PlatformService } from '@queso/common';
+import { IconComponent } from '@queso/ui-kit/icon';
 import { getViewportWidth } from '@queso/utils';
 
 @Component({
   selector: 'qs-home-hero',
   standalone: true,
-  imports: [NgTemplateOutlet],
+  imports: [NgTemplateOutlet, IconComponent],
   templateUrl: './home-hero.component.html',
   styleUrl: './home-hero.component.scss',
 })
