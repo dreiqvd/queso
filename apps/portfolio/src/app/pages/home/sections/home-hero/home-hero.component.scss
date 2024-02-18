@@ -1,0 +1,28 @@
+.header-content-wrapper {
+  bottom: 80px;
+  right: 220px;
+  gap: var(--spacing-xl);
+
+  .header-title {
+    font-size: 6rem;
+    line-height: 7rem;
+    filter: drop-shadow(5px 4px 0 var(--accent-red));
+    // Below properties are intended since tailwind cannot override material typography
+    font-weight: 800;
+    margin-bottom: 0;
+
+    .greeting-ch {
+      &.space {
+        width: var(--spacing-lg);
+      }
+    }
+  }
+
+  .header-subtitle {
+    color: var(--accent-purple);
+    font-family: var(--accent-font);
+    line-height: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 0; // intended since tailwind cannot override material typography
+  }
+}

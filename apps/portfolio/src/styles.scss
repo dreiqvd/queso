@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+
+// Variables specific to this project
+html {
+  --accent-red: #f1756d;
+  --accent-purple: #84609f;
+  --accent-font: 'Inconsolata', sans-serif;
+}
