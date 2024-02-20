@@ -38,16 +38,25 @@ export class AnimationsDirective implements OnInit {
    */
   @Input() animDisposeOnComplete = false;
 
+  /** Controls initial visibility of the element before animating
+   * @defaultValue hidden
+   */
+  @Input() animVisibility: 'hidden' | 'visible' = 'hidden';
+
   /** Reference for the element to be animated. */
   private readonly element: HTMLElement;
 
   private isAnimated = false;
 
-  constructor(private rendererer: Renderer2, private elementRef: ElementRef) {
+  constructor(
+    private rendererer: Renderer2,
+    private elementRef: ElementRef
+  ) {
     this.element = this.elementRef.nativeElement;
   }
 
   ngOnInit(): void {
+    this.rendererer.setStyle(this.element, 'visibility', this.animVisibility);
     this.verifyAnimation();
     if (!this.isAnimated && !this.animIsManual) {
       this.animate();
@@ -88,6 +97,7 @@ export class AnimationsDirective implements OnInit {
 
   /** Trigger the animation on the element. */
   public animate(): void {
+    this.rendererer.setStyle(this.element, 'visibility', 'visible');
     this.addClass('animated');
     this.addCssProperty('animation-duration', this.animDuration);
 
@@ -101,16 +111,19 @@ export class AnimationsDirective implements OnInit {
 
     // Remove animation class after a set duration. This is to avoid
     // conflicts with other animations that have been added (e.g. hover animation)
-    setTimeout(() => {
-      if (this.animation) {
-        this.removeClass(this.animation);
-      }
+    setTimeout(
+      () => {
+        if (this.animation) {
+          this.removeClass(this.animation);
+        }
 
-      if (this.animDisposeOnComplete) {
-        this.rendererer.removeChild(this.element.parentElement, this.element);
-      }
+        if (this.animDisposeOnComplete) {
+          this.rendererer.removeChild(this.element.parentElement, this.element);
+        }
 
-      this.isAnimated = true;
-    }, (this.animDuration + this.animDelay) * 1000);
+        this.isAnimated = true;
+      },
+      (this.animDuration + this.animDelay) * 1000
+    );
   }
 }

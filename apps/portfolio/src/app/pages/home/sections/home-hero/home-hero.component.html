@@ -14,19 +14,26 @@
         <ng-container *ngTemplateOutlet="greetingTextTmpl; context: { $implicit: greetingText2 }"/>
         <ng-template #greetingTextTmpl let-text>
           @for (ch of text; track $index) {
-            <span class="greeting-ch inline-block" aria-hidden="true" [class.space]="ch === ' '">
+            <span
+              class="greeting-ch inline-block"
+              aria-hidden="true"
+              qsAnimation="slideInLeft"
+              [animDuration]="2"
+              [class.space]="ch === ' '"
+            >
               {{ ch }}
             </span>
           }
         </ng-template>
       </h1>
-      <h2 class="header-subtitle w-fit font-bold">
+      <h2 class="header-subtitle w-fit font-bold" qsAnimation="fadeInUp">
         full-stack developer <br />and design enthusiast
       </h2>
       <button
         type="button"
         class="cta-btn primary w-fit mt-3"
         matTooltip="Adventure awaits. Allegedly..."
+        qsAnimation="rotateIn"
       >
         <span>Explore</span>
         <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
@@ -34,11 +41,16 @@
     </div>
     <div #headerBlobAnchor class="header-blob-anchor absolute invisible m-auto top-0 left-0"></div>
     <div #headerBlobWrapper class="header-blob-wrapper absolute h-fit my-auto mx-0 top-0 bottom-0">
-      <!-- eslint-disable-next-line @angular-eslint/template/prefer-ngsrc -->
-      <img src="assets/svg/gz4k5n.svg" aria-hidden="true" alt="Header Background Blob" />
+      <!-- eslint-disable @angular-eslint/template/prefer-ngsrc -->
+      <img
+        src="assets/svg/gz4k5n.svg"
+        aria-hidden="true"
+        alt="Header Background Blob"
+        qsAnimation="zoomIn"
+      />
     </div>
   </header>
-  <div class="scroll-cue-container absolute z-30">
+  <div class="scroll-cue-container absolute z-30" qsAnimation="fadeIn">
     <qs-scroll-cue />
   </div>
 </div>

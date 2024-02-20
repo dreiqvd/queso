@@ -24,6 +24,7 @@ import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
   styles: `
     .backdrop {
       background-color: var(--accent-color);
+      z-index: var(--zIndex-fixed);
     }
   `,
 })
@@ -51,10 +52,13 @@ export class HomeComponent implements OnInit {
         direction: 'alternate',
         delay: (_: HTMLElement, i: number) => i * 250,
         begin: () => this.introVisibility.set('visible'),
-        complete: () => this.backdrop.animate(),
+        complete: () => {
+          this.backdrop.animate();
+          setTimeout(() => {
+            this.isContentVisible.set(true);
+          }, 200);
+        },
       });
-
-      setTimeout(() => this.isContentVisible.set(true), duration * 3 + 1000);
     }
   }
 }

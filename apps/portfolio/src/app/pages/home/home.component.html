@@ -1,8 +1,9 @@
 <!-- eslint-disable @angular-eslint/template/no-inline-styles -->
 <div
   #backdrop
-  class="backdrop h-dvh flex items-center justify-center"
+  class="backdrop h-dvh w-dvw flex fixed items-center justify-center top-0"
   qsAnimation="fadeOut"
+  animVisibility="visible"
   [animIsManual]="true"
   [animDisposeOnComplete]="true"
 >
@@ -33,7 +34,7 @@
 </div>
 
 @if (isContentVisible()) {
-  <main qsCustomCursor class="container w-100">
+  <main qsCustomCursor qsAnimation="fadeIn" class="container w-100">
     <qs-navbar />
     <section class="h-dvh">
       <qs-home-hero class="block h-full" />

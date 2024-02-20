@@ -20,18 +20,10 @@ $scrollColor: var(--accent-color-100);
     border-radius: 50%;
     opacity: 1;
     animation: wheel 2s infinite;
-    -webkit-animation: wheel 2s infinite;
   }
 }
 
 @keyframes wheel {
-  to {
-    opacity: 0;
-    top: 45px;
-  }
-}
-
-@-webkit-keyframes wheel {
   to {
     opacity: 0;
     top: 45px;
@@ -46,7 +38,6 @@ $scrollColor: var(--accent-color-100);
   border-radius: 50%;
   position: relative;
   animation: updown 1.5s infinite;
-  -webkit-animation: updown 1.5s infinite;
 
   &::before {
     content: '';
@@ -76,18 +67,6 @@ $scrollColor: var(--accent-color-100);
   }
 }
 
-@-webkit-keyframes updown {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translateY(15px);
-  }
-  40% {
-    transform: translate(0);
-  }
-}
-
 /* Arrow Down Scroll Style */
 .arrow {
   width: 0;
@@ -95,7 +74,6 @@ $scrollColor: var(--accent-color-100);
   border: 1px solid $scrollColor;
   position: relative;
   animation: stretch 1.5s infinite;
-  -webkit-animation: stretch 1.5s infinite;
 }
 
 .arrow::after {
@@ -112,17 +90,6 @@ $scrollColor: var(--accent-color-100);
 }
 
 @keyframes stretch {
-  0% {
-    height: 40px;
-  }
-  30% {
-    height: 70px;
-  }
-  60% {
-    height: 40px;
-  }
-}
-@-webkit-keyframes stretch {
   0% {
     height: 40px;
   }
