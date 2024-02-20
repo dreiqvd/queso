@@ -13,6 +13,7 @@
     "./package.json": "./package.json",
     ".": "./src/index.ts",
     "./icon": "./src/components/icon/index.ts",
-    "./scroll-cue": "./src/components/scroll-cue/index.ts"
+    "./scroll-cue": "./src/components/scroll-cue/index.ts",
+    "./hamburger": "./src/components/hamburger/index.ts"
   }
 }

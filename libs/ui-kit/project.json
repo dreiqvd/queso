@@ -2,7 +2,7 @@
   "name": "ui-kit",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ui-kit/src",
-  "prefix": "queso",
+  "prefix": "qs",
   "tags": ["type:ui", "scope:shared"],
   "projectType": "library",
   "targets": {

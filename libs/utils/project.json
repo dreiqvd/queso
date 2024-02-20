@@ -2,7 +2,7 @@
   "name": "utils",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/utils/src",
-  "prefix": "queso",
+  "prefix": "qs",
   "tags": ["type:utils", "scope:shared"],
   "projectType": "library",
   "targets": {}
