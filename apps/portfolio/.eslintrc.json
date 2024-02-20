@@ -6,8 +6,7 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": ["apps/portfolio/tsconfig.*?.json"]
-      },
-      "rules": {}
+      }
     }
   ]
 }
