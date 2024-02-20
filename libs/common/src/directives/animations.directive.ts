@@ -16,17 +16,27 @@ export class AnimationsDirective implements OnInit {
   @Input({ alias: 'qsAnimation' }) animation?: string;
 
   /** Optional animation that triggers on hover. Multiple hover animations are allowed */
-  @Input() animHovers?: string | string[];
+  @Input() animHover?: string | string[];
 
   /** Duration of the animation in seconds.
    * @defaultvalue 1
    */
   @Input() animDuration = 1;
 
+  /** Duration of the hover animation in seconds.
+   * @defaultvalue 1
+   */
+  @Input() animHoverDuration = 1;
+
   /** Delay before executing the animation in seconds.
    * @defaultValue 0
    */
   @Input() animDelay = 0;
+
+  /** Delay before executing the hover animation in seconds.
+   * @defaultValue 0
+   */
+  @Input() animHoverDelay = 0;
 
   /** Determines if animation is manually triggered.
    * @defaultValue false
@@ -62,14 +72,15 @@ export class AnimationsDirective implements OnInit {
       this.animate();
     }
 
-    if (this.animHovers) {
+    // If no onload animation is added then check for hover animations.
+    if (!this.animation) {
       this.handleHoverAnimations();
     }
   }
 
   /** Verify if at least on-load or hover animation is provided. */
   private verifyAnimation(): void {
-    if (!this.animation && !this.animHovers) {
+    if (!this.animation && !this.animHover) {
       let elementRef = '';
       if (this.element.className) elementRef += `.${this.element.className}`;
       if (this.element.id) elementRef += ` #${this.element.id}`;
@@ -107,11 +118,20 @@ export class AnimationsDirective implements OnInit {
     }
   }
 
+  /** Handle hover animation class names. */
   private handleHoverAnimations(): void {
-    this.addAnimationProps();
-    const hoverAnimations = Array.isArray(this.animHovers)
-      ? this.animHovers
-      : [this.animHovers];
+    if (!this.animHover) return;
+
+    // Add animation properties for hover animations.
+    this.addCssProperty('animation-duration', this.animHoverDuration);
+    if (this.animDelay) {
+      this.addCssProperty('animation-delay', this.animHoverDelay);
+    }
+
+    // Add class names for each hover animation.
+    const hoverAnimations = Array.isArray(this.animHover)
+      ? this.animHover
+      : [this.animHover];
     hoverAnimations.forEach((hover) => {
       this.rendererer.addClass(this.element, `hvr-${hover}`);
     });
@@ -121,14 +141,18 @@ export class AnimationsDirective implements OnInit {
   public animate(): void {
     this.rendererer.setStyle(this.element, 'visibility', 'visible');
     this.addClass('animated');
-    this.addAnimationProps();
+
+    // Add animation properties for hover animations.
+    this.addCssProperty('animation-duration', this.animDuration);
+    if (this.animDelay) {
+      this.addCssProperty('animation-delay', this.animDelay);
+    }
 
     if (this.animation) {
       this.addClass(this.animation);
     }
 
-    // Remove animation class after a set duration. This is to avoid
-    // conflicts with other animations that have been added (e.g. hover animation)
+    // Remove animation class after a set duration.
     setTimeout(
       () => {
         if (this.animation) {
@@ -140,6 +164,9 @@ export class AnimationsDirective implements OnInit {
         }
 
         this.isAnimated = true;
+        // Allow hover animations after the element has been animated. This is to
+        // avoid conflicts with the onload animation.
+        this.handleHoverAnimations();
       },
       (this.animDuration + this.animDelay) * 1000
     );

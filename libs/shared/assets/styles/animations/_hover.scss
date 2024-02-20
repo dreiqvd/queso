@@ -14,4 +14,12 @@
   &-wobble-top {
     @include wobble-top();
   }
+
+  &-grow {
+    @include grow();
+  }
+
+  &-rubberBand {
+    @include rubberBand();
+  }
 }
