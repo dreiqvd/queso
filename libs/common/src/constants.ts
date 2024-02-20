@@ -13,22 +13,22 @@ export const BREAKPOINTS = {
 
 export const SOCIAL_LINKS = [
   {
-    link: 'https://www.linkedin.com/in/dreiqvd',
+    url: 'https://www.linkedin.com/in/dreiqvd',
     name: 'LinkedIn',
     icon: 'linkedin',
   },
   {
-    link: 'https://github.com/dreiqvd',
+    url: 'https://github.com/dreiqvd',
     name: 'GitHub',
     icon: 'github',
   },
   {
-    link: 'https://twitter.com/dreiqdev',
+    url: 'https://twitter.com/dreiqdev',
     name: 'Twitter',
     icon: 'twitter',
   },
   {
-    link: 'https://dribbble.com/dreiqvd',
+    url: 'https://dribbble.com/dreiqvd',
     name: 'Dribbble',
     icon: 'dribbble',
   },

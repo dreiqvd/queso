@@ -8,4 +8,15 @@
 
 nav {
   padding: 0 var(--spacing-xl);
+
+  .nav-links-wrapper {
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg);
+
+    .nav-link {
+      color: var(--gray-600);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
+  }
 }
