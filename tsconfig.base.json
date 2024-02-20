@@ -18,7 +18,8 @@
       "@queso/common": ["libs/common/src/index.ts"],
       "@queso/ui-kit": ["libs/ui-kit/src/index.ts"],
       "@queso/ui-kit/*": ["libs/ui-kit/src/components/*"],
-      "@queso/utils": ["libs/utils/src/index.ts"]
+      "@queso/utils": ["libs/utils/src/index.ts"],
+      "@app/portfolio/*": ["apps/portfolio/src/app/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

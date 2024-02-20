@@ -79,6 +79,13 @@
                 "pattern": "@/**",
                 "group": "internal",
                 "position": "after"
+              },
+              // Setting @app as another internal group to separate it from library imports.
+              // @app imports are often imports that are just local within the app scope.
+              {
+                "pattern": "@app/**",
+                "group": "internal",
+                "position": "after"
               }
             ],
             "newlines-between": "always"
