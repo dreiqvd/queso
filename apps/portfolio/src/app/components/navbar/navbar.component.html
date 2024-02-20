@@ -15,9 +15,11 @@
   <div class="nav-links-wrapper flex" qsAnimation="bounceInDown">
     @for (social of socials; track $index) {
       <a
-        class="nav-link"
+        class="nav-link primary"
         target="_blank"
         rel="noopener noreferrer"
+        qsAnimation
+        [animHovers]="['bounce-to-right', 'wobble-top']"
         [href]="social.url"
         [attr.aria-label]="social.name"
         [matTooltip]="social.name"
