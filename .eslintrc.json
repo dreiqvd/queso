@@ -34,7 +34,7 @@
               },
               {
                 "sourceTag": "type:app",
-                "onlyDependOnLibsWithTags": ["type:utils"]
+                "onlyDependOnLibsWithTags": ["type:utils", "type:ui"]
               },
               {
                 "sourceTag": "type:ui",
@@ -52,10 +52,10 @@
     {
       "files": ["*.ts", "*.tsx"],
       "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@nx/typescript",
         "plugin:import/recommended",
-        "plugin:import/typescript"
+        "plugin:import/typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@nx/typescript"
       ],
       "rules": {
         "import/no-unresolved": "error",
@@ -66,7 +66,7 @@
               "builtin",
               "external",
               "internal",
-              ["sibling", "parent"],
+              ["parent", "sibling"],
               "index",
               "unknown"
             ],
@@ -80,11 +80,9 @@
                 "group": "internal",
                 "position": "after"
               },
-              // Setting @app as another internal group to separate it from library imports.
-              // @app imports are often imports that are just local within the app scope.
               {
-                "pattern": "@app/**",
-                "group": "internal",
+                "pattern": "./**",
+                "group": "sibling",
                 "position": "after"
               }
             ],
@@ -109,15 +107,13 @@
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
+      "extends": ["plugin:@nx/javascript"]
     },
     {
       "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
       "env": {
         "jest": true
-      },
-      "rules": {}
+      }
     }
   ]
 }
