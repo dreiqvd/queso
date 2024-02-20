@@ -3,10 +3,16 @@
   aria-label="Main navigation"
   class="h-full flex items-center justify-between"
 >
-  <button class="menu-btn" matTooltip="Behold, a menu..." type="button" aria-label="Open menu">
+  <button
+    class="menu-btn"
+    matTooltip="Behold, a menu..."
+    type="button"
+    aria-label="Open menu"
+    qsAnimation="fadeInLeft"
+  >
     <qs-hamburger />
   </button>
-  <div class="nav-links-wrapper flex">
+  <div class="nav-links-wrapper flex" qsAnimation="bounceInDown">
     @for (social of socials; track $index) {
       <a
         class="nav-link"
