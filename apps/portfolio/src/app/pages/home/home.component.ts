@@ -7,12 +7,19 @@ import {
   PlatformService,
 } from '@queso/common';
 
+import { NavbarComponent } from '../../components/navbar';
+
 import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
 
 @Component({
   selector: 'qs-home',
   standalone: true,
-  imports: [AnimationsDirective, CursorDirective, HomeHeroComponent],
+  imports: [
+    AnimationsDirective,
+    CursorDirective,
+    NavbarComponent,
+    HomeHeroComponent,
+  ],
   templateUrl: './home.component.html',
   styles: `
     .backdrop {
