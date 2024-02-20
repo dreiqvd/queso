@@ -18,6 +18,7 @@
               class="greeting-ch inline-block"
               aria-hidden="true"
               qsAnimation="slideInLeft"
+              animHover="rubberBand"
               [animDuration]="2"
               [class.space]="ch === ' '"
             >
@@ -26,7 +27,7 @@
           }
         </ng-template>
       </h1>
-      <h2 class="header-subtitle w-fit font-bold" qsAnimation="fadeInUp">
+      <h2 class="header-subtitle w-fit font-bold" qsAnimation="fadeInUp" animHover="grow">
         full-stack developer <br />and design enthusiast
       </h2>
       <button
