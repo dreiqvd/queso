@@ -1,4 +1,14 @@
 {
+  "name": "@queso/ui-kit",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^17.1.0",
+    "@angular/core": "^17.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
   "exports": {
     "./package.json": "./package.json",
     ".": "./src/index.ts",

@@ -5,5 +5,23 @@
   "prefix": "queso",
   "tags": ["type:ui", "scope:shared"],
   "projectType": "library",
-  "targets": {}
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/ui-kit/ng-package.json",
+        "tailwindConfig": "libs/ui-kit/tailwind.config.js"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ui-kit/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ui-kit/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    }
+  }
 }

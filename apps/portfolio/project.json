@@ -21,12 +21,12 @@
           "apps/portfolio/src/assets",
           {
             "glob": "**/*",
-            "input": "libs/shared-assets",
+            "input": "libs/shared/assets",
             "output": "./assets"
           }
         ],
         "styles": [
-          "libs/shared-assets/styles/theming/default-theme.scss",
+          "libs/shared/assets/styles/theming/default-theme.scss",
           "apps/portfolio/src/styles.scss"
         ],
         "scripts": [],
