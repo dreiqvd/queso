@@ -15,8 +15,8 @@ export class AnimationsDirective implements OnInit {
   /** Optional animation that triggers on load. */
   @Input({ alias: 'qsAnimation' }) animation?: string;
 
-  /** Optional animation that triggers on hover. */
-  @Input() animHover?: string;
+  /** Optional animation that triggers on hover. Multiple hover animations are allowed */
+  @Input() animHovers?: string | string[];
 
   /** Duration of the animation in seconds.
    * @defaultvalue 1
@@ -61,11 +61,15 @@ export class AnimationsDirective implements OnInit {
     if (!this.isAnimated && !this.animIsManual) {
       this.animate();
     }
+
+    if (this.animHovers) {
+      this.handleHoverAnimations();
+    }
   }
 
   /** Verify if at least on-load or hover animation is provided. */
   private verifyAnimation(): void {
-    if (!this.animation && !this.animHover) {
+    if (!this.animation && !this.animHovers) {
       let elementRef = '';
       if (this.element.className) elementRef += `.${this.element.className}`;
       if (this.element.id) elementRef += ` #${this.element.id}`;
@@ -95,15 +99,29 @@ export class AnimationsDirective implements OnInit {
     this.rendererer.setProperty(this.element.style, prop, `${value}s`);
   }
 
+  /** Add animation-related css properties */
+  private addAnimationProps(): void {
+    this.addCssProperty('animation-duration', this.animDuration);
+    if (this.animDelay) {
+      this.addCssProperty('animation-delay', this.animDelay);
+    }
+  }
+
+  private handleHoverAnimations(): void {
+    this.addAnimationProps();
+    const hoverAnimations = Array.isArray(this.animHovers)
+      ? this.animHovers
+      : [this.animHovers];
+    hoverAnimations.forEach((hover) => {
+      this.rendererer.addClass(this.element, `hvr-${hover}`);
+    });
+  }
+
   /** Trigger the animation on the element. */
   public animate(): void {
     this.rendererer.setStyle(this.element, 'visibility', 'visible');
     this.addClass('animated');
-    this.addCssProperty('animation-duration', this.animDuration);
-
-    if (this.animDelay) {
-      this.addCssProperty('animation-delay', this.animDelay);
-    }
+    this.addAnimationProps();
 
     if (this.animation) {
       this.addClass(this.animation);

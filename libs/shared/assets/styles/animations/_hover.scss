@@ -1,0 +1,17 @@
+@import './hover/effects';
+
+.hvr {
+  &-bounce-to-right {
+    &.accent {
+      @include bounce-to-right(var(--accent-color));
+    }
+
+    &.primary {
+      @include bounce-to-right(var(--primary-color));
+    }
+  }
+
+  &-wobble-top {
+    @include wobble-top();
+  }
+}
