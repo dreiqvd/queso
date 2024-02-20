@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatTooltip } from '@angular/material/tooltip';
 import { fromEvent } from 'rxjs';
 
 import { BREAKPOINTS, PlatformService } from '@queso/common';
@@ -19,7 +20,7 @@ import { getViewportWidth } from '@queso/utils';
 @Component({
   selector: 'qs-home-hero',
   standalone: true,
-  imports: [NgTemplateOutlet, IconComponent, ScrollCueComponent],
+  imports: [NgTemplateOutlet, IconComponent, ScrollCueComponent, MatTooltip],
   templateUrl: './home-hero.component.html',
   styleUrl: './home-hero.component.scss',
 })
