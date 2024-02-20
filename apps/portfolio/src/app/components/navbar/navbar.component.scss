@@ -1,0 +1,11 @@
+:host {
+  position: fixed;
+  z-index: var(--zindex-fixed);
+  height: 96px;
+  width: 100%;
+  top: 0;
+}
+
+nav {
+  padding: 0 var(--spacing-xl);
+}
