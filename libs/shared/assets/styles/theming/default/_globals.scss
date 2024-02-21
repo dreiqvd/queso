@@ -1,3 +1,23 @@
 body {
   color: var(--accent-color-400);
 }
+
+/** Custom scrollbar **/
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+// Track
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+// Handle
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--accent-color-300);
+  }
+}
