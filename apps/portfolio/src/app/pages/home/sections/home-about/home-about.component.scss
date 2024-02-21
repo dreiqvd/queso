@@ -1,0 +1,29 @@
+.content-wrapper {
+  margin-left: 12%;
+}
+
+.section-title {
+  font-size: 3rem;
+
+  &:after {
+    height: 12px;
+    bottom: 12px;
+  }
+}
+
+.list-wrapper {
+  list-style-type: disc;
+  padding-left: var(--spacing-md);
+  margin: var(--spacing-xl) 0;
+
+  .about-txt {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 2.2rem;
+    margin-bottom: var(--spacing-lg);
+  }
+}
+
+.cta-btn {
+  margin-top: 64px;
+}

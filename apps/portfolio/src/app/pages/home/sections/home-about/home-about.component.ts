@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { MatTooltip } from '@angular/material/tooltip';
+
+import { IconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'qs-home-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [IconComponent, MatTooltip],
   templateUrl: './home-about.component.html',
   styleUrl: './home-about.component.scss',
 })
