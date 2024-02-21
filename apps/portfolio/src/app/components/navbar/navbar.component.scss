@@ -39,15 +39,15 @@ header {
 
 .sidenav {
   width: 300px;
-  background-color: white;
+  background-color: var(--gray-50);
   box-shadow: 2px 0 4px -2px var(--gray-200);
   padding: var(--spacing-xl);
 
   .close-btn {
-    color: var(--body-gray);
+    color: var(--gray-500);
 
     &:hover {
-      color: var(--gray-500);
+      color: var(--gray-600);
     }
   }
 
@@ -61,7 +61,7 @@ header {
       line-height: normal;
 
       .menu-link {
-        color: var(--body-gray);
+        color: var(--gray-500);
         transition: color 0.5s ease;
         position: relative;
         display: inline-block;
