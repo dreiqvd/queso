@@ -19,8 +19,6 @@
   }
 
   .header-subtitle {
-    color: var(--accent-purple);
-    font-family: var(--accent-font);
     line-height: 3rem;
     font-size: 2.5rem;
     margin-bottom: 0; // intended since tailwind cannot override material typography

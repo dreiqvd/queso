@@ -8,6 +8,11 @@ html {
   --accent-font: 'Inconsolata', sans-serif;
 }
 
+.accent-text {
+  font-family: var(--accent-font);
+  color: var(--accent-purple);
+}
+
 // Call-to-action button styling
 a.cta-btn,
 button.cta-btn {
