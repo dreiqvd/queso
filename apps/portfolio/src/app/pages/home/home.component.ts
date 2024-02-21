@@ -9,6 +9,7 @@ import {
 
 import { NavbarComponent } from '../../components/navbar';
 
+import { HomeAboutComponent } from './sections/home-about/home-about.component';
 import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
 
 @Component({
@@ -19,6 +20,7 @@ import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
     CursorDirective,
     NavbarComponent,
     HomeHeroComponent,
+    HomeAboutComponent,
   ],
   templateUrl: './home.component.html',
   styles: `
