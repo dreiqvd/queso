@@ -52,8 +52,10 @@
     </div>
     <ul class="menu-items-wrapper flex flex-col">
       @for (item of routes; track $index) {
-        <li class="menu-item" routerLinkActive="active" ariaCurrentWhenActive="page">
-          <a class="menu-link" [routerLink]="item.path">{{ item.label }}</a>
+        <li class="menu-item" ariaCurrentWhenActive="page">
+          <a class="menu-link text-underlined" routerLinkActive="active" [routerLink]="item.path">{{
+            item.label
+          }}</a>
         </li>
       }
     </ul>
