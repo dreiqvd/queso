@@ -9,7 +9,7 @@
     type="button"
     aria-label="Open menu"
     qsAnimation="fadeInLeft"
-    (click)="isSidebarOpen.set(true)"
+    (click)="onOpenSidebar($event)"
   >
     <qs-hamburger />
   </button>
@@ -32,14 +32,20 @@
 </header>
 
 @if (isSidebarOpen()) {
-  <nav #sidebar class="sidenav fixed top-0 h-dvh" qsAnimation="slideInLeft" [animDuration]="0.3">
+  <nav
+    #sidebar
+    class="sidenav fixed top-0 h-dvh"
+    qsAnimation
+    [animDuration]="0.3"
+    [animIsManual]="true"
+  >
     <div class="close-btn-wrapper flex justify-end">
       <button
         aria-label="Close sidebar"
         type="button"
         class="close-btn"
         matTooltip="When one door closes, another opens; sorry, not in this sidebar."
-        (click)="onSidebarBtnClick($event)"
+        (click)="onCloseSidebar($event)"
       >
         <qs-icon iconName="times" aria-hidden="true" [iconSize]="28" />
       </button>

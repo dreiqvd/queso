@@ -36,7 +36,15 @@ export class NavbarComponent {
     { name: 'contact', path: '/contact', label: 'Contact' },
   ];
 
-  onSidebarBtnClick(event: MouseEvent): void {
+  onOpenSidebar(event: MouseEvent): void {
+    event.stopPropagation();
+    this.isSidebarOpen.set(true);
+    setTimeout(() => {
+      this.sidebar.animate('slideInLeft');
+    });
+  }
+
+  onCloseSidebar(event: MouseEvent): void {
     event.stopPropagation();
     this.sidebar.animate('slideOutLeft').then(() => {
       this.isSidebarOpen.set(false);
