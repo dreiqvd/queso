@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, signal, ViewChild } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -11,7 +10,6 @@ import { IconComponent } from '@queso/ui-kit/icon';
   selector: 'qs-navbar',
   standalone: true,
   imports: [
-    CommonModule,
     MatTooltip,
     IconComponent,
     HamburgerComponent,
