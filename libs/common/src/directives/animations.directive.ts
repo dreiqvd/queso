@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { timer } from 'rxjs';
 
 /**
  * This directive provides animation capabilities to an element. There can be an animation
@@ -42,11 +43,6 @@ export class AnimationsDirective implements OnInit {
    * @defaultValue false
    */
   @Input() animIsManual = false;
-
-  /** Whether to remove element from DOM after the animation.
-   * @defaultValue false
-   */
-  @Input() animDisposeOnComplete = false;
 
   /** Controls initial visibility of the element before animating
    * @defaultValue hidden
@@ -110,14 +106,6 @@ export class AnimationsDirective implements OnInit {
     this.rendererer.setProperty(this.element.style, prop, `${value}s`);
   }
 
-  /** Add animation-related css properties */
-  private addAnimationProps(): void {
-    this.addCssProperty('animation-duration', this.animDuration);
-    if (this.animDelay) {
-      this.addCssProperty('animation-delay', this.animDelay);
-    }
-  }
-
   /** Handle hover animation class names. */
   private handleHoverAnimations(): void {
     if (!this.animHover) return;
@@ -137,38 +125,46 @@ export class AnimationsDirective implements OnInit {
     });
   }
 
-  /** Trigger the animation on the element. */
-  public animate(): void {
-    this.rendererer.setStyle(this.element, 'visibility', 'visible');
-    this.addClass('animated');
+  /** Trigger the animation on the element.
+   * @returns a Promise that resolves after the animation is complete.
+   */
+  public animate(animationName?: string): Promise<void> {
+    return new Promise((resolve) => {
+      const animation = animationName || this.animation;
+      this.rendererer.setStyle(this.element, 'visibility', 'visible');
+      this.addClass('animated');
 
-    // Add animation properties for hover animations.
-    this.addCssProperty('animation-duration', this.animDuration);
-    if (this.animDelay) {
-      this.addCssProperty('animation-delay', this.animDelay);
-    }
+      // Add animation properties for onload animations.
+      this.addCssProperty('animation-duration', this.animDuration);
+      if (this.animDelay) {
+        this.addCssProperty('animation-delay', this.animDelay);
+      }
 
-    if (this.animation) {
-      this.addClass(this.animation);
-    }
+      if (animation) {
+        this.addClass(animation);
+      }
 
-    // Remove animation class after a set duration.
-    setTimeout(
-      () => {
-        if (this.animation) {
-          this.removeClass(this.animation);
-        }
-
-        if (this.animDisposeOnComplete) {
-          this.rendererer.removeChild(this.element.parentElement, this.element);
+      // Remove animation class after a set duration.
+      timer((this.animDuration + this.animDelay) * 1000).subscribe(() => {
+        if (animation) {
+          this.removeClass(animation);
         }
 
         this.isAnimated = true;
         // Allow hover animations after the element has been animated. This is to
         // avoid conflicts with the onload animation.
         this.handleHoverAnimations();
-      },
-      (this.animDuration + this.animDelay) * 1000
-    );
+
+        // Resolve promise to mark animation as complete.
+        resolve();
+      });
+    });
+  }
+
+  /** Manually remove an element from DOM. This is particularly useful for cases where element
+   * should be deleted after animation (e.g. exit animations).
+   */
+  public removeElement(): void {
+    this.rendererer.removeChild(this.element.parentElement, this.element);
   }
 }

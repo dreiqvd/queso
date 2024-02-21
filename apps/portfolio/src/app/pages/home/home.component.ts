@@ -53,10 +53,10 @@ export class HomeComponent implements OnInit {
         delay: (_: HTMLElement, i: number) => i * 250,
         begin: () => this.introVisibility.set('visible'),
         complete: () => {
-          this.backdrop.animate();
-          setTimeout(() => {
+          this.backdrop.animate().then(() => {
+            this.backdrop.removeElement();
             this.isContentVisible.set(true);
-          }, 200);
+          });
         },
       });
     }

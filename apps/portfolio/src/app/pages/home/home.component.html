@@ -5,7 +5,6 @@
   qsAnimation="fadeOut"
   animVisibility="visible"
   [animIsManual]="true"
-  [animDisposeOnComplete]="true"
 >
   <div id="backdrop-svg-wrapper" style="width: 269px" [style.visibility]="introVisibility()">
     <svg fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +33,7 @@
 </div>
 
 @if (isContentVisible()) {
-  <main qsCustomCursor qsAnimation="fadeIn" class="container w-100">
+  <main qsCustomCursor qsAnimation="fadeIn" class="container w-100" [animDuration]="0.5">
     <qs-navbar />
     <section class="h-dvh">
       <qs-home-hero class="block h-full" />
