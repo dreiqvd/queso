@@ -8,7 +8,10 @@ html {
   --accent-font: 'Inconsolata', sans-serif;
 }
 
-.accent-txt {
+.accent-txt,
+h1.accent-txt,
+h2.accent-txt,
+h3.accent-txt {
   font-family: var(--accent-font);
   color: var(--accent-purple);
 }
