@@ -75,8 +75,11 @@ export class AnimationsDirective implements OnInit, OnDestroy {
     // Initially set element to be hidden.
     this.rendererer.setStyle(this.element, 'visibility', this.animVisibility);
 
-    // Check for hover animations.
-    this.handleHoverAnimations();
+    // Immediately apply hover animations if there are no on demand animations.
+    // A check is needed to avoid conflicts with ongoing animations.
+    if (!this.animation) {
+      this.handleHoverAnimations();
+    }
 
     // Create an intersection observer for on demand animations (e.g. entrance).
     // Only applies if the animation is not manually triggered.
