@@ -1,4 +1,11 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { timer } from 'rxjs';
 
 /**
@@ -12,7 +19,7 @@ import { timer } from 'rxjs';
   standalone: true,
   selector: '[qsAnimation]',
 })
-export class AnimationsDirective implements OnInit {
+export class AnimationsDirective implements OnInit, OnDestroy {
   /** Optional animation that triggers on load. */
   @Input({ alias: 'qsAnimation' }) animation?: string;
 
@@ -52,6 +59,9 @@ export class AnimationsDirective implements OnInit {
   /** Reference for the element to be animated. */
   private readonly element: HTMLElement;
 
+  /** An observer that determines when to trigger entrance animation to an element */
+  private intersectionObserver$?: IntersectionObserver;
+
   private isAnimated = false;
 
   constructor(
@@ -62,28 +72,29 @@ export class AnimationsDirective implements OnInit {
   }
 
   ngOnInit(): void {
+    // Initially set element to be hidden.
     this.rendererer.setStyle(this.element, 'visibility', this.animVisibility);
-    this.verifyAnimation();
-    if (!this.isAnimated && !this.animIsManual) {
-      this.animate();
+
+    // Check for hover animations.
+    this.handleHoverAnimations();
+
+    // Create an intersection observer for on demand animations (e.g. entrance).
+    // Only applies if the animation is not manually triggered.
+    if (this.animation && !this.animIsManual) {
+      this.intersectionObserver$ = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !this.isAnimated) {
+            this.animate();
+          }
+        });
+      });
     }
 
-    // If no onload animation is added then check for hover animations.
-    if (!this.animation) {
-      this.handleHoverAnimations();
-    }
+    this.intersectionObserver$?.observe(this.element);
   }
 
-  /** Verify if at least on-load or hover animation is provided. */
-  private verifyAnimation(): void {
-    if (!this.animation && !this.animHover) {
-      let elementRef = '';
-      if (this.element.className) elementRef += `.${this.element.className}`;
-      if (this.element.id) elementRef += ` #${this.element.id}`;
-      throw new Error(
-        `No animation specified on element: "${elementRef}". Please provide an onload animation or a hover animation.`
-      );
-    }
+  ngOnDestroy(): void {
+    this.intersectionObserver$?.disconnect();
   }
 
   /** Add a specified animation class to the element. */
@@ -106,7 +117,8 @@ export class AnimationsDirective implements OnInit {
     this.rendererer.setProperty(this.element.style, prop, `${value}s`);
   }
 
-  /** Handle hover animation class names. */
+  /** Handle hover animation class names. Hover animation classes are directly applied
+   * since by essence, they are triggered manually (on hover). */
   private handleHoverAnimations(): void {
     if (!this.animHover) return;
 
@@ -126,6 +138,7 @@ export class AnimationsDirective implements OnInit {
   }
 
   /** Trigger the animation on the element.
+   * @param animationName - Optional animation name for manually-triggered effect.
    * @returns a Promise that resolves after the animation is complete.
    */
   public animate(animationName?: string): Promise<void> {
@@ -154,6 +167,9 @@ export class AnimationsDirective implements OnInit {
         // Allow hover animations after the element has been animated. This is to
         // avoid conflicts with the onload animation.
         this.handleHoverAnimations();
+
+        // Disconnect from intersection observer after animation is complete.
+        this.intersectionObserver$?.disconnect();
 
         // Resolve promise to mark animation as complete.
         resolve();
