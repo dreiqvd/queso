@@ -33,7 +33,7 @@
 </div>
 
 @if (isContentVisible()) {
-  <main qsCustomCursor qsAnimation="fadeIn" class="container w-100" [animDuration]="0.5">
+  <div qsCustomCursor qsAnimation="fadeIn" class="container w-100" [animDuration]="0.5">
     <qs-navbar />
     <section class="h-dvh">
       <qs-home-hero class="block h-full" />
@@ -41,5 +41,5 @@
     <section class="h-dvh">
       <qs-home-about class="block h-full" />
     </section>
-  </main>
+  </div>
 }
