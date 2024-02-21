@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import { timer } from 'rxjs';
 
+import { PlatformService } from '../services';
+
 /**
  * This directive provides animation capabilities to an element. There can be an animation
  * that gets triggered on load and another animation that gets triggered on hover.
@@ -66,7 +68,8 @@ export class AnimationsDirective implements OnInit, OnDestroy {
 
   constructor(
     private rendererer: Renderer2,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private platformService: PlatformService
   ) {
     this.element = this.elementRef.nativeElement;
   }
@@ -83,7 +86,11 @@ export class AnimationsDirective implements OnInit, OnDestroy {
 
     // Create an intersection observer for on demand animations (e.g. entrance).
     // Only applies if the animation is not manually triggered.
-    if (this.animation && !this.animIsManual) {
+    if (
+      this.animation &&
+      !this.animIsManual &&
+      this.platformService.isUsingBrowser()
+    ) {
       this.intersectionObserver$ = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !this.isAnimated) {
