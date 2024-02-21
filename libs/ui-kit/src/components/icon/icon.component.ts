@@ -7,6 +7,13 @@ import { DomSanitizer } from '@angular/platform-browser';
   standalone: true,
   imports: [MatIconModule],
   templateUrl: './icon.component.html',
+  styles: `
+    :host {
+      // Remove additional space when rendering the icon
+      line-height: 0;
+      display: inline-block;
+    }
+  `,
 })
 export class IconComponent implements OnInit {
   /** Name of the icon to display. */
