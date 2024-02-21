@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal, ViewChild } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { AnimationsDirective, SOCIAL_LINKS } from '@queso/common';
 import { HamburgerComponent } from '@queso/ui-kit/hamburger';
@@ -15,6 +16,9 @@ import { IconComponent } from '@queso/ui-kit/icon';
     IconComponent,
     HamburgerComponent,
     AnimationsDirective,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
@@ -25,6 +29,12 @@ export class NavbarComponent {
 
   readonly socials = SOCIAL_LINKS;
   readonly isSidebarOpen = signal(false);
+  readonly routes = [
+    { name: 'home', path: '', label: 'Home' },
+    { name: 'blog', path: '/blog', label: 'Blog' },
+    { name: 'projects', path: '/projects', label: 'Projects' },
+    { name: 'contact', path: '/contact', label: 'Contact' },
+  ];
 
   onSidebarBtnClick(event: MouseEvent): void {
     event.stopPropagation();

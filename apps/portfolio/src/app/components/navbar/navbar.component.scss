@@ -1,3 +1,19 @@
+@mixin underline {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: var(--primary-color);
+  height: 8px;
+  transform: scaleX(0) skew(-15deg);
+  transition: transform 0.25s ease;
+  bottom: 8px;
+  left: -4px;
+  right: -4px;
+  transform-origin: 0 0;
+  will-change: transform;
+  z-index: -1;
+}
+
 :host {
   position: fixed;
   z-index: var(--zindex-fixed);
@@ -32,6 +48,47 @@ header {
 
     &:hover {
       color: var(--gray-500);
+    }
+  }
+
+  .menu-items-wrapper {
+    gap: var(--spacing-lg);
+    margin-top: calc(var(--spacing-lg) + var(--spacing-md));
+
+    .menu-item {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: normal;
+
+      .menu-link {
+        color: var(--body-gray);
+        transition: color 0.5s ease;
+        position: relative;
+        display: inline-block;
+
+        &:after {
+          @include underline;
+        }
+
+        &:hover {
+          color: var(--body-color);
+
+          &:after {
+            transform: scale(1) skew(-15deg);
+          }
+        }
+      }
+
+      &.active {
+        .menu-link {
+          color: var(--body-color);
+
+          &:after {
+            @include underline;
+            transform: scale(1) skew(-15deg);
+          }
+        }
+      }
     }
   }
 }

@@ -44,5 +44,12 @@
         <qs-icon iconName="times" aria-hidden="true" [iconSize]="28" />
       </button>
     </div>
+    <ul class="menu-items-wrapper flex flex-col">
+      @for (item of routes; track $index) {
+        <li class="menu-item" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <a class="menu-link" [routerLink]="item.path">{{ item.label }}</a>
+        </li>
+      }
+    </ul>
   </nav>
 }
