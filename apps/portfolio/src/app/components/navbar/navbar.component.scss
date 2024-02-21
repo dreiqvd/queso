@@ -6,7 +6,7 @@
   top: 0;
 }
 
-nav {
+header {
   padding: 0 var(--spacing-xl);
 
   .nav-links-wrapper {
@@ -17,6 +17,21 @@ nav {
       color: var(--gray-600);
       border-top-left-radius: 4px;
       border-top-right-radius: 4px;
+    }
+  }
+}
+
+.sidenav {
+  width: 300px;
+  background-color: white;
+  box-shadow: 2px 0 4px -2px var(--gray-200);
+  padding: var(--spacing-xl);
+
+  .close-btn {
+    color: var(--body-gray);
+
+    &:hover {
+      color: var(--gray-500);
     }
   }
 }

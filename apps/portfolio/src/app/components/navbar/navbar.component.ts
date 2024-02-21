@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal, ViewChild } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
 import { AnimationsDirective, SOCIAL_LINKS } from '@queso/common';
@@ -20,5 +20,16 @@ import { IconComponent } from '@queso/ui-kit/icon';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
+  @ViewChild('sidebar', { read: AnimationsDirective })
+  sidebar!: AnimationsDirective;
+
   readonly socials = SOCIAL_LINKS;
+  readonly isSidebarOpen = signal(false);
+
+  onSidebarBtnClick(event: MouseEvent): void {
+    event.stopPropagation();
+    this.sidebar.animate('slideOutLeft').then(() => {
+      this.isSidebarOpen.set(false);
+    });
+  }
 }

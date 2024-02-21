@@ -24,4 +24,5 @@ html {
   --accent-color-800: #{map-get($accent, 800)};
 
   --body-color: #{map-get($dark-blue, 400)};
+  --body-gray: #{map-get($gray, 400)};
 }
