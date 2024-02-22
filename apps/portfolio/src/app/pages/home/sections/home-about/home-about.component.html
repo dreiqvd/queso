@@ -1,4 +1,4 @@
-<div class="container flex items-center">
+<div class="container flex items-center h-full">
   <div class="content-wrapper">
     <h2 class="text-underlined section-title">In a nutshell...</h2>
     <main>
@@ -21,15 +21,17 @@
         </li>
       </ul>
     </main>
-    <button
-      class="cta-btn primary"
-      type="button"
-      matTooltip="Got an interesting project?"
-      aria-label="Connect with me"
-    >
-      <span>Let's Connect</span>
-      <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
-    </button>
+    <div class="inline-block cta-btn-wrapper">
+      <a
+        class="cta-btn primary"
+        href="#"
+        matTooltip="Got an interesting project?"
+        aria-label="Connect with me"
+      >
+        <span>Let's Connect</span>
+        <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
+      </a>
+    </div>
   </div>
   <aside class="side-content-wrapper"></aside>
 </div>
