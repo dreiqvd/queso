@@ -1,19 +1,23 @@
-<div class="container flex items-center h-full relative">
+<div class="container flex items-center h-full relative overflow-hidden">
   <div class="content-wrapper">
-    <h2 class="text-underlined section-title">In a nutshell...</h2>
+    <h2 class="text-underlined section-title" qsAnimation="bounceInLeft" [animDuration]="1.5">
+      In a nutshell...
+    </h2>
     <main>
       <ul class="list-wrapper">
-        <li class="accent-txt about-txt">
+        <li class="accent-txt about-txt" qsAnimation="flipInX" [animDelay]="0.5">
           From pixels to databases — 6+ of years building things on the web.
         </li>
-        <li class="accent-txt about-txt">
+        <li class="accent-txt about-txt" qsAnimation="flipInX" [animDelay]="0.75">
           Can juggle between the looks (frontend) and the brains (backend).
         </li>
-        <li class="accent-txt about-txt">Got a knack for UI design, I think? 😅</li>
-        <li class="accent-txt about-txt">
+        <li class="accent-txt about-txt" qsAnimation="flipInX" [animDelay]="1">
+          Got a knack for UI design, I think? 😅
+        </li>
+        <li class="accent-txt about-txt" qsAnimation="flipInX" [animDelay]="1.25">
           Always up to the challenge of learning new tools and technologies.
         </li>
-        <li class="accent-txt about-txt">
+        <li class="accent-txt about-txt" qsAnimation="flipInX" [animDelay]="1.5">
           <a href="#" class="flex items-center gap-2">
             <span>Here's me when AFK</span>
             <qs-icon iconName="arrow-up-right-from-square" iconStyle="regular" [iconSize]="14" />
@@ -21,7 +25,7 @@
         </li>
       </ul>
     </main>
-    <div class="inline-block cta-btn-wrapper">
+    <div class="inline-block cta-btn-wrapper" qsAnimation="rotateIn" [animDelay]="1">
       <a
         class="cta-btn primary"
         href="#"
@@ -33,7 +37,12 @@
       </a>
     </div>
   </div>
-  <aside #sideContentRef class="side-content-wrapper absolute bottom-0 right-0">
+  <aside
+    #sideContentRef
+    class="side-content-wrapper absolute bottom-0 right-0"
+    qsAnimation="fadeInRight"
+    [animDuration]="2"
+  >
     <div class="image-wrapper relative h-full w-full">
       <img
         #portraitBlob

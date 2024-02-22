@@ -7,13 +7,14 @@ import {
   signal,
 } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
+import { AnimationsDirective } from '@queso/common';
 
 import { IconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'qs-home-about',
   standalone: true,
-  imports: [IconComponent, MatTooltip, NgOptimizedImage],
+  imports: [IconComponent, MatTooltip, NgOptimizedImage, AnimationsDirective],
   templateUrl: './home-about.component.html',
   styleUrl: './home-about.component.scss',
 })
