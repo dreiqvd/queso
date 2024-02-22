@@ -27,3 +27,16 @@
 .cta-btn-wrapper {
   margin-top: var(--spacing-xl);
 }
+
+.side-content-wrapper {
+  width: 35%;
+
+  .blob {
+    width: 400px;
+    left: 28px;
+  }
+
+  .portrait {
+    bottom: -4px;
+  }
+}

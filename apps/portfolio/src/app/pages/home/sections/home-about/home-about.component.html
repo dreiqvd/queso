@@ -1,13 +1,13 @@
-<div class="container flex items-center h-full">
+<div class="container flex items-center h-full relative">
   <div class="content-wrapper">
     <h2 class="text-underlined section-title">In a nutshell...</h2>
     <main>
       <ul class="list-wrapper">
         <li class="accent-txt about-txt">
-          From pixels to databases — 6+ years building things on the web.
+          From pixels to databases — 6+ of years building things on the web.
         </li>
         <li class="accent-txt about-txt">
-          Can juggle both the looks (frontend) and the brains (backend) of web development.
+          Can juggle between the looks (frontend) and the brains (backend).
         </li>
         <li class="accent-txt about-txt">Got a knack for UI design, I think? 😅</li>
         <li class="accent-txt about-txt">
@@ -33,5 +33,28 @@
       </a>
     </div>
   </div>
-  <aside class="side-content-wrapper"></aside>
+  <aside #sideContentRef class="side-content-wrapper absolute bottom-0 right-0">
+    <div class="image-wrapper relative h-full w-full">
+      <img
+        #portraitBlob
+        src="assets/svg/kpz952.svg"
+        class="blob absolute bottom-0 z-10"
+        aria-hidden="true"
+        alt="Portrait blob"
+        [style.visibility]="isPortraitBlobVisible() ? 'visible' : 'hidden'"
+      />
+      <img
+        #portraitImg
+        ngSrc="assets/img/p-min.png"
+        priority
+        width="400"
+        height="649"
+        placeholder
+        alt="Portrait photo"
+        aria-label="Portrait photo"
+        class="portrait absolute left-0 z-10"
+        (load)="onPortraitImgLoad()"
+      />
+    </div>
+  </aside>
 </div>
