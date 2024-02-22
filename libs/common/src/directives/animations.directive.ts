@@ -75,12 +75,14 @@ export class AnimationsDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Initially set element to be hidden.
-    this.rendererer.setStyle(this.element, 'visibility', this.animVisibility);
-
-    // Immediately apply hover animations if there are no on demand animations.
-    // A check is needed to avoid conflicts with ongoing animations.
-    if (!this.animation) {
+    if (this.animation) {
+      // Set initial visibility based on the passed property
+      this.rendererer.setStyle(this.element, 'visibility', this.animVisibility);
+    } else {
+      // There is no need to hide the element if it only has hover animation.
+      this.rendererer.setStyle(this.element, 'visibility', 'visible');
+      // Immediately apply hover animations if there are no on demand animations.
+      // A check is needed to avoid conflicts with ongoing animations.
       this.handleHoverAnimations();
     }
 
