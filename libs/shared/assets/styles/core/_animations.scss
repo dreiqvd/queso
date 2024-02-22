@@ -7,8 +7,4 @@
 
 .animate__animated {
   animation-fill-mode: both;
-
-  &[class*='Out'] {
-    opacity: 0;
-  }
 }
