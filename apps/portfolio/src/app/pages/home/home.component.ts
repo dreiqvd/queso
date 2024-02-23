@@ -11,6 +11,7 @@ import { NavbarComponent } from '../../components/navbar';
 
 import { HomeAboutComponent } from './sections/home-about/home-about.component';
 import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
+import { HomePostsComponent } from './sections/home-posts/home-posts.component';
 import { HomeSkillsComponent } from './sections/home-skills/home-skills.component';
 
 @Component({
@@ -23,6 +24,7 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
     HomeHeroComponent,
     HomeAboutComponent,
     HomeSkillsComponent,
+    HomePostsComponent,
   ],
   templateUrl: './home.component.html',
   styles: `
