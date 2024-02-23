@@ -3,8 +3,8 @@
   <div class="text-center">
     <h2 class="text-underlined section-title">Freshly Brewed</h2>
   </div>
-  <p class="subtitle">Yep, I sometimes write stuff — anything under the sun.</p>
-  <div class="posts-container grid grid-cols-3 gap-8 mt-12">
+  <p class="subtitle">Yep! I sometimes write stuff — anything under the sun.</p>
+  <div class="posts-container grid grid-cols-3 gap-8 my-12">
     @for (post of posts; track $index) {
       <div class="post-panel flex flex-col justify-between gap-4">
         <qs-pill [text]="post.tag" />
@@ -30,6 +30,17 @@
       </div>
     </div>
   </div>
+  <a
+    href="/blog"
+    target="_blank"
+    rel="noreferrer noopener"
+    aria-label="View all blogs"
+    class="blogs-link btn accent outlined"
+    qsAnimation
+    animHover="bounce-to-right"
+  >
+    View All Blogs
+  </a>
   <img
     class="blob-bg-1 absolute z-10"
     src="assets/svg/3wdna7.svg"

@@ -1,5 +1,5 @@
 .container {
-  padding-top: 112px;
+  padding-top: 72px;
 }
 
 .section-title {
@@ -75,4 +75,13 @@
 .blob-bg-2 {
   bottom: -76px;
   right: -120px;
+}
+
+.blogs-link {
+  margin-top: var(--spacing-xl);
+
+  &:hover {
+    // Intentionally overriding the text color on hover
+    color: white !important;
+  }
 }

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
+import { AnimationsDirective } from '@queso/common';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
 @Component({
   selector: 'qs-home-posts',
   standalone: true,
-  imports: [IconComponent, PillComponent],
+  imports: [IconComponent, PillComponent, AnimationsDirective],
   templateUrl: './home-posts.component.html',
   styleUrl: './home-posts.component.scss',
 })
