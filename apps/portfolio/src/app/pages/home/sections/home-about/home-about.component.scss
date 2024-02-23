@@ -12,8 +12,7 @@
 }
 
 .list-wrapper {
-  list-style-type: disc;
-  padding-left: var(--spacing-md);
+  list-style-type: none;
   margin: var(--spacing-xl) 0;
 
   .about-txt {
@@ -21,11 +20,13 @@
     font-weight: 600;
     line-height: 2.2rem;
     margin-bottom: var(--spacing-lg);
-  }
-}
 
-.cta-btn-wrapper {
-  margin-top: var(--spacing-xl);
+    &::before {
+      content: '• ';
+      display: inline-block;
+      margin-right: var(--spacing-sm);
+    }
+  }
 }
 
 .side-content-wrapper {

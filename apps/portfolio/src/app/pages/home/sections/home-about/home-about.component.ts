@@ -3,12 +3,12 @@ import {
   Component,
   ElementRef,
   Renderer2,
-  ViewChild,
   signal,
+  ViewChild,
 } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
-import { AnimationsDirective } from '@queso/common';
 
+import { AnimationsDirective } from '@queso/common';
 import { IconComponent } from '@queso/ui-kit/icon';
 
 @Component({
@@ -24,6 +24,21 @@ export class HomeAboutComponent {
   @ViewChild('sideContentRef') sideContentRef!: ElementRef<HTMLElement>;
 
   readonly isPortraitBlobVisible = signal(false);
+  readonly aboutItems = [
+    {
+      text: 'From pixels to databases — 6+ of years building things on the web.',
+      delay: 0.5,
+    },
+    {
+      text: 'Can juggle between the looks (frontend) and the brains (backend).',
+      delay: 0.75,
+    },
+    { text: 'Got a knack for UI design, I think? 😅', delay: 1 },
+    {
+      text: 'Always up to the challenge of learning new tools and technologies.',
+      delay: 1.25,
+    },
+  ];
 
   constructor(private renderer: Renderer2) {}
 
