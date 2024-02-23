@@ -12,8 +12,9 @@
   "exports": {
     "./package.json": "./package.json",
     ".": "./src/index.ts",
+    "./hamburger": "./src/components/hamburger/index.ts",
     "./icon": "./src/components/icon/index.ts",
-    "./scroll-cue": "./src/components/scroll-cue/index.ts",
-    "./hamburger": "./src/components/hamburger/index.ts"
+    "./pill": "./src/components/pill/index.ts",
+    "./scroll-cue": "./src/components/scroll-cue/index.ts"
   }
 }
