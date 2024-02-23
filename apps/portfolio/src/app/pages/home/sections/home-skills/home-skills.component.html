@@ -1,7 +1,9 @@
 <div class="container h-full">
   <div class="split-1 flex flex-col items-center justify-center gap-8">
-    <h2 class="split-title font-extrabold text-underlined">Core Skills</h2>
-    <div class="split-content-wrapper flex">
+    <h2 class="split-title font-extrabold text-underlined" qsAnimation="slideInLeft">
+      Core Skills
+    </h2>
+    <div class="split-content-wrapper flex" qsAnimation="slideInLeft">
       @for (skill of coreSkills; track $index) {
         <figure class="skill-wrapper flex flex-col items-center gap-8">
           <img
@@ -16,16 +18,18 @@
     </div>
   </div>
   <div class="split-2 flex flex-col justify-center">
-    <h2 class="split-title flex items-center gap-2">
+    <h2 class="split-title flex items-center gap-2" qsAnimation="fadeIn">
       Extra Tools <qs-icon iconName="tools" iconStyle="custom" [iconSize]="32" />
     </h2>
-    <p class="split-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p class="split-subtitle" qsAnimation="fadeIn">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
     @for (tool of otherTools; track $index) {
       <div class="flex flex-col mt-6">
-        <h3 class="tool-title font-bold uppercase">{{ tool.key }}</h3>
+        <h3 class="tool-title font-bold uppercase" qsAnimation="fadeInDown">{{ tool.key }}</h3>
         <ul class="items-wrapper flex gap-4 mb-4">
           @for (item of tool.items; track $index) {
-            <li class="tool-item">{{ item }}</li>
+            <li class="tool-item" qsAnimation="slideInRight">{{ item }}</li>
           }
         </ul>
       </div>

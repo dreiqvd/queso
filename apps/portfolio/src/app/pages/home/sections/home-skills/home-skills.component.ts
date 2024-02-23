@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
+import { AnimationsDirective } from '@queso/common';
 import { IconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'qs-home-skills',
   standalone: true,
-  imports: [IconComponent],
+  imports: [IconComponent, AnimationsDirective],
   templateUrl: './home-skills.component.html',
   styleUrl: './home-skills.component.scss',
 })
