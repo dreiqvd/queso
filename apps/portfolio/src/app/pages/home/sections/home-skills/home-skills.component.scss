@@ -1,0 +1,33 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+
+  .first {
+    background-color: var(--primary-color);
+  }
+}
+
+.section-title-wrapper {
+  z-index: 1;
+  top: 128px;
+
+  .section-title {
+    font-size: 3rem;
+    font-weight: 800;
+
+    &:after {
+      height: 12px;
+      bottom: 12px;
+      background-color: var(--accent-red);
+    }
+  }
+}
+
+.core-skills-wrapper {
+  gap: 64px;
+
+  .skill-label {
+    font-size: 1.75rem;
+  }
+}
