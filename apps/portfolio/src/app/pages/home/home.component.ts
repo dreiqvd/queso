@@ -11,6 +11,7 @@ import { NavbarComponent } from '../../components/navbar';
 
 import { HomeAboutComponent } from './sections/home-about/home-about.component';
 import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
+import { HomeSkillsComponent } from './sections/home-skills/home-skills.component';
 
 @Component({
   selector: 'qs-home',
@@ -21,6 +22,7 @@ import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
     NavbarComponent,
     HomeHeroComponent,
     HomeAboutComponent,
+    HomeSkillsComponent,
   ],
   templateUrl: './home.component.html',
   styles: `
