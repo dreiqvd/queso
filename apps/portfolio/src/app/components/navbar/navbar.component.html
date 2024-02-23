@@ -51,11 +51,14 @@
       </button>
     </div>
     <ul class="menu-items-wrapper flex flex-col">
-      @for (item of routes; track $index) {
+      @for (route of routes; track $index) {
         <li class="menu-item" ariaCurrentWhenActive="page">
-          <a class="menu-link text-underlined" routerLinkActive="active" [routerLink]="item.path">{{
-            item.label
-          }}</a>
+          <a
+            class="menu-link text-underlined"
+            routerLinkActive="active"
+            [routerLink]="route.path"
+            >{{ route.label }}</a
+          >
         </li>
       }
     </ul>
