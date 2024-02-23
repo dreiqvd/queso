@@ -1,6 +1,10 @@
-<div class="container h-full">
+<div class="container h-full overflow-hidden">
   <div class="split-1 flex flex-col items-center justify-center gap-8">
-    <h2 class="split-title font-extrabold text-underlined" qsAnimation="slideInLeft">
+    <h2
+      class="split-title font-extrabold text-underlined"
+      qsAnimation="slideInLeft"
+      animHover="wobble-vertical"
+    >
       Core Skills
     </h2>
     <div class="split-content-wrapper flex" qsAnimation="slideInLeft">
@@ -8,9 +12,12 @@
         <figure class="skill-wrapper flex flex-col items-center gap-8">
           <img
             class="skill-logo"
-            aria-label="Angular Logo"
+            [attr.aria-label]="skill.name + ' logo'"
             [src]="'assets/svg/' + skill.logo + '.svg'"
-            [alt]="skill.name"
+            [alt]="skill.logo"
+            [id]="skill.logo + '-logo'"
+            (mouseenter)="rotateElement('#' + skill.logo + '-logo', 360)"
+            (mouseleave)="rotateElement('#' + skill.logo + '-logo', 0)"
           />
           <figcaption class="skill-label font-light">{{ skill.name }}</figcaption>
         </figure>
@@ -19,17 +26,32 @@
   </div>
   <div class="split-2 flex flex-col justify-center">
     <h2 class="split-title flex items-center gap-2" qsAnimation="fadeIn">
-      Extra Tools <qs-icon iconName="tools" iconStyle="custom" [iconSize]="32" />
+      Extra Tools
+      <qs-icon
+        id="tool-icon"
+        iconName="tools"
+        iconStyle="custom"
+        aria-hidden="true"
+        [iconSize]="32"
+        (mouseenter)="rotateElement('#tool-icon', 360)"
+        (mouseleave)="rotateElement('#tool-icon', 0)"
+      />
     </h2>
-    <p class="split-subtitle" qsAnimation="fadeIn">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </p>
+    <p class="split-subtitle" qsAnimation="fadeIn">Additional technologies up my sleeve.</p>
     @for (tool of otherTools; track $index) {
-      <div class="flex flex-col mt-6">
-        <h3 class="tool-title font-bold uppercase" qsAnimation="fadeInDown">{{ tool.key }}</h3>
+      <div class="mt-6">
+        <h3
+          class="tool-title font-bold uppercase inline-block"
+          qsAnimation="fadeInDown"
+          animHover="wobble-skew"
+        >
+          {{ tool.key }}
+        </h3>
         <ul class="items-wrapper flex gap-4 mb-4">
           @for (item of tool.items; track $index) {
-            <li class="tool-item" qsAnimation="slideInRight">{{ item }}</li>
+            <li class="tool-item" qsAnimation="slideInRight" animHover="float-shadow">
+              {{ item }}
+            </li>
           }
         </ul>
       </div>

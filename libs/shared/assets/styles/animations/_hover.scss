@@ -15,11 +15,23 @@
     @include wobble-top();
   }
 
+  &-wobble-skew {
+    @include wobble-skew();
+  }
+
+  &-wobble-vertical {
+    @include wobble-vertical();
+  }
+
   &-grow {
     @include grow();
   }
 
   &-rubberBand {
     @include rubberBand();
+  }
+
+  &-float-shadow {
+    @include float-shadow();
   }
 }

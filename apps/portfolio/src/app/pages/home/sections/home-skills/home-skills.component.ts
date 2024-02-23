@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import anime from 'animejs';
 
 import { AnimationsDirective } from '@queso/common';
 import { IconComponent } from '@queso/ui-kit/icon';
@@ -29,4 +30,16 @@ export class HomeSkillsComponent {
       items: ['google-maps', 'gcloud', 'docker', 'firebase', 'nx'],
     },
   ];
+
+  rotateElement(target: string, value: number): void {
+    anime.remove(target);
+    anime({
+      targets: target,
+      rotate: {
+        value,
+        duration: 1500,
+        easing: 'easeInOutSine',
+      },
+    });
+  }
 }
