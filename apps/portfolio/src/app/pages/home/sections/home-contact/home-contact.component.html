@@ -1,0 +1,27 @@
+<div class="h-full overflow-hidden grid grid-cols-2 relative">
+  <div class="section-title-wrapper absolute text-center w-full">
+    <h2 class="section-title text-underlined">Get In Touch</h2>
+  </div>
+  <div class="split-1 flex flex-col items-center justify-center">
+    <qs-contact-form />
+  </div>
+
+  <div class="split-2 flex flex-col justify-center">
+    <div class="msg-wrapper accent-txt">
+      <p>Got a question? Wanted to say hi? I'm all ears!</p>
+      <p>Hit me up and I'll try my best to get back.</p>
+    </div>
+    <div class="socials-wrapper">
+      <h3 class="socials-title">Socials:</h3>
+      <ul class="socials-list flex gap-4">
+        @for (social of socialLinks; track $index) {
+          <li class="social-item">
+            <a target="_blank" rel="noreferrer noopener" class="underline" [href]="social.url">{{
+              social.name
+            }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>

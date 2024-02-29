@@ -1,0 +1,41 @@
+.section-title-wrapper {
+  margin-top: 120px;
+
+  .section-title {
+    font-size: 3rem;
+    font-weight: 800;
+
+    &:after {
+      height: 12px;
+      bottom: 12px;
+    }
+  }
+}
+
+.split-2 {
+  .msg-wrapper {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    max-width: 420px;
+  }
+
+  .socials-wrapper {
+    margin-top: 64px;
+
+    .socials-title,
+    .social-item {
+      font-family: var(--accent-font);
+      color: var(--body-gray);
+    }
+
+    .socials-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .social-item {
+      font-size: 1.25rem;
+    }
+  }
+}
