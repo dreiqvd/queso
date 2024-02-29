@@ -34,4 +34,8 @@
   &-float-shadow {
     @include float-shadow();
   }
+
+  &-rotate {
+    @include rotate();
+  }
 }

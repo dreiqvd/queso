@@ -5,10 +5,15 @@
       iconStyle="custom"
       aria-label="Coffee Icon"
       qsAnimation="fadeIn"
+      animHover="float-shadow"
       [animDelay]="0.2"
       [iconSize]="64"
     />
-    <h2 class="text-underlined section-title text-center" qsAnimation="fadeInDown">
+    <h2
+      class="text-underlined section-title text-center"
+      qsAnimation="fadeInDown"
+      animHover="wobble-skew"
+    >
       Freshly Brewed
     </h2>
     <p class="subtitle" qsAnimation="fadeInUp">
@@ -20,6 +25,7 @@
       <div
         class="post-panel flex flex-col justify-between gap-4"
         qsAnimation="flipInY"
+        animHover="grow"
         [animDuration]="2"
       >
         <qs-pill [text]="post.tag" />
@@ -52,8 +58,9 @@
         alt="Cursive arrow for contact section"
         aria-label="Arrow direction for contact section"
         qsAnimation="rotateIn"
+        animHover="wobble-vertical"
       />
-      <div class="text-wrapper" qsAnimation="rotateInUpLeft">
+      <div class="text-wrapper" qsAnimation="rotateInUpLeft" animHover="rotate">
         <span class="font-semibold inline-block">Want to get in touch?</span>
       </div>
     </div>
