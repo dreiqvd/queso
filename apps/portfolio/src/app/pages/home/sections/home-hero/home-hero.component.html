@@ -3,15 +3,13 @@
     <div class="header-content-wrapper absolute m-auto h-fit w-fit top-0 left-0 z-20 flex flex-col">
       <h1 class="header-title" aria-label="Hi, I am Drei">
         <!-- Render greeting text either in one line or add a line break. Computation depends on the viewport -->
-        <!-- prettier-ignore -->
-        <ng-container *ngTemplateOutlet=" greetingTextTmpl; context: { $implicit: greetingText1 }"/>
+        <ng-container *ngTemplateOutlet="greetingTextTmpl; context: { $implicit: greetingText1 }" />
         @if (shouldBreakText()) {
           <br />
         } @else {
           <span class="greeting-ch space" aria-hidden="true">&nbsp;</span>
         }
-        <!-- prettier-ignore -->
-        <ng-container *ngTemplateOutlet="greetingTextTmpl; context: { $implicit: greetingText2 }"/>
+        <ng-container *ngTemplateOutlet="greetingTextTmpl; context: { $implicit: greetingText2 }" />
         <ng-template #greetingTextTmpl let-text>
           @for (ch of text; track $index) {
             <span
