@@ -1,12 +1,27 @@
 <div class="container h-full flex flex-col items-center relative overflow-hidden">
-  <qs-icon iconName="coffee" iconStyle="custom" aria-label="Coffee Icon" [iconSize]="64" />
-  <div class="text-center">
-    <h2 class="text-underlined section-title">Freshly Brewed</h2>
-  </div>
-  <p class="subtitle">Yep! I sometimes write stuff — anything under the sun.</p>
+  <header class="flex flex-col items-center">
+    <qs-icon
+      iconName="coffee"
+      iconStyle="custom"
+      aria-label="Coffee Icon"
+      qsAnimation="fadeIn"
+      [animDelay]="0.2"
+      [iconSize]="64"
+    />
+    <h2 class="text-underlined section-title text-center" qsAnimation="fadeInDown">
+      Freshly Brewed
+    </h2>
+    <p class="subtitle" qsAnimation="fadeInUp">
+      Yep! I sometimes write stuff — anything under the sun.
+    </p>
+  </header>
   <div class="posts-container grid grid-cols-3 gap-8 my-12">
     @for (post of posts; track $index) {
-      <div class="post-panel flex flex-col justify-between gap-4">
+      <div
+        class="post-panel flex flex-col justify-between gap-4"
+        qsAnimation="flipInY"
+        [animDuration]="2"
+      >
         <qs-pill [text]="post.tag" />
         <div>
           <h3 class="post-title font-semibold">
@@ -18,39 +33,43 @@
       </div>
     }
   </div>
-  <div class="next-section absolute left-0 right-0 mx-auto my-0 w-fit z-20">
-    <div class="flex">
-      <img
-        src="assets/svg/cursive-arrow.svg"
-        alt="Cursive arrow for contact section"
-        aria-label="Arrow direction for contact section"
-      />
-      <div class="text-wrapper">
-        <span class="font-semibold inline-block">Want to get in touch?</span>
-      </div>
-    </div>
-  </div>
   <a
     href="/blog"
     target="_blank"
     rel="noreferrer noopener"
     aria-label="View all blogs"
     class="blogs-link btn accent outlined"
-    qsAnimation
+    qsAnimation="flipInX"
     animHover="bounce-to-right"
+    [animDelay]="0.5"
   >
-    View All Blogs
+    View Archives
   </a>
+  <div class="next-section absolute left-0 right-0 mx-auto my-0 w-fit z-20">
+    <div class="flex">
+      <img
+        src="assets/svg/cursive-arrow.svg"
+        alt="Cursive arrow for contact section"
+        aria-label="Arrow direction for contact section"
+        qsAnimation="rotateIn"
+      />
+      <div class="text-wrapper" qsAnimation="rotateInUpLeft">
+        <span class="font-semibold inline-block">Want to get in touch?</span>
+      </div>
+    </div>
+  </div>
   <img
     class="blob-bg-1 absolute z-10"
     src="assets/svg/3wdna7.svg"
     aria-hidden="true"
     alt="Blob background"
+    qsAnimation="fadeIn"
   />
   <img
     class="blob-bg-2 absolute z-10"
     src="assets/svg/kwcu73.svg"
     aria-hidden="true"
     alt="Blob background"
+    qsAnimation="fadeIn"
   />
 </div>
