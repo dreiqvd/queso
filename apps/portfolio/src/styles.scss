@@ -55,12 +55,39 @@ html {
   --accent-font: 'Inconsolata', sans-serif;
 }
 
-.accent-txt,
-h1.accent-txt,
-h2.accent-txt,
-h3.accent-txt {
+.text-accent,
+h1.text-accent,
+h2.text-accent,
+h3.text-accent {
   font-family: var(--accent-font);
   color: var(--accent-purple);
+}
+
+// Custom styling for an underlined text
+.text-underlined {
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: var(--primary-color);
+    transform: scale(1) skew(-15deg);
+    transition: transform 0.25s ease;
+    left: -4px;
+    right: -4px;
+    transform-origin: 0 0;
+    will-change: transform;
+    z-index: -1;
+    // Values below are usually adjusted to match the font size
+    height: 8px;
+    bottom: 8px;
+  }
+}
+
+.text-sm {
+  font-size: 0.875rem;
 }
 
 // Custom button styling specific to this application
@@ -163,28 +190,5 @@ button.cta-btn {
   &.primary:hover:before {
     width: 100%;
     background: var(--primary-color);
-  }
-}
-
-// Custom styling for an underlined text
-.text-underlined {
-  position: relative;
-  display: inline-block;
-
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    background-color: var(--primary-color);
-    transform: scale(1) skew(-15deg);
-    transition: transform 0.25s ease;
-    left: -4px;
-    right: -4px;
-    transform-origin: 0 0;
-    will-change: transform;
-    z-index: -1;
-    // Values below are usually adjusted to match the font size
-    height: 8px;
-    bottom: 8px;
   }
 }

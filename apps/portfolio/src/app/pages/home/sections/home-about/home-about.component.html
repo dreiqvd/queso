@@ -12,7 +12,7 @@
       <ul class="list-wrapper flex flex-col">
         @for (item of aboutItems; track $index) {
           <li
-            class="accent-txt about-txt"
+            class="text-accent about-txt"
             qsAnimation="flipInX"
             animHover="grow"
             [animDelay]="item.delay"
@@ -20,7 +20,7 @@
             <span class="inline-block">{{ item.text }}</span>
           </li>
         }
-        <li class="accent-txt about-txt" qsAnimation="flipInX" animHover="grow" [animDelay]="1.5">
+        <li class="text-accent about-txt" qsAnimation="flipInX" animHover="grow" [animDelay]="1.5">
           <a href="#" class="inline-flex items-center gap-2">
             <span>Here's me when AFK</span>
             <qs-icon iconName="arrow-up-right-from-square" iconStyle="regular" [iconSize]="14" />
