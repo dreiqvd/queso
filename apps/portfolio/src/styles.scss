@@ -1,5 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap');
+@use '@angular/material' as mat;
+
+@import './core';
+@import './base/palette';
+@import './default/palette';
+
+$primary: mat.define-palette($yellow, 400);
+$accent: mat.define-palette($dark-blue, 400);
+$warn: mat.define-palette($red, 400);
+
+/** Typography **/
+$app-typography: mat.define-typography-config(
+  $font-family: 'Poppins, "Helvetica Neue", sans-serif',
+  $headline-5: mat.define-typography-level(2rem, normal, 700, 'Poppins'),
+  $headline-6: mat.define-typography-level(1.5rem, normal, 700, 'Poppins'),
+  $subtitle-1: mat.define-typography-level(1.125, normal, 600, 'Poppins'),
+  $subtitle-2: mat.define-typography-level(1.25rem, normal, 600, 'Poppins'),
+  $body-1: mat.define-typography-level(1rem),
+  $body-2: mat.define-typography-level(1rem),
+  $button: mat.define-typography-level(1rem),
+);
+
+/** Theme **/
+$app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    typography: $app-typography,
+    density: 0,
+  )
+);
+
+/** Configuration **/
+@include mat.core-theme($app-theme);
+@include mat.typography-hierarchy($app-typography);
+@include mat.form-field-theme($app-theme);
+@include mat.input-theme($app-theme);
+@include mat.core();
+
+// Additional imports
+@import './base/variables';
+@import './base/globals';
+
+@import './default/variables';
+@import './default/globals';
+@import './default/material';
 
 // Variables specific to this project
 html {

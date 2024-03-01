@@ -25,10 +25,10 @@
             "output": "./assets"
           }
         ],
-        "styles": [
-          "libs/shared/assets/styles/theming/default-theme.scss",
-          "apps/portfolio/src/styles.scss"
-        ],
+        "styles": ["apps/portfolio/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/shared/assets/styles/theming"]
+        },
         "scripts": [],
         "server": "apps/portfolio/src/main.server.ts",
         "prerender": true,
