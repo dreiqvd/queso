@@ -82,15 +82,11 @@ h3.text-accent {
   }
 }
 
-.text-sm {
-  font-size: 0.875rem;
-}
-
 // Custom button styling specific to this application
 a.btn,
 button.btn {
   padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -98,7 +94,7 @@ button.btn {
   gap: var(--spacing-sm);
 
   .btn-label {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
 
   &.outlined {

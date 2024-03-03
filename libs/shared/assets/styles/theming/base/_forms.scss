@@ -2,4 +2,8 @@
 
 .form-field-wrapper {
   margin-bottom: var(--spacing-md);
+
+  .field-validation {
+    font-size: var(--font-size-sm);
+  }
 }
