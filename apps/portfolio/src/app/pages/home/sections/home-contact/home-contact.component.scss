@@ -46,3 +46,20 @@
     }
   }
 }
+
+.footer-wrapper {
+  color: var(--body-gray);
+  font-size: var(--font-size-sm);
+  bottom: var(--spacing-md);
+  right: var(--spacing-md);
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .footer-blob {
+    bottom: -132px;
+    right: -64px;
+    width: 300px;
+  }
+}

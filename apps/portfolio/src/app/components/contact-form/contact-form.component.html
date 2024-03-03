@@ -4,6 +4,7 @@
       label="Name"
       control="name"
       name="name"
+      qsAnimation="fadeInUp"
       [hideRequiredMarker]="true"
       [errorMsgMap]="{
         required: 'Oops! Looks like you forgot to tell me your name.'
@@ -13,6 +14,8 @@
       label="Email"
       control="email"
       name="email"
+      qsAnimation="fadeInUp"
+      [animDelay]="0.25"
       [hideRequiredMarker]="true"
       [errorMsgMap]="{
         required: 'Pinky promise, I am not going to use your email for spams (and scams).',
@@ -23,6 +26,8 @@
       label="Subject"
       control="subject"
       name="subject"
+      qsAnimation="fadeInUp"
+      [animDelay]="0.5"
       [hideRequiredMarker]="true"
       [errorMsgMap]="{
         required: 'Looks like we\'re missing a subject here.'
@@ -32,6 +37,8 @@
       label="Message"
       control="message"
       name="message"
+      qsAnimation="fadeInUp"
+      [animDelay]="0.75"
       [hideRequiredMarker]="true"
       [errorMsgMap]="{
         required: 'We\'ve got a blank message field here.'
@@ -42,8 +49,9 @@
       type="submit"
       class="btn primary outlined self-end"
       aria-label="Submit"
-      qsAnimation
+      qsAnimation="fadeInRight"
       animHover="bounce-to-right"
+      [animDelay]="1"
     >
       Send Message
     </button>

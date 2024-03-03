@@ -1,21 +1,21 @@
 <div class="h-full overflow-hidden grid grid-cols-2 relative">
-  <div class="section-title-wrapper absolute text-center w-full">
+  <div class="section-title-wrapper absolute text-center w-full" qsAnimation="fadeInDown">
     <h2 class="section-title text-underlined">Get In Touch</h2>
   </div>
   <div class="split-1 flex flex-col justify-center">
-    <qs-contact-form />
+    <qs-contact-form qsAnimation="fadeIn" />
   </div>
 
   <div class="split-2 flex flex-col justify-center">
     <div class="msg-wrapper text-accent">
-      <p>Got a question? Wanted to say hi? I'm all ears!</p>
-      <p>Hit me up and I'll try my best to get back.</p>
+      <p qsAnimation="flipInX">Got a question? Wanted to say hi? I'm all ears!</p>
+      <p qsAnimation="flipInX">Hit me up and I'll try my best to get back.</p>
     </div>
     <div class="socials-wrapper">
-      <h3 class="socials-title">Socials:</h3>
+      <h3 class="socials-title" qsAnimation="fadeIn">Socials:</h3>
       <ul class="socials-list flex gap-4">
         @for (social of socialLinks; track $index) {
-          <li class="social-item">
+          <li class="social-item" qsAnimation="rotateIn">
             <a target="_blank" rel="noreferrer noopener" class="underline" [href]="social.url">{{
               social.name
             }}</a>
@@ -23,5 +23,21 @@
         }
       </ul>
     </div>
+  </div>
+  <div class="footer-wrapper absolute flex flex-col gap-2 text-right">
+    <p class="text-sm z-20" qsAnimation="fadeInRight">// My personal brew of code © 2024</p>
+    <a
+      href="mailto:contact@dreiq.dev"
+      class="z-20"
+      aria-label="Send an email"
+      qsAnimation="fadeInRight"
+      >contact&#64;dreiq.dev</a
+    >
+    <img
+      src="assets/svg/k84qvd.svg"
+      class="absolute z-10 footer-blob"
+      alt="Footer Blob"
+      aria-hidden="true"
+    />
   </div>
 </div>
