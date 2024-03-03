@@ -1,6 +1,9 @@
 html {
-  --pill-color: #{map-get($primary, 400)};
   --body-color: #{map-get($dark-blue, 400)};
   --body-gray: #{map-get($gray, 400)};
   --drop-shadow: 0px 8px 24px rgba(149, 157, 165, 0.2);
+  --pill-bg-color: #{map-get($primary, 400)};
+  --pill-text-color: var(--body-color);
+  --tooltip-bg-color: #{map-get($accent, 400)};
+  --tooltip-text-color: white;
 }

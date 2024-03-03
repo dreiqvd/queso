@@ -1,14 +1,1 @@
 /** Contains global styling for form-related elements **/
-
-.form-field-wrapper {
-  margin-bottom: var(--spacing-sm);
-
-  /** Generally, form field components do not utilize the mat-error component due to styling and
-  setup purposes. A custom element with specific classname is used to display error validations. **/
-  .field-validation {
-    font-size: var(--font-size-sm);
-    margin-top: -22px;
-    padding-left: 2px;
-    color: var(--negative-color);
-  }
-}

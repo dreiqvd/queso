@@ -8,7 +8,8 @@ import { Component, Input } from '@angular/core';
     .pill {
       font-size: 0.75rem;
       text-transform: uppercase;
-      background-color: var(--pill-color);
+      background-color: var(--pill-bg-color);
+      color: var(--pill-text-color);
       padding: 2px 10px;
       border-radius: 2px;
     }

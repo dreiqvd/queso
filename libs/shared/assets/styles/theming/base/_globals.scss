@@ -39,3 +39,8 @@ body {
 .text-sm {
   font-size: var(--font-size-sm);
 }
+
+/* Forms */
+.form-field-wrapper {
+  margin-bottom: calc(var(--spacing-sm) + 2px);
+}

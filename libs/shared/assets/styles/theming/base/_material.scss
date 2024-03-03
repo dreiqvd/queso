@@ -1,0 +1,24 @@
+/** Contains common overrides for material components **/
+
+html {
+  --mat-form-field-subscript-text-size: 13px;
+}
+
+.mat-mdc-tooltip {
+  --mdc-plain-tooltip-container-color: var(--tooltip-bg-color);
+  --mdc-plain-tooltip-supporting-text-color: var(--tooltip-text-color);
+  --mdc-plain-tooltip-supporting-text-size: 0.75rem;
+  --mdc-plain-tooltip-container-shape: 4px;
+}
+
+// Remove right border from the inside of mat-label
+.mdc-notched-outline__notch {
+  border-right: 0;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  // Adjust left padding of mat-error content
+  .mat-mdc-form-field-error-wrapper {
+    padding-left: 2px;
+  }
+}
