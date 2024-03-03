@@ -81,6 +81,8 @@ export class GenericFormFieldDirective implements OnInit {
               DEFAULT_ERROR_MESSAGES[
                 errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
               ];
+          } else {
+            console.error('No validation message found for error:', errorKey);
           }
 
           if (this.errorMessage !== errorMsg) {
