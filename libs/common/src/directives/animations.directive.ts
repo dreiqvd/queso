@@ -145,7 +145,7 @@ export class AnimationsDirective implements OnInit, OnDestroy {
       ? this.animHover
       : [this.animHover];
     hoverAnimations.forEach((hover) => {
-      this.rendererer.addClass(this.element, `hvr-${hover}`);
+      this.rendererer.addClass(this.element, `hvr__${hover}`);
     });
   }
 

@@ -3,7 +3,7 @@
     <h2
       class="split-title font-extrabold text-underlined"
       qsAnimation="slideInLeft"
-      animHover="wobble-vertical"
+      animHover="wobbleVertical"
     >
       Core Skills
     </h2>
@@ -43,13 +43,13 @@
         <h3
           class="tool-title font-bold uppercase inline-block"
           qsAnimation="fadeInDown"
-          animHover="wobble-skew"
+          animHover="wobbleSkew"
         >
           {{ tool.key }}
         </h3>
         <ul class="items-wrapper flex gap-4 mb-4">
           @for (item of tool.items; track $index) {
-            <li class="tool-item" qsAnimation="slideInRight" animHover="float-shadow">
+            <li class="tool-item" qsAnimation="slideInRight" animHover="floatShadow">
               {{ item }}
             </li>
           }

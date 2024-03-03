@@ -3,7 +3,7 @@
 @import './options';
 
 /* Bounce To Right */
-@mixin bounce-to-right($backgroundColor, $textColor: var(--body-color)) {
+@mixin bounceToRight($backgroundColor, $textColor: var(--body-color)) {
   @include hacks();
   position: relative;
   @include prefixed(transition-property, color);
@@ -40,32 +40,8 @@
   }
 }
 
-/* Push */
-@include keyframes(#{$nameSpace}-push) {
-  50% {
-    @include prefixed(transform, scale(0.8));
-  }
-
-  100% {
-    @include prefixed(transform, scale(1));
-  }
-}
-
-@mixin push {
-  @include hacks();
-
-  &:hover,
-  &:focus,
-  &:active {
-    @include prefixed(animation-name, #{$nameSpace}-push);
-    @include prefixed(animation-duration, 0.3s);
-    @include prefixed(animation-timing-function, linear);
-    @include prefixed(animation-iteration-count, 1);
-  }
-}
-
 /* Float Shadow */
-@mixin float-shadow {
+@mixin floatShadow {
   @include hacks();
   position: relative;
   @include prefixed(transition-duration, $mediumDuration);
@@ -114,21 +90,8 @@
   }
 }
 
-/* Shrink */
-@mixin shrink {
-  @include hacks();
-  @include prefixed(transition-duration, $mediumDuration);
-  @include prefixed(transition-property, transform);
-
-  &:hover,
-  &:focus,
-  &:active {
-    @include prefixed(transform, scale(0.9));
-  }
-}
-
 /* Wobble Top */
-@include keyframes(#{$nameSpace}-wobble-top) {
+@include keyframes(#{$nameSpace}__wobbleTop) {
   16.65% {
     @include prefixed(transform, skew(-12deg));
   }
@@ -154,48 +117,17 @@
   }
 }
 
-@mixin wobble-top {
+@mixin wobbleTop {
   @include hacks();
   @include prefixed(transform-origin, 0 100%);
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}-wobble-top);
+    @include prefixed(animation-name, #{$nameSpace}__wobbleTop);
     @include prefixed(animation-duration, 1s);
     @include prefixed(animation-timing-function, ease-in-out);
     @include prefixed(animation-iteration-count, 1);
-  }
-}
-
-/* Underline From Left */
-@mixin underline-from-left($borderColor) {
-  $duration: $mediumDuration;
-
-  @include hacks();
-  position: relative;
-  overflow: hidden;
-
-  &:before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    right: 100%;
-    bottom: 0;
-    background: $borderColor;
-    height: 4px;
-    @include prefixed(transition-property, 'right');
-    @include prefixed(transition-duration, $duration);
-    @include prefixed(transition-timing-function, ease-out);
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    &:before {
-      right: 0;
-    }
   }
 }
 
@@ -213,7 +145,7 @@
 }
 
 /* Wobble Skew */
-@include keyframes(#{$nameSpace}-wobble-skew) {
+@include keyframes(#{$nameSpace}__wobbleSkew) {
   16.65% {
     @include prefixed(transform, skew(-12deg));
   }
@@ -239,20 +171,61 @@
   }
 }
 
-@mixin wobble-skew {
+@mixin wobbleSkew {
   @include hacks();
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}-wobble-skew);
+    @include prefixed(animation-name, #{$nameSpace}__wobbleSkew);
     @include prefixed(animation-duration, 1s);
     @include prefixed(animation-timing-function, ease-in-out);
     @include prefixed(animation-iteration-count, 1);
   }
 }
 
-@include keyframes(#{$nameSpace}-rubberBand) {
+/* Wobble Vertical */
+@include keyframes(#{$nameSpace}__wobbleVertical) {
+  16.65% {
+    @include prefixed(transform, translateY(8px));
+  }
+
+  33.3% {
+    @include prefixed(transform, translateY(-6px));
+  }
+
+  49.95% {
+    @include prefixed(transform, translateY(4px));
+  }
+
+  66.6% {
+    @include prefixed(transform, translateY(-2px));
+  }
+
+  83.25% {
+    @include prefixed(transform, translateY(1px));
+  }
+
+  100% {
+    @include prefixed(transform, translateY(0));
+  }
+}
+
+@mixin wobbleVertical {
+  @include hacks();
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include prefixed(animation-name, #{$nameSpace}__wobbleVertical);
+    @include prefixed(animation-duration, 1s);
+    @include prefixed(animation-timing-function, ease-in-out);
+    @include prefixed(animation-iteration-count, 1);
+  }
+}
+
+/** Rubber Band */
+@include keyframes(#{$nameSpace}__rubberBand) {
   from {
     transform: scale3d(1, 1, 1);
   }
@@ -286,48 +259,8 @@
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}-rubberBand);
+    @include prefixed(animation-name, #{$nameSpace}__rubberBand);
     @include prefixed(animation-duration, 1s);
-  }
-}
-
-/* Wobble Vertical */
-@include keyframes(#{$nameSpace}-wobble-vertical) {
-  16.65% {
-    @include prefixed(transform, translateY(8px));
-  }
-
-  33.3% {
-    @include prefixed(transform, translateY(-6px));
-  }
-
-  49.95% {
-    @include prefixed(transform, translateY(4px));
-  }
-
-  66.6% {
-    @include prefixed(transform, translateY(-2px));
-  }
-
-  83.25% {
-    @include prefixed(transform, translateY(1px));
-  }
-
-  100% {
-    @include prefixed(transform, translateY(0));
-  }
-}
-
-@mixin wobble-vertical {
-  @include hacks();
-
-  &:hover,
-  &:focus,
-  &:active {
-    @include prefixed(animation-name, #{$nameSpace}-wobble-vertical);
-    @include prefixed(animation-duration, 1s);
-    @include prefixed(animation-timing-function, ease-in-out);
-    @include prefixed(animation-iteration-count, 1);
   }
 }
 

@@ -1,41 +1,41 @@
 @import './hover/effects';
 
 .hvr {
-  &-bounce-to-right {
+  &__bounceToRight {
     &.accent {
-      @include bounce-to-right(var(--accent-color));
+      @include bounceToRight(var(--accent-color));
     }
 
     &.primary {
-      @include bounce-to-right(var(--primary-color));
+      @include bounceToRight(var(--primary-color));
     }
   }
 
-  &-wobble-top {
-    @include wobble-top();
+  &__wobbleTop {
+    @include wobbleTop();
   }
 
-  &-wobble-skew {
-    @include wobble-skew();
+  &__wobbleSkew {
+    @include wobbleSkew();
   }
 
-  &-wobble-vertical {
-    @include wobble-vertical();
+  &__wobbleVertical {
+    @include wobbleVertical();
   }
 
-  &-grow {
+  &__grow {
     @include grow();
   }
 
-  &-rubberBand {
+  &__rubberBand {
     @include rubberBand();
   }
 
-  &-float-shadow {
-    @include float-shadow();
+  &__floatShadow {
+    @include floatShadow();
   }
 
-  &-rotate {
+  &__rotate {
     @include rotate();
   }
 }
