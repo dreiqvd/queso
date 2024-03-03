@@ -9,6 +9,10 @@ html {
   /* Colors */
   --primary-color: #{map-get($primary, 400)};
   --accent-color: #{map-get($accent, 400)};
+  --negative-color: #{map-get($red, 400)};
+  --positive-color: #{map-get($green, 400)};
+  --warning-color: #{map-get($orange, 400)};
+  --info-color: #{map-get($blue, 400)};
 
   --primary-color-50: #{map-get($primary, 50)};
   --primary-color-100: #{map-get($primary, 100)};
