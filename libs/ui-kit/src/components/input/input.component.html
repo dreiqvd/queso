@@ -1,8 +1,13 @@
-<div class="flex flex-col gap-2">
+<div class="flex flex-col gap-2 form-field-wrapper">
   <mat-form-field appearance="outline" [hideRequiredMarker]="hideRequiredMarker">
     @if (label) {
       <mat-label>{{ label }}</mat-label>
     }
     <input matInput [formControl]="formControl" [id]="name" [name]="name" />
   </mat-form-field>
+  @if (formControl.invalid && formControl.touched) {
+    <div class="field-validation">
+      <ng-content select=".validation"></ng-content>
+    </div>
+  }
 </div>
