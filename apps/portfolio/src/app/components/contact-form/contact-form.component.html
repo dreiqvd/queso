@@ -8,7 +8,8 @@
       matTooltip="Alias, superhero name, or just plain ol' you — who am I chatting with?"
       [hideRequiredMarker]="true"
       [errorMsgMap]="{
-        required: 'Oops! Looks like you forgot to tell me your name.'
+        required: 'Oops! Looks like you forgot to tell me your name.',
+        maxlength: 'That\'s a long name you got there. Mind shortening it?'
       }"
     />
     <qs-input
@@ -33,7 +34,8 @@
       [animDelay]="0.5"
       [hideRequiredMarker]="true"
       [errorMsgMap]="{
-        required: 'Looks like we\'re missing a subject here.'
+        required: 'Looks like we\'re missing a subject here.',
+        maxlength: 'At this point, your subject can already be your message.'
       }"
     />
     <qs-textarea

@@ -30,9 +30,15 @@ import { TextareaComponent } from '@queso/ui-kit/textarea';
 })
 export class ContactFormComponent implements OnInit {
   readonly contactForm = new FormGroup({
-    name: new FormControl(null, Validators.required),
+    name: new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(50),
+    ]),
     email: new FormControl(null, [Validators.required, Validators.email]),
-    subject: new FormControl(null, Validators.required),
+    subject: new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(100),
+    ]),
     message: new FormControl(null, Validators.required),
   });
 
