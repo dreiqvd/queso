@@ -3,11 +3,7 @@
     @if (label) {
       <mat-label>{{ label }}</mat-label>
     }
-    <input matInput [formControl]="formControl" [id]="name" [name]="name" />
+    <input matInput [formControl]="formControl" [id]="name" [name]="name" (blur)="onBlur()" />
+    <mat-error>{{ errorMessage }}</mat-error>
   </mat-form-field>
-  @if (formControl.invalid && formControl.touched) {
-    <div class="field-validation">
-      <ng-content select=".validation"></ng-content>
-    </div>
-  }
 </div>
