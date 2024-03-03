@@ -1,4 +1,12 @@
 /** Contains common imports for base styles **/
+@import '../core/normalize';
+@import '../core/animations';
+
 @import './base/variables';
 @import './base/globals';
 @import './base/material';
+
+// Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -10,13 +10,3 @@ $breakpoints: (
   "xl-width": ( min-width: 1920px ), // extra large screens
   "sm-height": ( min-width: 768px ) and ( max-height: 768px ) // targets tablet landscape and small desktops
 );
-
-@mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media only screen and #{inspect(map-get($breakpoints, $breakpoint))} {
-      @content;
-    }
-  } @else {
-    @warn "Breakpoint `#{$breakpoint}` does not exist";
-  }
-}
