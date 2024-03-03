@@ -1,0 +1,21 @@
+:host {
+  width: 100%;
+}
+
+.form-wrapper {
+  --mdc-outlined-text-field-outline-color: var(--primary-color);
+  --mdc-outlined-text-field-hover-outline-color: var(--primary-color);
+
+  background-color: white;
+  box-shadow: var(--drop-shadow);
+  border-radius: var(--spacing-sm);
+  padding-top: 48px;
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-bottom: 24px;
+}
+
+button[type='submit'] {
+  padding: 16px 20px;
+  color: var(--body-color) !important;
+}

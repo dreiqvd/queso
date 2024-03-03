@@ -1,1 +1,57 @@
-<p>contact-form works!</p>
+<div class="form-wrapper relative">
+  <form class="flex flex-col" [formGroup]="contactForm" (ngSubmit)="onSubmitForm()">
+    <qs-input
+      label="Name"
+      control="name"
+      name="name"
+      [hideRequiredMarker]="true"
+      [errorMsgMap]="{
+        required: 'Oops! Looks like you forgot to tell me your name.'
+      }"
+    />
+    <qs-input
+      label="Email"
+      control="email"
+      name="email"
+      [hideRequiredMarker]="true"
+      [errorMsgMap]="{
+        required: 'Pinky promise, I am not going to use your email for spams (and scams).',
+        email: 'Oops! That email address doesn\'t look right.'
+      }"
+    />
+    <qs-input
+      label="Subject"
+      control="subject"
+      name="subject"
+      [hideRequiredMarker]="true"
+      [errorMsgMap]="{
+        required: 'Looks like we\'re missing a subject here.'
+      }"
+    />
+    <qs-textarea
+      label="Message"
+      control="message"
+      name="message"
+      [hideRequiredMarker]="true"
+      [errorMsgMap]="{
+        required: 'We\'ve got a blank message field here.'
+      }"
+    />
+
+    <button
+      type="submit"
+      class="btn primary outlined self-end"
+      aria-label="Submit"
+      qsAnimation
+      animHover="bounce-to-right"
+    >
+      Send Message
+    </button>
+  </form>
+</div>
+
+<ng-template #errorTmpl let-message>
+  <span class="error-msg">
+    {{ message }}
+  </span>
+</ng-template>
