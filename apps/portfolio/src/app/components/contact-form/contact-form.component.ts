@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { AnimationsDirective } from '@queso/common';
 import { InputComponent } from '@queso/ui-kit/input';
@@ -19,6 +20,7 @@ import { TextareaComponent } from '@queso/ui-kit/textarea';
     NgTemplateOutlet,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatTooltip,
     InputComponent,
     TextareaComponent,
     AnimationsDirective,

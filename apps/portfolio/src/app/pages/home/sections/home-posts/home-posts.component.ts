@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { AnimationsDirective } from '@queso/common';
 import { IconComponent } from '@queso/ui-kit/icon';
@@ -7,7 +8,7 @@ import { PillComponent } from '@queso/ui-kit/pill';
 @Component({
   selector: 'qs-home-posts',
   standalone: true,
-  imports: [IconComponent, PillComponent, AnimationsDirective],
+  imports: [MatTooltip, IconComponent, PillComponent, AnimationsDirective],
   templateUrl: './home-posts.component.html',
   styleUrl: './home-posts.component.scss',
 })

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { AnimationsDirective, SOCIAL_LINKS } from '@queso/common';
 
@@ -7,7 +8,7 @@ import { ContactFormComponent } from '../../../../components/contact-form/contac
 @Component({
   selector: 'qs-home-contact',
   standalone: true,
-  imports: [ContactFormComponent, AnimationsDirective],
+  imports: [MatTooltip, ContactFormComponent, AnimationsDirective],
   templateUrl: './home-contact.component.html',
   styleUrl: './home-contact.component.scss',
 })

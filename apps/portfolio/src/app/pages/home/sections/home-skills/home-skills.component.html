@@ -19,7 +19,9 @@
             (mouseenter)="rotateElement('#' + skill.logo + '-logo', 360)"
             (mouseleave)="rotateElement('#' + skill.logo + '-logo', 0)"
           />
-          <figcaption class="skill-label font-light">{{ skill.name }}</figcaption>
+          <figcaption class="skill-label font-light" [matTooltip]="skill.tooltip">
+            {{ skill.name }}
+          </figcaption>
         </figure>
       }
     </div>
@@ -32,6 +34,7 @@
         iconName="tools"
         iconStyle="custom"
         aria-hidden="true"
+        matTooltip="Weeee..."
         [iconSize]="32"
         (mouseenter)="rotateElement('#tool-icon', 360)"
         (mouseleave)="rotateElement('#tool-icon', 0)"
@@ -44,6 +47,7 @@
           class="tool-title font-bold uppercase inline-block"
           qsAnimation="fadeInDown"
           animHover="wobbleSkew"
+          [matTooltip]="tool.tooltip"
         >
           {{ tool.key }}
         </h3>
