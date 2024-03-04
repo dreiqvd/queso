@@ -1,3 +1,5 @@
+@import 'mixins';
+
 :host {
   position: fixed;
   z-index: var(--zindex-fixed);
@@ -11,7 +13,7 @@ header {
 
   .nav-links-wrapper {
     gap: var(--spacing-md);
-    margin: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
 
     .nav-link {
       color: var(--gray-600);
@@ -64,5 +66,12 @@ header {
         }
       }
     }
+  }
+}
+
+@include respond-to('mobile-md') {
+  header {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
   }
 }
