@@ -37,3 +37,79 @@
   right: calc(var(--spacing-lg) + 2px);
   bottom: var(--spacing-lg);
 }
+
+@include respond-to('desktop-sm') {
+  .header-content-wrapper {
+    right: 100px;
+  }
+}
+
+@include respond-to('tablet-md') {
+  .header-content-wrapper {
+    right: unset;
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .header-blob-wrapper {
+    img {
+      transform: rotate(212deg);
+    }
+  }
+}
+
+@include respond-to('tablet-sm') {
+  .header-content-wrapper {
+    .header-title {
+      font-size: 5.75rem;
+    }
+
+    .header-subtitle {
+      font-size: 2.25rem;
+    }
+  }
+}
+
+@include respond-to('mobile-md') {
+  .header-content-wrapper {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+
+    .header-title {
+      font-size: 4.75rem;
+      line-height: 5rem;
+    }
+
+    .header-subtitle {
+      font-size: 1.75rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+@include respond-to('mobile-md') {
+  .header-content-wrapper {
+    .header-title {
+      font-size: 4.75rem;
+      line-height: 5rem;
+    }
+
+    .header-subtitle {
+      font-size: 1.75rem;
+      line-height: 2rem;
+    }
+  }
+
+  .header-blob-wrapper {
+    img {
+      transform: rotate(44deg);
+    }
+  }
+}
+
+@include respond-to('sm-height') {
+  .header-content-wrapper {
+    bottom: 0;
+  }
+}

@@ -67,7 +67,7 @@ export class HomeHeroComponent implements OnInit, AfterViewInit {
   /** Checks whether to apply line break to greeting text */
   private checkTextBreak(): void {
     if (this.platformService.isUsingBrowser()) {
-      this.shouldBreakText.set(getViewportWidth() <= BREAKPOINTS.TABLET_SM);
+      this.shouldBreakText.set(getViewportWidth() <= BREAKPOINTS.TABLET_MD);
     }
   }
 
@@ -76,9 +76,9 @@ export class HomeHeroComponent implements OnInit, AfterViewInit {
     if (this.platformService.isUsingBrowser()) {
       const blobAnchorEl = this.headerBlobAnchor.nativeElement;
       const blobWrapperEl = this.headerBlobWrapper.nativeElement;
-      let left = blobAnchorEl.getBoundingClientRect().left;
-      if (getViewportWidth() <= BREAKPOINTS.MOBILE_MD) {
-        left -= 10;
+      let left = blobAnchorEl.getBoundingClientRect().left - 20;
+      if (getViewportWidth() <= BREAKPOINTS.TABLET_MD) {
+        left -= 20;
       }
       this.renderer.setStyle(blobWrapperEl, 'left', `${left}px`);
     }
