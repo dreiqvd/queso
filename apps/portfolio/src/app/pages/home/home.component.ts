@@ -10,6 +10,7 @@ import {
 import { NavbarComponent } from '../../components/navbar';
 
 import { HomeAboutComponent } from './sections/home-about/home-about.component';
+import { HomeContactComponent } from './sections/home-contact/home-contact.component';
 import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
 import { HomePostsComponent } from './sections/home-posts/home-posts.component';
 import { HomeSkillsComponent } from './sections/home-skills/home-skills.component';
@@ -25,14 +26,10 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
     HomeAboutComponent,
     HomeSkillsComponent,
     HomePostsComponent,
+    HomeContactComponent,
   ],
   templateUrl: './home.component.html',
-  styles: `
-    .backdrop {
-      background-color: var(--accent-color);
-      z-index: var(--zIndex-fixed);
-    }
-  `,
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   /** Element reference for the introductory backdrop */

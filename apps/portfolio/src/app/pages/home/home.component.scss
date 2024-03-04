@@ -1,0 +1,12 @@
+@import 'mixins';
+
+.backdrop {
+  background-color: var(--accent-color);
+  z-index: var(--zIndex-fixed);
+}
+
+@include respond-to('tablet-sm') {
+  #about {
+    height: fit-content;
+  }
+}

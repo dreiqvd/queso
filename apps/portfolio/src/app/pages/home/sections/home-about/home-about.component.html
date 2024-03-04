@@ -17,14 +17,20 @@
             animHover="grow"
             [animDelay]="item.delay"
           >
-            <span class="inline-block">{{ item.text }}</span>
+            <div class="flex">
+              <span class="bullet"></span>
+              <span class="inline-block">{{ item.text }}</span>
+            </div>
           </li>
         }
         <li class="text-accent about-txt" qsAnimation="flipInX" animHover="grow" [animDelay]="1.5">
-          <a href="#" class="inline-flex items-center gap-2">
-            <span>Here's me when AFK</span>
-            <qs-icon iconName="arrow-up-right-from-square" iconStyle="regular" [iconSize]="14" />
-          </a>
+          <div class="flex">
+            <span class="bullet"></span>
+            <a href="#" class="inline-flex items-center gap-2">
+              <span>Here's me when AFK</span>
+              <qs-icon iconName="arrow-up-right-from-square" iconStyle="regular" [iconSize]="14" />
+            </a>
+          </div>
         </li>
       </ul>
     </main>
@@ -42,21 +48,18 @@
   </div>
   <aside
     #sideContentRef
-    class="side-content-wrapper absolute bottom-0 right-0"
+    class="side-content-wrapper absolute bottom-0 right-0 h-full"
     qsAnimation="fadeInRight"
-    [animDuration]="2"
+    [animDuration]="1.5"
   >
     <div class="image-wrapper relative h-full w-full">
       <img
-        #portraitBlob
         src="assets/svg/kpz952.svg"
         class="blob absolute bottom-0 z-10"
         aria-hidden="true"
         alt="Portrait blob"
-        [style.visibility]="isPortraitBlobVisible() ? 'visible' : 'hidden'"
       />
       <img
-        #portraitImg
         ngSrc="assets/img/p-min.png"
         priority
         width="400"
@@ -64,8 +67,7 @@
         placeholder
         alt="Portrait photo"
         aria-label="Portrait photo"
-        class="portrait absolute left-0 z-10"
-        (load)="onPortraitImgLoad()"
+        class="portrait absolute z-10"
       />
     </div>
   </aside>
