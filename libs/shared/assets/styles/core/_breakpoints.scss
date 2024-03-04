@@ -2,7 +2,7 @@
 $breakpoints: (
   "mobile-sm": ( max-width: 360px ),
   'mobile-md': (min-width: 361px) and (max-width: 480px),
-  'table-sm': (min-width: 481px) and (max-width: 640px),
+  'tablet-sm': (min-width: 481px) and (max-width: 640px),
   'tablet-md': (min-width: 641px) and (max-width: 768px),
   'desktop-sm': ( min-width: 769px ) and ( max-width: 1024px ),
   "desktop-md": ( min-width: 1025px ) and ( max-width: 1366px ),
