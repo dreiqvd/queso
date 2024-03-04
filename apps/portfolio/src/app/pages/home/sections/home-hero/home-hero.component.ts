@@ -76,10 +76,7 @@ export class HomeHeroComponent implements OnInit, AfterViewInit {
     if (this.platformService.isUsingBrowser()) {
       const blobAnchorEl = this.headerBlobAnchor.nativeElement;
       const blobWrapperEl = this.headerBlobWrapper.nativeElement;
-      let left = blobAnchorEl.getBoundingClientRect().left - 20;
-      if (getViewportWidth() <= BREAKPOINTS.TABLET_MD) {
-        left -= 20;
-      }
+      const left = blobAnchorEl.getBoundingClientRect().left;
       this.renderer.setStyle(blobWrapperEl, 'left', `${left}px`);
     }
   }

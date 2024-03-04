@@ -30,7 +30,11 @@
 .header-blob-anchor {
   width: 1px;
   bottom: 80px;
-  right: 140px;
+  right: 75px;
+}
+
+.header-blob-wrapper {
+  bottom: 124px;
 }
 
 .scroll-cue-container {
@@ -51,22 +55,18 @@
     padding-left: 32px;
     padding-right: 32px;
   }
-
-  .header-blob-wrapper {
-    img {
-      transform: rotate(212deg);
-    }
-  }
 }
 
 @include respond-to('tablet-sm') {
   .header-content-wrapper {
     .header-title {
       font-size: 5.75rem;
+      line-height: 6.25rem;
     }
 
     .header-subtitle {
       font-size: 2.25rem;
+      line-height: 2.75rem;
     }
   }
 }
@@ -77,18 +77,26 @@
     padding-right: var(--spacing-md);
 
     .header-title {
-      font-size: 4.75rem;
-      line-height: 5rem;
+      font-size: 5rem;
+      line-height: 5.5rem;
     }
 
     .header-subtitle {
-      font-size: 1.75rem;
-      line-height: 2rem;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+  }
+
+  .header-blob-wrapper {
+    bottom: 176px;
+
+    img {
+      width: 500px;
     }
   }
 }
 
-@include respond-to('mobile-md') {
+@include respond-to('mobile-sm') {
   .header-content-wrapper {
     .header-title {
       font-size: 4.75rem;
@@ -98,12 +106,6 @@
     .header-subtitle {
       font-size: 1.75rem;
       line-height: 2rem;
-    }
-  }
-
-  .header-blob-wrapper {
-    img {
-      transform: rotate(44deg);
     }
   }
 }
