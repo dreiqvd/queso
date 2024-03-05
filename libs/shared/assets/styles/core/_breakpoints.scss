@@ -7,6 +7,6 @@ $breakpoints: (
   'desktop-sm': ( min-width: 769px ) and ( max-width: 1024px ),
   "desktop-md": ( min-width: 1025px ) and ( max-width: 1366px ),
   "desktop-lg": ( min-width: 1367px ) and ( max-width: 1919px ),
-  "xl-width": ( min-width: 1920px ), // extra large screens
-  "sm-height": ( min-width: 768px ) and ( max-height: 768px ) // targets tablet landscape and small desktops
+  "screen-4k": ( min-width: 1920px ), // extra large screens
+  "view-short": ( min-width: 768px ) and ( max-height: 768px ) // devices with a wide view but not necessarily a tall screen
 );

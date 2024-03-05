@@ -110,7 +110,7 @@
   }
 }
 
-@include respond-to('sm-height') {
+@include respond-to('view-short') {
   .header-content-wrapper {
     bottom: 0;
   }
