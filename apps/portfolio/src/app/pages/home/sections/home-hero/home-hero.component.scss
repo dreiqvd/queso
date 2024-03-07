@@ -52,8 +52,8 @@
   .header-content-wrapper {
     right: unset;
     width: 100%;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
   }
 }
 

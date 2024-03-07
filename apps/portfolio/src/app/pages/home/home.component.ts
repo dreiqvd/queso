@@ -29,7 +29,12 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
     HomeContactComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styles: `
+    .backdrop {
+      background-color: var(--accent-color);
+      z-index: var(--zIndex-fixed);
+    }
+  `,
 })
 export class HomeComponent implements OnInit {
   /** Element reference for the introductory backdrop */
