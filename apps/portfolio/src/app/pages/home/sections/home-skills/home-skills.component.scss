@@ -1,5 +1,8 @@
+@import 'mixins';
+
 .split-1 {
   background-color: var(--primary-color);
+  gap: var(--spacing-lg);
 
   .split-title {
     font-size: 4rem;
@@ -33,6 +36,7 @@
 
   .split-subtitle {
     color: var(--body-gray);
+    line-height: 1.25rem;
   }
 
   .tool-title {
@@ -45,15 +49,111 @@
 
   .items-wrapper {
     padding-bottom: var(--spacing-md);
+    padding-right: var(--spacing-md);
     margin-top: 8px;
     margin-bottom: 0;
     border-bottom: solid 1px var(--body-gray);
+    flex-wrap: wrap;
 
     .tool-item {
       padding: 6px 12px;
       border-radius: var(--spacing-xs);
       background-color: #f6f89b;
       text-align: center;
+    }
+  }
+}
+
+@include respond-to('desktop-lg') {
+  .split-2 {
+    padding-left: 18%;
+  }
+}
+
+@include respond-to('desktop-md') {
+  .split-2 {
+    padding-left: 15%;
+  }
+}
+
+@include respond-to('desktop-sm') {
+  .split-1 {
+    .split-title {
+      font-size: 3rem;
+
+      &:after {
+        height: 12px;
+        bottom: 24px;
+      }
+    }
+
+    .split-content-wrapper {
+      .skill-logo {
+        height: 104px;
+      }
+
+      .skill-label {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .split-2 {
+    .tool-title {
+      font-size: 2.25rem;
+      line-height: 3rem;
+    }
+
+    .items-wrapper {
+      gap: var(--spacing-sm);
+
+      .tool-item {
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+}
+
+@include respond-to('tablet-md') {
+  .split-1 {
+    padding-top: 32px;
+    padding-bottom: 56px;
+  }
+
+  .split-2 {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+@include respond-to('mobile-md') {
+  .split-1 {
+    .split-title {
+      font-size: 2.75rem;
+    }
+
+    .split-content-wrapper {
+      .skill-logo {
+        height: 98px;
+      }
+
+      .skill-label {
+        font-size: 1.375rem;
+      }
+    }
+  }
+
+  .split-2 {
+    padding-left: 10%;
+  }
+}
+
+@include respond-to('mobile-sm') {
+  .split-2 {
+    padding-left: var(--spacing-xl);
+
+    .split-subtitle {
+      padding-right: var(--spacing-md);
     }
   }
 }

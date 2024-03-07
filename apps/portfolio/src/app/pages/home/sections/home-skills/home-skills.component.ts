@@ -28,7 +28,7 @@ export class HomeSkillsComponent {
   readonly otherTools = [
     {
       key: 'FRONTEND',
-      items: ['react', 'tailwind', 'rxjs', 'ngrx', 'cypress', 'typescript'],
+      items: ['react', 'tailwind', 'rxjs', 'ngrx', 'cypress'],
       tooltip: "Making sure your web isn't just a wall of text.",
     },
     {
@@ -38,7 +38,7 @@ export class HomeSkillsComponent {
     },
     {
       key: 'OTHERS',
-      items: ['google-maps', 'gcloud', 'docker', 'firebase', 'nx'],
+      items: ['google-maps', 'docker', 'firebase', 'nx'],
       tooltip: 'A few more tools in my backpack.',
     },
   ];
