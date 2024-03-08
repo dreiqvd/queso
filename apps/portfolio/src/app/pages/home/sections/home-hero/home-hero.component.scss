@@ -111,6 +111,10 @@
 }
 
 @include respond-to('view-short') {
+  header {
+    min-height: 768px;
+  }
+
   .header-content-wrapper {
     bottom: 0;
   }
