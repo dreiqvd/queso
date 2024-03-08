@@ -1,14 +1,8 @@
-<div class="container h-full flex flex-col items-center relative overflow-hidden">
+<div class="container h-full flex flex-col items-center relative overflow-x-clip">
   <header class="flex flex-col items-center">
-    <qs-icon
-      iconName="coffee"
-      iconStyle="custom"
-      aria-label="Coffee Icon"
-      qsAnimation="fadeIn"
-      animHover="floatShadow"
-      [animDelay]="0.5"
-      [iconSize]="64"
-    />
+    <div qsAnimation="fadeIn" animHover="floatShadow" [animDelay]="0.5">
+      <img src="assets/img/coffee-cup.gif" alt="Coffee cup" class="coffee-cup" width="100" />
+    </div>
     <h2
       class="text-underlined section-title text-center"
       qsAnimation="fadeInDown"
@@ -24,34 +18,38 @@
   <div class="posts-container grid grid-cols-3 gap-8 my-12">
     @for (post of posts; track $index) {
       <div
-        class="post-panel flex flex-col justify-between gap-4"
         qsAnimation="flipInY"
         animHover="grow"
+        class="post-panel-wrapper relative desktop-sm:col-span-3 bg-clip-content"
         [animDuration]="2"
       >
-        <qs-pill [text]="post.tag" />
-        <div>
-          <h3 class="post-title font-semibold">
-            <a href="#">{{ post.title }}</a>
-          </h3>
-          <p class="post-excerpt">{{ post.excerpt }}</p>
+        <div class="post-panel h-full flex flex-col justify-between gap-4 relative">
+          <qs-pill [text]="post.tag" />
+          <div>
+            <h3 class="post-title font-semibold">
+              <a href="#">{{ post.title }}</a>
+            </h3>
+            <p class="post-excerpt">{{ post.excerpt }}</p>
+          </div>
+          <span class="post-date self-end">{{ post.date }}</span>
         </div>
-        <span class="post-date self-end">{{ post.date }}</span>
       </div>
     }
   </div>
-  <a
-    href="/blog"
-    target="_blank"
-    rel="noreferrer noopener"
-    aria-label="View all blogs"
-    class="blogs-link btn accent outlined"
-    qsAnimation="flipInX"
-    animHover="bounceToRight"
-    [animDelay]="0.5"
-  >
-    View Archives
-  </a>
+  @if (showBlogsLink) {
+    <a
+      href="/blog"
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label="View all blogs"
+      class="blogs-link btn accent outlined"
+      qsAnimation="flipInX"
+      animHover="bounceToRight"
+      [animDelay]="0.5"
+    >
+      View Archives
+    </a>
+  }
   <div class="next-section absolute left-0 right-0 mx-auto my-0 w-fit z-20">
     <div class="flex">
       <img

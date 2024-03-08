@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, HostListener } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
-import { AnimationsDirective } from '@queso/common';
+import {
+  AnimationsDirective,
+  BREAKPOINTS,
+  PlatformService,
+} from '@queso/common';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
+import { getViewportHeight, getViewportWidth } from '@queso/utils';
 
 @Component({
   selector: 'qs-home-posts',
@@ -12,7 +17,7 @@ import { PillComponent } from '@queso/ui-kit/pill';
   templateUrl: './home-posts.component.html',
   styleUrl: './home-posts.component.scss',
 })
-export class HomePostsComponent {
+export class HomePostsComponent implements AfterViewInit {
   readonly posts = [
     {
       title: 'AI Utility Tools For Your Web Project',
@@ -35,4 +40,27 @@ export class HomePostsComponent {
       date: 'Sep. 24, 2023',
     },
   ];
+
+  /** Determines whether to show link for the blogs page */
+  showBlogsLink = true;
+
+  constructor(private platformService: PlatformService) {}
+
+  ngAfterViewInit(): void {
+    if (this.platformService.isUsingBrowser()) {
+      // Only show blogs link if viewport height is greater than or equal to 900px
+      setTimeout(() => this.checkBlogsLinkVisibility());
+    }
+  }
+
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    this.checkBlogsLinkVisibility();
+  }
+
+  private checkBlogsLinkVisibility(): void {
+    this.showBlogsLink =
+      getViewportWidth() <= BREAKPOINTS.DESKTOP_SM ||
+      getViewportHeight() >= 920;
+  }
 }

@@ -1,5 +1,7 @@
+@import 'mixins';
+
 .container {
-  padding-top: 72px;
+  padding: 72px 32px 0;
 }
 
 .section-title {
@@ -17,30 +19,35 @@
 
 .subtitle {
   color: var(--body-gray);
+  line-height: 1.5rem;
 }
 
-.post-panel {
+.post-panel-wrapper {
   background-color: white;
-  padding: var(--spacing-lg);
-  max-width: 300px;
   box-shadow: var(--drop-shadow);
+  max-width: 300px;
+  background-repeat: no-repeat;
   border-radius: var(--spacing-sm);
 
-  .post-title {
-    margin: 0;
-    margin-bottom: var(--spacing-md);
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
+  .post-panel {
+    padding: var(--spacing-lg);
 
-  .post-excerpt {
-    color: var(--accent-purple);
-    line-height: 1.5rem;
-  }
+    .post-title {
+      margin: 0;
+      margin-bottom: var(--spacing-md);
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
 
-  .post-date {
-    font-size: 0.75rem;
-    color: var(--body-gray);
+    .post-excerpt {
+      color: var(--accent-purple);
+      line-height: 1.5rem;
+    }
+
+    .post-date {
+      font-size: 0.75rem;
+      color: var(--body-gray);
+    }
   }
 }
 
@@ -67,8 +74,13 @@
   }
 }
 
+.blob-bg-1,
+.blob-bg-2 {
+  z-index: -1;
+}
+
 .blob-bg-1 {
-  left: -88px;
+  left: -400px;
   top: 15%;
 }
 
@@ -83,5 +95,64 @@
   &:hover {
     // Intentionally overriding the text color on hover
     color: white !important;
+  }
+}
+
+@include respond-to('desktop-sm') {
+  .container {
+    // provide space to the contact hint
+    padding-bottom: 200px;
+  }
+
+  .subtitle {
+    text-align: center;
+  }
+
+  .post-panel-wrapper {
+    max-width: none;
+  }
+}
+
+@include respond-to('tablet-sm') {
+  .section-title {
+    font-size: 3.2rem;
+
+    &:after {
+      height: 10px;
+      bottom: 24px;
+    }
+  }
+}
+
+@include respond-to('mobile-md') {
+  .section-title {
+    font-size: 2.325rem;
+    line-height: 3.375rem;
+
+    &:after {
+      height: 8px;
+      bottom: 12px;
+    }
+  }
+
+  .subtitle {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+@include respond-to('mobile-sm') {
+  .section-title {
+    font-size: 2rem;
+    line-height: 3rem;
+
+    &:after {
+      height: 6px;
+      bottom: 8px;
+    }
+  }
+  .subtitle {
+    padding-left: initial;
+    padding-right: initial;
   }
 }
