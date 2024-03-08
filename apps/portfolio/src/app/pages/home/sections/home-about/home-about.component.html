@@ -50,18 +50,15 @@
       </div>
     </div>
   </div>
-  <aside
-    #sideContentRef
-    class="side-content-wrapper absolute bottom-0 right-0 h-full"
-    qsAnimation="fadeInRight"
-    [animDuration]="1.5"
-  >
+  <aside #sideContentRef class="side-content-wrapper absolute bottom-0 right-0 h-full">
     <div class="image-wrapper relative h-full w-full">
       <img
         src="assets/svg/kpz952.svg"
         class="blob absolute bottom-0 z-10"
         aria-hidden="true"
         alt="Portrait blob"
+        qsAnimation="fadeInRight"
+        [animDuration]="1.5"
       />
       <img
         ngSrc="assets/img/p-min.png"
@@ -72,6 +69,8 @@
         alt="Portrait photo"
         aria-label="Portrait photo"
         class="portrait absolute z-10"
+        qsAnimation="fadeInRight"
+        [animDuration]="1.5"
       />
     </div>
   </aside>
