@@ -113,6 +113,13 @@
   }
 }
 
+@include respond-to('view-short') {
+  .container {
+    // provide space to the contact hint
+    padding-bottom: 200px;
+  }
+}
+
 @include respond-to('tablet-sm') {
   .section-title {
     font-size: 3.2rem;

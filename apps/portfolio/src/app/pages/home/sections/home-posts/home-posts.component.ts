@@ -59,8 +59,10 @@ export class HomePostsComponent implements AfterViewInit {
   }
 
   private checkBlogsLinkVisibility(): void {
+    const height = getViewportHeight();
     this.showBlogsLink =
       getViewportWidth() <= BREAKPOINTS.DESKTOP_SM ||
-      getViewportHeight() >= 920;
+      height >= 920 ||
+      height <= BREAKPOINTS.SM_HEIGHT;
   }
 }
