@@ -2,7 +2,7 @@
 
 .container {
   // Provide space for the absolute footer
-  padding-bottom: 80px;
+  padding-bottom: 200px;
 }
 
 .section-title-wrapper {
@@ -69,17 +69,10 @@
   color: var(--body-gray);
   font-size: var(--font-size-sm);
   bottom: var(--spacing-md);
-  right: var(--spacing-md);
+  font-family: var(--accent-font);
 
   p {
     margin-bottom: 0;
-  }
-
-  .footer-blob {
-    bottom: -32px;
-    right: -16px;
-    width: 800px;
-    z-index: -1;
   }
 }
 
