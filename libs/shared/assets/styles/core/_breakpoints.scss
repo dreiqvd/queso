@@ -1,3 +1,9 @@
+/**
+ * Any update in breakpoints should be manually applied to:
+ * - constants.ts (in libs/shared/common)
+ * - tailwind.config.js
+ * - _breakpoints.scss
+*/
 /* prettier-ignore */
 $breakpoints: (
   "mobile-sm": ( max-width: 360px ),
@@ -6,7 +12,6 @@ $breakpoints: (
   'tablet-md': ( max-width: 768px),
   'desktop-sm': ( max-width: 1024px ),
   "desktop-md": ( max-width: 1366px ),
-  "desktop-lg": ( max-width: 1919px ),
-  "screen-4k": ( min-width: 1920px ), // extra large screens
+  "desktop-lg": ( min-width: 1367px ),
   "view-short": ( min-width: 768px ) and ( max-height: 768px ) // devices with a wide view but not necessarily a tall screen
 );

@@ -1,4 +1,9 @@
-/** These breakpoints should be synced with _breakpoints.scss */
+/**
+ * Any update in breakpoints should be manually applied to:
+ * - constants.ts (in libs/shared/common)
+ * - tailwind.config.js
+ * - _breakpoints.scss
+ */
 export const BREAKPOINTS = {
   MOBILE_SM: 360,
   MOBILE_MD: 480,
@@ -6,8 +11,7 @@ export const BREAKPOINTS = {
   TABLET_MD: 768,
   DESKTOP_SM: 1024,
   DESKTOP_MD: 1366,
-  DESKTOP_LG: 1919,
-  XL_WIDTH: 1920,
+  DESKTOP_LG: 1367,
   SM_HEIGHT: 768,
 };
 
