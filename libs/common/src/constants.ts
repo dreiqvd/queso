@@ -24,8 +24,8 @@ export const SOCIAL_LINKS = [
   },
   {
     url: 'https://twitter.com/dreiqdev',
-    name: 'Twitter',
-    icon: 'twitter',
+    name: 'X (Twitter)',
+    icon: 'x-twitter',
   },
   {
     url: 'https://dribbble.com/dreiqvd',
