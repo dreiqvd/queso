@@ -2,6 +2,7 @@
 
 html {
   --mat-form-field-subscript-text-size: 13px;
+  --mat-form-field-subscript-text-line-height: 1rem;
 }
 
 .mat-mdc-tooltip {
@@ -21,4 +22,16 @@ html {
   .mat-mdc-form-field-error-wrapper {
     padding-left: 2px;
   }
+}
+
+// Override the styling for the subscript (this is usually the error or hint message
+// below the form field)
+.mat-mdc-form-field-error-wrapper {
+  position: relative !important;
+  margin-top: 6px;
+}
+
+.mat-mdc-form-field-bottom-align::before {
+  // This controls the fixed height of the bottom-aligned subscript
+  display: none !important;
 }

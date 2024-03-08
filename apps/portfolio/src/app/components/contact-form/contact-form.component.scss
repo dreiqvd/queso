@@ -1,3 +1,5 @@
+@import 'mixins';
+
 :host {
   width: 100%;
 }
@@ -11,10 +13,29 @@
   border-radius: 32px;
   padding: 48px;
   overflow: hidden;
+
+  form {
+    gap: 4px;
+  }
 }
 
 button[type='submit'] {
   padding: 16px 20px;
   color: var(--body-color) !important;
   margin-top: 24px;
+}
+
+@include respond-to('desktop-md') {
+  .form-wrapper {
+    padding: var(--spacing-xl);
+    border-radius: var(--spacing-md);
+    padding-top: 40px;
+  }
+}
+
+@include respond-to('mobile-sm') {
+  .form-wrapper {
+    padding: var(--spacing-lg);
+    padding-top: 28px;
+  }
 }
