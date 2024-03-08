@@ -70,6 +70,10 @@ header {
 }
 
 @include respond-to('mobile-md') {
+  :host {
+    height: 80px;
+  }
+
   header {
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
