@@ -1,13 +1,15 @@
-<div class="container flex items-center h-full relative overflow-hidden tablet-sm:flex-col">
-  <div class="content-wrapper">
-    <h2
-      class="text-underlined section-title"
-      qsAnimation="bounceInLeft"
-      animHover="wobbleTop"
-      [animDuration]="1.5"
-    >
-      In a nutshell...
-    </h2>
+<div class="container flex items-center relative overflow-hidden tablet-sm:flex-col">
+  <div class="content-wrapper flex flex-col justify-center min-h-dvh">
+    <div>
+      <h2
+        class="text-underlined section-title"
+        qsAnimation="bounceInLeft"
+        animHover="wobbleTop"
+        [animDuration]="1.5"
+      >
+        In a nutshell...
+      </h2>
+    </div>
     <main>
       <ul class="list-wrapper flex flex-col">
         @for (item of aboutItems; track $index) {
@@ -34,16 +36,18 @@
         </li>
       </ul>
     </main>
-    <div class="inline-block" qsAnimation="rotateIn" [animDelay]="1">
-      <a
-        class="cta-btn primary"
-        href="#"
-        matTooltip="Got an interesting project?"
-        aria-label="Connect with me"
-      >
-        <span>Let's Connect</span>
-        <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
-      </a>
+    <div>
+      <div class="inline-block mb-4" qsAnimation="rotateIn" [animDelay]="1">
+        <a
+          class="cta-btn primary"
+          href="#"
+          matTooltip="Got an interesting project?"
+          aria-label="Connect with me"
+        >
+          <span>Let's Connect</span>
+          <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
+        </a>
+      </div>
     </div>
   </div>
   <aside

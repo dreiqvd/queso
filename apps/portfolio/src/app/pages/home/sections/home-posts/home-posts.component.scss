@@ -2,6 +2,8 @@
 
 .container {
   padding: 72px 32px 0;
+  // provide space to the contact hint
+  padding-bottom: 200px;
 }
 
 .section-title {
@@ -99,24 +101,12 @@
 }
 
 @include respond-to('desktop-sm') {
-  .container {
-    // provide space to the contact hint
-    padding-bottom: 200px;
-  }
-
   .subtitle {
     text-align: center;
   }
 
   .post-panel-wrapper {
     max-width: none;
-  }
-}
-
-@include respond-to('view-short') {
-  .container {
-    // provide space to the contact hint
-    padding-bottom: 200px;
   }
 }
 
