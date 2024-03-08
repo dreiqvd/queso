@@ -1,3 +1,10 @@
+@import 'mixins';
+
+.container {
+  // Provide space for the absolute footer
+  padding-bottom: 80px;
+}
+
 .section-title-wrapper {
   margin-top: 120px;
 
@@ -13,12 +20,11 @@
 }
 
 .split-1 {
-  padding: 25%;
-  padding-right: 5%;
+  padding: 5% 5% 5% 25%;
 }
 
 .split-2 {
-  padding-left: 5%;
+  padding: 0 5%;
 
   .msg-wrapper {
     font-size: 1.5rem;
@@ -44,8 +50,16 @@
     .social-item {
       font-size: 1.25rem;
 
+      a {
+        border-bottom: solid 2px var(--body-gray);
+      }
+
       &:hover {
         color: var(--accent-purple);
+
+        a {
+          border-color: var(--accent-purple);
+        }
       }
     }
   }
@@ -62,8 +76,111 @@
   }
 
   .footer-blob {
-    bottom: -132px;
-    right: -64px;
-    width: 300px;
+    bottom: -32px;
+    right: -16px;
+    width: 800px;
+    z-index: -1;
+  }
+}
+
+@include respond-to('desktop-sm') {
+  .grid-container {
+    grid-template-columns: 60% auto;
+  }
+
+  .split-1 {
+    padding: var(--spacing-xl);
+  }
+
+  .split-2 {
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+
+    .msg-wrapper {
+      font-size: 1.375rem;
+    }
+  }
+}
+
+@include respond-to('tablet-md') {
+  .grid-container {
+    grid-template-columns: 65% auto;
+  }
+
+  .split-1 {
+    padding: var(--spacing-lg);
+    padding-left: var(--spacing-xl);
+  }
+
+  .split-2 {
+    padding-left: var(--spacing-lg);
+
+    .msg-wrapper {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+@include respond-to('tablet-sm') {
+  .split-1,
+  .split-2 {
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+  }
+
+  .split-2 {
+    .msg-wrapper {
+      margin-top: var(--spacing-lg);
+      max-width: none;
+    }
+
+    .socials-wrapper {
+      margin-top: 48px;
+      margin-bottom: 76px;
+
+      .socials-title {
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .socials-list {
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+@include respond-to('mobile-md') {
+  .split-1,
+  .split-2 {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  .section-title-wrapper {
+    .section-title {
+      font-size: 2.75rem;
+
+      &:after {
+        height: 12px;
+        bottom: 12px;
+      }
+    }
+  }
+
+  .split-2 {
+    .socials-wrapper {
+      .socials-list {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+@include respond-to('mobile-sm') {
+  .section-title-wrapper {
+    .section-title {
+      font-size: 2.5rem;
+    }
   }
 }

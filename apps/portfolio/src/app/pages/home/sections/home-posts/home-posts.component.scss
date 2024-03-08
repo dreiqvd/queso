@@ -89,6 +89,7 @@
 .blob-bg-2 {
   bottom: -76px;
   right: -120px;
+  transform: rotate(80deg);
 }
 
 .blogs-link {
@@ -107,6 +108,10 @@
 
   .post-panel-wrapper {
     max-width: none;
+  }
+
+  .blob-bg-2 {
+    bottom: 100px;
   }
 }
 
@@ -140,12 +145,12 @@
 
 @include respond-to('mobile-sm') {
   .section-title {
-    font-size: 2rem;
+    font-size: 2.025rem;
     line-height: 3rem;
 
     &:after {
       height: 6px;
-      bottom: 8px;
+      bottom: 10px;
     }
   }
   .subtitle {
