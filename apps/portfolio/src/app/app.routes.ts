@@ -11,5 +11,6 @@ export const appRoutes: Route[] = [
       import('./pages/contact/contact.component').then(
         (c) => c.ContactComponent
       ),
+    title: 'Connect',
   },
 ];
