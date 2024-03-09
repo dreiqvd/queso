@@ -1,12 +1,13 @@
 <qs-navbar />
-<div class="min-h-dvh grid grid-cols-2 items-center gap-24">
+<div class="min-h-dvh grid grid-cols-2 items-center gap-24" qsAnimation="fadeIn">
   <div class="split-1 flex justify-end relative">
-    <qs-contact-form class="z-10" />
+    <qs-contact-form class="z-10" qsAnimation="fadeIn" />
     <img
       src="assets/svg/n7abku.svg"
       alt="Contact form blob"
       aria-hidden="true"
       class="absolute blob"
+      qsAnimation="zoomIn"
     />
   </div>
   <div class="split-2">
@@ -15,14 +16,33 @@
       width="100"
       alt="Speech bubble"
       aria-label="speech bubble animated icon"
+      qsAnimation="fadeInDown"
+      [animDuration]="1.5"
     />
     <h1 class="greeting-txt" aria-label="hello">
       @for (ch of greetingTxt; track $index) {
-        <span class="greeting-ch" aria-hidden="true">{{ ch }}</span>
+        <span
+          class="greeting-ch inline-block"
+          aria-hidden="true"
+          qsAnimation="fadeInLeft"
+          animHover="rubberBand"
+          [animDuration]="1.5"
+        >
+          {{ ch }}
+        </span>
       }
-      <span class="dot inline-block" aria-hidden="true"></span>
+      <span
+        class="dot inline-block"
+        aria-hidden="true"
+        qsAnimation="fadeInLeft"
+        animHover="floatShadow"
+      ></span>
     </h1>
-    <p class="message">Clarifications? Questions? Let's hear them — I won't bite.</p>
-    <p class="message">My inbox is always open!</p>
+    <div class="flex flex-col">
+      <p class="message" qsAnimation="fadeInUp" animHover="grow">
+        Clarifications? Questions? Let's hear them — I won't bite.
+      </p>
+      <p class="message" qsAnimation="fadeInUp" animHover="grow">My inbox is always open!</p>
+    </div>
   </div>
 </div>

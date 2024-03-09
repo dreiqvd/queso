@@ -17,12 +17,21 @@
     color: var(--gray-600);
     font-weight: 800;
 
+    .greeting-ch {
+      transition: color ease-in-out 0.3s;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+
     .dot {
       background-color: var(--primary-color);
       width: 42px;
       margin-left: 12px;
       height: 42px;
       border-radius: 50%;
+      vertical-align: unset;
     }
   }
 
