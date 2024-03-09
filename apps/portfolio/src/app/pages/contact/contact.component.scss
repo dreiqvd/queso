@@ -1,0 +1,38 @@
+.split-1 {
+  qs-contact-form {
+    display: block;
+    max-width: 600px;
+  }
+
+  .blob {
+    width: 650px;
+    right: 87px;
+    top: -91px;
+  }
+}
+
+.split-2 {
+  .greeting-txt {
+    font-size: 10rem;
+    color: var(--gray-600);
+    font-weight: 800;
+
+    .dot {
+      background-color: var(--primary-color);
+      width: 42px;
+      margin-left: 12px;
+      height: 42px;
+      border-radius: 50%;
+    }
+  }
+
+  .message {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--body-gray);
+    max-width: 420px;
+    margin-bottom: var(--spacing-lg);
+    padding-left: 6px;
+    line-height: 2rem;
+  }
+}
