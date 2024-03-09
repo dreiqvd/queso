@@ -1,6 +1,6 @@
 <qs-navbar />
-<div class="min-h-dvh grid grid-cols-2 items-center gap-24" qsAnimation="fadeIn">
-  <div class="split-1 flex justify-end relative">
+<div class="container overflow-hidden min-h-dvh grid grid-cols-2 items-center" qsAnimation="fadeIn">
+  <div class="split-1 flex justify-end relative tablet-md:col-span-2">
     <qs-contact-form class="z-10" qsAnimation="fadeIn" />
     <img
       src="assets/svg/n7abku.svg"
@@ -10,13 +10,14 @@
       qsAnimation="zoomIn"
     />
   </div>
-  <div class="split-2">
+  <div class="split-2 tablet-md:col-span-2">
     <img
       ngSrc="assets/img/speech-bubble.gif"
       priority
       width="100"
       height="100"
       placeholder
+      class="speech-bubble"
       alt="Speech bubble"
       aria-label="speech bubble animated icon"
       qsAnimation="fadeInDown"
@@ -44,7 +45,8 @@
     </h1>
     <div class="flex flex-col">
       <p class="message" qsAnimation="fadeInUp" animHover="grow">
-        Clarifications? Questions? Let's hear them — I won't bite.
+        Clarifications? Questions? Let's <br />
+        hear them — I won't bite.
       </p>
       <p class="message" qsAnimation="fadeInUp" animHover="grow">My inbox is always open!</p>
     </div>
