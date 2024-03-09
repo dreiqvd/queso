@@ -115,6 +115,10 @@
 }
 
 @include respond-to('tablet-sm') {
+  .container {
+    padding-bottom: 148px;
+  }
+
   .split-1,
   .split-2 {
     padding-left: var(--spacing-xl);
@@ -152,11 +156,11 @@
 
   .section-title-wrapper {
     .section-title {
-      font-size: 2.75rem;
+      font-size: 11dvw;
 
       &:after {
         height: 12px;
-        bottom: 12px;
+        bottom: 3dvw;
       }
     }
   }
@@ -173,7 +177,10 @@
 @include respond-to('mobile-sm') {
   .section-title-wrapper {
     .section-title {
-      font-size: 2.5rem;
+      &:after {
+        height: 10px;
+        bottom: 10px;
+      }
     }
   }
 }
