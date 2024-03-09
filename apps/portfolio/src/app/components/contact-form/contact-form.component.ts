@@ -43,7 +43,7 @@ export class ContactFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.contactForm.valueChanges.subscribe((value) => {
+    this.contactForm.valueChanges.subscribe(() => {
       // console.log(value);
     });
   }
