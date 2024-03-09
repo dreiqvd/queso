@@ -7,7 +7,7 @@ import {
   PlatformService,
 } from '@queso/common';
 
-import { NavbarComponent } from '../../components/navbar';
+import { PageContainerComponent } from '../../components/page-container/page-container.component';
 
 import { HomeAboutComponent } from './sections/home-about/home-about.component';
 import { HomeContactComponent } from './sections/home-contact/home-contact.component';
@@ -21,7 +21,7 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
   imports: [
     AnimationsDirective,
     CursorDirective,
-    NavbarComponent,
+    PageContainerComponent,
     HomeHeroComponent,
     HomeAboutComponent,
     HomeSkillsComponent,

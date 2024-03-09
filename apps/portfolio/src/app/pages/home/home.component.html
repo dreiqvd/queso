@@ -33,21 +33,22 @@
 
 @if (isContentVisible()) {
   <div qsCustomCursor qsAnimation="fadeIn" class="container w-100" [animDuration]="0.5">
-    <qs-navbar />
-    <section class="min-h-dvh" id="hero">
-      <qs-home-hero />
-    </section>
-    <section class="min-h-dvh" id="about">
-      <qs-home-about />
-    </section>
-    <section class="min-h-dvh" id="skills">
-      <qs-home-skills />
-    </section>
-    <section class="min-h-dvh" id="posts">
-      <qs-home-posts />
-    </section>
-    <section class="min-h-dvh" id="contact">
-      <qs-home-contact />
-    </section>
+    <qs-page-container>
+      <section class="min-h-dvh" id="hero">
+        <qs-home-hero />
+      </section>
+      <section class="min-h-dvh" id="about">
+        <qs-home-about />
+      </section>
+      <section class="min-h-dvh" id="skills">
+        <qs-home-skills />
+      </section>
+      <section class="min-h-dvh" id="posts">
+        <qs-home-posts />
+      </section>
+      <section class="min-h-dvh" id="contact">
+        <qs-home-contact />
+      </section>
+    </qs-page-container>
   </div>
 }
