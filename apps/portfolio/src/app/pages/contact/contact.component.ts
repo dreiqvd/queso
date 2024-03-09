@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
@@ -10,6 +11,7 @@ import { NavbarComponent } from '../../components/navbar';
   selector: 'qs-contact',
   standalone: true,
   imports: [
+    NgOptimizedImage,
     MatTooltip,
     NavbarComponent,
     ContactFormComponent,

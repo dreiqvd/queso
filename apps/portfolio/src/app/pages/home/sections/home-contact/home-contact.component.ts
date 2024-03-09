@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
@@ -8,7 +9,12 @@ import { ContactFormComponent } from '../../../../components/contact-form/contac
 @Component({
   selector: 'qs-home-contact',
   standalone: true,
-  imports: [MatTooltip, ContactFormComponent, AnimationsDirective],
+  imports: [
+    NgOptimizedImage,
+    MatTooltip,
+    ContactFormComponent,
+    AnimationsDirective,
+  ],
   templateUrl: './home-contact.component.html',
   styleUrl: './home-contact.component.scss',
 })

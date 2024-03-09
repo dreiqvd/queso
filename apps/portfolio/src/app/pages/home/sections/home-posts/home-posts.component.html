@@ -1,7 +1,15 @@
 <div class="container h-full flex flex-col items-center relative overflow-x-clip">
   <header class="flex flex-col items-center">
     <div qsAnimation="fadeIn" animHover="floatShadow" [animDelay]="0.5">
-      <img src="assets/img/cup.gif" alt="Coffee cup" class="coffee-cup" width="100" />
+      <img
+        ngSrc="assets/img/cup.gif"
+        priority
+        placeholder
+        alt="Coffee cup"
+        class="coffee-cup"
+        width="100"
+        height="100"
+      />
     </div>
     <h2
       class="text-underlined section-title text-center"

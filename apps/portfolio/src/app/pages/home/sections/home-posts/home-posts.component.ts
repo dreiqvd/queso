@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
@@ -8,7 +9,13 @@ import { PillComponent } from '@queso/ui-kit/pill';
 @Component({
   selector: 'qs-home-posts',
   standalone: true,
-  imports: [MatTooltip, IconComponent, PillComponent, AnimationsDirective],
+  imports: [
+    NgOptimizedImage,
+    MatTooltip,
+    IconComponent,
+    PillComponent,
+    AnimationsDirective,
+  ],
   templateUrl: './home-posts.component.html',
   styleUrl: './home-posts.component.scss',
 })
