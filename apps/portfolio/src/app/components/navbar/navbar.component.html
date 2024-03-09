@@ -57,6 +57,7 @@
             class="menu-link text-underlined"
             routerLinkActive="active"
             [routerLink]="route.path"
+            [routerLinkActiveOptions]="{ exact: true }"
             >{{ route.label }}</a
           >
         </li>
