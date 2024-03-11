@@ -6,6 +6,9 @@ import {
   Renderer2,
 } from '@angular/core';
 
+import { BREAKPOINTS } from '../constants';
+import { getViewportWidth } from '../helpers';
+
 /**
  * This directive provides a custom cursor inside the container element.
  */
@@ -41,6 +44,10 @@ export class CursorDirective {
   ) {
     this.element = this.elementRef.nativeElement;
     afterNextRender(() => {
+      // The custom cursor experiences performance issues on screens other than desktops.
+      // Therefore, it's currently restricted to non-desktop views only.
+      if (getViewportWidth() < BREAKPOINTS.DESKTOP_SM) return;
+
       this.renderer.setStyle(this.element, 'cursor', 'none');
       this.setCursorContainer();
       this.buildCursorParticles();
