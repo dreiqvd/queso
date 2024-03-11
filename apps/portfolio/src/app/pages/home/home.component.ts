@@ -1,11 +1,8 @@
 import { Component, OnInit, signal, ViewChild } from '@angular/core';
 import anime from 'animejs';
 
-import {
-  AnimationsDirective,
-  CursorDirective,
-  PlatformService,
-} from '@queso/common';
+import { AnimationsDirective, CursorDirective } from '@queso/common/directives';
+import { PlatformService } from '@queso/common/services';
 
 import { PageContainerComponent } from '../../components/page-container/page-container.component';
 

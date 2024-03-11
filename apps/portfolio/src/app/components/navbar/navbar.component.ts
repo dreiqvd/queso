@@ -2,7 +2,8 @@ import { Component, signal, ViewChild } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
-import { AnimationsDirective, SOCIAL_LINKS } from '@queso/common';
+import { SOCIAL_LINKS } from '@queso/common';
+import { AnimationsDirective } from '@queso/common/directives';
 import { HamburgerComponent } from '@queso/ui-kit/hamburger';
 import { IconComponent } from '@queso/ui-kit/icon';
 

@@ -4,7 +4,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, TitleStrategy } from '@angular/router';
 
-import { PageTitleStrategy } from '@queso/common';
+import { PageTitleStrategy } from '@queso/common/strategies';
 
 import { appRoutes } from './app.routes';
 

@@ -12,12 +12,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatTooltip } from '@angular/material/tooltip';
 import { fromEvent } from 'rxjs';
 
-import {
-  AnimationsDirective,
-  BREAKPOINTS,
-  getViewportWidth,
-  PlatformService,
-} from '@queso/common';
+import { BREAKPOINTS, getViewportWidth } from '@queso/common';
+import { AnimationsDirective } from '@queso/common/directives';
+import { PlatformService } from '@queso/common/services';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { ScrollCueComponent } from '@queso/ui-kit/scroll-cue';
 

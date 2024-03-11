@@ -1,0 +1,16 @@
+{
+  "name": "@queso/common",
+  "version": "0.0.1",
+  "peerDependencies": {},
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./src/index.ts",
+    "./directives": "./src/directives/index.ts",
+    "./services": "./src/services/index.ts",
+    "./strategies": "./src/strategies/index.ts"
+  }
+}

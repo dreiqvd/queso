@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import anime from 'animejs';
 
-import { AnimationsDirective } from '@queso/common';
+import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 
 @Component({

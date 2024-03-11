@@ -2,7 +2,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
-import { AnimationsDirective, SOCIAL_LINKS } from '@queso/common';
+import { SOCIAL_LINKS } from '@queso/common';
+import { AnimationsDirective } from '@queso/common/directives';
 
 import { ContactFormComponent } from '../../../../components/contact-form/contact-form.component';
 
