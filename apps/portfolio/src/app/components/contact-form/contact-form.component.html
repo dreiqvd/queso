@@ -1,5 +1,37 @@
 <div class="form-wrapper relative">
-  <form class="flex flex-col" [formGroup]="contactForm" (ngSubmit)="onSubmitForm()">
+  @if (showOverlay()) {
+    <div
+      class="form-overlay absolute h-full w-full top-0 left-0 z-10 flex flex-col items-center justify-center"
+    >
+      @if (sendingDone()) {
+        @if (!hasErrors()) {
+          <p class="sending-msg success text-sm text-center">
+            Sent! Thank you for reaching out. I'll get back the soonest.
+          </p>
+        } @else {
+          <p class="sending-msg failed text-sm text-center">
+            Uhm... Something went wrong there. We can still do this the old-school way. Hit my inbox
+            at
+            <a href="mailto:contact@dreiq.dev" aria-label="Send an direct email" class="underline"
+              >contact&#64;dreiq.dev</a
+            >.
+          </p>
+        }
+      } @else {
+        <div class="loader"></div>
+        <p class="sending-msg text-sm text-center">Hang tight—your message is on its way.</p>
+      }
+      <button
+        class="close-msg text-sm mt-2 absolute mx-auto bottom-4"
+        type="button"
+        aria-label="Close"
+        (click)="showOverlay.set(false)"
+      >
+        close
+      </button>
+    </div>
+  }
+  <form class="flex flex-col" [formGroup]="contactForm">
     <qs-input
       label="Name"
       control="name"
@@ -52,12 +84,17 @@
     />
 
     <button
-      type="submit"
-      class="btn primary outlined self-end"
+      type="button"
+      class="btn primary outlined self-end submit-btn"
       aria-label="Submit"
       qsAnimation="fadeInRight"
       animHover="bounceToRight"
       [animDelay]="1"
+      [disabled]="submitDisabled()"
+      [matTooltip]="
+        submitDisabled() ? 'Oops... The form still got some empty seats.' : 'Lezzgooo...'
+      "
+      (click)="onSubmitForm()"
     >
       Send Message
     </button>
