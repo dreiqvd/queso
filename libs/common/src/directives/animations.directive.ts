@@ -1,6 +1,7 @@
 import {
   Directive,
   ElementRef,
+  HostListener,
   Input,
   OnDestroy,
   OnInit,
@@ -65,6 +66,7 @@ export class AnimationsDirective implements OnInit, OnDestroy {
   private intersectionObserver$?: IntersectionObserver;
 
   private isAnimated = false;
+  private hvrAnimationsAdded = false;
 
   constructor(
     private rendererer: Renderer2,
@@ -81,9 +83,6 @@ export class AnimationsDirective implements OnInit, OnDestroy {
     } else {
       // There is no need to hide the element if it only has hover animation.
       this.rendererer.setStyle(this.element, 'visibility', 'visible');
-      // Immediately apply hover animations if there are no on demand animations.
-      // A check is needed to avoid conflicts with ongoing animations.
-      this.handleHoverAnimations();
     }
 
     // Create an intersection observer for on demand animations (e.g. entrance).
@@ -109,6 +108,16 @@ export class AnimationsDirective implements OnInit, OnDestroy {
     this.intersectionObserver$?.disconnect();
   }
 
+  /** Add the hover animation classes when element is hovered. */
+  @HostListener('mouseenter')
+  onMouseEnter(): void {
+    // Either add the hover animations after the on demand animation is
+    // complete or add them directly if there is no onload animation.
+    if (!this.hvrAnimationsAdded && (this.isAnimated || !this.animation)) {
+      this.addHoverAnimations();
+    }
+  }
+
   /** Add a specified animation class to the element. */
   private addClass(className: string): void {
     this.rendererer.addClass(this.element, `animate__${className}`);
@@ -131,7 +140,7 @@ export class AnimationsDirective implements OnInit, OnDestroy {
 
   /** Handle hover animation class names. Hover animation classes are directly applied
    * since by essence, they are triggered manually (on hover). */
-  private handleHoverAnimations(): void {
+  private addHoverAnimations(): void {
     if (!this.animHover) return;
 
     // Add animation properties for hover animations.
@@ -144,9 +153,13 @@ export class AnimationsDirective implements OnInit, OnDestroy {
     const hoverAnimations = Array.isArray(this.animHover)
       ? this.animHover
       : [this.animHover];
+
     hoverAnimations.forEach((hover) => {
       this.rendererer.addClass(this.element, `hvr__${hover}`);
     });
+
+    // Make sure that hover animation classes are added only once
+    this.hvrAnimationsAdded = true;
   }
 
   /** Trigger the animation on the element.
@@ -176,9 +189,6 @@ export class AnimationsDirective implements OnInit, OnDestroy {
         }
 
         this.isAnimated = true;
-        // Allow hover animations after the element has been animated. This is to
-        // avoid conflicts with the onload animation.
-        this.handleHoverAnimations();
 
         // Disconnect from intersection observer after animation is complete.
         this.intersectionObserver$?.disconnect();
