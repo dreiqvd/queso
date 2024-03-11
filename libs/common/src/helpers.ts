@@ -1,6 +1,6 @@
 /** This file contains utility global functions */
 
-import { BREAKPOINTS } from '@queso/common';
+import { BREAKPOINTS } from './constants';
 
 export function getViewportWidth(): number {
   return (

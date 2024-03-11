@@ -17,8 +17,7 @@
     "paths": {
       "@queso/common": ["libs/common/src/index.ts"],
       "@queso/ui-kit": ["libs/ui-kit/src/index.ts"],
-      "@queso/ui-kit/*": ["libs/ui-kit/src/components/*"],
-      "@queso/utils": ["libs/utils/src/index.ts"]
+      "@queso/ui-kit/*": ["libs/ui-kit/src/components/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
