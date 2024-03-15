@@ -7,82 +7,49 @@ html {
   --spacing-xl: 32px;
 
   /* Colors */
-  --primary-color: #{map-get($primary, 400)};
-  --accent-color: #{map-get($accent, 400)};
-  --negative-color: #{map-get($red, 400)};
-  --positive-color: #{map-get($green, 400)};
-  --warning-color: #{map-get($orange, 400)};
-  --info-color: #{map-get($blue, 400)};
+  --color-primary: #{map-get($primary, 400)};
+  --color-accent: #{map-get($accent, 400)};
+  --color-warn: #{map-get($red, 400)};
 
-  --primary-color-50: #{map-get($primary, 50)};
-  --primary-color-100: #{map-get($primary, 100)};
-  --primary-color-200: #{map-get($primary, 200)};
-  --primary-color-300: #{map-get($primary, 300)};
-  --primary-color-400: #{map-get($primary, 400)};
-  --primary-color-500: #{map-get($primary, 500)};
-  --primary-color-600: #{map-get($primary, 600)};
-  --primary-color-700: #{map-get($primary, 700)};
-  --primary-color-800: #{map-get($primary, 800)};
+  --color-primary-50: #{map-get($primary, 50)};
+  --color-primary-100: #{map-get($primary, 100)};
+  --color-primary-200: #{map-get($primary, 200)};
+  --color-primary-300: #{map-get($primary, 300)};
+  --color-primary-400: #{map-get($primary, 400)};
+  --color-primary-500: #{map-get($primary, 500)};
+  --color-primary-600: #{map-get($primary, 600)};
+  --color-primary-700: #{map-get($primary, 700)};
+  --color-primary-800: #{map-get($primary, 800)};
 
-  --accent-color-50: #{map-get($accent, 50)};
-  --accent-color-100: #{map-get($accent, 100)};
-  --accent-color-200: #{map-get($accent, 200)};
-  --accent-color-300: #{map-get($accent, 300)};
-  --accent-color-400: #{map-get($accent, 400)};
-  --accent-color-500: #{map-get($accent, 500)};
-  --accent-color-600: #{map-get($accent, 600)};
-  --accent-color-700: #{map-get($accent, 700)};
-  --accent-color-800: #{map-get($accent, 800)};
+  --color-accent-50: #{map-get($accent, 50)};
+  --color-accent-100: #{map-get($accent, 100)};
+  --color-accent-200: #{map-get($accent, 200)};
+  --color-accent-300: #{map-get($accent, 300)};
+  --color-accent-400: #{map-get($accent, 400)};
+  --color-accent-500: #{map-get($accent, 500)};
+  --color-accent-600: #{map-get($accent, 600)};
+  --color-accent-700: #{map-get($accent, 700)};
+  --color-accent-800: #{map-get($accent, 800)};
 
-  --gray-50: #{map-get($gray, 50)};
-  --gray-100: #{map-get($gray, 100)};
-  --gray-200: #{map-get($gray, 200)};
-  --gray-300: #{map-get($gray, 300)};
-  --gray-400: #{map-get($gray, 400)};
-  --gray-500: #{map-get($gray, 500)};
-  --gray-600: #{map-get($gray, 600)};
-  --gray-700: #{map-get($gray, 700)};
-  --gray-800: #{map-get($gray, 800)};
+  --color-gray-50: #{map-get($gray, 50)};
+  --color-gray-100: #{map-get($gray, 100)};
+  --color-gray-200: #{map-get($gray, 200)};
+  --color-gray-300: #{map-get($gray, 300)};
+  --color-gray-400: #{map-get($gray, 400)};
+  --color-gray-500: #{map-get($gray, 500)};
+  --color-gray-600: #{map-get($gray, 600)};
+  --color-gray-700: #{map-get($gray, 700)};
+  --color-gray-800: #{map-get($gray, 800)};
 
-  --negative-color-50: #{map-get($red, 50)};
-  --negative-color-100: #{map-get($red, 100)};
-  --negative-color-200: #{map-get($red, 200)};
-  --negative-color-300: #{map-get($red, 300)};
-  --negative-color-400: #{map-get($red, 400)};
-  --negative-color-500: #{map-get($red, 500)};
-  --negative-color-600: #{map-get($red, 600)};
-  --negative-color-700: #{map-get($red, 700)};
-  --negative-color-800: #{map-get($red, 800)};
-
-  --positive-color-50: #{map-get($green, 50)};
-  --positive-color-100: #{map-get($green, 100)};
-  --positive-color-200: #{map-get($green, 200)};
-  --positive-color-300: #{map-get($green, 300)};
-  --positive-color-400: #{map-get($green, 400)};
-  --positive-color-500: #{map-get($green, 500)};
-  --positive-color-600: #{map-get($green, 600)};
-  --positive-color-700: #{map-get($green, 700)};
-  --positive-color-800: #{map-get($green, 800)};
-
-  --warning-color-50: #{map-get($orange, 50)};
-  --warning-color-100: #{map-get($orange, 100)};
-  --warning-color-200: #{map-get($orange, 200)};
-  --warning-color-300: #{map-get($orange, 300)};
-  --warning-color-400: #{map-get($orange, 400)};
-  --warning-color-500: #{map-get($orange, 500)};
-  --warning-color-600: #{map-get($orange, 600)};
-  --warning-color-700: #{map-get($orange, 700)};
-  --warning-color-800: #{map-get($orange, 800)};
-
-  --info-color-50: #{map-get($blue, 50)};
-  --info-color-100: #{map-get($blue, 100)};
-  --info-color-200: #{map-get($blue, 200)};
-  --info-color-300: #{map-get($blue, 300)};
-  --info-color-400: #{map-get($blue, 400)};
-  --info-color-500: #{map-get($blue, 500)};
-  --info-color-600: #{map-get($blue, 600)};
-  --info-color-700: #{map-get($blue, 700)};
-  --info-color-800: #{map-get($blue, 800)};
+  --color-warn-50: #{map-get($red, 50)};
+  --color-warn-100: #{map-get($red, 100)};
+  --color-warn-200: #{map-get($red, 200)};
+  --color-warn-300: #{map-get($red, 300)};
+  --color-warn-400: #{map-get($red, 400)};
+  --color-warn-500: #{map-get($red, 500)};
+  --color-warn-600: #{map-get($red, 600)};
+  --color-warn-700: #{map-get($red, 700)};
+  --color-warn-800: #{map-get($red, 800)};
 
   /* Z-Indexes
     Note: It is intended that the values below are below 1000 since the Angular Material

@@ -1,31 +1,29 @@
 /** Contains common overrides for material components **/
 
 html {
+  // Form Field
   --mat-form-field-subscript-text-size: 13px;
   --mat-form-field-subscript-text-line-height: 1rem;
-}
 
-.mat-mdc-tooltip {
+  // Tooltip
   --mdc-plain-tooltip-container-color: var(--tooltip-bg-color);
   --mdc-plain-tooltip-supporting-text-color: var(--tooltip-text-color);
   --mdc-plain-tooltip-supporting-text-size: 0.75rem;
   --mdc-plain-tooltip-container-shape: 4px;
 }
 
-// Remove right border from the inside of mat-label
 .mdc-notched-outline__notch {
-  border-right: 0;
+  border-right: 0; // Remove right border from the inside of mat-label
 }
 
 .mat-mdc-form-field-subscript-wrapper {
-  // Adjust left padding of mat-error content
   .mat-mdc-form-field-error-wrapper {
-    padding-left: 2px;
+    padding-left: 2px; // Adjust left padding of mat-error content
   }
 }
 
-// Override the styling for the subscript (this is usually the error or hint message
-// below the form field)
+// Override the styling for the subscript (this is usually the
+// error or hint message below the form field)
 .mat-mdc-form-field-error-wrapper {
   position: relative !important;
   margin-top: 6px;

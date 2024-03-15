@@ -3,11 +3,11 @@
 .hvr {
   &__bounceToRight {
     &.accent {
-      @include bounceToRight(var(--accent-color));
+      @include bounceToRight(var(--color-accent));
     }
 
     &.primary {
-      @include bounceToRight(var(--primary-color));
+      @include bounceToRight(var(--color-primary));
     }
   }
 

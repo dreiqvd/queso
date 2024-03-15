@@ -1,7 +1,7 @@
 @import 'mixins';
 
 .split-1 {
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   gap: var(--spacing-lg);
 
   .split-title {
@@ -44,7 +44,7 @@
     font-size: 3rem;
     line-height: 4rem;
     margin-bottom: 0;
-    color: var(--gray-600);
+    color: var(--color-gray-600);
   }
 
   .items-wrapper {

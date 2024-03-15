@@ -12,39 +12,10 @@ body {
   }
 }
 
-/** Custom cursor **/
-#cursor-container {
-  pointer-events: none;
-  position: fixed;
-  display: block;
-  border-radius: 0;
-  transform-origin: center center;
-  top: 0;
-  left: 0;
-  z-index: var(--zindex-always-on-top);
-  filter: url('#goo');
-
-  span {
-    position: absolute;
-    display: block;
-    width: 26px;
-    height: 26px;
-    border-radius: 20px;
-    background-color: #f1756d;
-    transform-origin: center center;
-    transform: translate(-50%, -50%);
-  }
+img {
+  max-width: none;
 }
 
 .text-sm {
   font-size: var(--font-size-sm);
-}
-
-/* Forms */
-.form-field-wrapper {
-  margin-bottom: var(--spacing-sm);
-}
-
-img {
-  max-width: none;
 }
