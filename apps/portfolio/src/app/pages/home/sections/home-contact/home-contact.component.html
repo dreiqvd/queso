@@ -22,10 +22,10 @@
         <p qsAnimation="flipInX" animHover="grow">Hit me up and I'll try my best to get back.</p>
       </div>
       <div class="socials-wrapper">
-        <h3 class="socials-title" qsAnimation="fadeIn">Socials:</h3>
+        <h3 class="socials-title text-gray" qsAnimation="fadeIn">Socials:</h3>
         <ul class="socials-list flex gap-4 desktop-sm:flex-col">
           @for (social of socialLinks; track $index) {
-            <li class="social-item">
+            <li class="social-item text-gray">
               <a
                 target="_blank"
                 class="inline-block"
@@ -41,7 +41,9 @@
       </div>
     </div>
   </div>
-  <div class="footer-wrapper absolute flex flex-col items-center justify-center w-full gap-1">
+  <div
+    class="footer-wrapper text-gray text-sm absolute flex flex-col items-center justify-center w-full gap-1"
+  >
     <img
       ngSrc="assets/img/espresso.gif"
       priority

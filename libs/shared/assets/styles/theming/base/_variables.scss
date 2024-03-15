@@ -10,7 +10,7 @@ html {
   --color-primary: #{map-get($primary, 400)};
   --color-accent: #{map-get($accent, 400)};
   --color-warn: #{map-get($red, 400)};
-  --color-gray: #{map-get($gray, 500)};
+  --color-gray: #{map-get($gray, 600)};
 
   --color-primary-50: #{map-get($primary, 50)};
   --color-primary-100: #{map-get($primary, 100)};

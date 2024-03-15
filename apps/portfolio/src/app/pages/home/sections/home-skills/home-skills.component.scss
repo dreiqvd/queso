@@ -35,7 +35,6 @@
   }
 
   .split-subtitle {
-    color: var(--body-gray);
     line-height: 1.25rem;
   }
 
@@ -52,7 +51,7 @@
     padding-right: var(--spacing-md);
     margin-top: 8px;
     margin-bottom: 0;
-    border-bottom: solid 1px var(--body-gray);
+    border-bottom: solid 1px var(--color-gray);
     flex-wrap: wrap;
 
     .tool-item {

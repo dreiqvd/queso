@@ -38,7 +38,6 @@
     .socials-title,
     .social-item {
       font-family: var(--font-accent-family);
-      color: var(--body-gray);
     }
 
     .socials-title {
@@ -51,7 +50,7 @@
       font-size: 1.25rem;
 
       a {
-        border-bottom: solid 2px var(--body-gray);
+        border-bottom: solid 2px var(--color-gray);
       }
 
       &:hover {
@@ -66,8 +65,6 @@
 }
 
 .footer-wrapper {
-  color: var(--body-gray);
-  font-size: var(--font-size-sm);
   bottom: var(--spacing-md);
   font-family: var(--font-accent-family);
 

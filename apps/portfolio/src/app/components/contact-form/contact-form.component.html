@@ -5,11 +5,11 @@
     >
       @if (sendingDone()) {
         @if (!hasErrors()) {
-          <p class="sending-msg success text-sm text-center">
+          <p class="sending-msg text-gray success text-sm text-center">
             Sent! Thank you for reaching out. I'll get back the soonest.
           </p>
         } @else {
-          <p class="sending-msg failed text-sm text-center">
+          <p class="sending-msg text-gray failed text-sm text-center">
             Uhm... Something went wrong there. We can still do this the old-school way. Hit my inbox
             at
             <a href="mailto:contact@dreiq.dev" aria-label="Send an direct email" class="underline"
@@ -19,10 +19,12 @@
         }
       } @else {
         <div class="loader"></div>
-        <p class="sending-msg text-sm text-center">Hang tight—your message is on its way.</p>
+        <p class="sending-msg text-gray text-sm text-center">
+          Hang tight—your message is on its way.
+        </p>
       }
       <button
-        class="close-msg text-sm mt-2 absolute mx-auto bottom-4"
+        class="close-msg text-gray text-sm mt-2 absolute mx-auto bottom-4"
         type="button"
         aria-label="Close"
         (click)="showOverlay.set(false)"

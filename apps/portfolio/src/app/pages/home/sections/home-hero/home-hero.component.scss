@@ -10,7 +10,7 @@
     line-height: 7rem;
     filter: drop-shadow(5px 4px 0 var(--color-accent-red));
     // Below properties are intended since tailwind cannot override material typography
-    font-weight: 800;
+    // font-weight: 800;
     margin-bottom: 0;
 
     .greeting-ch {
