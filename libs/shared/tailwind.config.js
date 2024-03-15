@@ -8,7 +8,7 @@ module.exports = {
      * - constants.ts (in libs/shared/common)
      * - tailwind.config.js
      * - _breakpoints.scss
-    */
+     */
     screens: {
       'mobile-sm': { max: '360px' },
       'mobile-md': { max: '480px' },
@@ -17,9 +17,65 @@ module.exports = {
       'desktop-sm': { max: '1024px' },
       'desktop-md': { max: '1366px' },
       'desktop-lg': { min: '1367px' },
-      'view-short': { min: '768px', max: '768px' }
+      'view-short': { min: '768px', max: '768px' },
+    },
+    colors: {
+      white: '#FFFFFF',
+      gray: {
+        DEFAULT: "var(--color-gray)",
+        50: "var(--color-gray-50)",
+        100: "var(--color-gray-100)",
+        200: "var(--color-gray-200)",
+        300: "var(--color-gray-300)",
+        400: "var(--color-gray-400)",
+        500: "var(--color-gray-500)",
+        600: "var(--color-gray-600)",
+        700: "var(--color-gray-700)",
+        800: "var(--color-gray-800)",
+        900: "var(--color-gray-900)",
+      },
+      primary: {
+        DEFAULT: "var(--color-primary)",
+        50: "var(--color-primary-50)",
+        100: "var(--color-primary-100)",
+        200: "var(--color-primary-200)",
+        300: "var(--color-primary-300)",
+        400: "var(--color-primary-400)",
+        500: "var(--color-primary-500)",
+        600: "var(--color-primary-600)",
+        700: "var(--color-primary-700)",
+        800: "var(--color-primary-800)",
+        900: "var(--color-primary-900)",
+      },
+      accent: {
+        DEFAULT: "var(--color-accent)",
+        50: "var(--color-accent-50)",
+        100: "var(--color-accent-100)",
+        200: "var(--color-accent-200)",
+        300: "var(--color-accent-300)",
+        400: "var(--color-accent-400)",
+        500: "var(--color-accent-500)",
+        600: "var(--color-accent-600)",
+        700: "var(--color-accent-700)",
+        800: "var(--color-accent-800)",
+        900: "var(--color-accent-900)",
+      },
+      warn: {
+        DEFAULT: "var(--color-warn)",
+        50: "var(--color-warn-50)",
+        100: "var(--color-warn-100)",
+        200: "var(--color-warn-200)",
+        300: "var(--color-warn-300)",
+        400: "var(--color-warn-400)",
+        500: "var(--color-warn-500)",
+        600: "var(--color-warn-600)",
+        700: "var(--color-warn-700)",
+        800: "var(--color-warn-800)",
+        900: "var(--color-warn-900)",
+      }
     }
   },
   plugins: [],
+  // Following blocklist are preferred to be used without default styling
   blocklist: ['container'],
 };

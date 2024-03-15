@@ -9,4 +9,12 @@ module.exports = {
     join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
+  theme: {
+    extend: {
+      colors: {
+        'accent-red': 'var(--color-accent-red)',
+        'accent-purple':  'var(--accent-purple)',
+      },
+    },
+  }
 };
