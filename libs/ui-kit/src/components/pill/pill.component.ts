@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'qs-pill',
@@ -16,5 +16,5 @@ import { Component, Input } from '@angular/core';
   `,
 })
 export class PillComponent {
-  @Input({ required: true }) text!: string;
+  text = input.required<string>();
 }

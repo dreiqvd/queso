@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -21,5 +21,5 @@ export class TextareaComponent extends GenericFormFieldDirective {
   /** The number of rows to display in the textarea.
    * @defaultValue 5
    */
-  @Input() rows = 5;
+  rows = input<number>(5);
 }

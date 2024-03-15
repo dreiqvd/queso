@@ -1,5 +1,5 @@
-@if (appearance === 'chevron') {
-  <div class="chevron-wrapper" [attr.aria-label]="ariaLabel" [matTooltip]="tooltip ?? ''">
+@if (appearance() === 'chevron') {
+  <div class="chevron-wrapper" [attr.aria-label]="ariaLabel()" [matTooltip]="tooltip() ?? ''">
     <div class="chevron"></div>
     <div class="chevron"></div>
     <div class="chevron"></div>
@@ -7,9 +7,9 @@
 } @else {
   <div
     class="scroll-cue bg-transparent flex items-center justify-center"
-    [attr.aria-label]="ariaLabel"
-    [matTooltip]="tooltip ?? ''"
+    [attr.aria-label]="ariaLabel()"
+    [matTooltip]="tooltip() ?? ''"
   >
-    <div [ngClass]="appearance"></div>
+    <div [ngClass]="appearance()"></div>
   </div>
 }

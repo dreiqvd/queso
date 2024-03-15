@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -17,22 +17,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class IconComponent implements OnInit {
   /** Name of the icon to display. */
-  @Input({ required: true }) iconName!: string;
+  iconName = input.required<string>();
 
   /**
    * The type of icon style to use.
    * @defaultValue 'light'
    */
-  @Input() iconStyle:
-    | 'brands'
-    | 'duotone'
-    | 'light'
-    | 'regular'
-    | 'solid'
-    | 'custom' = 'light';
+  iconStyle = input<IconStyle>('light');
 
   /** Size of the icon in px. */
-  @Input() iconSize = 24;
+  iconSize = input<number>(24);
 
   constructor(
     private iconRegistry: MatIconRegistry,
@@ -41,12 +35,18 @@ export class IconComponent implements OnInit {
 
   ngOnInit(): void {
     this.iconRegistry.addSvgIcon(
-      this.iconName,
+      this.iconName(),
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        `../../../assets/icons/${this.iconStyle ? this.iconStyle : 'light'}/${
-          this.iconName
-        }.svg`
+        `/assets/icons/${this.iconStyle()}/${this.iconName()}.svg`
       )
     );
   }
 }
+
+export type IconStyle =
+  | 'brands'
+  | 'duotone'
+  | 'light'
+  | 'regular'
+  | 'solid'
+  | 'custom';

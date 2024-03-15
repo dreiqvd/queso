@@ -1,9 +1,9 @@
 <div class="flex flex-col gap-2 form-field-wrapper">
-  <mat-form-field appearance="outline" [hideRequiredMarker]="hideRequiredMarker">
-    @if (label) {
-      <mat-label>{{ label }}</mat-label>
+  <mat-form-field appearance="outline" [hideRequiredMarker]="hideRequiredMarker()">
+    @if (label()) {
+      <mat-label>{{ label() }}</mat-label>
     }
-    <input matInput [formControl]="formControl" [id]="name" [name]="name" (blur)="onBlur()" />
-    <mat-error>{{ errorMessage }}</mat-error>
+    <input matInput [formControl]="formControl()" [id]="name()" [name]="name()" (blur)="onBlur()" />
+    <mat-error>{{ errorMessage() }}</mat-error>
   </mat-form-field>
 </div>

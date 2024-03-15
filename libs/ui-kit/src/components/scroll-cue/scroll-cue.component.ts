@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
 type ScrollCueAppearance = 'mouse' | 'arrow-circle' | 'arrow' | 'chevron';
@@ -13,16 +13,15 @@ type ScrollCueAppearance = 'mouse' | 'arrow-circle' | 'arrow' | 'chevron';
 })
 export class ScrollCueComponent {
   /** Appearance type of the scroll cue.
-   * @type 'mouse' | 'arrow-circle' | 'arrow' | 'chevron'
-   * @defaultValue 'arrow-circle'
+   *  @defaultValue 'arrow-circle'
    */
-  @Input() appearance: ScrollCueAppearance = 'arrow-circle';
+  appearance = input<ScrollCueAppearance>('arrow-circle');
 
   /** ARIA label to apply on the element.
    * @defaultValue 'Scroll down'
    */
-  @Input() ariaLabel = 'Scroll down';
+  ariaLabel = input<string>('Scroll down');
 
   /** Optional tooltip message to be shown upon hover. */
-  @Input() tooltip?: string;
+  tooltip = input<string>();
 }
