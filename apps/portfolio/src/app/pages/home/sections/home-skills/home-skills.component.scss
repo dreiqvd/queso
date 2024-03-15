@@ -12,7 +12,7 @@
     &:after {
       height: 14px;
       bottom: 18px;
-      background-color: var(--accent-red);
+      background-color: var(--color-accent-red);
     }
   }
 
@@ -40,7 +40,7 @@
   }
 
   .tool-title {
-    font-family: var(--accent-font);
+    font-family: var(--font-accent-family);
     font-size: 3rem;
     line-height: 4rem;
     margin-bottom: 0;

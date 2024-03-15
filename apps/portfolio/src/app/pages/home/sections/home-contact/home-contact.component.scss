@@ -37,7 +37,7 @@
 
     .socials-title,
     .social-item {
-      font-family: var(--accent-font);
+      font-family: var(--font-accent-family);
       color: var(--body-gray);
     }
 
@@ -55,10 +55,10 @@
       }
 
       &:hover {
-        color: var(--accent-purple);
+        color: var(--color-accent-purple);
 
         a {
-          border-color: var(--accent-purple);
+          border-color: var(--color-accent-purple);
         }
       }
     }
@@ -69,7 +69,7 @@
   color: var(--body-gray);
   font-size: var(--font-size-sm);
   bottom: var(--spacing-md);
-  font-family: var(--accent-font);
+  font-family: var(--font-accent-family);
 
   p {
     margin-bottom: 0;

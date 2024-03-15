@@ -8,7 +8,7 @@
   .header-title {
     font-size: 6rem;
     line-height: 7rem;
-    filter: drop-shadow(5px 4px 0 var(--accent-red));
+    filter: drop-shadow(5px 4px 0 var(--color-accent-red));
     // Below properties are intended since tailwind cannot override material typography
     font-weight: 800;
     margin-bottom: 0;

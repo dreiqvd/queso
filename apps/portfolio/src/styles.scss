@@ -45,17 +45,17 @@ $app-theme: mat.define-light-theme(
 
 // Variables specific to this project
 html {
-  --accent-red: #f1756d;
-  --accent-purple: #84609f;
-  --accent-font: 'Inconsolata', sans-serif;
+  --color-accent-red: #f1756d;
+  --color-accent-purple: #84609f;
+  --font-accent-family: 'Inconsolata', sans-serif;
 }
 
 .text-accent,
 h1.text-accent,
 h2.text-accent,
 h3.text-accent {
-  font-family: var(--accent-font);
-  color: var(--accent-purple);
+  font-family: var(--font-accent-family);
+  color: var(--color-accent-purple);
 }
 
 // Custom cursor

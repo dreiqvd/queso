@@ -42,7 +42,7 @@
     }
 
     .post-excerpt {
-      color: var(--accent-purple);
+      color: var(--color-accent-purple);
       line-height: 1.5rem;
     }
 
@@ -64,8 +64,8 @@
     margin-top: -16px;
 
     span {
-      font-family: var(--accent-font);
-      color: var(--accent-purple);
+      font-family: var(--font-accent-family);
+      color: var(--color-accent-purple);
       transform: rotate(-6deg);
     }
   }
