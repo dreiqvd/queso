@@ -58,7 +58,7 @@ header {
 
         &.active,
         &:hover {
-          color: var(--body-color);
+          color: var(--text-default-color);
 
           &:after {
             transform: scale(1) skew(-15deg);

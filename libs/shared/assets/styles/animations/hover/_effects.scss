@@ -3,7 +3,7 @@
 @import './options';
 
 /* Bounce To Right */
-@mixin bounceToRight($backgroundColor, $textColor: var(--body-color)) {
+@mixin bounceToRight($backgroundColor, $textColor: var(--text-default-color)) {
   @include hacks();
   position: relative;
   @include prefixed(transition-property, color);

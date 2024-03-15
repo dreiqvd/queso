@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: ['./apps/**/src/**/*.{html,ts}', './libs/**/src/**/*.{html,ts}'],
   theme: {
@@ -73,7 +74,11 @@ module.exports = {
         800: "var(--color-warn-800)",
         900: "var(--color-warn-900)",
       }
-    }
+    },
+    textColor: ({ theme }) => ({
+      'default-color': 'var(--text-default-color)',
+      ...theme('colors'),
+    })
   },
   plugins: [],
   // Following blocklist are preferred to be used without default styling
