@@ -15,7 +15,6 @@ import { GenericFormFieldDirective } from '../../directives/generic-field.direct
     ReactiveFormsModule,
   ],
   templateUrl: './textarea.component.html',
-  styleUrl: './textarea.component.scss',
 })
 export class TextareaComponent extends GenericFormFieldDirective {
   /** The number of rows to display in the textarea.
