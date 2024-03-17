@@ -21,14 +21,7 @@
 }
 
 .loader {
-  width: 80px;
-  aspect-ratio: 1;
-  padding: 10px;
-  box-sizing: border-box;
-  background: #fff;
-  display: grid;
   filter: blur(5px) contrast(15) hue-rotate(298deg);
-  mix-blend-mode: darken;
 
   &:before,
   &:after {

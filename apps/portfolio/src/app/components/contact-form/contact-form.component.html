@@ -1,7 +1,7 @@
 <div class="
   relative overflow-hidden rounded-[32px] bg-white p-12 drop-shadow
-  desktop-md:rounded-2xl desktop-md:p-8 desktop-md:pt-10 
-  mobile-sm:p-8 mobile-sm:pt-7"
+  desktop-md:rounded-2xl desktop-md:p-8 desktop-md:pt-10
+  mobile-sm:p-6 mobile-sm:pt-7"
 >
   @if (showOverlay()) {
     <div class="form-overlay absolute left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center">
@@ -19,7 +19,7 @@
           </p>
         }
       } @else {
-        <div class="loader"></div>
+        <div class="loader w-[80px] p-[10px] aspect-square bg-white grid mix-blend-darken"></div>
         <p class="bg-primary-50 text-gray mx-4 my-0 rounded-lg px-3 py-2 text-center text-sm">
           Hang tight—your message is on its way.
         </p>
