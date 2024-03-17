@@ -6,12 +6,12 @@
 */
 /* prettier-ignore */
 $breakpoints: (
-  "mobile-sm": ( max-width: 360px ),
-  'mobile-md': ( max-width: 480px),
-  'tablet-sm': ( max-width: 640px),
-  'tablet-md': ( max-width: 768px),
-  'desktop-sm': ( max-width: 1024px ),
-  "desktop-md": ( max-width: 1366px ),
-  "desktop-lg": ( min-width: 1367px ),
-  "view-short": ( min-width: 768px ) and ( max-height: 768px ) // devices with a wide view but not necessarily a tall screen
+  "mobile-sm": (max-width: 360px),
+  'mobile-md': (max-width: 480px),
+  'tablet-sm': (max-width: 640px),
+  'tablet-md': (max-width: 768px),
+  'desktop-sm': (max-width: 1024px),
+  "desktop-md": (max-width: 1366px),
+  "desktop-lg": (min-width: 1367px),
+  "view-short": (min-width: 768px) and (max-height: 768px) // devices with a wide view but not necessarily a tall screen
 );
