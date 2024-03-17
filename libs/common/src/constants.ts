@@ -24,16 +24,16 @@ export const SOCIAL_LINKS = [
   {
     url: 'https://github.com/dreiqvd',
     name: 'GitHub',
-    icon: 'github',
+    icon: 'square-github',
   },
   {
     url: 'https://twitter.com/dreiqdev',
     name: 'X (Twitter)',
-    icon: 'x-twitter',
+    icon: 'square-x-twitter',
   },
   {
     url: 'https://dribbble.com/dreiqvd',
     name: 'Dribbble',
-    icon: 'dribbble',
+    icon: 'square-dribbble',
   },
 ];
