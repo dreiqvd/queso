@@ -5,6 +5,8 @@
     "source.fixAll": "explicit"
   },
   "typescript.autoClosingTags": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
   "eslint.format.enable": true,
   "editor.tabSize": 2,
 	"scss.lint.unknownAtRules": "ignore",
