@@ -29,7 +29,17 @@ import { ScrollCueComponent } from '@queso/ui-kit/scroll-cue';
     AnimationsDirective,
   ],
   templateUrl: './home-hero.component.html',
-  styleUrl: './home-hero.component.scss',
+  styles: `
+    .header-title {
+      filter: drop-shadow(5px 4px 0 var(--color-accent-red));
+
+      .greeting-ch {
+        &.space {
+          width: 24px;
+        }
+      }
+    }
+  `,
 })
 export class HomeHeroComponent implements OnInit, AfterViewInit {
   @ViewChild('headerBlobWrapper') headerBlobWrapper!: ElementRef<HTMLElement>;
