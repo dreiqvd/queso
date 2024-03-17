@@ -1,34 +1,63 @@
-<div class="container min-h-dvh overflow-hidden relative">
-  <div class="section-title-wrapper text-center w-full" qsAnimation="fadeInDown">
+<div class="min-h-dvh overflow-hidden relative py-[200px] tablet-sm:pb-[148px]">
+  <div class="text-center w-full" qsAnimation="fadeInDown">
     <h2
-      class="section-title text-underlined"
       qsAnimation
       animHover="wobbleVertical"
       matTooltip="Up for a chat?"
+      class="text-underlined mb-8 text-5xl font-extrabold
+        after:h-3 after:bottom-1
+        mobile-md:text-[11dvw] mobile-md:after:bottom-[0.5dvw]
+        mobile-sm:after:h-[10px]
+      "
     >
       Let's Connect
     </h2>
   </div>
-  <div class="grid-container grid grid-cols-2">
-    <div class="split-1 flex flex-col justify-center tablet-sm:col-span-2">
+  <div class="grid grid-cols-2 desktop-sm:grid-cols-[60%_auto]">
+    <div
+      class="flex flex-col justify-center p-[5%] pl-[25%]
+        desktop-sm:p-8
+        tablet-md:p-6 tablet-md:pl-8
+        tablet-sm:col-span-2 tablet-sm:p-8
+        mobile-md:p-6
+      ">
       <qs-contact-form qsAnimation="fadeIn" />
     </div>
 
-    <div class="split-2 flex flex-col justify-center tablet-sm:col-span-2">
-      <div class="msg-wrapper font-secondary text-accent-purple">
+    <div
+      class="
+        flex flex-col justify-center py-0 px-[5%]
+        desktop-sm:px-8
+        tablet-md:pl-6
+        tablet-sm:col-span-2 tablet-sm:px-8
+        mobile-md:pl-6
+      ">
+      <div
+        class="font-secondary text-accent-purple text-2xl leading-8 max-w-[420px]
+          desktop-sm:text-[1.375rem]
+          tablet-md:text-xl
+          tablet-sm:mt-6 tablet-sm:max-w-none
+        ">
         <p qsAnimation="flipInX" animHover="grow">
           Got a question? Wanted to say hi? I'm all ears!
         </p>
         <p qsAnimation="flipInX" animHover="grow">Hit me up and I'll try my best to get back.</p>
       </div>
-      <div class="socials-wrapper">
-        <h3 class="socials-title text-gray font-secondary" qsAnimation="fadeIn">Socials:</h3>
-        <ul class="socials-list flex gap-4 desktop-sm:flex-col">
+      <div class="gap-16 mt-16 tablet-sm:mt-12 tablet-sm:mb-[76px]">
+        <h3
+          qsAnimation="fadeIn"
+          class="text-gray font-secondary text-2xl font-semibold mb-6
+            tablet-sm:text-xl tablet-sm:mb-4
+          ">
+            Socials:
+        </h3>
+        <ul class="flex gap-4 desktop-sm:flex-col tablet-sm:flex-row mobile-md:flex-col">
           @for (social of socialLinks; track $index) {
-            <li class="social-item font-secondary">
+            <li class="font-secondary text-xl">
               <a
                 target="_blank"
-                class="inline-block text-gray hover:text-accent-purple"
+                class="inline-block text-gray border-solid border-b-2 border-b-gray
+                  hover:text-accent-purple hover:border-b-accent-purple"
                 rel="noreferrer noopener"
                 qsAnimation="rotateIn"
                 animHover="rubberBand"
@@ -42,7 +71,7 @@
     </div>
   </div>
   <div
-    class="footer-wrapper text-gray text-sm absolute flex flex-col items-center justify-center w-full gap-1 font-secondary"
+    class="text-gray text-sm absolute flex flex-col items-center justify-center w-full gap-1 font-secondary bottom-4"
   >
     <img
       ngSrc="assets/img/espresso.gif"
@@ -55,7 +84,7 @@
       qsAnimation="fadeInUp"
     />
     <div qsAnimation="fadeInUp" class="text-center">
-      <p class="text-sm z-20">My personal brew of code © 2024</p>
+      <p class="text-sm z-20 mb-0">My personal brew of code © 2024</p>
       <a
         href="mailto:contact@dreiq.dev"
         class="z-20 text-gray hover:text-accent-purple"

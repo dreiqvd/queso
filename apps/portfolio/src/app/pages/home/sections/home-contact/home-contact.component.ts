@@ -17,7 +17,6 @@ import { ContactFormComponent } from '../../../../components/contact-form/contac
     AnimationsDirective,
   ],
   templateUrl: './home-contact.component.html',
-  styleUrl: './home-contact.component.scss',
 })
 export class HomeContactComponent {
   readonly socialLinks = SOCIAL_LINKS;
