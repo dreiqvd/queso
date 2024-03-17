@@ -15,6 +15,9 @@ module.exports = {
         'accent-red': 'var(--color-accent-red)',
         'accent-purple':  'var(--accent-purple)',
       },
+      dropShadow: {
+        DEFAULT: '0px 8px 24px rgba(149, 157, 165, 0.2)',
+      },
     },
   }
 };
