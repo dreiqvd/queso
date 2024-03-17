@@ -1,30 +1,31 @@
-<div class="form-wrapper relative">
+<div class="
+  relative overflow-hidden rounded-[32px] bg-white p-12 drop-shadow
+  desktop-md:rounded-2xl desktop-md:p-8 desktop-md:pt-10 
+  mobile-sm:p-8 mobile-sm:pt-7"
+>
   @if (showOverlay()) {
-    <div
-      class="form-overlay absolute h-full w-full top-0 left-0 z-10 flex flex-col items-center justify-center"
-    >
+    <div class="form-overlay absolute left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center">
       @if (sendingDone()) {
         @if (!hasErrors()) {
-          <p class="sending-msg text-gray success text-sm text-center">
+          <p class="overlay-msg success bg-primary text-accent mx-4 my-0 rounded-lg px-3 py-2 text-center text-sm">
             Sent! Thank you for reaching out. I'll get back the soonest.
           </p>
         } @else {
-          <p class="sending-msg text-gray failed text-sm text-center">
+          <p class="overlay-msg failed bg-accent-red mx-4 my-0 rounded-lg px-3 py-2 text-center text-sm text-white">
             Uhm... Something went wrong there. We can still do this the old-school way. Hit my inbox
             at
-            <a href="mailto:contact@dreiq.dev" aria-label="Send an direct email" class="underline"
-              >contact&#64;dreiq.dev</a
-            >.
+            <a href="mailto:contact@dreiq.dev" aria-label="Send an direct email" class="underline">
+              contact&#64;dreiq.dev</a>&period;
           </p>
         }
       } @else {
         <div class="loader"></div>
-        <p class="sending-msg text-gray text-sm text-center">
+        <p class="bg-primary-50 text-gray mx-4 my-0 rounded-lg px-3 py-2 text-center text-sm">
           Hang tight—your message is on its way.
         </p>
       }
       <button
-        class="close-msg text-gray text-sm mt-2 absolute mx-auto bottom-4"
+        class="text-gray absolute bottom-4 mx-auto mt-2 px-2 py-1 text-sm"
         type="button"
         aria-label="Close"
         (click)="showOverlay.set(false)"
@@ -33,7 +34,7 @@
       </button>
     </div>
   }
-  <form class="flex flex-col" [formGroup]="contactForm">
+  <form class="flex flex-col gap-1" [formGroup]="contactForm">
     <qs-input
       label="Name"
       control="name"
@@ -87,14 +88,14 @@
 
     <button
       type="button"
-      class="btn primary outlined self-end mt-6 !py-4 !px-5 !text-default-color"
+      class="btn primary outlined !text-default-color mt-6 self-end !px-5 !py-4"
       aria-label="Submit"
       qsAnimation="fadeInRight"
       animHover="bounceToRight"
       [animDelay]="1"
       [disabled]="submitDisabled()"
       [matTooltip]="
-        submitDisabled() ? 'Oops... The form still got some empty seats.' : 'Lezzgooo...'
+        submitDisabled() ? 'Oops... The form isn\'t error-free just yet' : 'Lezzgooo...'
       "
       (click)="onSubmitForm()"
     >
