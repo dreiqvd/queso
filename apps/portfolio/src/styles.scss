@@ -33,21 +33,12 @@ $app-theme: mat.define-light-theme(
 html {
   --color-accent-red: #f1756d;
   --color-accent-purple: #84609f;
-  --font-accent-family: 'Inconsolata', sans-serif;
 }
 
 // Typography
 body {
   font-family: Poppins, 'Helvetica Neue', sans-serif;
   font-size: 1rem;
-}
-
-.text-accent,
-h1.text-accent,
-h2.text-accent,
-h3.text-accent {
-  font-family: var(--font-accent-family);
-  color: var(--color-accent-purple);
 }
 
 // Custom cursor

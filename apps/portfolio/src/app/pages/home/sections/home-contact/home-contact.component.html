@@ -15,17 +15,17 @@
     </div>
 
     <div class="split-2 flex flex-col justify-center tablet-sm:col-span-2">
-      <div class="msg-wrapper text-accent">
+      <div class="msg-wrapper font-secondary text-accent-purple">
         <p qsAnimation="flipInX" animHover="grow">
           Got a question? Wanted to say hi? I'm all ears!
         </p>
         <p qsAnimation="flipInX" animHover="grow">Hit me up and I'll try my best to get back.</p>
       </div>
       <div class="socials-wrapper">
-        <h3 class="socials-title text-gray" qsAnimation="fadeIn">Socials:</h3>
+        <h3 class="socials-title text-gray font-secondary" qsAnimation="fadeIn">Socials:</h3>
         <ul class="socials-list flex gap-4 desktop-sm:flex-col">
           @for (social of socialLinks; track $index) {
-            <li class="social-item text-gray">
+            <li class="social-item text-gray font-secondary">
               <a
                 target="_blank"
                 class="inline-block"
@@ -42,7 +42,7 @@
     </div>
   </div>
   <div
-    class="footer-wrapper text-gray text-sm absolute flex flex-col items-center justify-center w-full gap-1"
+    class="footer-wrapper text-gray text-sm absolute flex flex-col items-center justify-center w-full gap-1 font-secondary"
   >
     <img
       ngSrc="assets/img/espresso.gif"
