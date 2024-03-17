@@ -36,3 +36,15 @@ h3 {
   font-size: 1.25rem;
   font-weight: 600;
 }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #2680eb;
+
+  &:hover {
+    color: #5199ef;
+  }
+}
