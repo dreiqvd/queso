@@ -4,14 +4,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.autoClosingBrackets": "never",
   },
   "eslint.format.enable": true,
