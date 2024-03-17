@@ -10,7 +10,6 @@ import { IconComponent } from '@queso/ui-kit/icon';
   standalone: true,
   imports: [MatTooltip, NgOptimizedImage, AnimationsDirective, IconComponent],
   templateUrl: './home-about.component.html',
-  styleUrl: './home-about.component.scss',
 })
 export class HomeAboutComponent {
   readonly aboutItems = [
@@ -26,6 +25,11 @@ export class HomeAboutComponent {
     {
       text: 'Always up to the challenge of learning new tools and technologies.',
       delay: 1.25,
+    },
+    {
+      text: "Here's me when AFK",
+      delay: 1.5,
+      isLink: true,
     },
   ];
 }

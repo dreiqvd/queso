@@ -1,39 +1,47 @@
-<div class="container flex items-center relative overflow-hidden tablet-sm:flex-col">
-  <div class="content-wrapper flex flex-col justify-center min-h-dvh">
+<div class="flex items-center relative overflow-hidden tablet-sm:flex-col tablet-sm:pt-8">
+  <div
+    class="flex flex-col justify-center min-h-dvh ml-[12%] pb-[140px]
+      tablet-sm:ml-0 tablet-sm:px-10 tablet-sm:py-0 tablet-sm:min-h-max
+    ">
     <div>
       <h2
-        class="text-underlined section-title"
         qsAnimation="bounceInLeft"
         animHover="wobbleTop"
+        class="text-underlined my-5 text-5xl after:h-3 after:bottom-1
+          mobile-md:text-[10dvw] mobile-md:after:h-[10px]"
         [animDuration]="1.5"
       >
         In a nutshell...
       </h2>
     </div>
     <main>
-      <ul class="list-wrapper flex flex-col">
+      <ul class="flex flex-col list-none my-8 mx-0
+        desktop-md:max-w-[75%] desktop-md:-ml-1
+        desktop-sm:max-w-[61%]
+        tablet-md:my-4 tablet-md:max-w-[50%]
+        tablet-sm:max-w-full
+      ">
         @for (item of aboutItems; track $index) {
           <li
-            class="text-accent about-txt"
             qsAnimation="flipInX"
             animHover="grow"
+            class="text-accent text-xl font-semibold leading-[2.2rem] mb-6
+              desktop-md:leading-[1.875rem] mobile-md:text-lg"
             [animDelay]="item.delay"
           >
             <div class="flex">
-              <span class="bullet"></span>
-              <span class="inline-block">{{ item.text }}</span>
+              <span class="inline-block mr-2">&bull;</span>
+              @if (!item.isLink) {
+                <span class="inline-block">{{ item.text }}</span>
+              } @else {
+                <a href="#" target="_blank" rel="noreferrer noopener" class="inline-flex items-center gap-2">
+                  <span>Here's me when AFK</span>
+                  <qs-icon iconName="arrow-up-right-from-square" iconStyle="regular" [iconSize]="14" />
+                </a>
+              }
             </div>
           </li>
         }
-        <li class="text-accent about-txt" qsAnimation="flipInX" animHover="grow" [animDelay]="1.5">
-          <div class="flex">
-            <span class="bullet"></span>
-            <a href="#" class="inline-flex items-center gap-2">
-              <span>Here's me when AFK</span>
-              <qs-icon iconName="arrow-up-right-from-square" iconStyle="regular" [iconSize]="14" />
-            </a>
-          </div>
-        </li>
       </ul>
     </main>
     <div>
@@ -50,14 +58,20 @@
       </div>
     </div>
   </div>
-  <aside #sideContentRef class="side-content-wrapper absolute bottom-0 right-0 h-full">
+  <aside
+    #sideContentRef
+    class="absolute bottom-0 right-0 h-full w-[35%]
+      tablet-sm:w-full tablet-sm:relative tablet-sm:h-[540px]
+    ">
     <div class="image-wrapper relative h-full w-full">
       <img
         src="assets/svg/kpz952.svg"
-        class="blob absolute bottom-0 z-10"
         aria-hidden="true"
         alt="Portrait blob"
         qsAnimation="fadeInRight"
+        class="absolute bottom-0 z-10 left-10 w-[380px]
+          desktop-sm:w-[320px] desktop-sm:-bottom-6 desktop-sm:left-6
+          tablet-md:left-[unset] tablet-md:-right-16"
         [animDuration]="1.5"
       />
       <img
@@ -68,8 +82,8 @@
         placeholder
         alt="Portrait photo"
         aria-label="Portrait photo"
-        class="portrait absolute z-10"
         qsAnimation="fadeInRight"
+        class="absolute z-10 -bottom-1 desktop-sm:w-[320px] tablet-md:-right-8"
         [animDuration]="1.5"
       />
     </div>
