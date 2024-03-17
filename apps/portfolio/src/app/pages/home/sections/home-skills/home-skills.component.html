@@ -1,17 +1,23 @@
 <div class="min-h-dvh overflow-hidden grid grid-cols-2 relative">
-  <div class="split-1 flex flex-col items-center justify-center col-span-1 tablet-md:col-span-2">
+  <div
+    class="bg-primary gap-6 flex flex-col items-center justify-center col-span-1
+      tablet-md:col-span-2 tablet-md:pt-8 tablet-md:pb-14
+    ">
     <h2
-      class="split-title font-extrabold text-underlined"
       qsAnimation="slideInLeft"
       animHover="wobbleVertical"
-    >
+      class="font-extrabold text-underlined text-[4rem] leading-[6rem] z-10 my-6
+        after:bg-accent-red after:h-[14px] after:bottom-[18px]
+        desktop-sm:text-5xl desktop-sm:after:h-[10px] desktop-sm:after:bottom-[4px]
+        mobile-md:text-[2.75rem]
+      ">
       Core Skills
     </h2>
-    <div class="split-content-wrapper flex" qsAnimation="slideInLeft">
+    <div class="flex gap-16" qsAnimation="slideInLeft">
       @for (skill of coreSkills; track $index) {
-        <figure class="skill-wrapper flex flex-col items-center gap-8">
+        <figure class="flex flex-col items-center gap-8">
           <img
-            class="skill-logo"
+            class="desktop-sm:h-[104px] mobile-md:h-[98px]"
             [attr.aria-label]="skill.name + ' logo'"
             [src]="'assets/svg/' + skill.logo + '.svg'"
             [alt]="skill.logo"
@@ -19,15 +25,24 @@
             (mouseenter)="rotateElement('#' + skill.logo + '-logo', 360)"
             (mouseleave)="rotateElement('#' + skill.logo + '-logo', 0)"
           />
-          <figcaption class="skill-label font-light" [matTooltip]="skill.tooltip">
+          <figcaption
+            class="font-light text-[1.75rem] desktop-sm:text-2xl mobile-md:text-[1.375rem]"
+            [matTooltip]="skill.tooltip">
             {{ skill.name }}
           </figcaption>
         </figure>
       }
     </div>
   </div>
-  <div class="split-2 flex flex-col justify-center col-span-1 tablet-md:col-span-2">
-    <h2 class="split-title flex items-center gap-2" qsAnimation="fadeIn">
+  <div
+    class="flex flex-col justify-center col-span-1 pl-[25%]
+      desktop-lg:pl-[18%]
+      desktop-md:pl-[15%]
+      tablet-md:col-span-2 tablet-md:py-16
+      mobile-md:pl-[10%]
+      mobile-sm:pl-8
+    ">
+    <h2 class="text-2xl font-normal mb-2 flex items-center gap-2" qsAnimation="fadeIn">
       Extra Tools
       <qs-icon
         id="tool-icon"
@@ -40,22 +55,27 @@
         (mouseleave)="rotateElement('#tool-icon', 0)"
       />
     </h2>
-    <p class="split-subtitle text-gray" qsAnimation="fadeIn">
+    <p class="text-gray leading-5 mobile-sm:pr-4" qsAnimation="fadeIn">
       Additional technologies up my sleeve.
     </p>
     @for (tool of otherTools; track $index) {
       <div class="mt-6">
         <h3
-          class="tool-title font-bold uppercase inline-block"
           qsAnimation="fadeInDown"
           animHover="wobbleSkew"
+          class="font-bold uppercase inline-block font-secondary text-5xl leading-[4rem] mb-0 text-gray-700
+            desktop-sm:text-4xl desktop-sm:leading-[3rem]"
           [matTooltip]="tool.tooltip"
         >
           {{ tool.key }}
         </h3>
-        <ul class="items-wrapper flex gap-4 mb-4">
+        <ul class="flex gap-4 flex-wrap pb-4 pr-4 mt-2 mb-0 border-b border-solid border-b-gray-400 desktop-sm:gap-2">
           @for (item of tool.items; track $index) {
-            <li class="tool-item" qsAnimation="slideInRight" animHover="floatShadow">
+            <li
+              qsAnimation="slideInRight"
+              animHover="floatShadow"
+              class="py-[6px] px-3 rounded bg-[#f6f89b] text-center desktop-sm:text-sm"
+            >
               {{ item }}
             </li>
           }

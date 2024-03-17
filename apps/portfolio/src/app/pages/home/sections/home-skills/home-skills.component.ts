@@ -10,7 +10,6 @@ import { IconComponent } from '@queso/ui-kit/icon';
   standalone: true,
   imports: [MatTooltip, IconComponent, AnimationsDirective],
   templateUrl: './home-skills.component.html',
-  styleUrl: './home-skills.component.scss',
 })
 export class HomeSkillsComponent {
   readonly coreSkills = [
