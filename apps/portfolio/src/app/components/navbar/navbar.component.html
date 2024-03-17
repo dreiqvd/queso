@@ -1,7 +1,9 @@
 <header
   role="navigation"
   aria-label="Main navigation"
-  class="h-full flex items-center justify-between"
+  class="h-full flex items-center justify-between 
+    py-0 px-8 mobile-md:px-4
+  "
 >
   <button
     class="menu-btn"
@@ -13,19 +15,19 @@
   >
     <qs-hamburger />
   </button>
-  <div class="nav-links-wrapper flex" qsAnimation="bounceInDown">
+  <div class="gap-3 my-6 mx-0 flex" qsAnimation="bounceInDown">
     @for (social of socials; track $index) {
       <a
-        class="nav-link primary"
+        class="primary text-gray-700 rounded-tr-[4px] rounded-tl-[4px] leading-[0]"
         target="_blank"
         rel="noopener noreferrer"
         qsAnimation
-        [animHover]="['bounceToRight', 'wobbleTop']"
         [href]="social.url"
+        [animHover]="['bounceToRight', 'wobbleTop']"
         [attr.aria-label]="social.name"
         [matTooltip]="social.name"
       >
-        <qs-icon iconStyle="custom" class="nav-icon" [iconName]="social.icon" [iconSize]="28" />
+        <qs-icon iconStyle="brands" class="nav-icon" [iconName]="social.icon" [iconSize]="30" />
       </a>
     }
   </div>
@@ -34,14 +36,14 @@
 @if (isSidebarOpen()) {
   <nav
     #sidebar
-    class="sidenav fixed top-0 h-dvh"
+    class="sidenav w-[300px] bg-gray-50 p-8 fixed top-0 h-dvh"
     qsAnimation
     [animDuration]="0.3"
     [animIsManual]="true"
   >
-    <div class="close-btn-wrapper flex justify-end">
+    <div class="flex justify-end">
       <button
-        class="close-btn"
+        class="text-gray hover:text-gray-700"
         matTooltip="When one door closes, another opens; sorry, not in this sidebar."
         type="button"
         aria-label="Close sidebar"
@@ -50,15 +52,20 @@
         <qs-icon iconName="times" aria-hidden="true" [iconSize]="28" />
       </button>
     </div>
-    <ul class="menu-items-wrapper flex flex-col">
+    <ul class="flex flex-col gap-6 mt-10">
       @for (route of routes; track $index) {
-        <li class="menu-item" ariaCurrentWhenActive="page">
+        <li
+          class="text-[2rem] font-semibold leading-[3rem]"
+          ariaCurrentWhenActive="page"
+        >
           <a
-            class="menu-link text-underlined"
+            class="menu-link text-underlined text-gray-500 relative inline-block"
             routerLinkActive="active"
             [routerLink]="route.path"
             [routerLinkActiveOptions]="{ exact: true }"
-            >{{ route.label }}</a
+          >
+            {{ route.label }}
+          </a
           >
         </li>
       }
