@@ -7,11 +7,11 @@
     <div class="form-overlay absolute left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center">
       @if (sendingDone()) {
         @if (!hasErrors()) {
-          <p class="overlay-msg success bg-primary text-accent mx-4 my-0 rounded-lg px-3 py-2 text-center text-sm">
+          <p class="bg-primary text-accent mx-4 my-0 rounded-lg px-3 py-2 text-center text-sm">
             Sent! Thank you for reaching out. I'll get back the soonest.
           </p>
         } @else {
-          <p class="overlay-msg failed bg-accent-red mx-4 my-0 rounded-lg px-3 py-2 text-center text-sm text-white">
+          <p class="bg-accent-red mx-4 my-0 rounded-lg px-3 py-2 text-center text-sm text-white">
             Uhm... Something went wrong there. We can still do this the old-school way. Hit my inbox
             at
             <a href="mailto:contact@dreiq.dev" aria-label="Send an direct email" class="underline">

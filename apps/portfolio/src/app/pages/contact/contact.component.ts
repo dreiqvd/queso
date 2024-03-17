@@ -18,8 +18,11 @@ import { NavbarComponent } from '../../components/navbar';
     AnimationsDirective,
   ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
 })
 export class ContactComponent {
   readonly greetingTxt = 'hello'.split('');
+  readonly messages = [
+    "Clarifications? Questions? Let's <br /> hear them — I won't bite.",
+    'My inbox is always open!',
+  ];
 }
