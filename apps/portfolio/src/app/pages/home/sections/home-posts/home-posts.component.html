@@ -1,4 +1,4 @@
-<div class="container h-full flex flex-col items-center relative overflow-x-clip">
+<div class="h-full flex flex-col items-center relative overflow-x-clip pt-18 pb-[200px] p-8">
   <header class="flex flex-col items-center">
     <div qsAnimation="fadeIn" animHover="floatShadow" [animDelay]="0.5">
       <img
@@ -12,32 +12,40 @@
       />
     </div>
     <h2
-      class="text-underlined section-title text-center"
       qsAnimation="fadeInDown"
       animHover="wobbleSkew"
       matTooltip="Just out of the coffee pot: Some latest random thoughts and listicles."
+      class="text-underlined text-center font-extrabold mt-2 mb-8 text-[4rem] leading-[6rem]
+        after:h-3 after:bottom-5
+        tablet-sm:text-[3.2rem] tablet-sm:after:h-3 tablet-sm:after:bottom-6
+        mobile-md:text-[10dvw] mobile-md:leading-[3.375rem] mobile-md:after:h-[10px] mobile-md:after:bottom-1
+        mobile-sm:leading-[3rem] mobile-sm:after:bottom-2
+      "
     >
       Freshly Brewed
     </h2>
-    <p class="subtitle text-gray leading-6" qsAnimation="fadeInUp">
+    <p
+      qsAnimation="fadeInUp"
+      class="text-center text-gray leading-6 px-6 mobile-md:px-8 mobile-sm:px-4">
       Yep! I sometimes write stuff — anything under the sun.
     </p>
   </header>
-  <div class="posts-container grid grid-cols-3 gap-8 my-12">
+  <div class="grid grid-cols-3 gap-8 my-12 z-20">
     @for (post of posts; track $index) {
       <div
         qsAnimation="flipInY"
         animHover="grow"
-        class="post-panel-wrapper relative desktop-sm:col-span-3 bg-clip-content"
+        class="relative bg-clip-content bg-white drop-shadow rounded-lg max-w-[300px]
+          desktop-sm:col-span-3 desktop-sm:max-w-none"
         [animDuration]="2"
       >
-        <div class="post-panel h-full flex flex-col justify-between gap-4 relative">
+        <div class="p-6 h-full flex flex-col justify-between gap-4 relative">
           <qs-pill [text]="post.tag" />
           <div>
-            <h3 class="post-title font-semibold">
+            <h3 class="m-0 mb-4 text-2xl font-semibold">
               <a href="#" class="text-default-color hover:text-accent-300">{{ post.title }}</a>
             </h3>
-            <p class="post-excerpt">{{ post.excerpt }}</p>
+            <p class="text-accent-purple leading-6">{{ post.excerpt }}</p>
           </div>
           <span class="self-end text-gray text-[0.75rem]">{{ post.date }}</span>
         </div>
@@ -49,14 +57,14 @@
     target="_blank"
     rel="noreferrer noopener"
     aria-label="View all blogs"
-    class="blogs-link btn accent outlined"
+    class="btn accent outlined z-20 mt-8"
     qsAnimation="flipInX"
     animHover="bounceToRight"
     [animDelay]="0.5"
   >
     View Archives
   </a>
-  <div class="next-section absolute left-0 right-0 mx-auto my-0 w-fit z-20">
+  <div class="absolute left-0 right-0 mx-auto my-0 w-fit z-20 bottom-1 *:z-20">
     <div class="flex">
       <img
         src="assets/svg/cursive-arrow.svg"
@@ -64,21 +72,24 @@
         aria-label="Arrow direction for contact section"
         qsAnimation="rotateIn"
         animHover="wobbleVertical"
+        class="max-w-[45%] min-w-20"
       />
-      <div class="text-wrapper" qsAnimation="rotateInUpLeft" animHover="rotate">
-        <span class="font-semibold inline-block font-secondary">Want to get in touch?</span>
+      <div class="-mt-4" qsAnimation="rotateInUpLeft" animHover="rotate">
+        <span class="font-semibold inline-block font-secondary text-accent-purple -rotate-6">
+          Want to get in touch?
+        </span>
       </div>
     </div>
   </div>
   <img
-    class="blob-bg-1 absolute z-10"
+    class="absolute -z-10 -left-[400px] top-[15%]"
     src="assets/svg/3wdna7.svg"
     aria-hidden="true"
     alt="Blob background"
     qsAnimation="fadeIn"
   />
   <img
-    class="blob-bg-2 absolute z-10"
+    class="absolute -z-10 -bottom-[76px] -right-[120px] rotate-[80deg] desktop-sm:bottom-[100px]"
     src="assets/svg/kwcu73.svg"
     aria-hidden="true"
     alt="Blob background"

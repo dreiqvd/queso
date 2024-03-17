@@ -17,7 +17,11 @@ import { PillComponent } from '@queso/ui-kit/pill';
     AnimationsDirective,
   ],
   templateUrl: './home-posts.component.html',
-  styleUrl: './home-posts.component.scss',
+  styles: `
+    .btn:hover {
+      --text-default-color: white; // make the text white on hover
+    }
+  `,
 })
 export class HomePostsComponent {
   readonly posts = [
