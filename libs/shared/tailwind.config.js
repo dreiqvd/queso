@@ -11,14 +11,14 @@ module.exports = {
      * - _breakpoints.scss
      */
     screens: {
-      'mobile-sm': { max: '360px' },
-      'mobile-md': { max: '480px' },
-      'tablet-sm': { max: '640px' },
-      'tablet-md': { max: '768px' },
-      'desktop-sm': { max: '1024px' },
-      'desktop-md': { max: '1366px' },
-      'desktop-lg': { min: '1367px' },
       'view-short': { min: '768px', max: '768px' },
+      'desktop-lg': { min: '1367px' },
+      'desktop-md': { max: '1366px' },
+      'desktop-sm': { max: '1024px' },
+      'tablet-md': { max: '768px' },
+      'tablet-sm': { max: '640px' },
+      'mobile-md': { max: '480px' },
+      'mobile-sm': { max: '360px' },
     },
     colors: {
       white: '#FFFFFF',
