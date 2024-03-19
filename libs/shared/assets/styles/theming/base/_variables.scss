@@ -1,11 +1,4 @@
 html {
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-
   /* Colors */
   --color-primary: #{map-get($primary, 400)};
   --color-accent: #{map-get($accent, 400)};
@@ -57,10 +50,5 @@ html {
     CDK Overlay container has a z-index of 1000. This prevents overriding the CDK Overlay
     whenever  we use these values across different components.
   */
-  --zindex-sticky: 100;
-  --zindex-fixed: 200;
-  --zindex-always-on-top: 300;
-
-  /** Typography **/
-  --font-size-sm: 0.875rem;
+  --z-fixed: 200;
 }
