@@ -13,4 +13,13 @@ export const appRoutes: Route[] = [
       ),
     title: 'Connect',
   },
+  {
+    path: 'me-when-afk',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import('./pages/me-when-afk/me-when-afk.component').then(
+        (c) => c.MeWhenAfkComponent
+      ),
+    title: 'Away From Keyboard',
+  },
 ];
