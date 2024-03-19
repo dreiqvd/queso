@@ -1,15 +1,20 @@
 <qs-navbar />
-<main class="pt-28 pb-12 mx-auto flex flex-col gap-8 w-[55%]
-  tablet-md:w-[90%]
-  tablet-sm:w-full tablet-sm:px-8
-  mobile-md:px-6
-">
-  <a
-    routerLink=".."
-    class="flex items-center gap-2 -ml-1">
-    <qs-icon iconName="angle-left" aria-label="Left angle icon" [iconSize]="18"/>
-    Back
-  </a>
+<main
+  qsAnimation="fadeIn"
+  class="pt-28 pb-12 mx-auto flex flex-col gap-8 w-[55%]
+    tablet-md:w-[90%]
+    tablet-sm:w-full tablet-sm:px-8
+    mobile-md:px-6
+  ">
+  <div class="-ml-1">
+    <a
+      routerLink=".."
+      matTooltip="Back we go!"
+      class="inline-flex items-center gap-1">
+      <qs-icon iconName="angle-left" aria-label="Left angle icon" [iconSize]="18"/>
+      Back
+    </a>
+  </div>
   <header>
     <h1 class="font-secondary mb-4">Me When AFK</h1>
     <span class="text-sm text-gray">March 20, 2024</span>
@@ -32,7 +37,7 @@
   </p>
 
   <div>
-    <h2 class="font-secondary font-semibold mb-4 text-accent-red">
+    <h2 class="font-secondary font-semibold mb-4 text-accent-red inline-block" matTooltip="Meow...">
       Whiskers, purrs, and zoomies
     </h2>
     <p>
