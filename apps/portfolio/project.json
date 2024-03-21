@@ -21,6 +21,11 @@
           "apps/portfolio/src/assets",
           {
             "glob": "**/*",
+            "input": "apps/portfolio/src/favicons",
+            "output": "."
+          },
+          {
+            "glob": "**/*",
             "input": "libs/shared/assets",
             "output": "./assets"
           }
