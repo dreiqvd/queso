@@ -4,7 +4,7 @@ import anime from 'animejs';
 import { AnimationsDirective, CursorDirective } from '@queso/common/directives';
 import { PlatformService } from '@queso/common/services';
 
-import { PageContainerComponent } from '../../components/page-container/page-container.component';
+import { PageContainerComponent } from '../../shared/page-container/page-container.component';
 
 import { HomeAboutComponent } from './sections/home-about/home-about.component';
 import { HomeContactComponent } from './sections/home-contact/home-contact.component';
@@ -25,15 +25,15 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
     HomePostsComponent,
     HomeContactComponent,
   ],
-  templateUrl: './home.component.html',
+  templateUrl: './page-home.component.html',
   styles: `
     .backdrop {
-      background-color: var(--accent-color);
-      z-index: var(--zIndex-fixed);
+      background-color: var(--color-accent);
+      z-index: var(--z-fixed);
     }
   `,
 })
-export class HomeComponent implements OnInit {
+export class PageHomeComponent implements OnInit {
   /** Element reference for the introductory backdrop */
   @ViewChild('backdrop', { read: AnimationsDirective })
   backdrop!: AnimationsDirective;

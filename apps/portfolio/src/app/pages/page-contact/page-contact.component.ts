@@ -4,8 +4,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 
 import { AnimationsDirective } from '@queso/common/directives';
 
-import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
-import { PageContainerComponent } from '../../components/page-container/page-container.component';
+import { ContactFormComponent } from '../../shared/contact-form/contact-form.component';
+import { PageContainerComponent } from '../../shared/page-container/page-container.component';
 
 @Component({
   selector: 'qs-contact',
@@ -17,9 +17,9 @@ import { PageContainerComponent } from '../../components/page-container/page-con
     ContactFormComponent,
     AnimationsDirective,
   ],
-  templateUrl: './contact.component.html',
+  templateUrl: './page-contact.component.html',
 })
-export class ContactComponent {
+export class PageContactComponent {
   readonly greetingTxt = 'hello'.split('');
   readonly messages = [
     "Clarifications? Questions? Let's <br /> hear them — I won't bite.",

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContactComponent } from './contact.component';
+import { PageMeWhenAfkComponent } from './page-me-when-afk.component';
 
-describe('ContactComponent', () => {
-  let component: ContactComponent;
-  let fixture: ComponentFixture<ContactComponent>;
+describe('PageMeWhenAfkComponent', () => {
+  let component: PageMeWhenAfkComponent;
+  let fixture: ComponentFixture<PageMeWhenAfkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContactComponent],
+      imports: [PageMeWhenAfkComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ContactComponent);
+    fixture = TestBed.createComponent(PageMeWhenAfkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

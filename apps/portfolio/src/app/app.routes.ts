@@ -1,15 +1,15 @@
 import { Route } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
+import { PageHomeComponent } from './pages/page-home/page-home.component';
 
 export const appRoutes: Route[] = [
-  { path: '', component: HomeComponent, pathMatch: 'full', title: 'Home' },
+  { path: '', component: PageHomeComponent, pathMatch: 'full', title: 'Home' },
   {
     path: 'contact',
     pathMatch: 'full',
     loadComponent: () =>
-      import('./pages/contact/contact.component').then(
-        (c) => c.ContactComponent
+      import('./pages/page-contact/page-contact.component').then(
+        (c) => c.PageContactComponent
       ),
     title: 'Connect',
   },
@@ -17,8 +17,8 @@ export const appRoutes: Route[] = [
     path: 'me-when-afk',
     pathMatch: 'full',
     loadComponent: () =>
-      import('./pages/me-when-afk/me-when-afk.component').then(
-        (c) => c.MeWhenAfkComponent
+      import('./pages/page-me-when-afk/page-me-when-afk.component').then(
+        (c) => c.PageMeWhenAfkComponent
       ),
     title: 'Away From Keyboard',
   },

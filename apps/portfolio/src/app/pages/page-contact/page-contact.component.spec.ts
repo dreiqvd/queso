@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MeWhenAfkComponent } from './me-when-afk.component';
+import { PageContactComponent } from './page-contact.component';
 
-describe('MeWhenAfkComponent', () => {
-  let component: MeWhenAfkComponent;
-  let fixture: ComponentFixture<MeWhenAfkComponent>;
+describe('PageContactComponent', () => {
+  let component: PageContactComponent;
+  let fixture: ComponentFixture<PageContactComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MeWhenAfkComponent],
+      imports: [PageContactComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MeWhenAfkComponent);
+    fixture = TestBed.createComponent(PageContactComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
