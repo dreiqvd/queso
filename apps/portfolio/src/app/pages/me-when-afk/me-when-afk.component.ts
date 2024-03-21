@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 
-import { NavbarComponent } from '../../components/navbar';
+import { PageContainerComponent } from '../../components/page-container/page-container.component';
 
 @Component({
   selector: 'qs-me-when-afk',
@@ -14,7 +14,7 @@ import { NavbarComponent } from '../../components/navbar';
     RouterLink,
     MatTooltip,
     AnimationsDirective,
-    NavbarComponent,
+    PageContainerComponent,
     IconComponent,
   ],
   templateUrl: './me-when-afk.component.html',

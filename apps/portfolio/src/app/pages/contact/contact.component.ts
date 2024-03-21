@@ -5,7 +5,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { AnimationsDirective } from '@queso/common/directives';
 
 import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
-import { NavbarComponent } from '../../components/navbar';
+import { PageContainerComponent } from '../../components/page-container/page-container.component';
 
 @Component({
   selector: 'qs-contact',
@@ -13,7 +13,7 @@ import { NavbarComponent } from '../../components/navbar';
   imports: [
     NgOptimizedImage,
     MatTooltip,
-    NavbarComponent,
+    PageContainerComponent,
     ContactFormComponent,
     AnimationsDirective,
   ],
