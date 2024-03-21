@@ -22,12 +22,6 @@ body {
   }
 }
 
-button {
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
 .form-field-wrapper {
   margin-bottom: 8px;
 }

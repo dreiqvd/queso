@@ -49,3 +49,9 @@ a {
     color: #5199ef;
   }
 }
+
+button {
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
