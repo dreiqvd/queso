@@ -38,4 +38,12 @@
   &__rotate {
     @include rotate();
   }
+
+  &__swing {
+    @include swing();
+  }
+
+  &__headShake {
+    @include headShake();
+  }
 }

@@ -21,6 +21,7 @@ module.exports = {
       'mobile-sm': { max: '360px' },
     },
     colors: {
+      transparent: 'transparent',
       white: '#FFFFFF',
       gray: {
         DEFAULT: "var(--color-gray)",

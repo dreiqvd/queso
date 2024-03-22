@@ -1,0 +1,84 @@
+<qs-page-container>
+  <div class="grid grid-cols-2 min-h-dvh overflow-hidden">
+    <div
+      qsAnimation="fadeIn"
+      class="flex items-center justify-center bg-gray-50
+        tablet-md:col-span-2 tablet-md:pt-[72px] tablet-md:pb-12
+      ">
+      <img
+        src="assets/svg/u3fspt.svg"
+        alt="Construction illustration"
+        aria-label="Illustration of a construction"
+        qsAnimation
+        animHover="headShake"
+        matTooltip="Meow"
+        class="max-w-[600px] desktop-md:max-w-[480px] desktop-sm:max-w-[90%] tablet-md:max-w-[400px]"
+      />
+    </div>
+
+    <main
+      class="flex flex-col justify-center px-12 py-[96px]
+        desktop-sm:px-8
+        tablet-md:col-span-2 tablet-md:pt-8 tablet-md:pb-12 tablet-md:px-12
+        mobile-md:px-8
+        mobile-sm:px-4
+      ">
+      <header
+        qsAnimation="fadeInDown"
+        class="font-bold mb-8 flex items-center gap-3
+          mobile-md:flex-col mobile-md:items-start mobile-md:gap-0
+        ">
+        <img
+          src="assets/img/febc6f.gif"
+          alt="Crane animation"
+          aria-hidden="true"
+          width="50"
+        />
+        <h1
+          qsAnimation
+          animHover="swing"
+          class="pt-3 text-[2rem]
+            desktop-md:text-3xl
+            desktop-sm:text-[3dvw]
+            tablet-md:text-3xl
+            tablet-sm:text-[1.75rem]
+            mobile-md:text-3xl
+          ">
+          Projects on the move!
+        </h1>
+      </header>
+      <div class="text-gray-800 max-w-[560px] desktop-md:max-w-none">
+        <p qsAnimation="fadeInRight">
+          My personal projects are on a little journey to a new home; and getting a bit of a makeover too.
+        </p>
+        <p qsAnimation="fadeInRight">
+          They'll be back  with a better look and content. To give you an idea, here are some things I am currently up to:
+        </p>
+        <ul class="list-disc pl-8 flex flex-col gap-3">
+          <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="0.25">Some AI projects (personal exploration)</li>
+          <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="0.5">Rewriting some of my Google Maps projects</li>
+          <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="0.75">Playing around with the new Angular 17's reactive structure</li>
+          <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="1">Some UI design samples</li>
+        </ul>
+        <p qsAnimation="fadeIn" class="mt-8">
+          If you're interested in my professional work experience, check out my CV page
+          <a href="#" class="underline">here</a>!
+          See you on the other side!
+        </p>
+      </div>
+
+      <div class="mt-6">
+        <button
+          type="button"
+          class="cta-btn primary"
+          matTooltip="Adventure awaits. Allegedly..."
+          qsAnimation="rotateIn"
+          aria-label="Know more about me"
+        >
+          <span>Get Connected</span>
+          <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
+        </button>
+      </div>
+    </main>
+  </div>
+</qs-page-container>

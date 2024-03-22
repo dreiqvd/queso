@@ -14,6 +14,14 @@ export const appRoutes: Route[] = [
     title: 'Connect',
   },
   {
+    path: 'projects',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import('./pages/page-projects/page-projects.component').then(
+        (c) => c.PageProjectsComponent
+      ),
+  },
+  {
     path: 'me-when-afk',
     pathMatch: 'full',
     loadComponent: () =>

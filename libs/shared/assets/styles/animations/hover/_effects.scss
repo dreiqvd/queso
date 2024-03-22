@@ -258,6 +258,76 @@
   }
 }
 
+/** Swing */
+@include keyframes(#{$nameSpace}__swing) {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+@mixin swing {
+  transform-origin: top center;
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include prefixed(animation-name, #{$nameSpace}__swing);
+  }
+}
+
+/** Headshake */
+@include keyframes(#{$nameSpace}__headShake) {
+  0% {
+    transform: translateX(0);
+  }
+
+  6.5% {
+    transform: translateX(-6px) rotateY(-9deg);
+  }
+
+  18.5% {
+    transform: translateX(5px) rotateY(7deg);
+  }
+
+  31.5% {
+    transform: translateX(-3px) rotateY(-5deg);
+  }
+
+  43.5% {
+    transform: translateX(2px) rotateY(3deg);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+}
+
+@mixin headShake {
+  animation-timing-function: ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    @include prefixed(animation-name, #{$nameSpace}__headShake);
+  }
+}
+
 /* Rotate */
 @mixin rotate {
   @include hacks();
