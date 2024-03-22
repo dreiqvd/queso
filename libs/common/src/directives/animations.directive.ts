@@ -250,4 +250,5 @@ type HoverAnimations =
   | 'floatShadow'
   | 'rotate'
   | 'swing'
-  | 'headShake';
+  | 'headShake'
+  | 'push';

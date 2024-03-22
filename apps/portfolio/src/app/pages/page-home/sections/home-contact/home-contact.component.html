@@ -1,4 +1,4 @@
-<div class="min-h-dvh overflow-hidden relative py-[200px] tablet-sm:pb-[148px]">
+<div class="min-h-dvh overflow-hidden relative pt-[200px] pb-[260px] tablet-sm:pb-[200px]">
   <div class="text-center w-full" qsAnimation="fadeInDown">
     <h2
       qsAnimation
@@ -73,7 +73,7 @@
     </div>
   </div>
   <div
-    class="absolute flex items-center justify-center w-full gap-2 bottom-4"
+    class="absolute flex flex-col items-center justify-center w-full gap-2 bottom-4"
   >
     <img
       src="assets/svg/logo.svg"
@@ -81,9 +81,11 @@
       alt="DQ Logo"
       aria-label="Drei Quevada Logo"
       qsAnimation="fadeInUp"
+      animHover="push"
+      [animHoverDuration]="0.5"
     />
-    <div qsAnimation="fadeInUp">
-      <span class="mb-[2px] block">Drei Quevada © 2024</span>
+    <div qsAnimation="fadeInUp" class="text-center">
+      <span class="mb-[2px] block text-gray">Drei Quevada © 2024</span>
       <a
         href="mailto:contact@dreiq.dev"
         class="text-sm text-gray font-light hover:text-accent-purple"
