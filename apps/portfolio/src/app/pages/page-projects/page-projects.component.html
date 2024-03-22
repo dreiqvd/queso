@@ -1,18 +1,26 @@
 <qs-page-container>
   <div class="grid grid-cols-2 min-h-dvh overflow-hidden">
     <div
+      qsAnimation="fadeIn"
       class="flex items-center justify-center bg-gray-50
-        tablet-md:col-span-2 tablet-md:pt-[72px] tablet-md:pb-12
+        tablet-md:col-span-2 tablet-md:pt-[72px] tablet-md:pb-12 tablet-md:min-h-[300px]
       ">
-      <img
-        src="assets/svg/u3fspt.svg"
-        alt="Construction illustration"
-        aria-label="Illustration of a construction"
-        qsAnimation="fadeIn"
-        animHover="headShake"
-        matTooltip="Meow"
-        class="max-w-[600px] desktop-md:max-w-[480px] desktop-sm:max-w-[90%] tablet-md:max-w-[400px]"
-      />
+      <!-- Image is enclosed inside a div so that, there is no flickering of content due to
+          size change when image is still being fetched -->
+      <div class="w-full max-w-[600px]
+        desktop-md:max-w-[480px] desktop-sm:max-w-[90%]
+        tablet-md:max-w-[400px]
+      ">
+        <img
+          src="assets/svg/u3fspt.svg"
+          alt="Illustration of a cat playing with a ball of yarn"
+          aria-label="Illustration of a cat playing with a ball of yarn"
+          qsAnimation="fadeIn"
+          animHover="headShake"
+          matTooltip="Meow"
+          class="w-full"
+        />
+      </div>
     </div>
 
     <main
@@ -59,7 +67,7 @@
           <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="0.75">Playing around with the new Angular 17's reactive structure</li>
           <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="1">Some UI design samples</li>
         </ul>
-        <p qsAnimation="fadeIn" class="mt-8">
+        <p class="mt-8" qsAnimation="fadeInUp" [animDelay]="0.5">
           If you're interested in my professional work experience, check out my CV page
           <a routerLink="/cv" class="underline">here</a>!
           See you on the other side!
@@ -71,8 +79,9 @@
           routerLink="/contact"
           class="cta-btn primary w-fit"
           matTooltip="Adventure awaits. Allegedly..."
-          qsAnimation="rotateIn"
           aria-label="Know more about me"
+          qsAnimation="rotateIn"
+          [animDelay]="0.5"
         >
           <span>Get Connected</span>
           <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
