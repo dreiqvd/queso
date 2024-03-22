@@ -1,4 +1,10 @@
-import { Component, OnInit, signal, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import anime from 'animejs';
 
 import { AnimationsDirective, CursorDirective } from '@queso/common/directives';
@@ -37,6 +43,8 @@ export class PageHomeComponent implements OnInit {
   /** Element reference for the introductory backdrop */
   @ViewChild('backdrop', { read: AnimationsDirective })
   backdrop!: AnimationsDirective;
+  @ViewChild('contact') contactSection!: ElementRef<HTMLElement>;
+  @ViewChild('about') aboutSection!: ElementRef<HTMLElement>;
 
   /** Determines if animated intro text should be visible */
   readonly introVisibility = signal('visible');

@@ -35,10 +35,10 @@
   <div qsCustomCursor qsAnimation="fadeIn" class="container w-100" [animDuration]="0.5">
     <qs-page-container>
       <section class="min-h-dvh" id="hero">
-        <qs-home-hero />
+        <qs-home-hero (ctaClick)="aboutSection.nativeElement.scrollIntoView()" />
       </section>
-      <section class="min-h-dvh" id="about">
-        <qs-home-about />
+      <section #about class="min-h-dvh" id="about">
+        <qs-home-about (ctaClick)="contactSection.nativeElement.scrollIntoView()" />
       </section>
       <section class="min-h-dvh" id="skills">
         <qs-home-skills />
@@ -46,7 +46,7 @@
       <section class="min-h-dvh" id="posts">
         <qs-home-posts />
       </section>
-      <section class="min-h-dvh" id="contact">
+      <section #contact class="min-h-dvh" id="contact" fram>
         <qs-home-contact />
       </section>
     </qs-page-container>

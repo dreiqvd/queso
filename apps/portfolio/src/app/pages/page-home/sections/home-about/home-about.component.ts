@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
@@ -19,6 +19,9 @@ import { IconComponent } from '@queso/ui-kit/icon';
   templateUrl: './home-about.component.html',
 })
 export class HomeAboutComponent {
+  // Event that is emitted when the user clicks on the CTA button
+  @Output() ctaClick = new EventEmitter<void>();
+
   readonly aboutItems = [
     {
       text: 'From pixels to databases — 6+ of years building things on the web.',

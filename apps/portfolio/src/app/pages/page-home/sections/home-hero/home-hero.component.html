@@ -54,6 +54,7 @@
         matTooltip="Adventure awaits. Allegedly..."
         qsAnimation="rotateIn"
         aria-label="Know more about me"
+        (click)="ctaClick.emit()"
       >
         <span>Explore</span>
         <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />

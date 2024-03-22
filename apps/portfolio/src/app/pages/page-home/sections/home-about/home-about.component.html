@@ -48,15 +48,16 @@
     </main>
     <div>
       <div class="inline-block mb-4" qsAnimation="rotateIn" [animDelay]="1">
-        <a
+        <button
+          type="button"
           class="cta-btn primary"
-          href="#contact"
           matTooltip="Got an interesting project?"
           aria-label="Connect with me"
+          (click)="ctaClick.emit()"
         >
           <span>Let's Connect</span>
           <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
-        </a>
+        </button>
       </div>
     </div>
   </div>

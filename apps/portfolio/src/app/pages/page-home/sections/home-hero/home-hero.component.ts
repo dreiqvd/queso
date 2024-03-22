@@ -3,7 +3,9 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   OnInit,
+  Output,
   Renderer2,
   signal,
   ViewChild,
@@ -44,6 +46,9 @@ import { ScrollCueComponent } from '@queso/ui-kit/scroll-cue';
 export class HomeHeroComponent implements OnInit, AfterViewInit {
   @ViewChild('headerBlobWrapper') headerBlobWrapper!: ElementRef<HTMLElement>;
   @ViewChild('headerBlobAnchor') headerBlobAnchor!: ElementRef<HTMLElement>;
+
+  // Event that is emitted when the user clicks on the CTA button
+  @Output() ctaClick = new EventEmitter<void>();
 
   readonly greetingText1 = 'Hi, I am'.split('');
   readonly greetingText2 = 'Drei'.split('');
