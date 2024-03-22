@@ -25,10 +25,10 @@ import { PlatformService } from '../services';
 })
 export class AnimationsDirective implements OnInit, OnDestroy {
   /** Optional animation that triggers on load. */
-  animation = input<string>('', { alias: 'qsAnimation' });
+  animation = input<AnimationTypes | ''>('', { alias: 'qsAnimation' });
 
   /** Optional animation that triggers on hover. Multiple hover animations are allowed */
-  animHover = input<string | string[]>();
+  animHover = input<HoverAnimations | HoverAnimations[]>();
 
   /** Duration of the animation in seconds.
    * @defaultvalue 1
@@ -217,3 +217,37 @@ export class AnimationsDirective implements OnInit, OnDestroy {
     this.rendererer.removeChild(this.element.parentElement, this.element);
   }
 }
+
+// type ANIMATION_TYPES =
+type BounceAnimations = 'bounceInDown' | 'bounceInLeft';
+type FadeAnimations =
+  | 'fadeIn'
+  | 'fadeOut'
+  | 'fadeInUp'
+  | 'fadeInDown'
+  | 'fadeInLeft'
+  | 'fadeInRight';
+type FlipAnimations = 'flipInX' | 'flipInY';
+type RotateAnimations = 'rotateIn' | 'rotateInUpLeft';
+type SlideAnimations = 'slideInLeft' | 'slideInRight' | 'slideOutLeft';
+type ZoomAnimations = 'zoomIn';
+
+type AnimationTypes =
+  | BounceAnimations
+  | FadeAnimations
+  | FlipAnimations
+  | RotateAnimations
+  | SlideAnimations
+  | ZoomAnimations;
+
+type HoverAnimations =
+  | 'bounceToRight'
+  | 'wobbleTop'
+  | 'wobbleSkew'
+  | 'wobbleVertical'
+  | 'grow'
+  | 'rubberBand'
+  | 'floatShadow'
+  | 'rotate'
+  | 'swing'
+  | 'headShake';
