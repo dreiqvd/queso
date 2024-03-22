@@ -1,6 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
 
 import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
@@ -8,7 +9,13 @@ import { IconComponent } from '@queso/ui-kit/icon';
 @Component({
   selector: 'qs-home-about',
   standalone: true,
-  imports: [MatTooltip, NgOptimizedImage, AnimationsDirective, IconComponent],
+  imports: [
+    RouterLink,
+    MatTooltip,
+    NgOptimizedImage,
+    AnimationsDirective,
+    IconComponent,
+  ],
   templateUrl: './home-about.component.html',
 })
 export class HomeAboutComponent {
