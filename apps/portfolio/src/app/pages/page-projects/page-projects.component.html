@@ -1,7 +1,6 @@
 <qs-page-container>
   <div class="grid grid-cols-2 min-h-dvh overflow-hidden">
     <div
-      qsAnimation="fadeIn"
       class="flex items-center justify-center bg-gray-50
         tablet-md:col-span-2 tablet-md:pt-[72px] tablet-md:pb-12
       ">
@@ -9,7 +8,7 @@
         src="assets/svg/u3fspt.svg"
         alt="Construction illustration"
         aria-label="Illustration of a construction"
-        qsAnimation
+        qsAnimation="fadeIn"
         animHover="headShake"
         matTooltip="Meow"
         class="max-w-[600px] desktop-md:max-w-[480px] desktop-sm:max-w-[90%] tablet-md:max-w-[400px]"
@@ -24,18 +23,18 @@
         mobile-sm:px-4
       ">
       <header
-        qsAnimation="fadeInDown"
         class="font-bold mb-8 flex items-center gap-3
           mobile-md:flex-col mobile-md:items-start mobile-md:gap-0
         ">
         <img
+          qsAnimation="fadeInDown"
           src="assets/img/febc6f.gif"
           alt="Crane animation"
           aria-hidden="true"
           width="50"
         />
         <h1
-          qsAnimation
+          qsAnimation="fadeInDown"
           animHover="swing"
           class="pt-3 text-[2rem]
             desktop-md:text-3xl
@@ -62,22 +61,22 @@
         </ul>
         <p qsAnimation="fadeIn" class="mt-8">
           If you're interested in my professional work experience, check out my CV page
-          <a href="#" class="underline">here</a>!
+          <a routerLink="/cv" class="underline">here</a>!
           See you on the other side!
         </p>
       </div>
 
       <div class="mt-6">
-        <button
-          type="button"
-          class="cta-btn primary"
+        <a
+          routerLink="/contact"
+          class="cta-btn primary w-fit"
           matTooltip="Adventure awaits. Allegedly..."
           qsAnimation="rotateIn"
           aria-label="Know more about me"
         >
           <span>Get Connected</span>
           <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
-        </button>
+        </a>
       </div>
     </main>
   </div>
