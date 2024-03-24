@@ -21,4 +21,9 @@ export class TextareaComponent extends GenericFormFieldDirective {
    * @defaultValue 5
    */
   rows = input<number>(5);
+
+  /**
+   * Applies the value on the native HTML attribute `autocomplete` to the textarea.
+   */
+  autocomplete = input<'on' | 'off'>('on');
 }

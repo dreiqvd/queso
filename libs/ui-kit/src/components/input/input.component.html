@@ -3,7 +3,13 @@
     @if (label()) {
       <mat-label>{{ label() }}</mat-label>
     }
-    <input matInput [formControl]="formControl()" [id]="name()" [name]="name()" (blur)="onBlur()" />
+    <input
+      matInput
+      [formControl]="formControl()"
+      [name]="name()"
+      [autocomplete]="autocomplete()"
+      (blur)="onBlur()"
+    />
     <mat-error>{{ errorMessage() }}</mat-error>
   </mat-form-field>
 </div>

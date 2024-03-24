@@ -34,7 +34,7 @@
       </button>
     </div>
   }
-  <form class="flex flex-col gap-1" [formGroup]="contactForm">
+  <form class="flex flex-col gap-1" autocomplete="on" [formGroup]="contactForm">
     <qs-input
       label="Name"
       control="name"
