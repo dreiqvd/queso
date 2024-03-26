@@ -7,15 +7,16 @@ export const appRoutes: Route[] = [
   {
     path: 'contact',
     pathMatch: 'full',
+    title: 'Connect',
     loadComponent: () =>
       import('./pages/page-contact/page-contact.component').then(
         (c) => c.PageContactComponent
       ),
-    title: 'Connect',
   },
   {
     path: 'projects',
     pathMatch: 'full',
+    title: 'Projects',
     loadComponent: () =>
       import('./pages/page-projects/page-projects.component').then(
         (c) => c.PageProjectsComponent
@@ -24,10 +25,10 @@ export const appRoutes: Route[] = [
   {
     path: 'me-when-afk',
     pathMatch: 'full',
+    title: 'Away From Keyboard',
     loadComponent: () =>
       import('./pages/page-me-when-afk/page-me-when-afk.component').then(
         (c) => c.PageMeWhenAfkComponent
       ),
-    title: 'Away From Keyboard',
   },
 ];
