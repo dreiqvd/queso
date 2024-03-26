@@ -13,11 +13,11 @@
       ">
       Core Skills
     </h2>
-    <div class="flex gap-16" qsAnimation="slideInLeft">
+    <div class="flex gap-14 desktop-sm:gap-12 mobile-md:gap-8" qsAnimation="slideInLeft">
       @for (skill of coreSkills; track $index) {
-        <figure class="flex flex-col items-center gap-8">
+        <figure class="flex flex-col items-center gap-8 text-default-color">
           <img
-            class="desktop-sm:h-[104px] mobile-md:h-[98px]"
+            class="h-[144px] desktop-sm:h-[128px] mobile-md:h-[120px]"
             [attr.aria-label]="skill.name + ' logo'"
             [src]="'assets/svg/' + skill.logo + '.svg'"
             [alt]="skill.logo"
