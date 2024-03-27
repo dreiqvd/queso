@@ -4,7 +4,7 @@
       tablet-md:col-span-2 tablet-md:pt-8 tablet-md:pb-14
     ">
     <h2
-      qsAnimation="slideInLeft"
+      qsAnimation="fadeInDown"
       animHover="wobbleVertical"
       class="font-extrabold text-underlined text-[4rem] leading-[6rem] z-10 my-6
         after:bg-accent-red after:h-[14px] after:bottom-[18px]
@@ -13,11 +13,12 @@
       ">
       Core Skills
     </h2>
-    <div class="flex gap-14 desktop-sm:gap-12 mobile-md:gap-8" qsAnimation="slideInLeft">
+    <div class="flex gap-14 desktop-sm:gap-12 mobile-md:gap-8">
       @for (skill of coreSkills; track $index) {
         <figure class="flex flex-col items-center gap-8 text-default-color">
           <img
             class="h-[144px] desktop-sm:h-[128px] mobile-md:h-[120px]"
+            qsAnimation="rotateInCenter"
             [attr.aria-label]="skill.name + ' logo'"
             [src]="'assets/svg/' + skill.logo + '.svg'"
             [alt]="skill.logo"
@@ -26,6 +27,7 @@
             (mouseleave)="rotateElement('#' + skill.logo + '-logo', 0)"
           />
           <figcaption
+            qsAnimation="fadeInUp"
             class="font-light text-[1.75rem] desktop-sm:text-2xl mobile-md:text-[1.375rem]"
             [matTooltip]="skill.tooltip">
             {{ skill.name }}

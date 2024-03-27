@@ -228,7 +228,7 @@ type FadeAnimations =
   | 'fadeInLeft'
   | 'fadeInRight';
 type FlipAnimations = 'flipInX' | 'flipInY';
-type RotateAnimations = 'rotateIn' | 'rotateInUpLeft';
+type RotateAnimations = 'rotateIn' | 'rotateInUpLeft' | 'rotateInCenter';
 type SlideAnimations = 'slideInLeft' | 'slideInRight' | 'slideOutLeft';
 type ZoomAnimations = 'zoomIn';
 
