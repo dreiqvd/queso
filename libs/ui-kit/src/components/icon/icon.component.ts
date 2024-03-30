@@ -23,7 +23,7 @@ export class IconComponent implements OnInit {
    * The type of icon style to use.
    * @defaultValue 'light'
    */
-  iconStyle = input<IconStyle>('light');
+  iconStyle = input<IconStyle>('regular');
 
   /** Size of the icon in px. */
   iconSize = input<number>(24);
