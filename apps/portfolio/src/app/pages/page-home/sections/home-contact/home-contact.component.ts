@@ -5,7 +5,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { SOCIAL_LINKS } from '@queso/common';
 import { AnimationsDirective } from '@queso/common/directives';
 
-import { ContactFormComponent } from '../../../../shared/contact-form/contact-form.component';
+import { ContactFormComponent } from '../../../../shared/contact-form';
 
 @Component({
   selector: 'qs-home-contact',

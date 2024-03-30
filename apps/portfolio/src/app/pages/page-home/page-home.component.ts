@@ -10,7 +10,7 @@ import anime from 'animejs';
 import { AnimationsDirective, CursorDirective } from '@queso/common/directives';
 import { PlatformService } from '@queso/common/services';
 
-import { PageContainerComponent } from '../../shared/page-container/page-container.component';
+import { PageContainerComponent } from '../../shared/page-container';
 
 import { HomeAboutComponent } from './sections/home-about/home-about.component';
 import { HomeContactComponent } from './sections/home-contact/home-contact.component';

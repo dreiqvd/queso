@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 
-import { PageContainerComponent } from '../../shared/page-container/page-container.component';
+import { PageContainerComponent } from '../../shared/page-container';
 
 @Component({
   selector: 'qs-me-when-afk',

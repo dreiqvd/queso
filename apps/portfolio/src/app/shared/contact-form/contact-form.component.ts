@@ -14,7 +14,7 @@ import { IconComponent } from '@queso/ui-kit/icon';
 import { InputComponent } from '@queso/ui-kit/input';
 import { TextareaComponent } from '@queso/ui-kit/textarea';
 
-import { MailingService } from '../../services/mailing.service';
+import { MailingService } from '../../services';
 
 @Component({
   selector: 'qs-contact-form',
