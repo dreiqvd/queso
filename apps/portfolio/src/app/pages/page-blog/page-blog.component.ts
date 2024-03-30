@@ -1,5 +1,6 @@
 import { Component, computed, Signal } from '@angular/core';
 
+import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
@@ -12,6 +13,7 @@ import { PageContainerComponent } from '../../shared/page-container';
   selector: 'qs-page-blog',
   standalone: true,
   imports: [
+    AnimationsDirective,
     PageContainerComponent,
     PillComponent,
     IconComponent,
