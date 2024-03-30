@@ -1,11 +1,11 @@
 import { Component, input, OnInit } from '@angular/core';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'qs-icon',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIcon],
   templateUrl: './icon.component.html',
   styles: `
     :host {
