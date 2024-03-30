@@ -1,5 +1,5 @@
 <qs-page-container>
-  <div class="pt-[102px] pb-8 px-8" qsAnimation="fadeIn">
+  <div qsAnimation="fadeIn" class="pt-[102px] pb-8 px-8">
     <header class="text-center">
       <h1
         qsAnimation="fadeInDown"
@@ -10,12 +10,18 @@
       </h1>
       <p
         qsAnimation="fadeInUp"
-        class="text-gray mt-8 mx-auto max-w-[1000px]"
-      >
+        class="text-gray mt-8 mx-auto max-w-[1000px]
+          desktop-sm:max-w-[900px] tablet-sm:max-w-none
+      ">
         So here's the deal—I just recently decided to put some of my thoughts online. Not a lot in my repository yet, but I'm filling it up. Gotta start somewhere, right? Here are some listicles, coding experience, and any shareable stuff (for now).
       </p>
     </header>
-    <main class="mt-12 grid grid-cols-3 gap-12 mx-auto justify-items-center w-fit">
+    <main
+      class="mt-12 grid grid-cols-3 gap-12 mx-auto justify-items-center w-fit
+        desktop-md:gap-8
+        desktop-sm:grid-cols-2
+        tablet-sm:grid-cols-1
+      ">
       @for (article of articles(); track $index) {
         <qs-article-card qsAnimation="fadeIn" [article]="article" />
       }
