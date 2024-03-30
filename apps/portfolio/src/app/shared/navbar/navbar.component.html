@@ -1,7 +1,7 @@
 <header
   role="navigation"
   aria-label="Main navigation"
-  class="h-full flex items-center justify-between 
+  class="h-full flex items-center justify-between
     py-0 px-8 mobile-md:px-4
   "
 >
@@ -41,6 +41,7 @@
     [animDuration]="0.3"
     [animIsManual]="true"
   >
+  <div class="h-full relative">
     <div class="flex justify-end">
       <button
         class="text-gray hover:text-gray-700"
@@ -70,5 +71,18 @@
         </li>
       }
     </ul>
+
+    <div class="absolute bottom-0 left-0">
+      <img
+        src="assets/svg/logo-grayscale.svg"
+        width="36"
+        alt="DQ Logo"
+        aria-label="Drei Quevada Logo"
+        qsAnimation="fadeInUp"
+        animHover="push"
+        [animHoverDuration]="0.5"
+      />
+    </div>
+  </div>
   </nav>
 }
