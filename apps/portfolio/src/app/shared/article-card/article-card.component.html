@@ -1,0 +1,28 @@
+<div class="max-w-[420px] h-full overflow-hidden rounded-2xl bg-white drop-shadow flex flex-col gap-6">
+  @if (showImage()) {
+    <img
+      class="w-full"
+      aria-label="Article image"
+      [alt]="article().imageAlt"
+      [src]="'assets/img/blogs/' + article().image" />
+  }
+
+  <header class="px-6">
+    <div class="flex gap-1 mb-2">
+      @for (tag of article().tags; track $index) {
+        <qs-pill [text]="tag" />
+      }
+    </div>
+    <h2 class="m-0">{{ article().title }}</h2>
+  </header>
+  <p class="px-6 text-accent-purple">
+    {{ article().excerpt }}
+  </p>
+  <div class="px-6 mb-6 text-sm flex justify-between items-center mt-auto">
+    <a href="#" class="inline-flex items-center gap-1">
+      Read
+      <qs-icon iconName="angle-right" [iconSize]="16" />
+    </a>
+    <time class="text-gray">{{ article().date | date }}</time>
+  </div>
+</div>

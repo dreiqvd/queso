@@ -9,7 +9,7 @@ export class ArticlesService {
       {
         title: 'Online Utility Resources for Frontend Development',
         excerpt:
-          'Asset generators? Animations? Code snippets? Here are some of my go-to bookmarks for some common frontend tasks.',
+          'Stuck on an animation? Need a quick code snippet? These are my go-to bookmarks for some frontend needs.',
         date: '2024-03-26',
         tags: ['listicle'],
         image: 'gakeoq.jpg',

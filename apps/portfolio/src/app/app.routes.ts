@@ -23,6 +23,15 @@ export const appRoutes: Route[] = [
       ),
   },
   {
+    path: 'blog',
+    pathMatch: 'full',
+    title: 'Blog',
+    loadComponent: () =>
+      import('./pages/page-blog/page-blog.component').then(
+        (c) => c.PageBlogComponent
+      ),
+  },
+  {
     path: 'me-when-afk',
     pathMatch: 'full',
     title: 'Away From Keyboard',
