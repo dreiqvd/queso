@@ -32,8 +32,8 @@ export const SOCIAL_LINKS = [
     icon: 'square-x-twitter',
   },
   {
-    url: 'https://dribbble.com/dreiqvd',
-    name: 'Dribbble',
-    icon: 'square-dribbble',
+    url: 'https://dreiqvd.medium.com',
+    name: 'Medium',
+    icon: 'square-medium',
   },
 ];
