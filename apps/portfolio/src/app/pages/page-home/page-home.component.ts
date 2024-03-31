@@ -56,6 +56,7 @@ export class PageHomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.platformService.isUsingBrowser()) {
+      this.introVisibility.set('visible');
       anime({
         targets: '#backdrop-svg-wrapper path',
         strokeDashoffset: [anime.setDashoffset, 0],
@@ -63,7 +64,6 @@ export class PageHomeComponent implements OnInit {
         duration: 1500,
         direction: 'alternate',
         delay: (_: HTMLElement, i: number) => i * 250,
-        begin: () => this.introVisibility.set('visible'),
       }).finished.then(() => {
         this.backdrop.animate().then(() => {
           this.backdrop.removeElement();
