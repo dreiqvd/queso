@@ -3,7 +3,7 @@ import { Route } from '@angular/router';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
 
 export const appRoutes: Route[] = [
-  { path: '', component: PageHomeComponent, pathMatch: 'full', title: 'Home' },
+  { path: '', component: PageHomeComponent, pathMatch: 'full' },
   {
     path: 'contact',
     pathMatch: 'full',
