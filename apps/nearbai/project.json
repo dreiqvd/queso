@@ -2,7 +2,7 @@
   "name": "nearbai",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "queso",
+  "prefix": "qs",
   "sourceRoot": "apps/nearbai/src",
   "tags": ["type:app", "scope:nearbai"],
   "targets": {
