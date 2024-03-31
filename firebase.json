@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "portfolio",
+      "public": "dist/apps/portfolio/browser",
+      "frameworksBackend": {
+        "region": "us-central1"
+      }
+    }
+  ]
+}

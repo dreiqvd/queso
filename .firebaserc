@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dreiq-portfolio": {
+      "hosting": {
+        "portfolio": [
+          "dreiq-portfolio"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dreiq-portfolio"
+  }
+}
