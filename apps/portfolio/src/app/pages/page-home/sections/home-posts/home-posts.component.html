@@ -27,29 +27,23 @@
     <p
       qsAnimation="fadeInUp"
       class="text-center text-gray leading-6 px-6 mobile-md:px-8 mobile-sm:px-4">
-      Yep! I sometimes write stuff — anything under the sun.
+      Yep! I sometimes write stuff—anything under the sun.
     </p>
   </header>
-  <div class="grid grid-cols-3 gap-8 my-12 z-20">
-    @for (post of posts; track $index) {
-      <div
+  <div
+    class="my-12 z-20 mt-12 grid grid-cols-3 gap-12 mx-auto justify-items-center w-fit
+      desktop-md:gap-8
+      desktop-sm:grid-cols-2
+      tablet-sm:grid-cols-1
+    ">
+    @for (post of posts(); track $index) {
+      <qs-article-card
         qsAnimation="flipInY"
         animHover="grow"
-        class="relative bg-clip-content bg-white drop-shadow rounded-lg max-w-[300px]
-          desktop-sm:col-span-3 desktop-sm:max-w-none"
         [animDuration]="2"
-      >
-        <div class="p-6 h-full flex flex-col justify-between gap-4 relative">
-          <qs-pill [text]="post.tag" />
-          <div>
-            <h3 class="m-0 mb-4 text-2xl font-semibold">
-              <a href="#" class="text-default-color hover:text-accent-300">{{ post.title }}</a>
-            </h3>
-            <p class="text-accent-purple leading-6">{{ post.excerpt }}</p>
-          </div>
-          <span class="self-end text-gray text-[0.75rem]">{{ post.date }}</span>
-        </div>
-      </div>
+        [article]="post"
+        [showImage]="false"
+      />
     }
   </div>
   <a

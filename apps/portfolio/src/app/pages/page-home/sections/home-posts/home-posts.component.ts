@@ -1,11 +1,13 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
 import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
+import { ArticlesService } from 'apps/portfolio/src/app/services';
+import { ArticleCardComponent } from 'apps/portfolio/src/app/shared/article-card';
 
 @Component({
   selector: 'qs-home-posts',
@@ -17,7 +19,9 @@ import { PillComponent } from '@queso/ui-kit/pill';
     IconComponent,
     PillComponent,
     AnimationsDirective,
+    ArticleCardComponent,
   ],
+  providers: [ArticlesService],
   templateUrl: './home-posts.component.html',
   styles: `
     .btn:hover {
@@ -26,26 +30,6 @@ import { PillComponent } from '@queso/ui-kit/pill';
   `,
 })
 export class HomePostsComponent {
-  readonly posts = [
-    {
-      title: 'AI Utility Tools For Your Web Project',
-      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      tag: 'listicle',
-      date: 'Feb. 02, 2024',
-    },
-    {
-      title: "GitHub CoPilot: Why It's Worth the Pay",
-      excerpt:
-        'Maecenas vulputate, eros vitae gravida pellentesque, turpis ipsum.',
-      tag: 'tech',
-      date: 'Oct. 16, 2023',
-    },
-    {
-      title: 'My Bookmarks as a Web Developer',
-      excerpt:
-        'Cras ultricies hendrerit vehicula. Fusce nulla lacus, laoreet vel.',
-      tag: 'listicle',
-      date: 'Sep. 24, 2023',
-    },
-  ];
+  constructor(private articlesService: ArticlesService) {}
+  readonly posts = computed(() => this.articlesService.getArticles());
 }
