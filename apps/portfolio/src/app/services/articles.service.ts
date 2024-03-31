@@ -13,8 +13,8 @@ export class ArticlesService {
         date: '2024-03-26',
         tags: ['listicle'],
         image: 'gakeoq.jpg',
-        imageAlt: '',
-        url: '',
+        imageAlt: 'Collection of frontend needs',
+        url: 'https://dreiqvd.medium.com/online-utility-resources-for-frontend-development-fe3b109cf80d',
       },
       {
         title: "GitHub CoPilot: Why It's Worth the Pay",
@@ -23,18 +23,18 @@ export class ArticlesService {
         date: '2024-03-28',
         tags: ['tech'],
         image: 'zybxmv.jpg',
-        imageAlt: '',
-        url: '',
+        imageAlt: 'GitHub CoPilot logo',
+        url: 'https://dreiqvd.medium.com/github-copilot-why-its-worth-the-pay-ee2e1efcd3ec',
       },
       {
         title: 'Exploring Angular 17: Takeaways on Some Major Changes',
         excerpt:
-          "Sharing insights from my hands-on experience with Angular's big changes. ",
+          "Sharing insights from my hands-on experience with Angular's big changes.",
         date: '2024-03-28',
         tags: ['tech'],
         image: 'aynuzn.jpg',
-        imageAlt: '',
-        url: '',
+        imageAlt: 'Angular Logo',
+        url: 'https://dreiqvd.medium.com/exploring-angular-17-takeaways-on-some-major-changes-0254eea15e1b',
       },
     ];
   }
