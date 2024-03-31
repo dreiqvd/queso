@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "queso",
   "sourceRoot": "apps/nearbai/src",
-  "tags": [],
+  "tags": ["type:app", "scope:nearbai"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",

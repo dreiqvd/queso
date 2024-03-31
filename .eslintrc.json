@@ -33,6 +33,10 @@
                 "onlyDependOnLibsWithTags": ["scope:shared", "scope:portfolio"]
               },
               {
+                "sourceTag": "scope:nearbai",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:nearbai"]
+              },
+              {
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": ["type:utils", "type:ui"]
               },
