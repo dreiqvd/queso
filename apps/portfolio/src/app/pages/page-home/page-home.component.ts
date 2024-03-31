@@ -47,7 +47,7 @@ export class PageHomeComponent implements OnInit {
   @ViewChild('about') aboutSection!: ElementRef<HTMLElement>;
 
   /** Determines if animated intro text should be visible */
-  readonly introVisibility = signal('visible');
+  readonly introVisibility = signal('hidden');
 
   /** Determines if main content should be visible */
   readonly isContentVisible = signal(false);
