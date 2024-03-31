@@ -56,21 +56,19 @@ export class PageHomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.platformService.isUsingBrowser()) {
-      const duration = 1500;
       anime({
         targets: '#backdrop-svg-wrapper path',
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
-        duration,
+        duration: 1500,
         direction: 'alternate',
         delay: (_: HTMLElement, i: number) => i * 250,
         begin: () => this.introVisibility.set('visible'),
-        complete: () => {
-          this.backdrop.animate().then(() => {
-            this.backdrop.removeElement();
-            this.isContentVisible.set(true);
-          });
-        },
+      }).finished.then(() => {
+        this.backdrop.animate().then(() => {
+          this.backdrop.removeElement();
+          this.isContentVisible.set(true);
+        });
       });
     }
   }
