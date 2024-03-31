@@ -1,0 +1,78 @@
+{
+  "name": "nearbai",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "queso",
+  "sourceRoot": "apps/nearbai/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/nearbai",
+        "index": "apps/nearbai/src/index.html",
+        "browser": "apps/nearbai/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/nearbai/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/nearbai/src/favicon.ico", "apps/nearbai/src/assets"],
+        "styles": ["apps/nearbai/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/nearbai/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/nearbai/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "nearbai:build:production"
+        },
+        "development": {
+          "buildTarget": "nearbai:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "nearbai:build"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "nearbai:build",
+        "staticFilePath": "dist/apps/nearbai/browser"
+      }
+    }
+  }
+}
