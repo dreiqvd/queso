@@ -1,9 +1,11 @@
+<!-- eslint-disable @angular-eslint/template/no-interpolation-in-attributes -->
 <div
-  class="max-w-[420px] h-full overflow-hidden rounded-2xl bg-white drop-shadow flex flex-col gap-6
+  class="card max-w-[420px] h-full overflow-hidden rounded-2xl flex flex-col gap-6 bg-white shadow
+    {{ showImage() ? 'pt-0' : 'pt-8' }}
     hover:opacity-85
     desktop-md:max-w-[360px]
     tablet-sm:max-w-none tablet-sm:w-full
-">
+  ">
   @if (showImage()) {
     <img
       class="w-full"
@@ -25,7 +27,12 @@
     {{ article().excerpt }}
   </p>
   <div class="px-6 mb-6 text-sm flex justify-between items-center mt-auto">
-    <a href="#" class="inline-flex items-center gap-1">
+    <a
+      target="_blank"
+      class="inline-flex items-center gap-1"
+      rel="noreferrer noopener"
+      [href]="article().url"
+    >
       Read
       <qs-icon iconName="angle-right" [iconSize]="16" />
     </a>
