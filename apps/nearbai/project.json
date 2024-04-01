@@ -16,8 +16,22 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/nearbai/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/nearbai/src/favicon.ico", "apps/nearbai/src/assets"],
+        "assets": [
+          "apps/nearbai/src/favicon.ico",
+          "apps/nearbai/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets",
+            "output": "./assets"
+          }
+        ],
         "styles": ["apps/nearbai/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared/assets/styles/core",
+            "libs/shared/assets/styles/theming"
+          ]
+        },
         "scripts": [],
         "server": "apps/nearbai/src/main.server.ts",
         "prerender": true,

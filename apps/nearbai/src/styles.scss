@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@import 'palettes/base';
+@import 'palettes/mustard';
+
+$primary: mat.define-palette($yellow, 400);
+$accent: mat.define-palette($dark-blue, 400);
+$warn: mat.define-palette($red, 400);
+$typography: mat.define-typography-config(
+  $font-family: "Mulish, 'Helvetica Neue', sans-serif",
+);
+
+/** Theme **/
+$app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    typography: $typography,
+    density: 0,
+  )
+);
+
+/** Configuration **/
+@include mat.core-theme($app-theme);
+@include mat.core();
+
+// Typography
+body {
+  font-family: Mulish, 'Helvetica Neue', sans-serif;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Righteous, 'Helvetica Neue', sans-serif;
+}
+
+// Additional imports
+@import 'base';
+@import 'mustard-theme';
