@@ -19,6 +19,9 @@ html {
   --mdc-plain-tooltip-supporting-text-color: var(--tooltip-text-color);
   --mdc-plain-tooltip-supporting-text-size: 0.75rem;
   --mdc-plain-tooltip-container-shape: 4px;
+
+  // Button
+  --mdc-filled-button-label-text-tracking: unset;
 }
 
 mat-form-field {
@@ -45,4 +48,11 @@ mat-form-field {
 .mat-mdc-form-field-bottom-align::before {
   // This controls the fixed height of the bottom-aligned subscript
   display: none !important;
+}
+
+// A probable known bug under Material
+// https://github.com/angular/components/issues/26179
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-label-text-color: var(--text-default-color);
+  --mat-filled-button-state-layer-color: var(--text-default-color);
 }

@@ -7,7 +7,7 @@ $primary: mat.define-palette($yellow, 400);
 $accent: mat.define-palette($dark-blue, 400);
 $warn: mat.define-palette($red, 400);
 $typography: mat.define-typography-config(
-  $font-family: "Mulish, 'Helvetica Neue', sans-serif",
+  $font-family: "Archivo, 'Helvetica Neue', sans-serif",
 );
 
 /** Theme **/
@@ -25,11 +25,14 @@ $app-theme: mat.define-light-theme(
 
 /** Configuration **/
 @include mat.core-theme($app-theme);
+@include mat.form-field-theme($app-theme);
+@include mat.select-theme($app-theme);
+@include mat.button-theme($app-theme);
 @include mat.core();
 
 // Typography
 body {
-  font-family: Mulish, 'Helvetica Neue', sans-serif;
+  font-family: Archivo, 'Helvetica Neue', sans-serif;
   font-size: 1rem;
 }
 
