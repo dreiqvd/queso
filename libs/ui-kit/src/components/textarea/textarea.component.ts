@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { GenericFormFieldDirective } from '../../directives/generic-field.directive';
+import { GenericFormFieldDirective } from '../../directives';
 
 @Component({
   selector: 'qs-textarea',
