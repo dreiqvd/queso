@@ -17,6 +17,7 @@
     "./input": "./src/components/input/index.ts",
     "./pill": "./src/components/pill/index.ts",
     "./scroll-cue": "./src/components/scroll-cue/index.ts",
+    "./select": "./src/components/select/index.ts",
     "./textarea": "./src/components/textarea/index.ts"
   }
 }
