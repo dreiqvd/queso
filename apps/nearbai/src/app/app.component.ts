@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
+import { SearchFormComponent } from './components/search-form';
 
 @Component({
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [SearchFormComponent],
   selector: 'qs-root',
   templateUrl: './app.component.html',
 })

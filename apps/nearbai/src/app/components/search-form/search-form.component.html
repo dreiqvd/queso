@@ -1,0 +1,31 @@
+<form class="my-12" [formGroup]="searchForm">
+  <qs-select
+    name="Origin"
+    control="origin"
+    label="Origin"
+    [options]="sourceLocations"
+  />
+  <div class="grid grid-cols-2 gap-4 mt-6 mb-4">
+    <qs-select
+      name="Category"
+      control="category"
+      label="Category"
+      [options]="categories"
+    />
+    <qs-select
+      name="Radius"
+      control="radius"
+      label="Radius (m)"
+      [options]="radiusOptions"
+    />
+  </div>
+  <button
+    mat-flat-button
+    color="primary"
+    aria-label="Find Places"
+    type="button"
+    class="search-btn w-full"
+  >
+    Search
+  </button>
+</form>
