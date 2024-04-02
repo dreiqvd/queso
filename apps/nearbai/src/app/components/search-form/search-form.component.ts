@@ -5,7 +5,7 @@ import { MatButton } from '@angular/material/button';
 import { SelectableItem } from '@queso/ui-kit';
 import { SelectComponent } from '@queso/ui-kit/select';
 
-import { CATEGORIES, ORIGINS, RADIUS } from './search-form.data';
+import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
 
 @Component({
   selector: 'qs-search-form',
@@ -26,8 +26,8 @@ export class SearchFormComponent {
   readonly radiusOptions: SelectableItem[] = RADIUS;
 
   readonly searchForm = new FormGroup({
-    origin: new FormControl('current'),
-    category: new FormControl('restaurants'),
-    radius: new FormControl(500),
+    origin: new FormControl(DEFAULTS['origin']),
+    category: new FormControl(DEFAULTS['category']),
+    radius: new FormControl(DEFAULTS['radius']),
   });
 }

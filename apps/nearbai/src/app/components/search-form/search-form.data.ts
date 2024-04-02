@@ -6,8 +6,12 @@ export const ORIGINS: SelectableItem[] = [
     value: 'current',
   },
   {
-    label: 'SM Davao City',
-    value: 'sm-davao',
+    label: 'SM City Davao',
+    value: 'sm-city-davao',
+    position: {
+      lat: 7.0496822,
+      lng: 125.5857307,
+    },
   },
 ];
 
@@ -40,3 +44,9 @@ export const RADIUS: SelectableItem[] = [
     value: 2000,
   },
 ];
+
+export const DEFAULTS = {
+  origin: 'sm-city-davao',
+  category: 'restaurants',
+  radius: 500,
+};

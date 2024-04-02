@@ -1,5 +1,5 @@
 <div class="grid grid-cols-[600px_auto] h-dvh overflow-hidden">
-  <div class="p-6">
+  <div class="p-6 shadow-sidenav z-10">
     <header>
       <h1 class="mb-4 flex items-end gap-2">
         <img src="assets/img/map.gif" alt="Map" aria-hidden="true" width="50" class="pt-1" />
@@ -10,6 +10,6 @@
     <qs-search-form />
   </div>
   <div class="bg-gray-400">
-
+    <google-map height="100%" width="100%" [options]="mapOptions()"/>
   </div>
 </div>
