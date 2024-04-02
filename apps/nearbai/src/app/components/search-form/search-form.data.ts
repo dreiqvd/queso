@@ -13,6 +13,14 @@ export const ORIGINS: SelectableItem[] = [
       lng: 125.5857307,
     },
   },
+  {
+    label: 'Matina Town Square',
+    value: 'mts',
+    position: {
+      lat: 7.0636869,
+      lng: 125.5916553,
+    },
+  },
 ];
 
 export const CATEGORIES: SelectableItem[] = [

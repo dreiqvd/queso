@@ -25,7 +25,8 @@
     aria-label="Find Places"
     type="button"
     class="search-btn w-full"
+    (click)="onSearch()"
   >
-    Search
+    {{ buttonLabel() }}
   </button>
 </form>

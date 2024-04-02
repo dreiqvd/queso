@@ -7,9 +7,9 @@
       </h1>
       <p class="text-gray">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in erat ut massa auctor molestie. Donec cursus elit sapien, at scelerisque lectus ornare a. Quisque quis dapibus risus.</p>
     </header>
-    <qs-search-form />
+    <qs-search-form (search)="onSearch($event)"/>
   </div>
   <div class="bg-gray-400">
-    <google-map height="100%" width="100%" [options]="mapOptions()"/>
+    <google-map height="100%" width="100%" [options]="mapOptions()" (mapInitialized)="onMapInitialized($event)"/>
   </div>
 </div>
