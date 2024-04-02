@@ -79,7 +79,11 @@ module.exports = {
     textColor: ({ theme }) => ({
       'default-color': 'var(--text-default-color)',
       ...theme('colors'),
-    })
+    }),
+    boxShadow: {
+      DEFAULT: 'var(--box-shadow-default)',
+      sidenav: '2px 0 4px -2px var(--color-gray-200)',
+    }
   },
   plugins: [],
   // Following blocklist are preferred to be used without default styling

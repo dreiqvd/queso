@@ -15,9 +15,6 @@ module.exports = {
         'accent-red': 'var(--color-accent-red)',
         'accent-purple':  'var(--color-accent-purple)',
       },
-      boxShadow: {
-        DEFAULT: 'var(--box-shadow-default)',
-      },
       fontFamily: {
         secondary: 'Inconsolata, sans-serif'
       }
