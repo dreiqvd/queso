@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: ['./apps/**/src/**/*.{html,ts}', './libs/**/src/**/*.{html,ts}'],
   theme: {
@@ -23,6 +25,10 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       white: '#FFFFFF',
+      green: {
+        DEFAULT: colors.green['400'],
+        ...colors.green,
+      },
       gray: {
         DEFAULT: "var(--color-gray)",
         50: "var(--color-gray-50)",
