@@ -3,6 +3,7 @@ html {
   --color-primary: #{map-get($primary, 400)};
   --color-accent: #{map-get($accent, 400)};
   --color-warn: #{map-get($red, 400)};
+  --color-green: #{map-get($green, 400)};
   --color-gray: #{map-get($gray, 600)};
 
   --color-primary-50: #{map-get($primary, 50)};
@@ -38,6 +39,7 @@ html {
   --color-gray-800: #{map-get($gray, 800)};
   --color-gray-900: #{map-get($gray, 900)};
 
+  // Semantic Colors
   --color-warn-50: #{map-get($red, 50)};
   --color-warn-100: #{map-get($red, 100)};
   --color-warn-200: #{map-get($red, 200)};
@@ -48,6 +50,17 @@ html {
   --color-warn-700: #{map-get($red, 700)};
   --color-warn-800: #{map-get($red, 800)};
   --color-warn-900: #{map-get($red, 900)};
+
+  --color-green-50: #{map-get($green, 50)};
+  --color-green-100: #{map-get($green, 100)};
+  --color-green-200: #{map-get($green, 200)};
+  --color-green-300: #{map-get($green, 300)};
+  --color-green-400: #{map-get($green, 400)};
+  --color-green-500: #{map-get($green, 500)};
+  --color-green-600: #{map-get($green, 600)};
+  --color-green-700: #{map-get($green, 700)};
+  --color-green-800: #{map-get($green, 800)};
+  --color-green-900: #{map-get($green, 900)};
 
   /* Z-Indexes
     Note: It is intended that the values below are below 1000 since the Angular Material

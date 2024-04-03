@@ -25,10 +25,6 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       white: '#FFFFFF',
-      green: {
-        DEFAULT: colors.green['400'],
-        ...colors.green,
-      },
       gray: {
         DEFAULT: "var(--color-gray)",
         50: "var(--color-gray-50)",
@@ -80,7 +76,20 @@ module.exports = {
         700: "var(--color-warn-700)",
         800: "var(--color-warn-800)",
         900: "var(--color-warn-900)",
-      }
+      },
+      green: {
+        DEFAULT: "var(--color-green)",
+        50: "var(--color-green-50)",
+        100: "var(--color-green-100)",
+        200: "var(--color-green-200)",
+        300: "var(--color-green-300)",
+        400: "var(--color-green-400)",
+        500: "var(--color-green-500)",
+        600: "var(--color-green-600)",
+        700: "var(--color-green-700)",
+        800: "var(--color-green-800)",
+        900: "var(--color-green-900)",
+      },
     },
     textColor: ({ theme }) => ({
       'default-color': 'var(--text-default-color)',

@@ -1,7 +1,9 @@
+import { NgClass } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 
 import { IconComponent } from '@queso/ui-kit/icon';
+import { PillComponent } from '@queso/ui-kit/pill';
 
 import { SearchFormComponent, SearchValue } from './components/search-form';
 import {
@@ -12,15 +14,41 @@ import {
 
 @Component({
   standalone: true,
-  imports: [GoogleMap, SearchFormComponent, IconComponent],
+  imports: [
+    NgClass,
+    GoogleMap,
+    SearchFormComponent,
+    IconComponent,
+    PillComponent,
+  ],
   selector: 'qs-root',
   templateUrl: './app.component.html',
   styles: `
-    // 162, 173, 185
     .card {
       box-shadow:
         rgba(162, 173, 185, 0.35) 0px 6px 24px 0px,
         rgba(162, 173, 185, 0.08) 0px 0px 0px 1px;
+    }
+
+    qs-pill {
+      margin-bottom: 2px;
+      display: inline-block;
+
+      ::ng-deep {
+        .pill {
+          text-transform: capitalize;
+        }
+      }
+
+      &.open {
+        --pill-bg-color: var(--color-green-100);
+        --pill-text-color: var(--color-green-600);
+      }
+
+      &.closed {
+        --pill-bg-color: var(--color-warn-100);
+        --pill-text-color: var(--color-warn-600);
+      }
     }
   `,
 })
