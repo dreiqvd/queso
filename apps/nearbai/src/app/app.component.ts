@@ -68,6 +68,8 @@ export class AppComponent {
 
   // Services
   private placesService!: google.maps.places.PlacesService;
+  private directionsService!: google.maps.DirectionsService;
+  private directionsRendererService!: google.maps.DirectionsRenderer;
 
   /**
    * Returns the lat-lng pair value of an origin location
@@ -87,6 +89,10 @@ export class AppComponent {
 
     // Set services
     this.placesService = new google.maps.places.PlacesService(map);
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsRendererService = new google.maps.DirectionsRenderer({
+      map,
+    });
 
     const defaultCenter = this.getPositionFromOrigin(DEFAULTS['origin']);
     this.mapCircle = new google.maps.Circle({
@@ -139,6 +145,26 @@ export class AppComponent {
     this.searchResults.set(results);
 
     this.showResults.set(true);
+  }
+
+  /** Display directions/route from the center of the active circle
+   * going to the selected item.
+   */
+  showDirections(destination: google.maps.LatLngLiteral): void {
+    this.directionsService
+      .route({
+        origin: {
+          location: this.mapCircle.getCenter(),
+        },
+        destination: {
+          location: destination,
+        },
+        travelMode: google.maps.TravelMode.DRIVING,
+      })
+      .then((response) => {
+        this.directionsRendererService.setDirections(response);
+      })
+      .catch((e) => console.log('Directions request failed due to: ' + e));
   }
 }
 

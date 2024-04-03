@@ -55,8 +55,9 @@
               <button
                 type="button"
                 class="flex flex-col gap-2 items-center justify-center text-sm
-                  hover:text-primary
-              ">
+                  hover:text-primary"
+                (click)="showDirections(result.location)"
+              >
                 <qs-icon iconName="diamond-turn-right" iconStyle="light" />
                 <span>Directions</span>
               </button>
