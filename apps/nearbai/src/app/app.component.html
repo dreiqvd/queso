@@ -20,10 +20,10 @@
           @for (result of searchResults(); track result.id) {
             <div class="card bg-white rounded-lg overflow-hidden flex items-center justify-between gap-4 pr-4 mb-6">
               <div class="grid grid-cols-[100px_auto] gap-2">
-                <div class="bg-gray-50 h-full flex items-center overflow-hidden">
+                <div class="bg-gray-100 h-full flex items-center overflow-hidden">
                   <img
                     loading="lazy"
-                    class="h-full"
+                    class="w-[100px] h-[120px] object-cover"
                     [src]="result.imgUrl"
                     [alt]="result.name"
                   />

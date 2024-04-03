@@ -1,16 +1,12 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, NgZone, signal } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
 import { SearchFormComponent, SearchValue } from './components/search-form';
-import {
-  data,
-  DEFAULTS,
-  ORIGINS,
-} from './components/search-form/search-form.data';
+import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
 
 @Component({
   standalone: true,
@@ -80,6 +76,8 @@ export class AppComponent {
       .position as google.maps.LatLngLiteral;
   }
 
+  constructor(private ngZone: NgZone) {}
+
   /**
    * Function that is called once the Google Map is ready. It saves the map
    * instance and creates a circle overlay on the map.
@@ -115,42 +113,44 @@ export class AppComponent {
     this.mapCircle.setRadius(radius);
     this.map.panTo(center);
 
-    // this.placesService.nearbySearch(
-    //   {
-    //     location: center,
-    //     radius: radius,
-    //     type: value.category,
-    //   },
-    //   (res, status) => {
-    //     if (status !== google.maps.places.PlacesServiceStatus.OK || !results) {
-    //       return;
-    //     }
+    this.placesService.nearbySearch(
+      {
+        location: center,
+        radius: radius,
+        type: value.category,
+      },
+      (res, status) => {
+        if (status !== google.maps.places.PlacesServiceStatus.OK || !res) {
+          return;
+        }
 
-    //     console.log(res);
-    //   }
-    // );
-    const results: SearchResult[] = data.map((d) => {
-      return {
-        id: d.place_id,
-        name: d.name,
-        location: d.geometry.location,
-        address: d.vicinity,
-        ratings: d.rating,
-        ratingsTotal: d.user_ratings_total,
-        isOpen: true,
-        imgUrl: `https://via.placeholder.com/98x98.jpg?text=${d.name}`,
-      };
-    });
-
-    this.searchResults.set(results);
-
-    this.showResults.set(true);
+        this.ngZone.run(() => {
+          const results: SearchResult[] = res.map((d, idx) => {
+            return {
+              id: d.place_id || idx.toString(),
+              name: d.name || 'Unknown',
+              location: d.geometry?.location,
+              address: d.vicinity || '',
+              ratings: d.rating,
+              ratingsTotal: d.user_ratings_total,
+              isOpen: true,
+              imgUrl: d.photos?.length
+                ? d.photos[0].getUrl()
+                : `https://via.placeholder.com/100x120.jpg?text=${d.name}`,
+            };
+          });
+          this.searchResults.set(results);
+          this.showResults.set(true);
+        });
+      }
+    );
   }
 
   /** Display directions/route from the center of the active circle
    * going to the selected item.
    */
-  showDirections(destination: google.maps.LatLngLiteral): void {
+  showDirections(destination: SearchResult['location']): void {
+    if (!destination) return;
     this.directionsService
       .route({
         origin: {
@@ -173,8 +173,8 @@ interface SearchResult {
   name: string;
   imgUrl: string;
   address: string;
-  location: google.maps.LatLngLiteral;
   isOpen: boolean;
+  location?: google.maps.LatLng;
   ratings?: number;
   ratingsTotal?: number;
 }
