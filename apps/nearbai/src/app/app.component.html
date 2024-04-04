@@ -86,9 +86,16 @@
     <google-map height="100%" width="100%" [options]="mapOptions()" (mapInitialized)="onMapInitialized($event)">
       @for (result of searchResults(); track result.id) {
         @if (result.location) {
-          <map-marker [position]="result.location" />
+          <map-marker
+            #marker="mapMarker"
+            icon="assets/img/marker.png"
+            [position]="result.location"
+            (mapClick)="onMarkerClick(marker)"
+          />
         }
       }
+
+      <!-- <map-info-window>Info Window content</map-info-window> -->
     </google-map>
   </div>
 </div>
