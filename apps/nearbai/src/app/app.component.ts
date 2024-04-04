@@ -11,11 +11,12 @@ import {
   signal,
   ViewChild,
 } from '@angular/core';
-import { GoogleMap, MapMarker } from '@angular/google-maps';
+import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { Subject } from 'rxjs';
 
 import { getViewportHeight } from '@queso/common';
 import { AnimationsDirective } from '@queso/common/directives';
+import { PlatformService } from '@queso/common/services';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
@@ -28,6 +29,7 @@ import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
     NgClass,
     GoogleMap,
     MapMarker,
+    MapInfoWindow,
     AnimationsDirective,
     SearchFormComponent,
     IconComponent,
@@ -38,6 +40,7 @@ import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
   @ViewChild('resultsWrapper') resultsWrapperRef!: ElementRef<HTMLElement>;
 
   // Map properties
@@ -66,10 +69,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   // Misc
   readonly showLoader = signal(false);
+  readonly activeMarker = signal<SearchResult | null>(null);
 
   constructor(
     private ngZone: NgZone,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private platformService: PlatformService
   ) {}
 
   ngOnInit(): void {
@@ -126,13 +131,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     result: google.maps.places.PlaceResult,
     openNow: boolean | undefined
   ): SearchResult {
+    const reviewsText = result.user_ratings_total === 1 ? 'review' : 'reviews';
+    const ratingsText = result.rating
+      ? `${result.rating} (${result.user_ratings_total?.toLocaleString()} ${reviewsText})`
+      : 'No reviews';
+
     return {
       id: result.place_id || '',
       name: result.name || '',
       location: result.geometry?.location,
       address: result.vicinity || '',
-      ratings: result.rating,
-      ratingsTotal: result.user_ratings_total,
+      ratingsText,
       isOpen: openNow,
       imgUrl: result.photos?.length
         ? result.photos[0].getUrl()
@@ -153,10 +162,12 @@ export class AppComponent implements OnInit, AfterViewInit {
    * Compute the height of the search results wrapper element
    */
   private setSearchResultsWrapperHeight(): void {
-    const wrapperElement = this.resultsWrapperRef.nativeElement;
-    const offsetTop = wrapperElement.getBoundingClientRect().top;
-    const wrapperHeight = getViewportHeight() - offsetTop - 48; // 24px padding
-    this.renderer.setStyle(wrapperElement, 'height', `${wrapperHeight}px`);
+    if (this.platformService.isUsingBrowser()) {
+      const wrapperElement = this.resultsWrapperRef.nativeElement;
+      const offsetTop = wrapperElement.getBoundingClientRect().top;
+      const wrapperHeight = getViewportHeight() - offsetTop - 48; // 24px padding
+      this.renderer.setStyle(wrapperElement, 'height', `${wrapperHeight}px`);
+    }
   }
 
   /**
@@ -234,6 +245,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
   }
 
+  onMarkerClick(marker: MapMarker, item: SearchResult): void {
+    // console.log(event.pixel);
+    // this.showDirections(marker.getPosition());
+    this.activeMarker.set(item);
+    this.infoWindow?.open(marker);
+  }
+
   /** Display directions/route from the center of the active circle
    * going to the selected item.
    */
@@ -263,6 +281,5 @@ interface SearchResult {
   address: string;
   isOpen: boolean | undefined;
   location?: google.maps.LatLng;
-  ratings?: number;
-  ratingsTotal?: number;
+  ratingsText?: string;
 }
