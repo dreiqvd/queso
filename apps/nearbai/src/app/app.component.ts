@@ -11,7 +11,7 @@ import {
   signal,
   ViewChild,
 } from '@angular/core';
-import { GoogleMap } from '@angular/google-maps';
+import { GoogleMap, MapMarker } from '@angular/google-maps';
 import { Subject } from 'rxjs';
 
 import { getViewportHeight } from '@queso/common';
@@ -27,6 +27,7 @@ import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
   imports: [
     NgClass,
     GoogleMap,
+    MapMarker,
     AnimationsDirective,
     SearchFormComponent,
     IconComponent,
