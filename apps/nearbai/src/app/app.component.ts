@@ -15,6 +15,7 @@ import { GoogleMap } from '@angular/google-maps';
 import { Subject } from 'rxjs';
 
 import { getViewportHeight } from '@queso/common';
+import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
@@ -26,6 +27,7 @@ import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
   imports: [
     NgClass,
     GoogleMap,
+    AnimationsDirective,
     SearchFormComponent,
     IconComponent,
     PillComponent,
