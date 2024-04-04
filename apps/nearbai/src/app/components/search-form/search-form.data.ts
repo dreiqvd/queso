@@ -6,19 +6,19 @@ export const ORIGINS: SelectableItem[] = [
     value: 'current',
   },
   {
-    label: 'SM City Davao',
-    value: 'sm-city-davao',
-    position: {
-      lat: 7.0496822,
-      lng: 125.5857307,
-    },
-  },
-  {
     label: 'Matina Town Square',
     value: 'mts',
     position: {
       lat: 7.0636869,
       lng: 125.5916553,
+    },
+  },
+  {
+    label: 'SM City Davao',
+    value: 'sm-city-davao',
+    position: {
+      lat: 7.0496822,
+      lng: 125.5857307,
     },
   },
 ];
@@ -54,7 +54,7 @@ export const RADIUS: SelectableItem[] = [
 ];
 
 export const DEFAULTS = {
-  origin: 'sm-city-davao',
+  origin: 'mts',
   category: 'restaurant',
   radius: 500,
 };

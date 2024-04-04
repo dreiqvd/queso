@@ -30,7 +30,11 @@
                 </div>
                 <div class="py-4 px-2">
                   <header>
-                    <qs-pill [text]="result.isOpen ? 'Open' : 'Closed'" [ngClass]="result.isOpen ? 'open' : 'closed'" />
+                    @if (result.isOpen !== undefined) {
+                      <qs-pill [text]="result.isOpen ? 'Open' : 'Closed'" [ngClass]="result.isOpen ? 'open' : 'closed'" />
+                    } @else {
+                      <span class="text-gray text-sm">(Missing Business Hours)</span>
+                    }
                     <h3 class="m-0 text-lg">{{ result.name }}</h3>
                   </header>
                   <div class="text-gray text-sm mt-1 flex flex-col gap-1">
