@@ -13,7 +13,7 @@ module.exports = {
      * - _breakpoints.scss
      */
     screens: {
-      'view-short': { min: '768px', max: '768px' },
+      'view-short': { raw: '(max-height: 768px)' },
       'desktop-lg': { min: '1367px' },
       'desktop-md': { max: '1366px' },
       'desktop-sm': { max: '1024px' },
