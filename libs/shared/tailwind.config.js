@@ -24,6 +24,7 @@ module.exports = {
     },
     colors: {
       transparent: 'transparent',
+      'transluscent-white': 'rgba(255, 255, 255, 0.5)',
       white: '#FFFFFF',
       gray: {
         DEFAULT: "var(--color-gray)",

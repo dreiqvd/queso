@@ -1,8 +1,20 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, NgZone, OnInit, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  ElementRef,
+  HostListener,
+  NgZone,
+  OnInit,
+  Renderer2,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 import { Subject } from 'rxjs';
 
+import { getViewportHeight } from '@queso/common';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
@@ -20,36 +32,11 @@ import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
   ],
   selector: 'qs-root',
   templateUrl: './app.component.html',
-  styles: `
-    .card {
-      box-shadow:
-        rgba(162, 173, 185, 0.15) 0px 6px 24px 0px,
-        rgba(162, 173, 185, 0.08) 0px 0px 0px 1px;
-    }
-
-    qs-pill {
-      margin-bottom: 2px;
-      display: inline-block;
-
-      ::ng-deep {
-        .pill {
-          text-transform: capitalize;
-        }
-      }
-
-      &.open {
-        --pill-bg-color: var(--color-green-100);
-        --pill-text-color: var(--color-green-600);
-      }
-
-      &.closed {
-        --pill-bg-color: var(--color-warn-100);
-        --pill-text-color: var(--color-warn-600);
-      }
-    }
-  `,
+  styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild('resultsWrapper') resultsWrapperRef!: ElementRef<HTMLElement>;
+
   // Map properties
   private map!: google.maps.Map;
   private mapCircle!: google.maps.Circle;
@@ -60,22 +47,27 @@ export class AppComponent implements OnInit {
     };
   });
 
-  readonly showResults = signal(false);
-  readonly searchResults = signal<SearchResult[]>([]);
-
   // Services
   private placesService!: google.maps.places.PlacesService;
   private directionsService!: google.maps.DirectionsService;
   private directionsRendererService!: google.maps.DirectionsRenderer;
 
+  // Properties related to searching
+  readonly showResults = signal(false);
+  readonly searchResults = signal<SearchResult[]>([]);
   private nearbySearch$ = new Subject<void>();
+  private searchAllDone = false;
+  private searchOpenDone = false;
+  private searchAllResults: google.maps.places.PlaceResult[] = [];
+  private searchOpenResults: google.maps.places.PlaceResult[] = [];
 
-  searchAllDone = false;
-  searchOpenDone = false;
-  searchAllResults: google.maps.places.PlaceResult[] = [];
-  searchOpenResults: google.maps.places.PlaceResult[] = [];
+  // Misc
+  readonly showLoader = signal(false);
 
-  constructor(private ngZone: NgZone) {}
+  constructor(
+    private ngZone: NgZone,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
     this.nearbySearch$.subscribe(() => {
@@ -83,6 +75,15 @@ export class AppComponent implements OnInit {
         this.mergeSearchResults();
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.setSearchResultsWrapperHeight();
+  }
+
+  @HostListener('window:resize')
+  onWindowResize(): void {
+    this.setSearchResultsWrapperHeight();
   }
 
   /** Merge the results from Search All and Search Open query
@@ -106,8 +107,12 @@ export class AppComponent implements OnInit {
     // Running inside the ngZone to update the UI. This is necessary to avoid the issue of changes
     // not being detected when running function inside a library script (e.g. nearbySearch callback)
     this.ngZone.run(() => {
-      this.showResults.set(true);
-      this.searchResults.set(currentResults);
+      // Set a minimum of 1 second delay to show the loader
+      setTimeout(() => {
+        this.showLoader.set(false);
+        this.showResults.set(true);
+        this.searchResults.set(currentResults);
+      }, 1000);
     });
   }
 
@@ -142,6 +147,16 @@ export class AppComponent implements OnInit {
   }
 
   /**
+   * Compute the height of the search results wrapper element
+   */
+  private setSearchResultsWrapperHeight(): void {
+    const wrapperElement = this.resultsWrapperRef.nativeElement;
+    const offsetTop = wrapperElement.getBoundingClientRect().top;
+    const wrapperHeight = getViewportHeight() - offsetTop - 48; // 24px padding
+    this.renderer.setStyle(wrapperElement, 'height', `${wrapperHeight}px`);
+  }
+
+  /**
    * Function that is called once the Google Map is ready. It saves the map
    * instance and creates a circle overlay on the map.
    */
@@ -169,6 +184,7 @@ export class AppComponent implements OnInit {
   }
 
   onSearch(value: SearchValue): void {
+    this.showLoader.set(true);
     const center = this.getPositionFromOrigin(value.origin);
     const radius = value.radius;
     // Update circle position and radius

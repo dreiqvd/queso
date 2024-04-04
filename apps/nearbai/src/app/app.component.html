@@ -10,67 +10,72 @@
 
     <qs-search-form (search)="onSearch($event)" />
 
-    @if (showResults()) {
-      <div>
-        <h2 class="text-gray font-semibold text-base font-">
+    <div class="relative">
+      @if (showLoader()) {
+        <div class="h-full w-full flex items-center justify-center bg-transluscent-white absolute left-0 top-0">
+          <div class="loader"></div>
+        </div>
+      }
+
+      @if (showResults()) {
+        <h2 class="text-gray font-semibold text-base">
           Results:
         </h2>
+      }
 
-        <div class="h-[420px] overflow-y-auto py-4 mt-4 pr-4">
-          @for (result of searchResults(); track result.id) {
-            <div class="card bg-white rounded-lg overflow-hidden flex items-center justify-between gap-4 pr-4 mb-6">
-              <div class="grid grid-cols-[100px_auto] gap-2">
-                <div class="bg-gray-100 h-full flex items-center overflow-hidden">
-                  <img
-                    loading="lazy"
-                    class="w-[100px] h-[120px] object-cover"
-                    [src]="result.imgUrl"
-                    [alt]="result.name"
-                  />
-                </div>
-                <div class="py-4 px-2">
-                  <header>
-                    @if (result.isOpen !== undefined) {
-                      <qs-pill [text]="result.isOpen ? 'Open' : 'Closed'" [ngClass]="result.isOpen ? 'open' : 'closed'" />
-                    } @else {
-                      <span class="text-gray text-sm">(Missing Business Hours)</span>
-                    }
-                    <h3 class="m-0 text-lg">{{ result.name }}</h3>
-                  </header>
-                  <div class="text-gray text-sm mt-1 flex flex-col gap-1">
-                    <div class="flex items-center gap-2">
-                      <qs-icon class="mb-[2px] text-warn" iconName="location-dot" iconStyle="solid" [iconSize]="14" />
-                      <span>{{ result.address }}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <qs-icon class="mb-[2px] text-primary" iconName="star" iconStyle="solid" [iconSize]="14" />
-                      @if (result.ratings !== undefined) {
-                        <span>{{ result.ratings }}</span>
-                        @if (result.ratingsTotal) {
-                          <span>({{ result.ratingsTotal }} reviews)</span>
-                        }
-                      } @else {
-                        <span>No reviews</span>
+      <div #resultsWrapper class="overflow-y-auto py-4 mt-4 pr-4">
+        @for (result of searchResults(); track result.id) {
+          <div class="card bg-white rounded-lg overflow-hidden flex items-center justify-between gap-4 pr-4 mb-6">
+            <div class="grid grid-cols-[100px_auto] gap-2">
+              <div class="bg-gray-100 h-full flex items-center overflow-hidden">
+                <img
+                  loading="lazy"
+                  class="w-[100px] h-[120px] object-cover"
+                  [src]="result.imgUrl"
+                  [alt]="result.name"
+                />
+              </div>
+              <div class="py-4 px-2">
+                <header>
+                  @if (result.isOpen !== undefined) {
+                    <qs-pill [text]="result.isOpen ? 'Open' : 'Closed'" [ngClass]="result.isOpen ? 'open' : 'closed'" />
+                  } @else {
+                    <span class="text-gray text-sm">(Missing Business Hours)</span>
+                  }
+                  <h3 class="m-0 text-lg">{{ result.name }}</h3>
+                </header>
+                <div class="text-gray text-sm mt-1 flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <qs-icon class="mb-[2px] text-warn" iconName="location-dot" iconStyle="solid" [iconSize]="14" />
+                    <span>{{ result.address }}</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <qs-icon class="mb-[2px] text-primary" iconName="star" iconStyle="solid" [iconSize]="14" />
+                    @if (result.ratings !== undefined) {
+                      <span>{{ result.ratings }}</span>
+                      @if (result.ratingsTotal) {
+                        <span>({{ result.ratingsTotal }} reviews)</span>
                       }
-                    </div>
+                    } @else {
+                      <span>No reviews</span>
+                    }
                   </div>
                 </div>
               </div>
-              <button
-                type="button"
-                class="flex flex-col gap-2 items-center justify-center text-sm
-                  hover:text-primary"
-                (click)="showDirections(result.location)"
-              >
-                <qs-icon iconName="diamond-turn-right" iconStyle="light" />
-                <span>Directions</span>
-              </button>
             </div>
-          }
-        </div>
-
+            <button
+              type="button"
+              class="flex flex-col gap-2 items-center justify-center text-sm
+                hover:text-primary"
+              (click)="showDirections(result.location)"
+            >
+              <qs-icon iconName="diamond-turn-right" iconStyle="light" />
+              <span>Directions</span>
+            </button>
+          </div>
+        }
       </div>
-    }
+    </div>
   </div>
   <div class="bg-gray-400">
     <google-map height="100%" width="100%" [options]="mapOptions()" (mapInitialized)="onMapInitialized($event)"/>
