@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 
@@ -6,13 +6,10 @@ import { PlatformService } from '@queso/common/services';
 import { SelectableItem } from '@queso/ui-kit';
 import { SelectComponent } from '@queso/ui-kit/select';
 
-import {
-  CATEGORIES,
-  DEFAULTS,
-  Origin,
-  ORIGINS,
-  RADIUS,
-} from './search-form.data';
+import { Origin, SearchParams } from '../../app.interface';
+import { SearchService } from '../../services/search.service';
+
+import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
 
 @Component({
   selector: 'qs-search-form',
@@ -27,8 +24,6 @@ import {
   `,
 })
 export class SearchFormComponent implements OnInit {
-  @Output() search = new EventEmitter<SearchValue>();
-
   readonly searchForm = new FormGroup({
     origin: new FormControl<string>(DEFAULTS['origin']),
     category: new FormControl<string>(DEFAULTS['category']),
@@ -42,7 +37,10 @@ export class SearchFormComponent implements OnInit {
 
   readonly buttonLabel = signal<string>('Find');
 
-  constructor(private platformService: PlatformService) {}
+  constructor(
+    private platformService: PlatformService,
+    private searchService: SearchService
+  ) {}
 
   ngOnInit(): void {
     this.checkGeolocation();
@@ -76,12 +74,6 @@ export class SearchFormComponent implements OnInit {
   }
 
   onSearch(): void {
-    this.search.emit(this.searchForm.value as SearchValue);
+    this.searchService.search(this.searchForm.value as SearchParams);
   }
-}
-
-export interface SearchValue {
-  origin: string;
-  category: string;
-  radius: number;
 }

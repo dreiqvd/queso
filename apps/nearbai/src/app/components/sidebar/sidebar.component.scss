@@ -26,11 +26,7 @@
 }
 
 .sidebar {
-  transition: width 0.5s ease;
-
   &.closed {
-    width: 80px;
-
     .sidebar-toggle {
       left: auto;
       right: 20px;

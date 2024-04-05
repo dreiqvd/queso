@@ -5,6 +5,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
 import { appRoutes } from './app.routes';
+import { SearchService } from './services/search.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,5 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideAnimations(),
     provideHttpClient(withFetch()),
+    { provide: SearchService },
   ],
 };

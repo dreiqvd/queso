@@ -1,10 +1,6 @@
-import {} from '@angular/google-maps';
-
 import { SelectableItem } from '@queso/ui-kit';
 
-export interface Origin extends SelectableItem {
-  position?: google.maps.LatLngLiteral;
-}
+import { Origin } from '../../app.interface';
 
 export const ORIGINS: Origin[] = [
   {

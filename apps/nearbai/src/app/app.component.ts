@@ -1,34 +1,19 @@
 import { NgClass } from '@angular/common';
-import {
-  AfterViewInit,
-  Component,
-  computed,
-  ElementRef,
-  NgZone,
-  OnInit,
-  signal,
-  ViewChild,
-} from '@angular/core';
+import { Component, computed, signal, ViewChild } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { MatTooltip } from '@angular/material/tooltip';
-import { debounceTime, fromEvent, Subject } from 'rxjs';
 
-import {
-  BREAKPOINTS,
-  getViewportHeight,
-  getViewportWidth,
-} from '@queso/common';
+import { BREAKPOINTS, getViewportWidth } from '@queso/common';
 import { AnimationsDirective } from '@queso/common/directives';
-import { PlatformService } from '@queso/common/services';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
-import { SearchFormComponent, SearchValue } from './components/search-form';
-import {
-  DEFAULTS,
-  Origin,
-  ORIGINS,
-} from './components/search-form/search-form.data';
+import { ActiveMarker, MapCenter, Origin, SearchResult } from './app.interface';
+import { SearchFormComponent } from './components/search-form';
+import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SearchService } from './services/search.service';
 
 @Component({
   standalone: true,
@@ -42,17 +27,25 @@ import {
     SearchFormComponent,
     IconComponent,
     PillComponent,
+    SidebarComponent,
   ],
   selector: 'qs-root',
+  styles: `
+    .sidebar {
+      transition: width 0.5s ease;
+
+      &.closed {
+        width: 80px;
+      }
+    }
+  `,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent {
   @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
-  @ViewChild('resultsWrapper') resultsWrapperRef?: ElementRef<HTMLElement>;
+  @ViewChild(SidebarComponent) sidebar!: SidebarComponent;
 
   // Map properties
-  private map!: google.maps.Map;
   private mapCircle!: google.maps.Circle;
   readonly mapOptions = computed<google.maps.MapOptions>(() => {
     return {
@@ -60,108 +53,45 @@ export class AppComponent implements OnInit, AfterViewInit {
       zoom: 16,
     };
   });
+  readonly searchResults = signal<SearchResult[]>([]);
 
   // Services
-  private placesService!: google.maps.places.PlacesService;
   private directionsService!: google.maps.DirectionsService;
   private directionsRendererService!: google.maps.DirectionsRenderer;
-
-  // Properties related to searching
-  readonly showResults = signal(false);
-  readonly searchResults = signal<SearchResult[]>([]);
-  private nearbySearch$ = new Subject<void>();
-  private searchAllDone = false;
-  private searchOpenDone = false;
-  private searchAllResults: google.maps.places.PlaceResult[] = [];
-  private searchOpenResults: google.maps.places.PlaceResult[] = [];
 
   // Misc
   readonly showLoader = signal(false);
   readonly activeMarker = signal<ActiveMarker | null>(null);
-  readonly isSidebarOpen = signal(true);
-  readonly showSidebarContent = signal(true);
-  readonly resultsWrapperHeight = signal<string>('auto');
-  readonly isSmallViewPort = signal(this.isUsingSmallViewPort());
-  readonly showLocationAccessMsg = signal(false);
   readonly currentCenter = signal<MapCenter | null>(null);
+  readonly isSidebarOpen = signal(true);
 
-  constructor(
-    private ngZone: NgZone,
-    private platformService: PlatformService
-  ) {}
+  constructor(private searchService: SearchService) {
+    this.searchService.searchStarted$
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => {
+        this.onSearchStart();
+      });
 
-  ngOnInit(): void {
-    this.nearbySearch$.subscribe(() => {
-      if (this.searchAllDone && this.searchOpenDone) {
-        this.mergeSearchResults();
-      }
-    });
-
-    if (this.platformService.isUsingBrowser) {
-      fromEvent(window, 'resize')
-        .pipe(debounceTime(300))
-        .subscribe(() => {
-          this.isSmallViewPort.set(this.isUsingSmallViewPort());
-          this.setSearchResultsWrapperHeight();
-        });
-    }
+    this.searchService.searchEnded$
+      .pipe(takeUntilDestroyed())
+      .subscribe((val) => {
+        this.onSearchEnd(val);
+      });
   }
 
-  ngAfterViewInit(): void {
-    this.setSearchResultsWrapperHeight();
+  private onSearchStart(): void {
+    this.searchResults.set([]);
   }
 
-  /** Merge the results from Search All and Search Open query
-   * Context for merging: https://developers.google.com/maps/documentation/javascript/place_field_js_migration
-   */
-  private mergeSearchResults(): void {
-    // Map the "Open" stores first to the current results
-    const currentResults = this.searchOpenResults.map((r) => {
-      return this.mapSearchResult(r, true);
-    });
+  private onSearchEnd(results: SearchResult[] | 'DENIED'): void {
+    if (results !== 'DENIED') {
+      this.currentCenter.set(this.searchService.searchCenter);
 
-    // Map the "Closed" stores or stores with missing business hours
-    this.searchAllResults.forEach((r) => {
-      if (!currentResults.find((c) => c.id === r.place_id)) {
-        // Only set as "Closed" if opening_hours is defined; otherwise set as "Missing Business Hours"
-        const businessHours = r.opening_hours === undefined ? undefined : false;
-        currentResults.push(this.mapSearchResult(r, businessHours));
-      }
-    });
-
-    // Running inside the ngZone to update the UI. This is necessary to avoid the issue of changes
-    // not being detected when running function inside a library script (e.g. nearbySearch callback)
-    this.ngZone.run(() => {
-      // Set a minimum of 1 second delay to show the loader
+      // Add a delay to be in sync with the search loading animation
       setTimeout(() => {
-        this.showLoader.set(false);
-        this.showResults.set(true);
-        this.searchResults.set(currentResults);
-      }, 1000);
-    });
-  }
-
-  /**
-   * Map the search result into a template display format.
-   */
-  private mapSearchResult(
-    result: google.maps.places.PlaceResult,
-    openNow: boolean | undefined
-  ): SearchResult {
-    const reviewsText = result.user_ratings_total === 1 ? 'review' : 'reviews';
-    const ratingsText = result.rating
-      ? `${result.rating} (${result.user_ratings_total?.toLocaleString()} ${reviewsText})`
-      : 'No reviews';
-
-    return {
-      id: result.place_id || '',
-      name: result.name || '',
-      location: result.geometry?.location,
-      address: result.vicinity || '',
-      ratingsText,
-      isOpen: openNow,
-      imgUrl: result.photos?.length ? result.photos[0].getUrl() : undefined,
-    };
+        this.searchResults.set(results);
+      }, 800);
+    }
   }
 
   /**
@@ -174,100 +104,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Compute the height of the search results wrapper element
-   */
-  private setSearchResultsWrapperHeight(): void {
-    if (
-      this.platformService.isUsingBrowser &&
-      this.resultsWrapperRef &&
-      !this.isSmallViewPort()
-    ) {
-      const wrapperElement = this.resultsWrapperRef.nativeElement;
-      const offsetTop = wrapperElement.getBoundingClientRect().top;
-      const wrapperHeight = getViewportHeight() - offsetTop - 48; // account for padding
-      this.resultsWrapperHeight.set(`${wrapperHeight}px`);
-    } else {
-      this.resultsWrapperHeight.set('auto');
-    }
-  }
-
-  /** Determines if current viewport is for small screen */
-  private isUsingSmallViewPort(): boolean {
-    if (this.platformService.isUsingBrowser) {
-      return getViewportWidth() <= BREAKPOINTS.MOBILE_MD;
-    }
-
-    return false;
-  }
-
-  /** Search for places using Google API */
-  private searchPlaces(
-    value: SearchValue,
-    center: google.maps.LatLngLiteral
-  ): void {
-    const radius = value.radius;
-
-    // Update circle position and radius
-    this.mapCircle.setCenter(center);
-    this.mapCircle.setRadius(radius);
-    this.map.panTo(center);
-
-    const params = {
-      location: center,
-      radius: radius,
-      type: value.category,
-    };
-
-    const handleResults = (
-      res: google.maps.places.PlaceResult[] | null,
-      status: google.maps.places.PlacesServiceStatus
-    ): void => {
-      if (status !== google.maps.places.PlacesServiceStatus.OK || !res) {
-        return;
-      }
-      this.nearbySearch$.next();
-    };
-
-    /**
-     * As per this documentation: https://developers.google.com/maps/documentation/javascript/place_field_js_migration,
-     * to handle the deprecation for open_now, two requests should be made to fetch open and closed places.
-     */
-    this.placesService.nearbySearch(
-      { ...params, openNow: false },
-      (res, status) => {
-        this.searchAllDone = true;
-        this.searchAllResults = res || [];
-        handleResults(res, status);
-      }
-    );
-
-    this.placesService.nearbySearch(
-      { ...params, openNow: true },
-      (res, status) => {
-        this.searchOpenDone = true;
-        this.searchOpenResults = res || [];
-        handleResults(res, status);
-      }
-    );
-  }
-
-  /** Reset states */
-  private reset(): void {
-    this.showLocationAccessMsg.set(false);
-    this.showResults.set(false);
-    this.currentCenter.set(null);
-    this.searchResults.set([]);
-  }
-
-  /**
    * Function that is called once the Google Map is ready. It saves the map
    * instance and creates a circle overlay on the map.
    */
   onMapInitialized(map: google.maps.Map): void {
-    this.map = map;
-
     // Set services
-    this.placesService = new google.maps.places.PlacesService(map);
     this.directionsService = new google.maps.DirectionsService();
     this.directionsRendererService = new google.maps.DirectionsRenderer({
       map,
@@ -296,43 +137,8 @@ export class AppComponent implements OnInit, AfterViewInit {
         name: defaultOrigin.label,
       });
     }
-  }
 
-  /**
-   * Function that is called when search has been initialized.
-   */
-  onSearch(value: SearchValue): void {
-    this.showLoader.set(true);
-    this.reset();
-    if (value.origin === 'current') {
-      // Request for location access if not yet granted
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const center = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          this.map.panTo(center);
-          this.currentCenter.set({
-            name: 'Current Location',
-            location: center,
-          });
-          this.searchPlaces(value, center);
-        },
-        (): void => {
-          console.log('access has been denied');
-          this.showLoader.set(false);
-          this.showLocationAccessMsg.set(true);
-        }
-      );
-    } else {
-      const center = this.getPositionFromOrigin(value.origin);
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const name = ORIGINS.find((o) => o.value === value.origin)!
-        .label as string;
-      this.currentCenter.set({ name, location: center });
-      this.searchPlaces(value, center);
-    }
+    this.searchService.setMap(map, this.mapCircle);
   }
 
   /**
@@ -365,13 +171,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   showDirections(destination: SearchResult['location']): void {
     if (!destination) return;
     if (getViewportWidth() <= BREAKPOINTS.TABLET_MD) {
-      this.toggleSidear();
+      this.sidebar.onToggleSidebar();
     }
 
     this.directionsService
       .route({
         origin: {
-          location: this.mapCircle.getCenter(),
+          location: (this.searchService.searchCenter as MapCenter).location,
         },
         destination: {
           location: destination,
@@ -383,39 +189,4 @@ export class AppComponent implements OnInit, AfterViewInit {
       })
       .catch((e) => console.log('Directions request failed due to: ' + e));
   }
-
-  /** Collapse or opens the sidebar */
-  toggleSidear(): void {
-    this.isSidebarOpen.set(!this.isSidebarOpen());
-    if (this.isSidebarOpen()) {
-      // allow a delay before showing the sidebar content
-      setTimeout(() => {
-        this.showSidebarContent.set(true);
-      }, 500);
-    } else {
-      this.showSidebarContent.set(false);
-    }
-  }
-}
-
-interface SearchResult {
-  id: string;
-  name: string;
-  address: string;
-  isOpen?: boolean;
-  imgUrl?: string;
-  location?: google.maps.LatLng | google.maps.LatLngLiteral;
-  ratingsText?: string;
-}
-
-interface ActiveMarker {
-  id: string;
-  name: string;
-  address?: string;
-  ratingsText?: string;
-}
-
-interface MapCenter {
-  name: string;
-  location: google.maps.LatLng | google.maps.LatLngLiteral;
 }
