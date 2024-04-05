@@ -1,34 +1,36 @@
 <div class="flex h-dvh overflow-hidden">
   <div
-    class="sidebar p-6 shadow-sidenav relative z-10 w-[600px]
+    class="sidebar shadow-sidenav relative z-10 w-[600px]
       desktop-sm:w-[560px]
       tablet-sm:w-[460px]
       mobile-md:w-[90%]
     "
     [class.closed]="!isSidebarOpen()"
   >
-    <button
-      type="button"
-      aria-label="Toggle Sidebar"
-      class="sidebar-toggle absolute top-4 right-4 text-gray p-2 hover:text-gray-500"
-      [matTooltip]="isSidebarOpen() ? 'Collapse Sidebar' : 'Open Sidebar'"
-      (click)="toggleSidear()"
-    >
-      <qs-icon [iconName]="isSidebarOpen() ? 'left-from-bracket' : 'right-from-bracket'" />
-    </button>
+    <header class="my-4 px-6 relative w-full h-[70px] bg-white">
+      <h1 class="mb-4 flex items-end gap-2">
+        @if (showSidebarContent()) {
+          <img qsAnimation="fadeIn" src="assets/img/map.gif" alt="Map" aria-hidden="true" width="50" class="pt-1" />
+          <span qsAnimation="fadeIn">NearBai</span>
+        }
+      </h1>
+      <button
+        type="button"
+        aria-label="Toggle Sidebar"
+        qsAnimation="fadeIn"
+        class="sidebar-toggle text-gray p-2 absolute right-4 top-[14px] hover:text-gray-500"
+        [matTooltip]="isSidebarOpen() ? 'Collapse Sidebar' : 'Open Sidebar'"
+        (click)="toggleSidear()"
+      >
+        <qs-icon [iconName]="isSidebarOpen() ? 'left-from-bracket' : 'right-from-bracket'" />
+      </button>
+    </header>
 
     @if (showSidebarContent()) {
-      <div qsAnimation="fadeIn" class="mt-4">
-        <header>
-          <h1 class="mb-4 flex items-end gap-2">
-            <img src="assets/img/map.gif" alt="Map" aria-hidden="true" width="50" class="pt-1" />
-            NearBai
-          </h1>
-          <p class="text-gray">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in erat ut massa auctor molestie. Since this is not a full-scale application, only a limited number of results is shown.
-          </p>
-        </header>
-
+      <div qsAnimation="fadeIn" class="px-6 h-[calc(100%-110px)] mobile-md:overflow-y-auto">
+        <p class="text-gray">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in erat ut massa auctor molestie. Since this is not a full-scale application, only a limited number of results is shown.
+        </p>
         <qs-search-form (search)="onSearch($event)" />
 
         <div class="relative">
@@ -44,7 +46,10 @@
             </h2>
           }
 
-          <div #resultsWrapper class="overflow-y-auto py-4 mt-4 pr-4 pl-1" [style.height.px]="resultsWrapperHeight()">
+          <div #resultsWrapper
+            class="overflow-y-auto py-4 mt-4 pr-4 pl-1
+              mobile-md:overflow-y-visible mobile-md:px-0"
+            [style.height]="resultsWrapperHeight()">
             @for (result of searchResults(); track result.id) {
               <div
                 qsAnimation="fadeIn"

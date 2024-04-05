@@ -76,7 +76,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   readonly activeMarker = signal<SearchResult | null>(null);
   readonly isSidebarOpen = signal(true);
   readonly showSidebarContent = signal(true);
-  readonly resultsWrapperHeight = signal<number>(0);
+  readonly resultsWrapperHeight = signal<string>('auto');
   readonly isSmallViewPort = signal(this.isUsingSmallViewPort());
 
   constructor(
@@ -95,8 +95,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       fromEvent(window, 'resize')
         .pipe(debounceTime(300))
         .subscribe(() => {
-          this.setSearchResultsWrapperHeight();
           this.isSmallViewPort.set(this.isUsingSmallViewPort());
+          this.setSearchResultsWrapperHeight();
         });
     }
   }
@@ -171,11 +171,17 @@ export class AppComponent implements OnInit, AfterViewInit {
    * Compute the height of the search results wrapper element
    */
   private setSearchResultsWrapperHeight(): void {
-    if (this.platformService.isUsingBrowser() && this.resultsWrapperRef) {
+    if (
+      this.platformService.isUsingBrowser() &&
+      this.resultsWrapperRef &&
+      !this.isSmallViewPort()
+    ) {
       const wrapperElement = this.resultsWrapperRef.nativeElement;
       const offsetTop = wrapperElement.getBoundingClientRect().top;
-      const wrapperHeight = getViewportHeight() - offsetTop - 48; // 24px padding
-      this.resultsWrapperHeight.set(wrapperHeight);
+      const wrapperHeight = getViewportHeight() - offsetTop - 48; // account for padding
+      this.resultsWrapperHeight.set(`${wrapperHeight}px`);
+    } else {
+      this.resultsWrapperHeight.set('auto');
     }
   }
 
