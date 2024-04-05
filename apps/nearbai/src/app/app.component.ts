@@ -73,11 +73,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   // Misc
   readonly showLoader = signal(false);
-  readonly activeMarker = signal<SearchResult | null>(null);
+  readonly activeMarker = signal<ActiveMarker | null>(null);
   readonly isSidebarOpen = signal(true);
   readonly showSidebarContent = signal(true);
   readonly resultsWrapperHeight = signal<string>('auto');
   readonly isSmallViewPort = signal(this.isUsingSmallViewPort());
+  readonly showLocationAccessMsg = signal(false);
+  readonly currentCenter = signal<MapCenter | null>(null);
 
   constructor(
     private ngZone: NgZone,
@@ -194,37 +196,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     return false;
   }
 
-  /**
-   * Function that is called once the Google Map is ready. It saves the map
-   * instance and creates a circle overlay on the map.
-   */
-  onMapInitialized(map: google.maps.Map): void {
-    this.map = map;
-
-    // Set services
-    this.placesService = new google.maps.places.PlacesService(map);
-    this.directionsService = new google.maps.DirectionsService();
-    this.directionsRendererService = new google.maps.DirectionsRenderer({
-      map,
-    });
-
-    const defaultCenter = this.getPositionFromOrigin(DEFAULTS['origin']);
-    this.mapCircle = new google.maps.Circle({
-      map,
-      center: defaultCenter,
-      strokeColor: '#ffdca6',
-      fillColor: '#ffdca6',
-      fillOpacity: 0.35,
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      radius: DEFAULTS['radius'],
-    });
-  }
-
-  onSearch(value: SearchValue): void {
-    this.showLoader.set(true);
-    const center = this.getPositionFromOrigin(value.origin);
+  /** Search for places using Google API */
+  private searchPlaces(
+    value: SearchValue,
+    center: google.maps.LatLngLiteral
+  ): void {
     const radius = value.radius;
+
     // Update circle position and radius
     this.mapCircle.setCenter(center);
     this.mapCircle.setRadius(radius);
@@ -269,10 +247,99 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
   }
 
-  onMarkerClick(marker: MapMarker, item: SearchResult): void {
-    // console.log(event.pixel);
-    // this.showDirections(marker.getPosition());
-    this.activeMarker.set(item);
+  /** Reset states */
+  private reset(): void {
+    this.showLocationAccessMsg.set(false);
+    this.showResults.set(false);
+    this.currentCenter.set(null);
+    this.searchResults.set([]);
+  }
+
+  /**
+   * Function that is called once the Google Map is ready. It saves the map
+   * instance and creates a circle overlay on the map.
+   */
+  onMapInitialized(map: google.maps.Map): void {
+    this.map = map;
+
+    // Set services
+    this.placesService = new google.maps.places.PlacesService(map);
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsRendererService = new google.maps.DirectionsRenderer({
+      map,
+    });
+
+    const defaultCenter = this.getPositionFromOrigin(DEFAULTS['origin']);
+    this.mapCircle = new google.maps.Circle({
+      map,
+      center: defaultCenter,
+      strokeColor: '#ffdca6',
+      fillColor: '#ffdca6',
+      fillOpacity: 0.35,
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      radius: DEFAULTS['radius'],
+    });
+  }
+
+  /**
+   * Function that is called when search has been initialized.
+   */
+  onSearch(value: SearchValue): void {
+    this.showLoader.set(true);
+    this.reset();
+    if (value.origin === 'current') {
+      // Request for location access if not yet granted
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const center = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          this.map.panTo(center);
+          this.currentCenter.set({
+            name: 'Current Location',
+            location: center,
+          });
+          this.searchPlaces(value, center);
+        },
+        (): void => {
+          console.log('access has been denied');
+          this.showLoader.set(false);
+          this.showLocationAccessMsg.set(true);
+        }
+      );
+    } else {
+      const center = this.getPositionFromOrigin(value.origin);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const name = ORIGINS.find((o) => o.value === value.origin)!
+        .label as string;
+      this.currentCenter.set({ name, location: center });
+      this.searchPlaces(value, center);
+    }
+  }
+
+  /**
+   * Called when a marker is clicked. It sets the active marker and opens the info window.
+   * Marker can be the center of the circle or a search result item.
+   */
+  onMarkerClick(marker: MapMarker, item: SearchResult | 'center'): void {
+    if (item === 'center') {
+      const center = this.currentCenter() as MapCenter;
+      this.activeMarker.set({
+        id: 'center',
+        name: center.name,
+        address: '',
+      });
+    } else {
+      this.activeMarker.set({
+        id: item.id,
+        name: item.name,
+        address: item.address,
+        ratingsText: item.ratingsText,
+      });
+    }
+
     this.infoWindow?.open(marker);
   }
 
@@ -301,6 +368,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       .catch((e) => console.log('Directions request failed due to: ' + e));
   }
 
+  /** Collapse or opens the sidebar */
   toggleSidear(): void {
     this.isSidebarOpen.set(!this.isSidebarOpen());
     if (this.isSidebarOpen()) {
@@ -320,6 +388,18 @@ interface SearchResult {
   address: string;
   isOpen?: boolean;
   imgUrl?: string;
-  location?: google.maps.LatLng;
+  location?: google.maps.LatLng | google.maps.LatLngLiteral;
   ratingsText?: string;
+}
+
+interface ActiveMarker {
+  id: string;
+  name: string;
+  address?: string;
+  ratingsText?: string;
+}
+
+interface MapCenter {
+  name: string;
+  location: google.maps.LatLng | google.maps.LatLngLiteral;
 }

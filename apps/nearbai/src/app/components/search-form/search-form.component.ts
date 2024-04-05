@@ -36,6 +36,8 @@ export class SearchFormComponent implements OnInit {
   readonly buttonLabel = signal<string>('Find');
 
   ngOnInit(): void {
+    this.checkGeolocation();
+
     const { category } = this.searchForm.controls;
     category.valueChanges.subscribe((value) => {
       this.handleCategoryChange(value as string);
@@ -51,6 +53,17 @@ export class SearchFormComponent implements OnInit {
       .label as string;
 
     this.buttonLabel.set(`Find ${label}`);
+  }
+
+  /** Verify if Geolocation feature is availabel */
+  private checkGeolocation(): void {
+    if (navigator.geolocation) {
+      // Insert Current Location in the list of options
+      this.sourceLocations.unshift({
+        label: 'Current Location',
+        value: 'current',
+      });
+    }
   }
 
   onSearch(): void {

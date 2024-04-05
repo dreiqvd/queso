@@ -40,6 +40,13 @@
             </div>
           }
 
+          @if (showLocationAccessMsg()) {
+            <p>
+              <i>Uh oh! Location Access is required to search from current location.</i>
+            </p>
+          }
+
+
           @if (showResults()) {
             <h2 class="text-gray font-semibold text-base">
               Results:
@@ -130,25 +137,40 @@
         @if (result.location) {
           <map-marker
             #marker="mapMarker"
-            icon="assets/img/marker.png"
+            icon="assets/img/marker-yellow.png"
             [position]="result.location"
             (mapClick)="onMarkerClick(marker, result)"
           />
         }
       }
 
+      @if (currentCenter()) {
+        <map-marker
+          #marker="mapMarker"
+          icon="assets/img/marker-red.png"
+          [position]="currentCenter()?.location!"
+          (mapClick)="onMarkerClick(marker, 'center')"
+        />
+      }
+
       <map-info-window>
+        @if (activeMarker()?.id === 'center') {
+          <span class="text-sm text-gray">Center</span>
+        }
         <h4 class="text-default-color text-sm mb-2 font-bold">{{ activeMarker()?.name }}</h4>
-        <div class="flex flex-col gap-1 text-sm text-gray">
-          <div class="flex items-center gap-2">
-            <qs-icon class="mb-[2px] text-warn" iconName="location-dot" iconStyle="solid" [iconSize]="14" />
-            {{ activeMarker()?.address }}
+
+        @if (activeMarker()?.id !== 'center') {
+          <div class="flex flex-col gap-1 text-sm text-gray">
+            <div class="flex items-center gap-2">
+              <qs-icon class="mb-[2px] text-warn" iconName="location-dot" iconStyle="solid" [iconSize]="14" />
+              {{ activeMarker()?.address }}
+            </div>
+            <div class="flex items-center gap-2">
+              <qs-icon class="mb-[2px] text-primary" iconName="star" iconStyle="solid" [iconSize]="14" />
+              {{ activeMarker()?.ratingsText }}
+            </div>
           </div>
-          <div class="flex items-center gap-2">
-            <qs-icon class="mb-[2px] text-primary" iconName="star" iconStyle="solid" [iconSize]="14" />
-            {{ activeMarker()?.ratingsText }}
-          </div>
-        </div>
+        }
       </map-info-window>
     </google-map>
   </div>

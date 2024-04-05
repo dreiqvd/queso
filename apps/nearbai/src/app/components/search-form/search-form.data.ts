@@ -2,10 +2,6 @@ import { SelectableItem } from '@queso/ui-kit';
 
 export const ORIGINS: SelectableItem[] = [
   {
-    label: 'Current Location',
-    value: 'current',
-  },
-  {
     label: 'Matina Town Square',
     value: 'mts',
     position: {
