@@ -59,6 +59,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
   // Misc
   readonly isSmallViewPort = signal(this.isUsingSmallViewPort());
+  readonly resultsCount = signal(0);
 
   constructor(
     private platformService: PlatformService,
@@ -107,6 +108,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       this.showLocationAccessMsg.set(true);
     } else {
       // Set a 1 second delay to show the loader
+      this.resultsCount.set(results.length);
       setTimeout(() => {
         this.showLoader.set(false);
         this.showResults.set(true);
