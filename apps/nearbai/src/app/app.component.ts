@@ -275,6 +275,10 @@ export class AppComponent implements OnInit, AfterViewInit {
    */
   showDirections(destination: SearchResult['location']): void {
     if (!destination) return;
+    if (getViewportWidth() <= BREAKPOINTS.TABLET_MD) {
+      this.toggleSidear();
+    }
+
     this.directionsService
       .route({
         origin: {
