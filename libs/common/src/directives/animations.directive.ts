@@ -95,7 +95,7 @@ export class AnimationsDirective implements OnInit, OnDestroy {
     if (
       this.animation() &&
       !this.animIsManual() &&
-      this.platformService.isUsingBrowser()
+      this.platformService.isUsingBrowser
     ) {
       this.intersectionObserver$ = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {

@@ -66,7 +66,7 @@ export class SearchFormComponent implements OnInit {
 
   /** Verify if Geolocation feature is availabel */
   private checkGeolocation(): void {
-    if (this.platformService.isUsingBrowser() && navigator.geolocation) {
+    if (this.platformService.isUsingBrowser && navigator.geolocation) {
       // Insert Current Location in the list of options
       this.sourceLocations.unshift({
         label: 'Current Location',

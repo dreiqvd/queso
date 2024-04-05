@@ -55,7 +55,7 @@ export class PageHomeComponent implements OnInit {
   constructor(private platformService: PlatformService) {}
 
   ngOnInit(): void {
-    if (this.platformService.isUsingBrowser()) {
+    if (this.platformService.isUsingBrowser) {
       this.introVisibility.set('visible');
       anime({
         targets: '#backdrop-svg-wrapper path',

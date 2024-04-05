@@ -58,7 +58,7 @@ export class HomeHeroComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     private platformService: PlatformService
   ) {
-    if (this.platformService.isUsingBrowser()) {
+    if (this.platformService.isUsingBrowser) {
       fromEvent(window, 'resize')
         .pipe(takeUntilDestroyed())
         .subscribe(() => {
@@ -78,14 +78,14 @@ export class HomeHeroComponent implements OnInit, AfterViewInit {
 
   /** Checks whether to apply line break to greeting text */
   private checkTextBreak(): void {
-    if (this.platformService.isUsingBrowser()) {
+    if (this.platformService.isUsingBrowser) {
       this.shouldBreakText.set(getViewportWidth() <= BREAKPOINTS.TABLET_MD);
     }
   }
 
   /** Change positioning of the header blob */
   private repositionBlob(): void {
-    if (this.platformService.isUsingBrowser()) {
+    if (this.platformService.isUsingBrowser) {
       const blobAnchorEl = this.headerBlobAnchor.nativeElement;
       const blobWrapperEl = this.headerBlobWrapper.nativeElement;
       const left = blobAnchorEl.getBoundingClientRect().left;

@@ -97,7 +97,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     });
 
-    if (this.platformService.isUsingBrowser()) {
+    if (this.platformService.isUsingBrowser) {
       fromEvent(window, 'resize')
         .pipe(debounceTime(300))
         .subscribe(() => {
@@ -178,7 +178,7 @@ export class AppComponent implements OnInit, AfterViewInit {
    */
   private setSearchResultsWrapperHeight(): void {
     if (
-      this.platformService.isUsingBrowser() &&
+      this.platformService.isUsingBrowser &&
       this.resultsWrapperRef &&
       !this.isSmallViewPort()
     ) {
@@ -193,7 +193,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   /** Determines if current viewport is for small screen */
   private isUsingSmallViewPort(): boolean {
-    if (this.platformService.isUsingBrowser()) {
+    if (this.platformService.isUsingBrowser) {
       return getViewportWidth() <= BREAKPOINTS.MOBILE_MD;
     }
 
