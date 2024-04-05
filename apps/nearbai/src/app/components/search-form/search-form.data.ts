@@ -1,6 +1,12 @@
+import {} from '@angular/google-maps';
+
 import { SelectableItem } from '@queso/ui-kit';
 
-export const ORIGINS: SelectableItem[] = [
+export interface Origin extends SelectableItem {
+  position?: google.maps.LatLngLiteral;
+}
+
+export const ORIGINS: Origin[] = [
   {
     label: 'Matina Town Square',
     value: 'mts',

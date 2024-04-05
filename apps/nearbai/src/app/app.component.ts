@@ -24,7 +24,11 @@ import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
 import { SearchFormComponent, SearchValue } from './components/search-form';
-import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
+import {
+  DEFAULTS,
+  Origin,
+  ORIGINS,
+} from './components/search-form/search-form.data';
 
 @Component({
   standalone: true,
@@ -269,7 +273,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       map,
     });
 
-    const defaultCenter = this.getPositionFromOrigin(DEFAULTS['origin']);
+    const defaultOrigin = ORIGINS.find(
+      (o) => o.value === DEFAULTS.origin
+    ) as Origin;
+
+    const defaultCenter = defaultOrigin.position;
+
     this.mapCircle = new google.maps.Circle({
       map,
       center: defaultCenter,
@@ -280,6 +289,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       strokeWeight: 2,
       radius: DEFAULTS['radius'],
     });
+
+    if (defaultCenter) {
+      this.currentCenter.set({
+        location: defaultCenter,
+        name: defaultOrigin.label,
+      });
+    }
   }
 
   /**

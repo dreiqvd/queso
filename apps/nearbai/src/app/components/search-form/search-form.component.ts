@@ -2,10 +2,17 @@ import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 
+import { PlatformService } from '@queso/common/services';
 import { SelectableItem } from '@queso/ui-kit';
 import { SelectComponent } from '@queso/ui-kit/select';
 
-import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
+import {
+  CATEGORIES,
+  DEFAULTS,
+  Origin,
+  ORIGINS,
+  RADIUS,
+} from './search-form.data';
 
 @Component({
   selector: 'qs-search-form',
@@ -29,11 +36,13 @@ export class SearchFormComponent implements OnInit {
   });
 
   /** Dropdown Options */
-  readonly sourceLocations: SelectableItem[] = ORIGINS;
+  readonly sourceLocations: Origin[] = ORIGINS;
   readonly categories: SelectableItem[] = CATEGORIES;
   readonly radiusOptions: SelectableItem[] = RADIUS;
 
   readonly buttonLabel = signal<string>('Find');
+
+  constructor(private platformService: PlatformService) {}
 
   ngOnInit(): void {
     this.checkGeolocation();
@@ -57,7 +66,7 @@ export class SearchFormComponent implements OnInit {
 
   /** Verify if Geolocation feature is availabel */
   private checkGeolocation(): void {
-    if (navigator.geolocation) {
+    if (this.platformService.isUsingBrowser() && navigator.geolocation) {
       // Insert Current Location in the list of options
       this.sourceLocations.unshift({
         label: 'Current Location',
