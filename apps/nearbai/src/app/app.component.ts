@@ -4,7 +4,6 @@ import {
   Component,
   computed,
   ElementRef,
-  HostListener,
   NgZone,
   OnInit,
   signal,
@@ -12,9 +11,13 @@ import {
 } from '@angular/core';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { MatTooltip } from '@angular/material/tooltip';
-import { Subject } from 'rxjs';
+import { debounceTime, fromEvent, Subject } from 'rxjs';
 
-import { getViewportHeight } from '@queso/common';
+import {
+  BREAKPOINTS,
+  getViewportHeight,
+  getViewportWidth,
+} from '@queso/common';
 import { AnimationsDirective } from '@queso/common/directives';
 import { PlatformService } from '@queso/common/services';
 import { IconComponent } from '@queso/ui-kit/icon';
@@ -74,6 +77,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   readonly isSidebarOpen = signal(true);
   readonly showSidebarContent = signal(true);
   readonly resultsWrapperHeight = signal<number>(0);
+  readonly isSmallViewPort = signal(this.isUsingSmallViewPort());
 
   constructor(
     private ngZone: NgZone,
@@ -86,14 +90,18 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.mergeSearchResults();
       }
     });
+
+    if (this.platformService.isUsingBrowser()) {
+      fromEvent(window, 'resize')
+        .pipe(debounceTime(300))
+        .subscribe(() => {
+          this.setSearchResultsWrapperHeight();
+          this.isSmallViewPort.set(this.isUsingSmallViewPort());
+        });
+    }
   }
 
   ngAfterViewInit(): void {
-    this.setSearchResultsWrapperHeight();
-  }
-
-  @HostListener('window:resize')
-  onWindowResize(): void {
     this.setSearchResultsWrapperHeight();
   }
 
@@ -146,9 +154,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       address: result.vicinity || '',
       ratingsText,
       isOpen: openNow,
-      imgUrl: result.photos?.length
-        ? result.photos[0].getUrl()
-        : `https://via.placeholder.com/100x120.jpg?text=${result.name}`,
+      imgUrl: result.photos?.length ? result.photos[0].getUrl() : undefined,
     };
   }
 
@@ -171,6 +177,15 @@ export class AppComponent implements OnInit, AfterViewInit {
       const wrapperHeight = getViewportHeight() - offsetTop - 48; // 24px padding
       this.resultsWrapperHeight.set(wrapperHeight);
     }
+  }
+
+  /** Determines if current viewport is for small screen */
+  private isUsingSmallViewPort(): boolean {
+    if (this.platformService.isUsingBrowser()) {
+      return getViewportWidth() <= BREAKPOINTS.MOBILE_MD;
+    }
+
+    return false;
   }
 
   /**
@@ -292,9 +307,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 interface SearchResult {
   id: string;
   name: string;
-  imgUrl: string;
   address: string;
-  isOpen: boolean | undefined;
+  isOpen?: boolean;
+  imgUrl?: string;
   location?: google.maps.LatLng;
   ratingsText?: string;
 }
