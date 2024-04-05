@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -15,7 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     }
   `,
 })
-export class IconComponent implements OnInit {
+export class IconComponent implements OnChanges {
   /** Name of the icon to display. */
   iconName = input.required<string>();
 
@@ -33,7 +33,15 @@ export class IconComponent implements OnInit {
     private domSanitizer: DomSanitizer
   ) {}
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    // For now, icon needs to be loaded only when the iconName changes.
+    // No use case yet for changing the iconStyle or iconSize.
+    if (changes['iconName']) {
+      this.loadIcon();
+    }
+  }
+
+  private loadIcon(): void {
     this.iconRegistry.addSvgIcon(
       this.iconName(),
       this.domSanitizer.bypassSecurityTrustResourceUrl(
