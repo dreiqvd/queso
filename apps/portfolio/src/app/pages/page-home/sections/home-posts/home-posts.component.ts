@@ -6,8 +6,9 @@ import { RouterLink } from '@angular/router';
 import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
-import { ArticlesService } from 'apps/portfolio/src/app/services';
-import { ArticleCardComponent } from 'apps/portfolio/src/app/shared/article-card';
+
+import { ArticlesService } from '../../../../services';
+import { ArticleCardComponent } from '../../../../shared/article-card';
 
 @Component({
   selector: 'qs-home-posts',
