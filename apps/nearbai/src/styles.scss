@@ -28,6 +28,7 @@ $app-theme: mat.define-light-theme(
 @include mat.form-field-theme($app-theme);
 @include mat.select-theme($app-theme);
 @include mat.button-theme($app-theme);
+@include mat.tooltip-theme($app-theme);
 @include mat.core();
 
 // Typography

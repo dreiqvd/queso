@@ -7,11 +7,11 @@ import {
   HostListener,
   NgZone,
   OnInit,
-  Renderer2,
   signal,
   ViewChild,
 } from '@angular/core';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
+import { MatTooltip } from '@angular/material/tooltip';
 import { Subject } from 'rxjs';
 
 import { getViewportHeight } from '@queso/common';
@@ -27,6 +27,7 @@ import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
   standalone: true,
   imports: [
     NgClass,
+    MatTooltip,
     GoogleMap,
     MapMarker,
     MapInfoWindow,
@@ -41,7 +42,7 @@ import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
-  @ViewChild('resultsWrapper') resultsWrapperRef!: ElementRef<HTMLElement>;
+  @ViewChild('resultsWrapper') resultsWrapperRef?: ElementRef<HTMLElement>;
 
   // Map properties
   private map!: google.maps.Map;
@@ -70,10 +71,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   // Misc
   readonly showLoader = signal(false);
   readonly activeMarker = signal<SearchResult | null>(null);
+  readonly isSidebarOpen = signal(true);
+  readonly showSidebarContent = signal(true);
+  readonly resultsWrapperHeight = signal<number>(0);
 
   constructor(
     private ngZone: NgZone,
-    private renderer: Renderer2,
     private platformService: PlatformService
   ) {}
 
@@ -162,11 +165,11 @@ export class AppComponent implements OnInit, AfterViewInit {
    * Compute the height of the search results wrapper element
    */
   private setSearchResultsWrapperHeight(): void {
-    if (this.platformService.isUsingBrowser()) {
+    if (this.platformService.isUsingBrowser() && this.resultsWrapperRef) {
       const wrapperElement = this.resultsWrapperRef.nativeElement;
       const offsetTop = wrapperElement.getBoundingClientRect().top;
       const wrapperHeight = getViewportHeight() - offsetTop - 48; // 24px padding
-      this.renderer.setStyle(wrapperElement, 'height', `${wrapperHeight}px`);
+      this.resultsWrapperHeight.set(wrapperHeight);
     }
   }
 
@@ -271,6 +274,18 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.directionsRendererService.setDirections(response);
       })
       .catch((e) => console.log('Directions request failed due to: ' + e));
+  }
+
+  toggleSidear(): void {
+    this.isSidebarOpen.set(!this.isSidebarOpen());
+    if (this.isSidebarOpen()) {
+      // allow a delay before showing the sidebar content
+      setTimeout(() => {
+        this.showSidebarContent.set(true);
+      }, 500);
+    } else {
+      this.showSidebarContent.set(false);
+    }
   }
 }
 

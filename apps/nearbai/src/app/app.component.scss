@@ -2,26 +2,39 @@
   box-shadow:
     rgba(162, 173, 185, 0.15) 0px 6px 24px 0px,
     rgba(162, 173, 185, 0.08) 0px 0px 0px 1px;
-}
 
-qs-pill {
-  margin-bottom: 2px;
-  display: inline-block;
+  qs-pill {
+    margin-bottom: 2px;
+    display: inline-block;
 
-  ::ng-deep {
-    .pill {
-      text-transform: capitalize;
+    ::ng-deep {
+      .pill {
+        text-transform: capitalize;
+      }
+    }
+
+    &.open {
+      --pill-bg-color: var(--color-green-100);
+      --pill-text-color: var(--color-green-600);
+    }
+
+    &.closed {
+      --pill-bg-color: var(--color-warn-100);
+      --pill-text-color: var(--color-warn-600);
     }
   }
+}
 
-  &.open {
-    --pill-bg-color: var(--color-green-100);
-    --pill-text-color: var(--color-green-600);
-  }
+.sidebar {
+  transition: width 0.5s ease;
 
   &.closed {
-    --pill-bg-color: var(--color-warn-100);
-    --pill-text-color: var(--color-warn-600);
+    width: 80px;
+
+    .sidebar-toggle {
+      left: auto;
+      right: 20px;
+    }
   }
 }
 
@@ -42,9 +55,10 @@ qs-pill {
     38px 19px 0 0px,
     57px 19px 0 0px;
   transform: translateX(-38px);
-  animation: l26 2s infinite linear;
+  animation: loaderAnimation 2s infinite linear;
 }
-@keyframes l26 {
+
+@keyframes loaderAnimation {
   12.5% {
     box-shadow:
       19px -19px 0 0px,
