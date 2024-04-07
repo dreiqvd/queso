@@ -1,4 +1,4 @@
-<div class="sidebar h-full w-full" [class.closed]="!isSidebarOpen()">
+<div class="sidebar h-full w-full relative" [class.closed]="!isSidebarOpen()">
   <header class="my-4 px-6 relative w-full h-[70px] bg-white">
     <h1 class="mb-4 flex items-end gap-2">
       @if (showSidebarContent()) {
@@ -19,7 +19,7 @@
   </header>
 
   @if (showSidebarContent()) {
-    <div qsAnimation="fadeIn" class="px-6 h-[calc(100%-110px)] mobile-md:overflow-y-auto">
+    <div qsAnimation="fadeIn" class="px-6 h-[calc(100%-162px)] mobile-md:overflow-y-auto">
       <p class="text-gray">
         NearBai: a simple place-finder that uses Google Places API to search for locations primarily around Davao City. This is a personal small-scale project to play around with Google Cloud so it only shows a limited number of results.
       </p>
@@ -121,4 +121,21 @@
       </div>
     </div>
   }
+</div>
+<div
+  qsAnimation="fadeInUp"
+  class="absolute bottom-0 left-0 w-full z-10 p-4 bg-white border-t border-solid border-gray-100 text-center cursor-pointer"
+  [animDelay]="0.5">
+  <a
+    href="https://dreiq.dev/contact"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact the developer"
+    class="font-bold inline-flex items-center gap-2 text-default-color hover:text-primary"
+  >
+    <span>HIRE ME</span>
+    <span aria-hidden="true">
+      <qs-icon iconName="arrow-right-long" [iconSize]="20" />
+    </span>
+  </a>
 </div>
