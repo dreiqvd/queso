@@ -17,8 +17,12 @@
         "tsConfig": "apps/nearbai/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/nearbai/src/favicon.ico",
           "apps/nearbai/src/assets",
+          {
+            "glob": "**/*",
+            "input": "apps/nearbai/src/favicons",
+            "output": "."
+          },
           {
             "glob": "**/*",
             "input": "libs/shared/assets",
@@ -87,6 +91,23 @@
         "buildTarget": "nearbai:build",
         "staticFilePath": "dist/apps/nearbai/browser"
       }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "version": 2
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "nearbai:build:production",
+          "serveTarget": "nearbai:serve:production"
+        },
+        "development": {
+          "buildTarget": "nearbai:build:development",
+          "serveTarget": "nearbai:serve:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }

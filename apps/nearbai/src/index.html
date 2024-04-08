@@ -2,14 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>nearbai</title>
+    <title>NearBai | Davao Place-Finder</title>
     <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
+    <!-------------- Start Meta Tags -------------->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content="NearBai">
+    <meta name="description" content="A simple place-finder that uses Google Places API to search for nearby places either from a landmark or the user's current location.">
+    <meta name="author" content="Drei Quevada">
+    <meta name="keywords" content="Portfolio, HTML, CSS, JavaScript, Angular, TypeScript, Frontend, Full-Stack, Web, Google, GoogleAPI, GoogleMaps">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nearbai.dreiq.dev/">
+    <meta property="og:title" content="NearBai | A Simple Place-Finder That Uses Google API">
+    <meta property="og:description" content="NearBai is a simple place-finder that uses Google Places API to search for nearby places either from a landmark or the user's current location.">
+    <meta property="og:image" content="/assets/img/metaimg.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@dreiqdev">
+    <meta property="twitter:title" content="NearBai | A Simple Place-Finder That Uses Google API">
+    <meta property="twitter:description" content="NearBai is a simple place-finder that uses Google Places API to search for nearby places either from a landmark or the user's current location.">
+    <meta property="twitter:image" content="https://dreiq.dev/assets/img/metaimg.jpg">
+    <meta property="twitter:image:alt" content="NearBai Image Preview">
+
+    <!-------------- End Meta Tags -------------->
+
+    <!-------------- Start Favicon -------------->
+
+    <!-- Standard Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Apple Touch Icons for iOS and Mac OS X -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> <!-- iPhone Retina -->
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"> <!-- iPad Retina -->
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"> <!-- iPhone (non-Retina) -->
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"> <!-- iPad (non-Retina) -->
+    <!-- Startup images for iOS (deprecated but might be useful for older devices) -->
+    <link rel="apple-touch-startup-image" href="/apple-touch-icon-152x152.png"> <!-- iPad Retina -->
+    <link rel="apple-touch-startup-image" href="/apple-touch-icon-120x120.png" media="(device-width: 320px)"> <!-- iPhone (non-Retina) -->
+
+    <!-- Microsoft Tiles for Windows 8 and 10 -->
+    <meta name="msapplication-TileColor" content="#bd4f47"> <!-- Tile background color -->
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png"> <!-- Tile image -->
+    <meta name="msapplication-config" content="/browserconfig.xml"> <!-- Optional config file -->
+
+    <!-- Manifest for Android Chrome -->
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#ffffff"> <!-- Address bar color in Android Chrome -->
+
+    <!-- Safari Pinned Tab Icon -->
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#bd4f47">
+
+    <!-------------- End Favicon -------------->
+
+    <!-------------- Start Google Assets -------------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Righteous&display=swap" rel="stylesheet">
+    <!-------------- End Google Assets -------------->
   </head>
   <body>
     <!-- index.html should be maintained as a valid HTML file and not an angular template  -->
@@ -18,7 +74,7 @@
     <script>
       (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
         v: "weekly",
-        key: 'AIzaSyBTs6jI1O-oRvfBeTlwbAn5jpTzbnX6NPg',
+        key: 'AIzaSyDw1tkybYyGxIYlpceGgnYHpNjkM7UHPFw',
         libraries: 'places'
       });
     </script>
