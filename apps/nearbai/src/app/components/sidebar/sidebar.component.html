@@ -18,109 +18,110 @@
     </button>
   </header>
 
-  @if (showSidebarContent()) {
-    <div qsAnimation="fadeIn" class="px-6 h-[calc(100%-162px)] mobile-md:overflow-y-auto">
-      <p class="text-gray">
-        A simple place-finder that uses Google Places API to search for nearby places (of specific type) either from a landmark (in Davao City) or the user's current location. This is a personal small-scale project so it only shows a limited number of results.
-      </p>
-      <qs-search-form />
+  <div
+    qsAnimation="fadeIn"
+    class="px-6 h-[calc(100%-162px)] mobile-md:overflow-y-auto"
+    [style.display]="showSidebarContent() ? 'block' : 'none'">
+    <p class="text-gray">
+      A simple place-finder that uses Google Places API to search for nearby places (of specific type) either from a landmark (in Davao City) or the user's current location. This is a personal small-scale project so it only shows a limited number of results.
+    </p>
+    <qs-search-form />
 
-      <div class="relative">
-        @if (showLoader()) {
-          <div class="h-full w-full flex items-center justify-center bg-transluscent-white absolute left-0 top-0">
-            <div class="loader"></div>
-          </div>
-        }
+    <div class="relative">
+      @if (showLoader()) {
+        <div class="h-full w-full flex items-center justify-center bg-transluscent-white absolute left-0 top-0">
+          <div class="loader"></div>
+        </div>
+      }
 
-        @if (showLocationAccessMsg()) {
-          <p>
-            <i>Uh oh! Location Access is required to search from current location.</i>
-          </p>
-        }
+      @if (showLocationAccessMsg()) {
+        <p>
+          <i>Uh oh! Location Access is required to search from current location.</i>
+        </p>
+      }
 
 
-        @if (showResults()) {
-          <h2 class="text-gray font-semibold text-base">
-            Found {{ resultsCount() }} results:
-          </h2>
-        }
+      @if (showResults()) {
+        <h2 class="text-gray font-semibold text-base">
+          Found {{ resultsCount() }} results:
+        </h2>
+      }
 
-        <div #resultsWrapper
-          class="overflow-y-auto py-4 mt-4 pr-4 pl-1 mobile-md:overflow-y-visible mobile-md:px-0"
-          [style.height]="resultsWrapperHeight()">
-          @for (result of searchResults(); track result.id) {
-            <div
-              qsAnimation="fadeIn"
-              class="card bg-white rounded-lg overflow-hidden gap-4 pr-4 mb-6 mobile-md:pr-0"
-            >
-              <div class="flex gap-4 mobile-md:flex-col mobile-md:gap-0">
-                <div class="bg-gray-100 w-[100px] h-auto mobile-md:w-full">
-                  <div class="w-full h-full flex items-center overflow-hidden">
-                    @if (result.imgUrl) {
-                      <img
-                        loading="lazy"
-                        class="w-[100px] h-[120px] object-cover mobile-md:w-full"
-                        [src]="result.imgUrl"
-                        [alt]="result.name"
-                      />
-                    } @else {
-                      <div class="w-full min-w-[100px] h-[120px] p-2 bg-gray-100 flex items-center justify-center text-center">
-                        <span class="text-gray text-sm p-2 border border-solid border-gray">
-                          {{ result.name }}
-                        </span>
-                      </div>
-                    }
-                  </div>
+      <div #resultsWrapper
+        class="overflow-y-auto py-4 mt-4 pr-4 pl-1 mobile-md:overflow-y-visible mobile-md:px-0"
+        [style.height]="resultsWrapperHeight()">
+        @for (result of searchResults(); track result.id) {
+          <div
+            qsAnimation="fadeIn"
+            class="card bg-white rounded-lg overflow-hidden gap-4 pr-4 mb-6 mobile-md:pr-0"
+          >
+            <div class="flex gap-4 mobile-md:flex-col mobile-md:gap-0">
+              <div class="bg-gray-100 w-[100px] h-auto mobile-md:w-full">
+                <div class="w-full h-full flex items-center overflow-hidden">
+                  @if (result.imgUrl) {
+                    <img
+                      loading="lazy"
+                      class="w-[100px] h-[120px] object-cover mobile-md:w-full"
+                      [src]="result.imgUrl"
+                      [alt]="result.name"
+                    />
+                  } @else {
+                    <div class="w-full min-w-[100px] h-[120px] p-2 bg-gray-100 flex items-center justify-center text-center">
+                      <span class="text-gray text-sm p-2 border border-solid border-gray">
+                        {{ result.name }}
+                      </span>
+                    </div>
+                  }
                 </div>
-                <div class="py-4 flex-grow w-full mobile-md:px-4">
-                  <div class="flex items-center gap-4 justify-between mobile-md:flex-col">
-                    <div>
-                      <header>
-                        @if (result.isOpen !== undefined) {
-                          <qs-pill [text]="result.isOpen ? 'Open' : 'Closed'" [ngClass]="result.isOpen ? 'open' : 'closed'" />
-                        } @else {
-                          <span class="text-gray text-sm">(Missing Business Hours)</span>
-                        }
-                        <h3 class="m-0 text-lg">{{ result.name }}</h3>
-                      </header>
-                      <div class="text-gray text-sm mt-1 flex flex-col gap-1">
-                        <div class="flex items-center gap-2">
-                          <qs-icon class="mb-[2px] text-warn" iconName="location-dot" iconStyle="solid" [iconSize]="14" />
-                          <span>{{ result.address }}</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                          <qs-icon class="mb-[2px] text-primary" iconName="star" iconStyle="solid" [iconSize]="14" />
-                          <span>{{ result.ratingsText }} </span>
-                        </div>
+              </div>
+              <div class="py-4 flex-grow w-full mobile-md:px-4">
+                <div class="flex items-center gap-4 justify-between mobile-md:flex-col">
+                  <div>
+                    <header>
+                      @if (result.isOpen !== undefined) {
+                        <qs-pill [text]="result.isOpen ? 'Open' : 'Closed'" [ngClass]="result.isOpen ? 'open' : 'closed'" />
+                      } @else {
+                        <span class="text-gray text-sm">(Missing Business Hours)</span>
+                      }
+                      <h3 class="m-0 text-lg">{{ result.name }}</h3>
+                    </header>
+                    <div class="text-gray text-sm mt-1 flex flex-col gap-1">
+                      <div class="flex items-center gap-2">
+                        <qs-icon class="mb-[2px] text-warn" iconName="location-dot" iconStyle="solid" [iconSize]="14" />
+                        <span>{{ result.address }}</span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <qs-icon class="mb-[2px] text-primary" iconName="star" iconStyle="solid" [iconSize]="14" />
+                        <span>{{ result.ratingsText }} </span>
                       </div>
                     </div>
-                    <button
-                      type="button"
-                      class="flex flex-col gap-2 items-center justify-center text-sm
-                        hover:text-primary
-                        mobile-md:flex-row mobile-md:py-2 mobile-md:px-3 mobile-md:w-full mobile-md:rounded
-                        mobile-md:border mobile-md:border-accent mobile-md:border-solid
-                      "
-                      (click)="toggleDirections.emit(result.location)"
-                    >
-                      @if (!isSmallViewPort()) {
-                        <qs-icon iconName="diamond-turn-right" iconStyle="light" />
-                      }
-                      <span>Directions</span>
-                      @if (isSmallViewPort()) {
-                        <qs-icon iconName="arrow-right-long" [iconSize]="16" />
-                      }
-                    </button>
                   </div>
+                  <button
+                    type="button"
+                    class="flex flex-col gap-2 items-center justify-center text-sm
+                      hover:text-primary
+                      mobile-md:flex-row mobile-md:py-2 mobile-md:px-3 mobile-md:w-full mobile-md:rounded
+                      mobile-md:border mobile-md:border-accent mobile-md:border-solid
+                    "
+                    (click)="toggleDirections.emit(result.location)"
+                  >
+                    @if (!isSmallViewPort()) {
+                      <qs-icon iconName="diamond-turn-right" iconStyle="light" />
+                    }
+                    <span>Directions</span>
+                    @if (isSmallViewPort()) {
+                      <qs-icon iconName="arrow-right-long" [iconSize]="16" />
+                    }
+                  </button>
                 </div>
               </div>
             </div>
-          }
-        </div>
-
+          </div>
+        }
       </div>
+
     </div>
-  }
+  </div>
 </div>
 @if (showSidebarContent()) {
   <div
