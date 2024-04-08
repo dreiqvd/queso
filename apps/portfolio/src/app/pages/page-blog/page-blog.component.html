@@ -23,7 +23,7 @@
         tablet-sm:grid-cols-1
       ">
       @for (article of articles(); track $index) {
-        <qs-article-card qsAnimation="fadeIn" [article]="article" />
+        <qs-article-card qsAnimation="fadeIn" class="tablet-sm:max-w-[420px]" [article]="article" />
       }
     </main>
   </div>
