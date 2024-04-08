@@ -7,11 +7,10 @@ import { Component, input } from '@angular/core';
   styles: `
     .pill {
       font-size: 0.75rem;
-      text-transform: uppercase;
       background-color: var(--pill-bg-color);
       color: var(--pill-text-color);
       padding: 2px 10px;
-      border-radius: 2px;
+      border-radius: 4px;
     }
   `,
 })

@@ -11,12 +11,6 @@
     margin-bottom: 2px;
     display: inline-block;
 
-    ::ng-deep {
-      .pill {
-        text-transform: capitalize;
-      }
-    }
-
     &.open {
       --pill-bg-color: var(--color-green-100);
       --pill-text-color: var(--color-green-600);
