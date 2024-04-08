@@ -1,92 +1,94 @@
 <qs-page-container>
-  <div class="grid grid-cols-2 min-h-dvh overflow-hidden">
-    <div
-      qsAnimation="fadeIn"
-      class="flex items-center justify-center bg-gray-50
-        tablet-md:col-span-2 tablet-md:pt-[72px] tablet-md:pb-12 tablet-md:min-h-[300px]
-      ">
-      <!-- Image is enclosed inside a div so that, there is no flickering of content due to
-          size change when image is still being fetched -->
-      <div class="w-full max-w-[600px]
-        desktop-md:max-w-[480px] desktop-sm:max-w-[90%]
-        tablet-md:max-w-[400px]
-      ">
-        <img
-          src="assets/svg/u3fspt.svg"
-          alt="Illustration of a cat playing with a ball of yarn"
-          aria-label="Illustration of a cat playing with a ball of yarn"
-          qsAnimation="fadeIn"
-          animHover="headShake"
-          matTooltip="Meow"
-          class="w-full"
-        />
-      </div>
-    </div>
-
-    <main
-      class="flex flex-col justify-center px-12 py-[96px]
-        desktop-sm:px-8
-        tablet-md:col-span-2 tablet-md:pt-8 tablet-md:pb-12 tablet-md:px-12
-        mobile-md:px-8
-        mobile-sm:px-4
-      ">
-      <header
-        class="font-bold mb-8 flex items-center gap-3
-          mobile-md:flex-col mobile-md:items-start mobile-md:gap-0
+  <div qsAnimation="fadeIn" class="pt-[102px] pb-8 px-8">
+    <header class="text-center">
+      <h1
+        qsAnimation="fadeInDown"
+        class="text-underlined text-[3rem] font-extrabold leading-normal
+          after:bottom-4 after:h-3
         ">
-        <img
-          qsAnimation="fadeInDown"
-          src="assets/img/febc6f.gif"
-          alt="Crane animation"
-          aria-hidden="true"
-          width="50"
-        />
-        <h1
-          qsAnimation="fadeInDown"
-          animHover="swing"
-          class="pt-3 text-[2rem]
-            desktop-md:text-3xl
-            desktop-sm:text-[3dvw]
-            tablet-md:text-3xl
-            tablet-sm:text-[1.75rem]
-            mobile-md:text-3xl
-          ">
-          Projects on the move!
-        </h1>
-      </header>
-      <div class="text-gray-800 max-w-[560px] desktop-md:max-w-none">
-        <p qsAnimation="fadeInRight">
-          My personal projects are on a little journey to a new home; and getting a bit of a makeover too.
-        </p>
-        <p qsAnimation="fadeInRight">
-          They'll be back  with a better look and content. To give you an idea, here are some things I am currently up to:
-        </p>
-        <ul class="list-disc pl-8 flex flex-col gap-3">
-          <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="0.25">Some AI projects (personal exploration)</li>
-          <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="0.5">Rewriting some of my Google Maps projects</li>
-          <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="0.75">Playing around with the new Angular 17's reactive structure</li>
-          <li class="leading-6" qsAnimation="fadeInUp" [animDelay]="1">Some UI design samples</li>
-        </ul>
-        <p class="mt-8" qsAnimation="fadeInUp" [animDelay]="0.5">
-          If you're interested in my professional work experience, check out my CV
-          <a href="assets/Quevada_CV.pdf" class="underline font-semibold">here</a>.
-          See you on the other side!
-        </p>
-      </div>
+        Projects
+      </h1>
+      <p
+        qsAnimation="fadeInUp"
+        class="text-gray mt-8 mx-auto max-w-[800px]
+          desktop-sm:max-w-[900px] tablet-sm:max-w-none
+      ">
+        I am gradually rewriting and migrating my personal projects for a better look and content. My goal is to publish some <span class="font-semibold text-accent-purple">AI projects</span>, <span class="font-semibold text-accent-purple">Google Cloud apps</span>, <span class="font-semibold text-accent-purple">web utility tools</span>, and a few <span class="font-semibold text-accent-purple">UI design samples</span>.
+      </p>
 
-      <div class="mt-6">
+      <p
+        qsAnimation="fadeInUp"
+        class="text-gray mt-8 mx-auto max-w-[800px]
+          desktop-sm:max-w-[900px] tablet-sm:max-w-none"
+        [animDelay]="0.5">
+        If you're interested in my professional work experience, check out my CV
+        <a href="assets/Quevada_CV.pdf" matTooltip="Quevada_CV.pdf" class="underline font-semibold">here</a>.
+      </p>
+    </header>
+    <main class="flex flex-col gap-12 items-center my-20">
+      @for (proj of projects; track proj.key) {
+        <div class="flex gap-8">
+          <div class="rounded">
+            <img
+              class="w-[540px] h-[280px] object-cover hover:opacity-85 mobile-md:w-full"
+              loading="lazy"
+              [alt]="proj.name"
+              [src]="'assets/img/projects/' + proj.key + '.jpg'"
+            />
+          </div>
+          <div>
+            <h2 class="font-semibold text-[2rem]">{{ proj.name }}</h2>
+            <p class="text-gray mt-2 max-w-[450px]">
+              {{ proj.excerpt }}
+            </p>
+            <div class="mt-6 flex gap-2">
+              @for (tag of proj.tags; track $index) {
+                <qs-pill [text]="tag" />
+              }
+            </div>
+            <div class="mt-8 flex gap-8">
+              <div>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  matTooltip="Go to project link"
+                  class="flex items-center gap-2 text-accent-purple hover:text-[#9d80b2]"
+                  [href]="proj.url"
+                >
+                  <qs-icon iconName="link" [iconSize]="16" />
+                  <span>View Project</span>
+                </a>
+              </div>
+              <div>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  matTooltip="View design assets"
+                  class="flex items-center gap-2 text-accent-purple hover:text-[#9d80b2]"
+                  [href]="proj.url"
+                >
+                  <qs-icon iconName="images" [iconSize]="16" />
+                  <span>Project Assets</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </main>
+      <!-- <div class="text-center mt-6">
         <a
           routerLink="/contact"
-          class="cta-btn primary w-fit"
+          class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-default-color
+            hover:text-default-color hover:bg-primary-300"
           matTooltip="Adventure awaits. Allegedly..."
           aria-label="Know more about me"
           qsAnimation="rotateIn"
           [animDelay]="0.5"
         >
-          <span>Get Connected</span>
+          <span>Let's Connect</span>
           <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
         </a>
-      </div>
-    </main>
+      </div> -->
   </div>
 </qs-page-container>
