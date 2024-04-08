@@ -28,9 +28,11 @@
         tablet-sm:grid-cols-1
     ">
       @for (proj of projects; track proj.key) {
-        <div class="flex gap-8
-          desktop-sm:flex-col desktop-sm:gap-4
-          tablet-sm:max-w-[420px]
+        <div
+          qsAnimation="fadeIn"
+          class="flex gap-8
+            desktop-sm:flex-col desktop-sm:gap-4
+            tablet-sm:max-w-[420px]
         ">
           <div class="rounded">
             <img
