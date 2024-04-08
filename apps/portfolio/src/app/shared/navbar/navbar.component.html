@@ -1,12 +1,9 @@
 <header
   role="navigation"
   aria-label="Main navigation"
-  class="h-full flex items-center justify-between
-    py-0 px-8 mobile-md:px-4
-  "
+  class="h-full flex items-center justify-between py-0 px-8 mobile-md:px-4"
 >
   <button
-    class="menu-btn"
     matTooltip="Behold, a menu..."
     type="button"
     aria-label="Open menu"
@@ -15,11 +12,11 @@
   >
     <qs-hamburger />
   </button>
-  <ul class="gap-3 my-6 mx-0 flex" qsAnimation="bounceInDown">
+  <ul class="gap-3 mx-0 flex" qsAnimation="bounceInDown">
     @for (social of socials; track $index) {
       <li>
         <a
-          class="primary text-gray-700 rounded-tr-[4px] rounded-tl-[4px] leading-[0]"
+          class="primary text-gray-700 rounded-tr-[4px] rounded-tl-[4px]"
           target="_blank"
           rel="noopener noreferrer"
           qsAnimation
@@ -28,7 +25,7 @@
           [attr.aria-label]="social.name"
           [matTooltip]="social.name"
         >
-          <qs-icon iconStyle="brands" class="nav-icon" [iconName]="social.icon" [iconSize]="30" />
+          <qs-icon iconStyle="brands" [iconName]="social.icon" [iconSize]="30" />
         </a>
       </li>
     }
@@ -38,7 +35,7 @@
 @if (isSidebarOpen()) {
   <nav
     #sidebar
-    class="sidenav w-[300px] bg-gray-50 p-8 fixed top-0 h-dvh shadow-sidenav"
+    class="sidebar w-[300px] bg-gray-50 p-8 fixed top-0 h-dvh shadow-sidebar"
     qsAnimation
     [animDuration]="0.3"
     [animIsManual]="true"
