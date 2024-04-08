@@ -1,4 +1,7 @@
 {
+  "projects": {
+    "default": "dreiq-nearbai"
+  },
   "targets": {
     "dreiq-portfolio": {
       "hosting": {
@@ -6,9 +9,14 @@
           "dreiq-portfolio"
         ]
       }
+    },
+    "dreiq-nearbai": {
+      "hosting": {
+        "nearbai": [
+          "dreiq-nearbai-554c3"
+        ]
+      }
     }
   },
-  "projects": {
-    "default": "dreiq-portfolio"
-  }
+  "etags": {}
 }

@@ -6,6 +6,13 @@
       "frameworksBackend": {
         "region": "us-central1"
       }
+    },
+    {
+      "target": "nearbai",
+      "public": "dist/apps/nearbai/browser",
+      "frameworksBackend": {
+        "region": "us-east1"
+      }
     }
   ]
 }
