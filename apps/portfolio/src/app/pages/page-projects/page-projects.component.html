@@ -10,30 +10,35 @@
       </h1>
       <p
         qsAnimation="fadeInUp"
-        class="text-gray mt-8 mx-auto max-w-[800px]
-          desktop-sm:max-w-[900px] tablet-sm:max-w-none
-      ">
-        I am gradually rewriting and migrating my personal projects for a better look and content. My goal is to publish some <span class="font-semibold text-accent-purple">AI projects</span>, <span class="font-semibold text-accent-purple">Google Cloud apps</span>, <span class="font-semibold text-accent-purple">web utility tools</span>, and a few <span class="font-semibold text-accent-purple">UI design samples</span>.
+        class="text-gray mt-8 mx-auto max-w-[800px] tablet-sm:max-w-[540px]">
+        I am gradually migrating and rewriting my personal projects for a better look and content. My goal is to publish some <span class="font-semibold text-accent-purple">AI projects</span>, <span class="font-semibold text-accent-purple">Google Cloud apps</span>, <span class="font-semibold text-accent-purple">web utility tools</span>, and a few <span class="font-semibold text-accent-purple">UI design samples</span>.
       </p>
 
       <p
         qsAnimation="fadeInUp"
-        class="text-gray mt-8 mx-auto max-w-[800px]
-          desktop-sm:max-w-[900px] tablet-sm:max-w-none"
+        class="text-gray mt-8 mx-auto max-w-[800px] tablet-sm:max-w-[540px]"
         [animDelay]="0.5">
         If you're interested in my professional work experience, check out my CV
         <a href="assets/Quevada_CV.pdf" matTooltip="Quevada_CV.pdf" class="underline font-semibold">here</a>.
       </p>
     </header>
-    <main class="flex flex-col gap-12 items-center my-20">
+    <main
+      class="flex flex-col gap-12 items-center my-20
+        desktop-sm:grid desktop-sm:grid-cols-2 desktop-sm:justify-items-center
+        tablet-sm:grid-cols-1
+    ">
       @for (proj of projects; track proj.key) {
-        <div class="flex gap-8">
+        <div class="flex gap-8
+          desktop-sm:flex-col desktop-sm:gap-4
+          tablet-sm:max-w-[420px]
+        ">
           <div class="rounded">
             <img
-              class="w-[540px] h-[280px] object-cover hover:opacity-85 mobile-md:w-full"
+              class="w-[540px] h-[280px] object-cover hover:opacity-85
+                desktop-sm:w-full desktop-sm:h-auto"
               loading="lazy"
               [alt]="proj.name"
-              [src]="'assets/img/projects/' + proj.key + '.jpg'"
+              [src]="'assets/img/projects/' + proj.key"
             />
           </div>
           <div>
@@ -55,11 +60,12 @@
                   class="flex items-center gap-2 text-accent-purple hover:text-[#9d80b2]"
                   [href]="proj.url"
                 >
-                  <qs-icon iconName="link" [iconSize]="16" />
+                  <!-- <qs-icon class="mb-[2px]" iconName="link" [iconSize]="16" /> -->
                   <span>View Project</span>
+                  <qs-icon class="mb-[2px]" iconName="arrow-right-long" [iconSize]="16" />
                 </a>
               </div>
-              <div>
+              <!-- <div>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
@@ -67,10 +73,10 @@
                   class="flex items-center gap-2 text-accent-purple hover:text-[#9d80b2]"
                   [href]="proj.url"
                 >
-                  <qs-icon iconName="images" [iconSize]="16" />
+                  <qs-icon class="mb-[2px]" iconName="images" [iconSize]="16" />
                   <span>Project Assets</span>
                 </a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

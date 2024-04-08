@@ -24,7 +24,7 @@ import { PageContainerComponent } from '../../shared/page-container';
 export class PageProjectsComponent {
   readonly projects = [
     {
-      key: 'nearbai',
+      key: 'nearbai.jpg',
       name: 'NearBai',
       excerpt:
         "A simple place-finder that uses Google Places API to search for nearby places either from a landmark or the user's current location. This is a personal small-scale project to play around with Google Cloud services.",
