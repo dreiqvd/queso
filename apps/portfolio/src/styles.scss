@@ -138,15 +138,13 @@ button.btn {
 a.cta-btn,
 button.cta-btn {
   height: 48px;
+  display: inline-flex;
+  gap: 8px;
   padding: 0 22px;
-  line-height: 0;
   position: relative;
   transition: all 0.2s ease;
-  gap: 8px;
-  display: inline-block;
   color: var(--text-default-color);
   font-weight: 600;
-  display: flex;
   align-items: center;
 
   * {
