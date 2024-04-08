@@ -15,22 +15,24 @@
   >
     <qs-hamburger />
   </button>
-  <div class="gap-3 my-6 mx-0 flex" qsAnimation="bounceInDown">
+  <ul class="gap-3 my-6 mx-0 flex" qsAnimation="bounceInDown">
     @for (social of socials; track $index) {
-      <a
-        class="primary text-gray-700 rounded-tr-[4px] rounded-tl-[4px] leading-[0]"
-        target="_blank"
-        rel="noopener noreferrer"
-        qsAnimation
-        [href]="social.url"
-        [animHover]="['bounceToRight', 'wobbleTop']"
-        [attr.aria-label]="social.name"
-        [matTooltip]="social.name"
-      >
-        <qs-icon iconStyle="brands" class="nav-icon" [iconName]="social.icon" [iconSize]="30" />
-      </a>
+      <li>
+        <a
+          class="primary text-gray-700 rounded-tr-[4px] rounded-tl-[4px] leading-[0]"
+          target="_blank"
+          rel="noopener noreferrer"
+          qsAnimation
+          [href]="social.url"
+          [animHover]="['bounceToRight', 'wobbleTop']"
+          [attr.aria-label]="social.name"
+          [matTooltip]="social.name"
+        >
+          <qs-icon iconStyle="brands" class="nav-icon" [iconName]="social.icon" [iconSize]="30" />
+        </a>
+      </li>
     }
-  </div>
+  </ul>
 </header>
 
 @if (isSidebarOpen()) {
