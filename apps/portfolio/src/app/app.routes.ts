@@ -40,4 +40,5 @@ export const appRoutes: Route[] = [
         (c) => c.PageMeWhenAfkComponent
       ),
   },
+  { path: '**', redirectTo: '' }, // TODO: Implement a 404 page for the fallback route
 ];
