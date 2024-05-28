@@ -13,7 +13,6 @@
         "outputPath": "dist/apps/nearbai",
         "index": "apps/nearbai/src/index.html",
         "browser": "apps/nearbai/src/main.ts",
-        "polyfills": ["zone.js"],
         "tsConfig": "apps/nearbai/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [

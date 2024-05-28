@@ -1,5 +1,8 @@
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideExperimentalZonelessChangeDetection,
+} from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
@@ -14,6 +17,7 @@ import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideExperimentalZonelessChangeDetection(),
     provideClientHydration(),
     provideRouter(
       appRoutes,
