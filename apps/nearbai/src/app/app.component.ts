@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, signal, ViewChild } from '@angular/core';
+import { Component, computed, inject, signal, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -65,7 +65,10 @@ export class AppComponent {
   readonly currentCenter = signal<MapCenter | null>(null);
   readonly isSidebarOpen = signal(true);
 
-  constructor(private searchService: SearchService) {
+  // Dependency Services
+  private readonly searchService = inject(SearchService);
+
+  constructor() {
     this.searchService.searchStarted$
       .pipe(takeUntilDestroyed())
       .subscribe(() => {

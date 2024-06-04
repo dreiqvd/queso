@@ -2,6 +2,7 @@ import {
   Directive,
   ElementRef,
   HostListener,
+  inject,
   input,
   OnDestroy,
   OnInit,
@@ -69,25 +70,22 @@ export class AnimationsDirective implements OnInit, OnDestroy {
   private isAnimated = signal<boolean>(false);
   private hvrAnimationsAdded = signal<boolean>(false);
 
-  constructor(
-    private rendererer: Renderer2,
-    private elementRef: ElementRef,
-    private platformService: PlatformService
-  ) {
+  // Dependencies
+  private readonly renderer = inject(Renderer2);
+  private readonly elementRef = inject(ElementRef);
+  private readonly platformService = inject(PlatformService);
+
+  constructor() {
     this.element = this.elementRef.nativeElement;
   }
 
   ngOnInit(): void {
     if (this.animation()) {
       // Set initial visibility based on the passed property
-      this.rendererer.setStyle(
-        this.element,
-        'visibility',
-        this.animVisibility()
-      );
+      this.renderer.setStyle(this.element, 'visibility', this.animVisibility());
     } else {
       // There is no need to hide the element if it only has hover animation.
-      this.rendererer.setStyle(this.element, 'visibility', 'visible');
+      this.renderer.setStyle(this.element, 'visibility', 'visible');
     }
 
     // Create an intersection observer for on demand animations (e.g. entrance).
@@ -128,12 +126,12 @@ export class AnimationsDirective implements OnInit, OnDestroy {
 
   /** Add a specified animation class to the element. */
   private addClass(className: string): void {
-    this.rendererer.addClass(this.element, `animate__${className}`);
+    this.renderer.addClass(this.element, `animate__${className}`);
   }
 
   /** Remove a specified animation class to the element. */
   private removeClass(className: string): void {
-    this.rendererer.removeClass(this.element, `animate__${className}`);
+    this.renderer.removeClass(this.element, `animate__${className}`);
   }
 
   /** Add a CSS property to the element.
@@ -143,7 +141,7 @@ export class AnimationsDirective implements OnInit, OnDestroy {
    * @param value - The value of the CSS property
    */
   private addCssProperty(prop: string, value: number): void {
-    this.rendererer.setProperty(this.element.style, prop, `${value}s`);
+    this.renderer.setProperty(this.element.style, prop, `${value}s`);
   }
 
   /** Handle hover animation class names. Hover animation classes are directly applied
@@ -164,7 +162,7 @@ export class AnimationsDirective implements OnInit, OnDestroy {
       : [hoverAnimation];
 
     hoverAnimations.forEach((hover) => {
-      this.rendererer.addClass(this.element, `hvr__${hover}`);
+      this.renderer.addClass(this.element, `hvr__${hover}`);
     });
 
     // Make sure that hover animation classes are added only once
@@ -180,7 +178,7 @@ export class AnimationsDirective implements OnInit, OnDestroy {
       const animation = animationName || this.animation();
       const duration = this.animDuration();
       const delay = this.animDelay();
-      this.rendererer.setStyle(this.element, 'visibility', 'visible');
+      this.renderer.setStyle(this.element, 'visibility', 'visible');
       this.addClass('animated');
 
       // Add animation properties for onload animations.
@@ -214,7 +212,7 @@ export class AnimationsDirective implements OnInit, OnDestroy {
    * should be deleted after animation (e.g. exit animations).
    */
   public removeElement(): void {
-    this.rendererer.removeChild(this.element.parentElement, this.element);
+    this.renderer.removeChild(this.element.parentElement, this.element);
   }
 }
 

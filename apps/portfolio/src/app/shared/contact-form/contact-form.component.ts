@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -46,7 +46,8 @@ export class ContactFormComponent implements OnInit {
   /** Whether sending of email got an error */
   readonly hasErrors = signal(false);
 
-  constructor(private mailingService: MailingService) {}
+  /** Mailing Service dependency */
+  private readonly mailingService = inject(MailingService);
 
   readonly contactForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),

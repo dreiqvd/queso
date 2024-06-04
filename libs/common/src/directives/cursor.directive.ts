@@ -3,6 +3,7 @@ import {
   Directive,
   ElementRef,
   HostListener,
+  inject,
   Renderer2,
 } from '@angular/core';
 
@@ -38,10 +39,11 @@ export class CursorDirective {
   /** Determines whether the cursor setup has been initialized */
   private isInitialized = false;
 
-  constructor(
-    private renderer: Renderer2,
-    private elementRef: ElementRef
-  ) {
+  // Dependencies
+  private readonly renderer = inject(Renderer2);
+  private readonly elementRef = inject(ElementRef);
+
+  constructor() {
     this.element = this.elementRef.nativeElement;
     afterNextRender(() => {
       // The custom cursor experiences performance issues on screens other than desktops.

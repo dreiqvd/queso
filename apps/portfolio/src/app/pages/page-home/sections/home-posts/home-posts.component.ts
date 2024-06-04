@@ -1,5 +1,5 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, computed } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
@@ -31,6 +31,6 @@ import { ArticleCardComponent } from '../../../../shared/article-card';
   `,
 })
 export class HomePostsComponent {
-  constructor(private articlesService: ArticlesService) {}
+  private readonly articlesService = inject(ArticlesService);
   readonly posts = computed(() => this.articlesService.getArticles());
 }

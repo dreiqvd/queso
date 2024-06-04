@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  inject,
   OnInit,
   signal,
   ViewChild,
@@ -52,7 +53,8 @@ export class PageHomeComponent implements OnInit {
   /** Determines if main content should be visible */
   readonly isContentVisible = signal(false);
 
-  constructor(private platformService: PlatformService) {}
+  // Dependency Services
+  private readonly platformService = inject(PlatformService);
 
   ngOnInit(): void {
     if (this.platformService.isUsingBrowser) {

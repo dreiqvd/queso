@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 
@@ -37,10 +37,9 @@ export class SearchFormComponent implements OnInit {
 
   readonly buttonLabel = signal<string>('Find');
 
-  constructor(
-    private platformService: PlatformService,
-    private searchService: SearchService
-  ) {}
+  // Dependency Services
+  private readonly platformService = inject(PlatformService);
+  private readonly searchService = inject(SearchService);
 
   ngOnInit(): void {
     this.checkGeolocation();

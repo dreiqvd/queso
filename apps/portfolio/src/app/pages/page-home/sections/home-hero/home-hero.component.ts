@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  inject,
   OnInit,
   Output,
   Renderer2,
@@ -54,10 +55,11 @@ export class HomeHeroComponent implements OnInit, AfterViewInit {
   readonly greetingText2 = 'Drei'.split('');
   readonly shouldBreakText = signal(false);
 
-  constructor(
-    private renderer: Renderer2,
-    private platformService: PlatformService
-  ) {
+  // Dependency Services
+  private readonly renderer = inject(Renderer2);
+  private readonly platformService = inject(PlatformService);
+
+  constructor() {
     if (this.platformService.isUsingBrowser) {
       fromEvent(window, 'resize')
         .pipe(takeUntilDestroyed())

@@ -1,10 +1,10 @@
 import { NgClass } from '@angular/common';
 import {
-  AfterViewInit,
+  afterNextRender,
   Component,
   ElementRef,
   EventEmitter,
-  OnInit,
+  inject,
   Output,
   signal,
   ViewChild,
@@ -41,7 +41,7 @@ import { SearchFormComponent } from '../search-form';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
-export class SidebarComponent implements OnInit, AfterViewInit {
+export class SidebarComponent {
   @ViewChild('resultsWrapper') resultsWrapperRef?: ElementRef<HTMLElement>;
   @Output() toggleDirections = new EventEmitter<SearchResult['location']>();
   @Output() toggleSidebar = new EventEmitter<boolean>();
@@ -57,14 +57,15 @@ export class SidebarComponent implements OnInit, AfterViewInit {
   readonly showResults = signal(false);
   readonly resultsWrapperHeight = signal('auto');
 
+  // Dependency Services
+  private readonly platformService = inject(PlatformService);
+  private readonly searchService = inject(SearchService);
+
   // Misc
   readonly isSmallViewPort = signal(this.isUsingSmallViewPort());
   readonly resultsCount = signal(0);
 
-  constructor(
-    private platformService: PlatformService,
-    private searchService: SearchService
-  ) {
+  constructor() {
     this.searchService.searchStarted$
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
@@ -76,21 +77,17 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       .subscribe((res) => {
         this.onSearchEnd(res);
       });
-  }
 
-  ngOnInit(): void {
-    if (this.platformService.isUsingBrowser) {
+    afterNextRender(() => {
       fromEvent(window, 'resize')
         .pipe(debounceTime(300))
         .subscribe(() => {
           this.isSmallViewPort.set(this.isUsingSmallViewPort());
           this.setSearchResultsWrapperHeight();
         });
-    }
-  }
 
-  ngAfterViewInit(): void {
-    this.setSearchResultsWrapperHeight();
+      this.setSearchResultsWrapperHeight();
+    });
   }
 
   /** Reset states on search start */

@@ -1,4 +1,10 @@
-import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -28,10 +34,9 @@ export class IconComponent implements OnChanges {
   /** Size of the icon in px. */
   iconSize = input<number>(24);
 
-  constructor(
-    private iconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
-  ) {}
+  // Dependencies
+  private readonly iconRegistry = inject(MatIconRegistry);
+  private readonly domSanitizer = inject(DomSanitizer);
 
   ngOnChanges(changes: SimpleChanges): void {
     // For now, icon needs to be loaded only when the iconName changes.

@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { inject, Injectable, NgZone } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
 
@@ -26,7 +26,9 @@ export class SearchService {
   public searchStarted$ = new Subject<void>();
   public searchEnded$ = new Subject<SearchResult[] | 'DENIED'>();
 
-  constructor(private ngZone: NgZone) {
+  private ngZone = inject(NgZone);
+
+  constructor() {
     this.nearbySearch$.pipe(takeUntilDestroyed()).subscribe(() => {
       if (this.searchAllDone && this.searchOpenDone) {
         this.mergeSearchResults();

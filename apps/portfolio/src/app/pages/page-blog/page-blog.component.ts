@@ -1,4 +1,4 @@
-import { Component, computed, Signal } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 
 import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
@@ -23,8 +23,7 @@ import { PageContainerComponent } from '../../shared/page-container';
   providers: [ArticlesService],
 })
 export class PageBlogComponent {
-  constructor(private articlesService: ArticlesService) {}
-
+  private readonly articlesService = inject(ArticlesService);
   readonly articles: Signal<Article[]> = computed(() =>
     this.articlesService.getArticles()
   );

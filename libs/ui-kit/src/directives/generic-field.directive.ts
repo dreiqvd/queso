@@ -1,6 +1,7 @@
 import {
   computed,
   Directive,
+  inject,
   input,
   OnInit,
   Signal,
@@ -61,7 +62,8 @@ export class GenericFormFieldDirective implements OnInit {
     }
   });
 
-  constructor(private controlContainer: ControlContainer) {}
+  // Depencency injection for the control container
+  private readonly controlContainer = inject(ControlContainer);
 
   ngOnInit(): void {
     this.initControlSubscriptions();
