@@ -125,7 +125,7 @@ export class SidebarComponent {
     ) {
       const wrapperElement = this.resultsWrapperRef.nativeElement;
       const offsetTop = wrapperElement.getBoundingClientRect().top;
-      const wrapperHeight = getViewportHeight() - offsetTop - 100; // account for fixed spaces
+      const wrapperHeight = getViewportHeight() - offsetTop - 50; // account for fixed spaces
       this.resultsWrapperHeight.set(`${wrapperHeight}px`);
     } else {
       this.resultsWrapperHeight.set('auto');
