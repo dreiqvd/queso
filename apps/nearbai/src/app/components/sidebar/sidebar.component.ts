@@ -79,15 +79,17 @@ export class SidebarComponent {
       });
 
     afterNextRender(() => {
+      this.setSearchResultsWrapperHeight();
+    });
+
+    if (this.platformService.isUsingBrowser) {
       fromEvent(window, 'resize')
-        .pipe(debounceTime(300))
+        .pipe(debounceTime(300), takeUntilDestroyed())
         .subscribe(() => {
           this.isSmallViewPort.set(this.isUsingSmallViewPort());
           this.setSearchResultsWrapperHeight();
         });
-
-      this.setSearchResultsWrapperHeight();
-    });
+    }
   }
 
   /** Reset states on search start */
