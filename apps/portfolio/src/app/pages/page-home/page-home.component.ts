@@ -1,15 +1,14 @@
 import {
+  afterNextRender,
+  AfterRenderPhase,
   Component,
   ElementRef,
-  inject,
-  OnInit,
   signal,
   ViewChild,
 } from '@angular/core';
 import anime from 'animejs';
 
 import { AnimationsDirective, CursorDirective } from '@queso/common/directives';
-import { PlatformService } from '@queso/common/services';
 
 import { PageContainerComponent } from '../../shared/page-container';
 
@@ -40,12 +39,16 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
     }
   `,
 })
-export class PageHomeComponent implements OnInit {
+export class PageHomeComponent {
   /** Element reference for the introductory backdrop */
   @ViewChild('backdrop', { read: AnimationsDirective })
   backdrop!: AnimationsDirective;
-  @ViewChild('contact') contactSection!: ElementRef<HTMLElement>;
-  @ViewChild('about') aboutSection!: ElementRef<HTMLElement>;
+
+  @ViewChild('contact')
+  contactSection!: ElementRef<HTMLElement>;
+
+  @ViewChild('about')
+  aboutSection!: ElementRef<HTMLElement>;
 
   /** Determines if animated intro text should be visible */
   readonly introVisibility = signal('hidden');
@@ -53,25 +56,25 @@ export class PageHomeComponent implements OnInit {
   /** Determines if main content should be visible */
   readonly isContentVisible = signal(false);
 
-  // Dependency Services
-  private readonly platformService = inject(PlatformService);
-
-  ngOnInit(): void {
-    if (this.platformService.isUsingBrowser) {
-      this.introVisibility.set('visible');
-      anime({
-        targets: '#backdrop-svg-wrapper path',
-        strokeDashoffset: [anime.setDashoffset, 0],
-        easing: 'easeInOutSine',
-        duration: 1500,
-        direction: 'alternate',
-        delay: (_: HTMLElement, i: number) => i * 250,
-      }).finished.then(() => {
-        this.backdrop.animate().then(() => {
-          this.backdrop.removeElement();
-          this.isContentVisible.set(true);
+  constructor() {
+    afterNextRender(
+      () => {
+        this.introVisibility.set('visible');
+        anime({
+          targets: '#backdrop-svg-wrapper path',
+          strokeDashoffset: [anime.setDashoffset, 0],
+          easing: 'easeInOutSine',
+          duration: 1500,
+          direction: 'alternate',
+          delay: (_: HTMLElement, i: number) => i * 250,
+        }).finished.then(() => {
+          this.backdrop.animate().then(() => {
+            this.backdrop.removeElement();
+            this.isContentVisible.set(true);
+          });
         });
-      });
-    }
+      },
+      { phase: AfterRenderPhase.Read }
+    );
   }
 }
