@@ -32,7 +32,7 @@
         "stylePreprocessorOptions": {
           "includePaths": [
             "libs/shared/assets/styles/core",
-            "libs/shared/assets/styles/theming"
+            "libs/shared/assets/styles/themes"
           ]
         },
         "scripts": [],

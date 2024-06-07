@@ -1,32 +1,32 @@
 html {
   /* Colors */
-  --color-primary: #{map-get($primary, 400)};
-  --color-accent: #{map-get($accent, 400)};
+  --color-primary: #{map-get($_primary, 40)};
+  --color-accent: #{map-get($_tertiary, 40)};
   --color-warn: #{map-get($red, 400)};
   --color-green: #{map-get($green, 400)};
   --color-gray: #{map-get($gray, 600)};
 
-  --color-primary-50: #{map-get($primary, 50)};
-  --color-primary-100: #{map-get($primary, 100)};
-  --color-primary-200: #{map-get($primary, 200)};
-  --color-primary-300: #{map-get($primary, 300)};
-  --color-primary-400: #{map-get($primary, 400)};
-  --color-primary-500: #{map-get($primary, 500)};
-  --color-primary-600: #{map-get($primary, 600)};
-  --color-primary-700: #{map-get($primary, 700)};
-  --color-primary-800: #{map-get($primary, 800)};
-  --color-primary-900: #{map-get($primary, 900)};
+  --color-primary-50: #{map-get($_primary, 99)};
+  --color-primary-100: #{map-get($_primary, 95)};
+  --color-primary-200: #{map-get($_primary, 80)};
+  --color-primary-300: #{map-get($_primary, 60)};
+  --color-primary-400: #{map-get($_primary, 40)};
+  --color-primary-500: #{map-get($_primary, 35)};
+  --color-primary-600: #{map-get($_primary, 30)};
+  --color-primary-700: #{map-get($_primary, 25)};
+  --color-primary-800: #{map-get($_primary, 20)};
+  --color-primary-900: #{map-get($_primary, 10)};
 
-  --color-accent-50: #{map-get($accent, 50)};
-  --color-accent-100: #{map-get($accent, 100)};
-  --color-accent-200: #{map-get($accent, 200)};
-  --color-accent-300: #{map-get($accent, 300)};
-  --color-accent-400: #{map-get($accent, 400)};
-  --color-accent-500: #{map-get($accent, 500)};
-  --color-accent-600: #{map-get($accent, 600)};
-  --color-accent-700: #{map-get($accent, 700)};
-  --color-accent-800: #{map-get($accent, 800)};
-  --color-accent-900: #{map-get($accent, 900)};
+  --color-accent-50: #{map-get($_tertiary, 99)};
+  --color-accent-100: #{map-get($_tertiary, 95)};
+  --color-accent-200: #{map-get($_tertiary, 80)};
+  --color-accent-300: #{map-get($_tertiary, 60)};
+  --color-accent-400: #{map-get($_tertiary, 40)};
+  --color-accent-500: #{map-get($_tertiary, 35)};
+  --color-accent-600: #{map-get($_tertiary, 30)};
+  --color-accent-700: #{map-get($_tertiary, 25)};
+  --color-accent-800: #{map-get($_tertiary, 20)};
+  --color-accent-900: #{map-get($_tertiary, 10)};
 
   --color-gray-50: #{map-get($gray, 50)};
   --color-gray-100: #{map-get($gray, 100)};
