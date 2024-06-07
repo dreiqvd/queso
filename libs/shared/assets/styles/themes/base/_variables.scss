@@ -6,6 +6,7 @@ html {
   --color-green: #{map-get($green, 400)};
   --color-gray: #{map-get($gray, 600)};
 
+  // Primary Color: Uses the primary map from Material 3 Config
   --color-primary-50: #{map-get($_primary, 99)};
   --color-primary-100: #{map-get($_primary, 95)};
   --color-primary-200: #{map-get($_primary, 80)};
@@ -17,6 +18,7 @@ html {
   --color-primary-800: #{map-get($_primary, 20)};
   --color-primary-900: #{map-get($_primary, 10)};
 
+  // Accent Color: Uses the tertiary map from Material 3 Config
   --color-accent-50: #{map-get($_tertiary, 99)};
   --color-accent-100: #{map-get($_tertiary, 95)};
   --color-accent-200: #{map-get($_tertiary, 80)};
