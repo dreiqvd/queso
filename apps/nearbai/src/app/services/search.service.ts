@@ -1,4 +1,4 @@
-import { inject, Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
 
@@ -14,8 +14,6 @@ import { ORIGINS } from '../components/search-form/search-form.data';
   providedIn: 'root',
 })
 export class SearchService {
-  private readonly ngZone = inject(NgZone);
-
   private map!: google.maps.Map;
   private mapCircle!: google.maps.Circle;
   private placesService!: google.maps.places.PlacesService;
@@ -105,11 +103,7 @@ export class SearchService {
       }
     });
 
-    // Running inside the ngZone to update the UI. This is necessary to avoid the issue of changes
-    // not being detected when running function inside a library script (e.g. nearbySearch callback)
-    this.ngZone.run(() => {
-      this.searchEnded$.next(currentResults);
-    });
+    this.searchEnded$.next(currentResults);
   }
 
   /**
