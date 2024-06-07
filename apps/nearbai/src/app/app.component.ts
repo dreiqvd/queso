@@ -45,6 +45,8 @@ export class AppComponent {
   @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
   @ViewChild(SidebarComponent) sidebar!: SidebarComponent;
 
+  private readonly searchService = inject(SearchService);
+
   // Map properties
   private mapCircle!: google.maps.Circle;
   readonly mapOptions = computed<google.maps.MapOptions>(() => {
@@ -64,9 +66,6 @@ export class AppComponent {
   readonly activeMarker = signal<ActiveMarker | null>(null);
   readonly currentCenter = signal<MapCenter | null>(null);
   readonly isSidebarOpen = signal(true);
-
-  // Dependency Services
-  private readonly searchService = inject(SearchService);
 
   constructor() {
     this.searchService.searchStarted$

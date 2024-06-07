@@ -34,6 +34,9 @@ import { MailingService } from '../../services';
   providers: [MailingService],
 })
 export class ContactFormComponent implements OnInit {
+  /** Mailing Service dependency */
+  private readonly mailingService = inject(MailingService);
+
   /** Whether the form is currently being sent */
   readonly showOverlay = signal(false);
 
@@ -45,9 +48,6 @@ export class ContactFormComponent implements OnInit {
 
   /** Whether sending of email got an error */
   readonly hasErrors = signal(false);
-
-  /** Mailing Service dependency */
-  private readonly mailingService = inject(MailingService);
 
   readonly contactForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(50)]),

@@ -54,13 +54,13 @@ export class HomeHeroComponent {
   // Event that is emitted when the user clicks on the CTA button
   @Output() ctaClick = new EventEmitter<void>();
 
+  // Dependencies
+  private readonly renderer = inject(Renderer2);
+  private readonly destroyRef = inject(DestroyRef);
+
   readonly greetingText1 = 'Hi, I am'.split('');
   readonly greetingText2 = 'Drei'.split('');
   readonly shouldBreakText = signal(false);
-
-  // Dependency Services
-  private readonly renderer = inject(Renderer2);
-  private readonly destroyRef = inject(DestroyRef);
 
   constructor() {
     afterNextRender(

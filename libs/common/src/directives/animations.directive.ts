@@ -25,6 +25,11 @@ import { PlatformService } from '../services';
   selector: '[qsAnimation]',
 })
 export class AnimationsDirective implements OnInit, OnDestroy {
+  // Dependencies
+  private readonly renderer = inject(Renderer2);
+  private readonly elementRef = inject(ElementRef);
+  private readonly platformService = inject(PlatformService);
+
   /** Optional animation that triggers on load. */
   readonly animation = input<AnimationTypes | ''>('', { alias: 'qsAnimation' });
 
@@ -68,11 +73,6 @@ export class AnimationsDirective implements OnInit, OnDestroy {
 
   /** An observer that determines when to trigger entrance animation to an element */
   private intersectionObserver$?: IntersectionObserver;
-
-  // Dependencies
-  private readonly renderer = inject(Renderer2);
-  private readonly elementRef = inject(ElementRef);
-  private readonly platformService = inject(PlatformService);
 
   constructor() {
     this.element = this.elementRef.nativeElement;

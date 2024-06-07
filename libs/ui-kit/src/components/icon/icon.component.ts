@@ -22,6 +22,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   `,
 })
 export class IconComponent implements OnChanges {
+  // Dependencies
+  private readonly iconRegistry = inject(MatIconRegistry);
+  private readonly domSanitizer = inject(DomSanitizer);
+
   /** Name of the icon to display. */
   readonly iconName = input.required<string>();
 
@@ -33,10 +37,6 @@ export class IconComponent implements OnChanges {
 
   /** Size of the icon in px. */
   readonly iconSize = input<number>(24);
-
-  // Dependencies
-  private readonly iconRegistry = inject(MatIconRegistry);
-  private readonly domSanitizer = inject(DomSanitizer);
 
   ngOnChanges(changes: SimpleChanges): void {
     // For now, icon needs to be loaded only when the iconName changes.

@@ -12,6 +12,8 @@ import { ORIGINS } from '../components/search-form/search-form.data';
 
 @Injectable()
 export class SearchService {
+  private readonly ngZone = inject(NgZone);
+
   private map!: google.maps.Map;
   private mapCircle!: google.maps.Circle;
   private placesService!: google.maps.places.PlacesService;
@@ -25,8 +27,6 @@ export class SearchService {
   public searchCenter: MapCenter | null = null;
   public searchStarted$ = new Subject<void>();
   public searchEnded$ = new Subject<SearchResult[] | 'DENIED'>();
-
-  private readonly ngZone = inject(NgZone);
 
   constructor() {
     this.nearbySearch$.pipe(takeUntilDestroyed()).subscribe(() => {

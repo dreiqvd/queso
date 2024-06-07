@@ -18,6 +18,10 @@ import { getViewportWidth } from '../helpers';
   selector: '[qsCustomCursor]',
 })
 export class CursorDirective {
+  // Dependencies
+  private readonly renderer = inject(Renderer2);
+  private readonly elementRef = inject(ElementRef);
+
   /** Reference for the element to be animated. */
   public readonly element: HTMLElement;
 
@@ -38,10 +42,6 @@ export class CursorDirective {
 
   /** Determines whether the cursor setup has been initialized */
   private isInitialized = false;
-
-  // Dependencies
-  private readonly renderer = inject(Renderer2);
-  private readonly elementRef = inject(ElementRef);
 
   constructor() {
     this.element = this.elementRef.nativeElement;

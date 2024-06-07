@@ -15,6 +15,9 @@ import { debounceTime } from 'rxjs';
   standalone: true,
 })
 export class GenericFormFieldDirective implements OnInit {
+  /* Depencency injection for the control container */
+  private readonly controlContainer = inject(ControlContainer);
+
   /**
    * The control to be used in the directive. This can be a FormControl instance
    * or a string representing the name of the control in the parent form group.
@@ -61,9 +64,6 @@ export class GenericFormFieldDirective implements OnInit {
       );
     }
   });
-
-  // Depencency injection for the control container
-  private readonly controlContainer = inject(ControlContainer);
 
   ngOnInit(): void {
     this.initControlSubscriptions();
