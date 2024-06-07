@@ -15,5 +15,5 @@ import { Component, input } from '@angular/core';
   `,
 })
 export class PillComponent {
-  text = input.required<string>();
+  readonly text = input.required<string>();
 }

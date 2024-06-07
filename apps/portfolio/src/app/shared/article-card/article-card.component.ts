@@ -13,6 +13,6 @@ import { Article } from '../../interfaces';
   templateUrl: './article-card.component.html',
 })
 export class ArticleCardComponent {
-  article = input.required<Article>();
-  showImage = input(true);
+  readonly article = input.required<Article>();
+  readonly showImage = input(true);
 }

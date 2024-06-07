@@ -26,49 +26,48 @@ import { PlatformService } from '../services';
 })
 export class AnimationsDirective implements OnInit, OnDestroy {
   /** Optional animation that triggers on load. */
-  animation = input<AnimationTypes | ''>('', { alias: 'qsAnimation' });
+  readonly animation = input<AnimationTypes | ''>('', { alias: 'qsAnimation' });
 
   /** Optional animation that triggers on hover. Multiple hover animations are allowed */
-  animHover = input<HoverAnimations | HoverAnimations[]>();
+  readonly animHover = input<HoverAnimations | HoverAnimations[]>();
 
   /** Duration of the animation in seconds.
    * @defaultvalue 1
    */
-  animDuration = input<number>(1);
+  readonly animDuration = input<number>(1);
 
   /** Duration of the hover animation in seconds.
    * @defaultvalue 1
    */
-  animHoverDuration = input<number>(1);
+  readonly animHoverDuration = input<number>(1);
 
   /** Delay before executing the animation in seconds.
    * @defaultValue 0
    */
-  animDelay = input<number>(0);
+  readonly animDelay = input<number>(0);
 
   /** Delay before executing the hover animation in seconds.
    * @defaultValue 0
    */
-  animHoverDelay = input<number>(0);
+  readonly animHoverDelay = input<number>(0);
 
   /** Determines if animation is manually triggered.
    * @defaultValue false
    */
-  animIsManual = input<boolean>(false);
+  readonly animIsManual = input<boolean>(false);
 
   /** Controls initial visibility of the element before animating
    * @defaultValue hidden
    */
-  animVisibility = input<'hidden' | 'visible'>('hidden');
+  readonly animVisibility = input<'hidden' | 'visible'>('hidden');
 
   /** Reference for the element to be animated. */
   private readonly element: HTMLElement;
+  private readonly isAnimated = signal<boolean>(false);
+  private readonly hvrAnimationsAdded = signal<boolean>(false);
 
   /** An observer that determines when to trigger entrance animation to an element */
   private intersectionObserver$?: IntersectionObserver;
-
-  private isAnimated = signal<boolean>(false);
-  private hvrAnimationsAdded = signal<boolean>(false);
 
   // Dependencies
   private readonly renderer = inject(Renderer2);

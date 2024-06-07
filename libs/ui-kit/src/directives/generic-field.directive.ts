@@ -19,29 +19,29 @@ export class GenericFormFieldDirective implements OnInit {
    * The control to be used in the directive. This can be a FormControl instance
    * or a string representing the name of the control in the parent form group.
    */
-  control = input.required<FormControl | string>();
+  readonly control = input.required<FormControl | string>();
 
   /** The name of the field. This is also used for accessibility attributes. */
-  name = input.required<string>();
+  readonly name = input.required<string>();
 
   /**
    * The optional label to be used for the form field.
    */
-  label = input<string>();
+  readonly label = input<string>();
 
   /**
    * Whether the required marker should be hidden.
    */
-  hideRequiredMarker = input<boolean>(false);
+  readonly hideRequiredMarker = input<boolean>(false);
 
   /**
    * The optional mapping for the error messages.
    * @example { required: 'Your custom required error message.' }
    */
-  errorMsgMap = input<{ [key: string]: string }>({});
+  readonly errorMsgMap = input<{ [key: string]: string }>({});
 
   /** Holds the value of the error message string */
-  protected errorMessage = signal<string>('');
+  protected readonly errorMessage = signal<string>('');
 
   /**
    * The resolved form control instance to be used in the directive.

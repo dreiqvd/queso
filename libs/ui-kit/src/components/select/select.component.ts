@@ -18,5 +18,5 @@ import { SelectableItem } from '../../interfaces';
   `,
 })
 export class SelectComponent extends GenericFormFieldDirective {
-  options = input.required<SelectableItem[]>();
+  readonly options = input.required<SelectableItem[]>();
 }

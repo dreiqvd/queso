@@ -26,7 +26,7 @@ export class SearchService {
   public searchStarted$ = new Subject<void>();
   public searchEnded$ = new Subject<SearchResult[] | 'DENIED'>();
 
-  private ngZone = inject(NgZone);
+  private readonly ngZone = inject(NgZone);
 
   constructor() {
     this.nearbySearch$.pipe(takeUntilDestroyed()).subscribe(() => {

@@ -15,13 +15,13 @@ export class ScrollCueComponent {
   /** Appearance type of the scroll cue.
    *  @defaultValue 'arrow-circle'
    */
-  appearance = input<ScrollCueAppearance>('arrow-circle');
+  readonly appearance = input<ScrollCueAppearance>('arrow-circle');
 
   /** ARIA label to apply on the element.
    * @defaultValue 'Scroll down'
    */
-  ariaLabel = input<string>('Scroll down');
+  readonly ariaLabel = input<string>('Scroll down');
 
   /** Optional tooltip message to be shown upon hover. */
-  tooltip = input<string>();
+  readonly tooltip = input<string>();
 }

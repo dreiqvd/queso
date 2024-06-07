@@ -23,16 +23,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class IconComponent implements OnChanges {
   /** Name of the icon to display. */
-  iconName = input.required<string>();
+  readonly iconName = input.required<string>();
 
   /**
    * The type of icon style to use.
    * @defaultValue 'light'
    */
-  iconStyle = input<IconStyle>('regular');
+  readonly iconStyle = input<IconStyle>('regular');
 
   /** Size of the icon in px. */
-  iconSize = input<number>(24);
+  readonly iconSize = input<number>(24);
 
   // Dependencies
   private readonly iconRegistry = inject(MatIconRegistry);
