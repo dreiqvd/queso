@@ -1,7 +1,9 @@
 import { NgClass } from '@angular/common';
 import {
   afterNextRender,
+  AfterRenderPhase,
   Component,
+  DestroyRef,
   ElementRef,
   EventEmitter,
   inject,
@@ -19,12 +21,11 @@ import {
   getViewportWidth,
 } from '@queso/common';
 import { AnimationsDirective } from '@queso/common/directives';
-import { PlatformService } from '@queso/common/services';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
-import { SearchResult } from '../../app.interface';
-import { SearchService } from '../../services/search.service';
+import { SearchResult } from '../../common/interfaces';
+import { SearchService } from '../../services';
 import { SearchFormComponent } from '../search-form';
 
 @Component({
@@ -46,8 +47,9 @@ export class SidebarComponent {
   @Output() toggleDirections = new EventEmitter<SearchResult['location']>();
   @Output() toggleSidebar = new EventEmitter<boolean>();
 
-  // Search Results
-  readonly searchResults = signal<SearchResult[]>([]);
+  // Dependencies
+  private readonly searchService = inject(SearchService);
+  private readonly destroyRef = inject(DestroyRef);
 
   // Sidebar states
   readonly isSidebarOpen = signal(true);
@@ -57,43 +59,50 @@ export class SidebarComponent {
   readonly showResults = signal(false);
   readonly resultsWrapperHeight = signal('auto');
 
-  // Dependency Services
-  private readonly platformService = inject(PlatformService);
-  private readonly searchService = inject(SearchService);
-
   // Misc
-  readonly isSmallViewPort = signal(this.isUsingSmallViewPort());
+  readonly searchResults = signal<SearchResult[]>([]);
   readonly resultsCount = signal(0);
+  readonly isSmallViewPort = signal(false);
 
   constructor() {
     this.searchService.searchStarted$
       .pipe(takeUntilDestroyed())
-      .subscribe(() => {
-        this.onSearchStart();
-      });
+      .subscribe(() => this.handleSearchStart());
 
     this.searchService.searchEnded$
       .pipe(takeUntilDestroyed())
-      .subscribe((res) => {
-        this.onSearchEnd(res);
-      });
+      .subscribe((res) => this.handleSearchEnd(res));
 
-    afterNextRender(() => {
-      this.setSearchResultsWrapperHeight();
-    });
+    afterNextRender(
+      () => {
+        this.adjustLayout();
 
-    if (this.platformService.isUsingBrowser) {
-      fromEvent(window, 'resize')
-        .pipe(debounceTime(300), takeUntilDestroyed())
-        .subscribe(() => {
-          this.isSmallViewPort.set(this.isUsingSmallViewPort());
-          this.setSearchResultsWrapperHeight();
-        });
+        fromEvent(window, 'resize')
+          .pipe(debounceTime(300), takeUntilDestroyed(this.destroyRef))
+          .subscribe(() => this.adjustLayout());
+      },
+      { phase: AfterRenderPhase.Write }
+    );
+  }
+
+  /** Adjust positioning and display of DOM elements based on certain states */
+  private adjustLayout(): void {
+    // Determine if viewport is in small
+    this.isSmallViewPort.set(getViewportWidth() <= BREAKPOINTS.MOBILE_MD);
+
+    // Compute the height of the search results wrapper element
+    if (this.resultsWrapperRef && !this.isSmallViewPort()) {
+      const wrapperElement = this.resultsWrapperRef.nativeElement;
+      const offsetTop = wrapperElement.getBoundingClientRect().top;
+      const wrapperHeight = getViewportHeight() - offsetTop - 60;
+      this.resultsWrapperHeight.set(`${wrapperHeight}px`);
+    } else {
+      this.resultsWrapperHeight.set('auto');
     }
   }
 
   /** Reset states on search start */
-  private onSearchStart(): void {
+  private handleSearchStart(): void {
     this.showLocationAccessMsg.set(false);
     this.showResults.set(false);
     this.showLoader.set(true);
@@ -101,7 +110,7 @@ export class SidebarComponent {
   }
 
   /** Handles event when search ended */
-  private onSearchEnd(results: SearchResult[] | 'DENIED'): void {
+  private handleSearchEnd(results: SearchResult[] | 'DENIED'): void {
     if (results === 'DENIED') {
       this.showLoader.set(false);
       this.showLocationAccessMsg.set(true);
@@ -114,33 +123,6 @@ export class SidebarComponent {
         this.searchResults.set(results);
       }, 1000);
     }
-  }
-
-  /**
-   * Compute the height of the search results wrapper element
-   */
-  private setSearchResultsWrapperHeight(): void {
-    if (
-      this.platformService.isUsingBrowser &&
-      this.resultsWrapperRef &&
-      !this.isSmallViewPort()
-    ) {
-      const wrapperElement = this.resultsWrapperRef.nativeElement;
-      const offsetTop = wrapperElement.getBoundingClientRect().top;
-      const wrapperHeight = getViewportHeight() - offsetTop - 50; // account for fixed spaces
-      this.resultsWrapperHeight.set(`${wrapperHeight}px`);
-    } else {
-      this.resultsWrapperHeight.set('auto');
-    }
-  }
-
-  /** Determines if current viewport is for small screen */
-  private isUsingSmallViewPort(): boolean {
-    if (this.platformService.isUsingBrowser) {
-      return getViewportWidth() <= BREAKPOINTS.MOBILE_MD;
-    }
-
-    return false;
   }
 
   /** Collapse or opens the sidebar */
