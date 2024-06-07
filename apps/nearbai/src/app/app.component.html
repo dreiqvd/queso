@@ -9,23 +9,24 @@
     (toggleDirections)="showDirections($event)"
   />
   <div class="bg-gray-400 flex-grow">
-    <google-map height="100%" width="100%" [options]="mapOptions()" (mapInitialized)="onMapInitialized($event)">
+    <google-map mapId="nearbai-map" height="100%" width="100%" [options]="mapOptions()" (mapInitialized)="onMapInitialized($event)">
       @for (result of searchResults(); track result.id) {
         @if (result.location) {
-          <map-marker
-            #marker="mapMarker"
-            icon="assets/img/marker-yellow.png"
+          <map-advanced-marker
+            #marker="mapAdvancedMarker"
             [position]="result.location"
+            [content]="result.markerElement ?? null"
             (mapClick)="onMarkerClick(marker, result)"
           />
         }
       }
 
       @if (currentCenter()) {
-        <map-marker
-          #marker="mapMarker"
-          icon="assets/img/marker-red.png"
+        <map-advanced-marker
+          #marker="mapAdvancedMarker"
           [position]="currentCenter()?.location!"
+          [content]="currentCenter()?.markerElement ?? null"
+          [zIndex]="1000"
           (mapClick)="onMarkerClick(marker, 'center')"
         />
       }

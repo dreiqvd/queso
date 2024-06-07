@@ -1,7 +1,18 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, inject, signal, ViewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  Renderer2,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
+import {
+  GoogleMap,
+  MapAdvancedMarker,
+  MapInfoWindow,
+} from '@angular/google-maps';
 import { MatTooltip } from '@angular/material/tooltip';
 
 import { BREAKPOINTS, getViewportWidth } from '@queso/common';
@@ -26,7 +37,7 @@ import { SearchService } from './services';
     NgClass,
     MatTooltip,
     GoogleMap,
-    MapMarker,
+    MapAdvancedMarker,
     MapInfoWindow,
     AnimationsDirective,
     SearchFormComponent,
@@ -51,6 +62,7 @@ export class AppComponent {
   @ViewChild(SidebarComponent) sidebar!: SidebarComponent;
 
   private readonly searchService = inject(SearchService);
+  private readonly renderer = inject(Renderer2);
 
   // Map properties
   private mapCircle!: google.maps.Circle;
@@ -71,32 +83,41 @@ export class AppComponent {
   readonly activeMarker = signal<ActiveMarker | null>(null);
   readonly currentCenter = signal<MapCenter | null>(null);
   readonly isSidebarOpen = signal(true);
+  markerOptions: google.maps.marker.AdvancedMarkerElementOptions = {};
 
   constructor() {
     this.searchService.searchStarted$
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
-        this.onSearchStart();
+        this.handleSearchStart();
       });
 
     this.searchService.searchEnded$
       .pipe(takeUntilDestroyed())
       .subscribe((val) => {
-        this.onSearchEnd(val);
+        this.handleSearchEnd(val);
       });
   }
 
-  private onSearchStart(): void {
+  private handleSearchStart(): void {
     this.searchResults.set([]);
   }
 
-  private onSearchEnd(results: SearchResult[] | 'DENIED'): void {
+  private handleSearchEnd(results: SearchResult[] | 'DENIED'): void {
     if (results !== 'DENIED') {
-      this.currentCenter.set(this.searchService.searchCenter);
+      this.currentCenter.set({
+        ...this.searchService.searchCenter,
+        markerElement: this.getMarkerElement('red'),
+      } as MapCenter);
 
       // Add a delay to be in sync with the search loading animation
       setTimeout(() => {
-        this.searchResults.set(results);
+        this.searchResults.set(
+          results.map((r) => ({
+            ...r,
+            markerElement: this.getMarkerElement('yellow'),
+          }))
+        );
       }, 800);
     }
   }
@@ -111,10 +132,29 @@ export class AppComponent {
   }
 
   /**
+   * As documented from the Google Maps API, to have a custom icon (content) for AdvancedMarkerElement,
+   * it is required to have a unique instance of the content element for each marker. This function
+   * generates an image instance of the content on the fly.
+   *
+   * "AdvancedMarkerElement does not clone the passed-in DOM element. Once the DOM element
+   * is passed to an AdvancedMarkerElement, passing the same DOM element to another AdvancedMarkerElement
+   * will move the DOM element and cause the previous AdvancedMarkerElement to look empty."
+   *
+   * Reference: https://developers.google.com/maps/documentation/javascript/reference/advanced-markers#AdvancedMarkerElementOptions.content
+   */
+  private getMarkerElement(color: string): HTMLElement {
+    const markerElement = this.renderer.createElement('img');
+    markerElement.src = `assets/img/marker-${color}.png`;
+    return markerElement;
+  }
+
+  /**
    * Function that is called once the Google Map is ready. It saves the map
    * instance and creates a circle overlay on the map.
    */
-  onMapInitialized(map: google.maps.Map): void {
+  async onMapInitialized(map: google.maps.Map): Promise<void> {
+    await google.maps.importLibrary('places');
+
     // Set services
     this.directionsService = new google.maps.DirectionsService();
     this.directionsRendererService = new google.maps.DirectionsRenderer({
@@ -142,6 +182,7 @@ export class AppComponent {
       this.currentCenter.set({
         location: defaultCenter,
         name: defaultOrigin.label,
+        markerElement: this.getMarkerElement('red'),
       });
     }
 
@@ -152,7 +193,10 @@ export class AppComponent {
    * Called when a marker is clicked. It sets the active marker and opens the info window.
    * Marker can be the center of the circle or a search result item.
    */
-  onMarkerClick(marker: MapMarker, item: SearchResult | 'center'): void {
+  onMarkerClick(
+    marker: MapAdvancedMarker,
+    item: SearchResult | 'center'
+  ): void {
     if (item === 'center') {
       const center = this.currentCenter() as MapCenter;
       this.activeMarker.set({

@@ -16,6 +16,7 @@ export interface SearchResult {
   id: string;
   name: string;
   address: string;
+  markerElement?: HTMLElement;
   isOpen?: boolean;
   imgUrl?: string;
   location?: google.maps.LatLng | google.maps.LatLngLiteral;
@@ -32,4 +33,5 @@ export interface ActiveMarker {
 export interface MapCenter {
   name: string;
   location: google.maps.LatLng | google.maps.LatLngLiteral;
+  markerElement?: HTMLElement;
 }
