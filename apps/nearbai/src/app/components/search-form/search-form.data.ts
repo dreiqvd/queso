@@ -4,11 +4,11 @@ import { Origin } from '../../common/interfaces';
 
 export const ORIGINS: Origin[] = [
   {
-    label: 'Matina Town Square (MTS)',
-    value: 'mts',
+    label: "People's Park Davao",
+    value: 'peoples-park',
     position: {
-      lat: 7.063806677379083,
-      lng: 125.5967766430919,
+      lat: 7.070777695265054,
+      lng: 125.60867067842437,
     },
   },
   {
@@ -68,11 +68,11 @@ export const ORIGINS: Origin[] = [
     },
   },
   {
-    label: "People's Park Davao",
-    value: 'peoples-park',
+    label: 'Matina Town Square (MTS)',
+    value: 'mts',
     position: {
-      lat: 7.070777695265054,
-      lng: 125.60867067842437,
+      lat: 7.063806677379083,
+      lng: 125.5967766430919,
     },
   },
   {
@@ -260,7 +260,7 @@ export const RADIUS: SelectableItem[] = [
 ];
 
 export const DEFAULTS = {
-  origin: 'mts',
+  origin: 'peoples-park',
   category: 'restaurant',
   radius: 500,
 };
