@@ -1,6 +1,6 @@
 import { SelectableItem } from '@queso/ui-kit';
 
-import { Origin } from '../../app.interface';
+import { Origin } from '../../common/interfaces';
 
 export const ORIGINS: Origin[] = [
   {

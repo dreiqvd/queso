@@ -7,10 +7,12 @@ import {
   Origin,
   SearchParams,
   SearchResult,
-} from '../app.interface';
+} from '../common/interfaces';
 import { ORIGINS } from '../components/search-form/search-form.data';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SearchService {
   private readonly ngZone = inject(NgZone);
 

@@ -9,11 +9,16 @@ import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
-import { ActiveMarker, MapCenter, Origin, SearchResult } from './app.interface';
+import {
+  ActiveMarker,
+  MapCenter,
+  Origin,
+  SearchResult,
+} from './common/interfaces';
 import { SearchFormComponent } from './components/search-form';
 import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SearchService } from './services/search.service';
+import { SearchService } from './services';
 
 @Component({
   standalone: true,
