@@ -1,13 +1,19 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {
+  afterNextRender,
+  AfterRenderPhase,
+  Component,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 
-import { PlatformService } from '@queso/common/services';
 import { SelectableItem } from '@queso/ui-kit';
 import { SelectComponent } from '@queso/ui-kit/select';
 
-import { Origin, SearchParams } from '../../app.interface';
-import { SearchService } from '../../services/search.service';
+import { Origin, SearchParams } from '../../common/interfaces';
+import { SearchService } from '../../services';
 
 import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
 
@@ -24,26 +30,31 @@ import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
   `,
 })
 export class SearchFormComponent implements OnInit {
+  // Dependencies
+  private readonly searchService = inject(SearchService);
+
+  // Form
   readonly searchForm = new FormGroup({
     origin: new FormControl<string>(DEFAULTS['origin']),
     category: new FormControl<string>(DEFAULTS['category']),
     radius: new FormControl<number>(DEFAULTS['radius']),
   });
 
-  /** Dropdown Options */
+  // Dropdown options
   readonly sourceLocations: Origin[] = ORIGINS;
   readonly categories: SelectableItem[] = CATEGORIES;
   readonly radiusOptions: SelectableItem[] = RADIUS;
 
+  // Misc
   readonly buttonLabel = signal<string>('Find');
 
-  // Dependency Services
-  private readonly platformService = inject(PlatformService);
-  private readonly searchService = inject(SearchService);
+  constructor() {
+    afterNextRender(() => this.checkGeolocation(), {
+      phase: AfterRenderPhase.Read,
+    });
+  }
 
   ngOnInit(): void {
-    this.checkGeolocation();
-
     const { category } = this.searchForm.controls;
     category.valueChanges.subscribe((value) => {
       this.handleCategoryChange(value as string);
@@ -64,7 +75,6 @@ export class SearchFormComponent implements OnInit {
   /** Verify if Geolocation feature is availabel */
   private checkGeolocation(): void {
     if (
-      this.platformService.isUsingBrowser &&
       navigator.geolocation &&
       !this.sourceLocations.find((l) => l.value === 'current')
     ) {
