@@ -1,9 +1,11 @@
 {
   "name": "@queso/source",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint:all": "nx run-many --target=lint --all",
+    "format:check": "nx format:check --verbose"
   },
   "private": true,
   "dependencies": {
