@@ -107,6 +107,12 @@
         }
       },
       "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/nearbai/**/*.ts", "apps/nearbai/**/*.html"]
+      }
     }
   }
 }

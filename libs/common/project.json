@@ -5,5 +5,12 @@
   "prefix": "qs",
   "tags": ["type:utils", "scope:shared"],
   "projectType": "library",
-  "targets": {}
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/common/**/*.ts"]
+      }
+    }
+  }
 }

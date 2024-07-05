@@ -118,6 +118,12 @@
         }
       },
       "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["apps/portfolio/**/*.ts", "apps/portfolio/**/*.html"]
+      }
     }
   }
 }

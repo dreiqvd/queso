@@ -5,5 +5,12 @@
   "prefix": "qs",
   "tags": ["type:ui", "scope:shared"],
   "projectType": "library",
-  "targets": {}
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["libs/ui-kit/**/*.ts", "libs/ui-kit/**/*.html"]
+      }
+    }
+  }
 }
