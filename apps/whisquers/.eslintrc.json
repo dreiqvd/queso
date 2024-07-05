@@ -1,0 +1,12 @@
+{
+  "extends": ["../../.eslintrc.angular.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["apps/whisquers/tsconfig.*?.json"]
+      }
+    }
+  ]
+}
