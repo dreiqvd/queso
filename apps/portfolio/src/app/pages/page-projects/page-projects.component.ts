@@ -6,7 +6,7 @@ import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
-import { PageContainerComponent } from '../../shared/page-container';
+import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
   selector: 'qs-page-projects',
