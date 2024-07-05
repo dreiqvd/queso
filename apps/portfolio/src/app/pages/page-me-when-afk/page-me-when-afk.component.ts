@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 
-import { PageContainerComponent } from '../../shared/page-container';
+import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
   selector: 'qs-me-when-afk',
@@ -19,4 +19,4 @@ import { PageContainerComponent } from '../../shared/page-container';
   ],
   templateUrl: './page-me-when-afk.component.html',
 })
-export class PageMeWhenAfkComponent {}
+export class PageMeWhenAfkComponent { }

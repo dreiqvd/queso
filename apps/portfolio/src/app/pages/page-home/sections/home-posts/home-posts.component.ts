@@ -7,8 +7,8 @@ import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 import { PillComponent } from '@queso/ui-kit/pill';
 
+import { ArticleCardComponent } from '../../../../components/article-card';
 import { ArticlesService } from '../../../../services';
-import { ArticleCardComponent } from '../../../../shared/article-card';
 
 @Component({
   selector: 'qs-home-posts',

@@ -4,8 +4,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 
 import { AnimationsDirective } from '@queso/common/directives';
 
-import { ContactFormComponent } from '../../shared/contact-form';
-import { PageContainerComponent } from '../../shared/page-container';
+import { ContactFormComponent } from '../../components/contact-form';
+import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
   selector: 'qs-contact',

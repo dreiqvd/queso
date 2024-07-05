@@ -1,0 +1,87 @@
+<header
+  role="navigation"
+  aria-label="Main navigation"
+  class="h-full flex items-center justify-between py-0 px-8 mobile-md:px-4"
+>
+  <button
+    matTooltip="Behold, a menu..."
+    type="button"
+    aria-label="Open menu"
+    qsAnimation="fadeInLeft"
+    (click)="onOpenSidebar($event)"
+  >
+    <qs-hamburger />
+  </button>
+  <ul class="gap-3 mx-0 flex" qsAnimation="bounceInDown">
+    @for (social of socials; track $index) {
+      <li>
+        <a
+          class="primary text-gray-700 rounded-tr-[4px] rounded-tl-[4px]"
+          target="_blank"
+          rel="noopener noreferrer"
+          qsAnimation
+          [href]="social.url"
+          [animHover]="['bounceToRight', 'wobbleTop']"
+          [attr.aria-label]="social.name"
+          [matTooltip]="social.name"
+        >
+          <qs-icon iconStyle="brands" [iconName]="social.icon" [iconSize]="30" />
+        </a>
+      </li>
+    }
+  </ul>
+</header>
+
+@if (isSidebarOpen()) {
+  <nav
+    #sidebar
+    class="sidebar w-[300px] bg-gray-50 p-8 fixed top-0 h-dvh shadow-sidebar"
+    qsAnimation
+    [animDuration]="0.3"
+    [animIsManual]="true"
+  >
+  <div class="h-full relative">
+    <div class="flex justify-end">
+      <button
+        class="text-gray hover:text-gray-700"
+        matTooltip="When one door closes, another opens; sorry, not in this sidebar."
+        type="button"
+        aria-label="Close sidebar"
+        (click)="onCloseSidebar($event)"
+      >
+        <qs-icon iconName="xmark" iconStyle="light" aria-hidden="true" [iconSize]="28" />
+      </button>
+    </div>
+    <ul class="flex flex-col gap-8 mt-10">
+      @for (route of routes; track $index) {
+        <li
+          class="text-[2rem] font-semibold leading-[3rem]"
+          ariaCurrentWhenActive="page"
+        >
+          <a
+            class="menu-link text-underlined text-gray-500 relative inline-block"
+            routerLinkActive="active"
+            [routerLink]="route.path"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ route.label }}
+          </a
+          >
+        </li>
+      }
+    </ul>
+
+    <div class="absolute bottom-0 left-0">
+      <img
+        src="assets/svg/logo-grayscale.svg"
+        width="36"
+        alt="DQ Logo"
+        aria-label="Drei Quevada Logo"
+        qsAnimation="fadeInUp"
+        animHover="push"
+        [animHoverDuration]="0.5"
+      />
+    </div>
+  </div>
+  </nav>
+}
