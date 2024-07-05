@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "lint:all": "nx run-many --target=lint --all",
+    "lint:check": "nx run-many --target=lint --all",
+    "lint:fix": "nx run-many --target=lint --all --fix",
     "format:check": "nx format:check --verbose",
     "format:fix": "nx format --verbose"
   },
