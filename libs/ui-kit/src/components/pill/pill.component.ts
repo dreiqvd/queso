@@ -14,6 +14,6 @@ import { Component, input } from '@angular/core';
     }
   `,
 })
-export class PillComponent {
+export class QsPillComponent {
   readonly text = input.required<string>();
 }

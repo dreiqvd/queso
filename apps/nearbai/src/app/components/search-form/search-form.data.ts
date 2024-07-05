@@ -1,4 +1,4 @@
-import { SelectableItem } from '@queso/ui-kit';
+import { QsSelectableItem } from '@queso/ui-kit';
 
 import { Origin } from '../../common/interfaces';
 
@@ -125,7 +125,7 @@ export const ORIGINS: Origin[] = [
   },
 ];
 
-export const CATEGORIES: SelectableItem[] = [
+export const CATEGORIES: QsSelectableItem[] = [
   {
     label: 'Restaurants',
     value: 'restaurant',
@@ -240,7 +240,7 @@ export const CATEGORIES: SelectableItem[] = [
   },
 ];
 
-export const RADIUS: SelectableItem[] = [
+export const RADIUS: QsSelectableItem[] = [
   {
     label: '500',
     value: 500,

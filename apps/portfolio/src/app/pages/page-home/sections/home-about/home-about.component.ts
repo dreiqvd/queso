@@ -3,18 +3,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-home-about',
   standalone: true,
   imports: [
+    NgOptimizedImage,
     RouterLink,
     MatTooltip,
-    NgOptimizedImage,
-    AnimationsDirective,
-    IconComponent,
+    QsAnimationsDirective,
+    QsIconComponent,
   ],
   templateUrl: './home-about.component.html',
 })

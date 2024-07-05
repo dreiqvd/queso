@@ -4,7 +4,7 @@ import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class PlatformService {
+export class QsPlatformService {
   private readonly platformId = inject(PLATFORM_ID);
 
   get isUsingBrowser(): boolean {

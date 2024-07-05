@@ -3,9 +3,9 @@ import { Component, computed, inject } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
-import { PillComponent } from '@queso/ui-kit/pill';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsPillComponent } from '@queso/ui-kit/pill';
 
 import { ArticleCardComponent } from '../../../../components/article-card';
 import { ArticlesService } from '../../../../services';
@@ -17,9 +17,9 @@ import { ArticlesService } from '../../../../services';
     RouterLink,
     NgOptimizedImage,
     MatTooltip,
-    IconComponent,
-    PillComponent,
-    AnimationsDirective,
+    QsIconComponent,
+    QsPillComponent,
+    QsAnimationsDirective,
     ArticleCardComponent,
   ],
   providers: [ArticlesService],

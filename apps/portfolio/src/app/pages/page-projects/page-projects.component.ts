@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
-import { PillComponent } from '@queso/ui-kit/pill';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsPillComponent } from '@queso/ui-kit/pill';
 
 import { PageContainerComponent } from '../../components/page-container';
 
@@ -15,9 +15,9 @@ import { PageContainerComponent } from '../../components/page-container';
     RouterLink,
     MatTooltip,
     PageContainerComponent,
-    AnimationsDirective,
-    IconComponent,
-    PillComponent,
+    QsAnimationsDirective,
+    QsIconComponent,
+    QsPillComponent,
   ],
   templateUrl: './page-projects.component.html',
 })

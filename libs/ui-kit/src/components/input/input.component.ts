@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { GenericFormFieldDirective } from '../../directives';
+import { QsGenericFormFieldDirective } from '../../directives';
 
 @Component({
   selector: 'qs-input',
@@ -16,7 +16,7 @@ import { GenericFormFieldDirective } from '../../directives';
   ],
   templateUrl: './input.component.html',
 })
-export class InputComponent extends GenericFormFieldDirective {
+export class QsInputComponent extends QsGenericFormFieldDirective {
   /**
    * Applies the value of the native HTML attribute `autocomplete` to the input element.
    */

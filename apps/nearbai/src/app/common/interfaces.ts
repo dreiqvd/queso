@@ -1,6 +1,6 @@
-import {} from '@angular/google-maps';
+import { } from '@angular/google-maps';
 
-import { SelectableItem } from '@queso/ui-kit';
+import { QsSelectableItem } from '@queso/ui-kit';
 
 export interface SearchParams {
   origin: string;
@@ -8,7 +8,7 @@ export interface SearchParams {
   radius: number;
 }
 
-export interface Origin extends SelectableItem {
+export interface Origin extends QsSelectableItem {
   position?: google.maps.LatLngLiteral;
 }
 

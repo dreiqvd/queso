@@ -21,7 +21,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     }
   `,
 })
-export class IconComponent implements OnChanges {
+export class QsIconComponent implements OnChanges {
   // Dependencies
   private readonly iconRegistry = inject(MatIconRegistry);
   private readonly domSanitizer = inject(DomSanitizer);

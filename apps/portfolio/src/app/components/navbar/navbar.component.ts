@@ -3,9 +3,9 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { SOCIAL_LINKS } from '@queso/common';
-import { AnimationsDirective } from '@queso/common/directives';
-import { HamburgerComponent } from '@queso/ui-kit/hamburger';
-import { IconComponent } from '@queso/ui-kit/icon';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsHamburgerComponent } from '@queso/ui-kit/hamburger';
+import { QsIconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-navbar',
@@ -15,16 +15,16 @@ import { IconComponent } from '@queso/ui-kit/icon';
     RouterLink,
     RouterLinkActive,
     MatTooltip,
-    IconComponent,
-    HamburgerComponent,
-    AnimationsDirective,
+    QsIconComponent,
+    QsHamburgerComponent,
+    QsAnimationsDirective,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  @ViewChild('sidebar', { read: AnimationsDirective })
-  sidebar!: AnimationsDirective;
+  @ViewChild('sidebar', { read: QsAnimationsDirective })
+  sidebar!: QsAnimationsDirective;
 
   readonly socials = SOCIAL_LINKS;
   readonly isSidebarOpen = signal(false);

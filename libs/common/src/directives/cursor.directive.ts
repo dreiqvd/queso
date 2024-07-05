@@ -17,7 +17,7 @@ import { getViewportWidth } from '../helpers';
   standalone: true,
   selector: '[qsCustomCursor]',
 })
-export class CursorDirective {
+export class QsCursorDirective {
   // Dependencies
   private readonly renderer = inject(Renderer2);
   private readonly elementRef = inject(ElementRef);

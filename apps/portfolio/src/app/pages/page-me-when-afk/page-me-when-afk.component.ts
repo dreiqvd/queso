@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
 
 import { PageContainerComponent } from '../../components/page-container';
 
@@ -13,9 +13,9 @@ import { PageContainerComponent } from '../../components/page-container';
   imports: [
     RouterLink,
     MatTooltip,
-    AnimationsDirective,
+    QsAnimationsDirective,
+    QsIconComponent,
     PageContainerComponent,
-    IconComponent,
   ],
   templateUrl: './page-me-when-afk.component.html',
 })

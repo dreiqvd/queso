@@ -9,10 +9,10 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltip } from '@angular/material/tooltip';
 
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
-import { InputComponent } from '@queso/ui-kit/input';
-import { TextareaComponent } from '@queso/ui-kit/textarea';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsInputComponent } from '@queso/ui-kit/input';
+import { QsTextareaComponent } from '@queso/ui-kit/textarea';
 
 import { MailingService } from '../../services';
 
@@ -24,10 +24,10 @@ import { MailingService } from '../../services';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatTooltip,
-    AnimationsDirective,
-    InputComponent,
-    TextareaComponent,
-    IconComponent,
+    QsAnimationsDirective,
+    QsInputComponent,
+    QsTextareaComponent,
+    QsIconComponent,
   ],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss',

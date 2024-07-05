@@ -1,4 +1,4 @@
-export interface SelectableItem {
+export interface QsSelectableItem {
   label: string;
   value: string | number;
 }

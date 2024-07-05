@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import anime from 'animejs';
 
-import { AnimationsDirective, CursorDirective } from '@queso/common/directives';
+import { QsAnimationsDirective, QsCursorDirective } from '@queso/common/directives';
 
 import { PageContainerComponent } from '../../components/page-container';
 
@@ -22,8 +22,8 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
   selector: 'app-home',
   standalone: true,
   imports: [
-    AnimationsDirective,
-    CursorDirective,
+    QsAnimationsDirective,
+    QsCursorDirective,
     PageContainerComponent,
     HomeHeroComponent,
     HomeAboutComponent,
@@ -41,8 +41,8 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
 })
 export class PageHomeComponent {
   /** Element reference for the introductory backdrop */
-  @ViewChild('backdrop', { read: AnimationsDirective })
-  backdrop!: AnimationsDirective;
+  @ViewChild('backdrop', { read: QsAnimationsDirective })
+  backdrop!: QsAnimationsDirective;
 
   @ViewChild('contact')
   contactSection!: ElementRef<HTMLElement>;

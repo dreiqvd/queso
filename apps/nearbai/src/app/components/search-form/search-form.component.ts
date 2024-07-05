@@ -9,8 +9,8 @@ import {
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 
-import { SelectableItem } from '@queso/ui-kit';
-import { SelectComponent } from '@queso/ui-kit/select';
+import { QsSelectableItem } from '@queso/ui-kit';
+import { QsSelectComponent } from '@queso/ui-kit/select';
 
 import { Origin, SearchParams } from '../../common/interfaces';
 import { SearchService } from '../../services';
@@ -20,7 +20,7 @@ import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
 @Component({
   selector: 'app-search-form',
   standalone: true,
-  imports: [ReactiveFormsModule, MatButton, SelectComponent],
+  imports: [ReactiveFormsModule, MatButton, QsSelectComponent],
   templateUrl: './search-form.component.html',
   styles: `
     .search-btn {
@@ -42,8 +42,8 @@ export class SearchFormComponent implements OnInit {
 
   // Dropdown options
   readonly sourceLocations: Origin[] = ORIGINS;
-  readonly categories: SelectableItem[] = CATEGORIES;
-  readonly radiusOptions: SelectableItem[] = RADIUS;
+  readonly categories: QsSelectableItem[] = CATEGORIES;
+  readonly radiusOptions: QsSelectableItem[] = RADIUS;
 
   // Misc
   readonly buttonLabel = signal<string>('Find');

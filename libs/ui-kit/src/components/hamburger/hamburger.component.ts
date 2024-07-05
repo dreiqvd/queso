@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   standalone: true,
   templateUrl: './hamburger.component.html',
 })
-export class HamburgerComponent {}
+export class QsHamburgerComponent { }

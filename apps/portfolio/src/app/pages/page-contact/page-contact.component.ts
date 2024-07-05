@@ -2,7 +2,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
-import { AnimationsDirective } from '@queso/common/directives';
+import { QsAnimationsDirective } from '@queso/common/directives';
 
 import { ContactFormComponent } from '../../components/contact-form';
 import { PageContainerComponent } from '../../components/page-container';
@@ -13,9 +13,9 @@ import { PageContainerComponent } from '../../components/page-container';
   imports: [
     NgOptimizedImage,
     MatTooltip,
+    QsAnimationsDirective,
     PageContainerComponent,
     ContactFormComponent,
-    AnimationsDirective,
   ],
   templateUrl: './page-contact.component.html',
 })

@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { timer } from 'rxjs';
 
-import { PlatformService } from '../services';
+import { QsPlatformService } from '../services';
 
 /**
  * This directive provides animation capabilities to an element. There can be an animation
@@ -24,11 +24,11 @@ import { PlatformService } from '../services';
   standalone: true,
   selector: '[qsAnimation]',
 })
-export class AnimationsDirective implements OnInit, OnDestroy {
+export class QsAnimationsDirective implements OnInit, OnDestroy {
   // Dependencies
   private readonly renderer = inject(Renderer2);
   private readonly elementRef = inject(ElementRef);
-  private readonly platformService = inject(PlatformService);
+  private readonly platformService = inject(QsPlatformService);
 
   /** Optional animation that triggers on load. */
   readonly animation = input<AnimationTypes | ''>('', { alias: 'qsAnimation' });

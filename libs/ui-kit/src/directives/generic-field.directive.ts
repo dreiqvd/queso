@@ -14,7 +14,7 @@ import { debounceTime } from 'rxjs';
   selector: '[qsFormField]',
   standalone: true,
 })
-export class GenericFormFieldDirective implements OnInit {
+export class QsGenericFormFieldDirective implements OnInit {
   /* Depencency injection for the control container */
   private readonly controlContainer = inject(ControlContainer);
 
@@ -60,7 +60,7 @@ export class GenericFormFieldDirective implements OnInit {
       return group.get(control as string) as FormControl;
     } else {
       throw new Error(
-        'Invalid control input provided to GenericFormFieldDirective'
+        'Invalid control input provided to QsGenericFormFieldDirective'
       );
     }
   });
@@ -83,12 +83,12 @@ export class GenericFormFieldDirective implements OnInit {
           errorMsg = this.errorMsgMap()[errorKey];
         } else if (
           DEFAULT_ERROR_MESSAGES[
-            errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
+          errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
           ]
         ) {
           errorMsg =
             DEFAULT_ERROR_MESSAGES[
-              errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
+            errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
             ];
         } else {
           console.error('No validation message found for error:', errorKey);

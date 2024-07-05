@@ -11,7 +11,7 @@ import {
   withInMemoryScrolling,
 } from '@angular/router';
 
-import { PageTitleStrategy } from '@queso/common/strategies';
+import { QsPageTitleStrategy } from '@queso/common/strategies';
 
 import { appRoutes } from './app.routes';
 
@@ -27,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     {
       provide: TitleStrategy,
-      useClass: PageTitleStrategy,
+      useClass: QsPageTitleStrategy,
     },
   ],
 };

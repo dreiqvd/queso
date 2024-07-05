@@ -17,19 +17,19 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { debounceTime, fromEvent } from 'rxjs';
 
 import { BREAKPOINTS, getViewportWidth } from '@queso/common';
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
-import { ScrollCueComponent } from '@queso/ui-kit/scroll-cue';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsScrollCueComponent } from '@queso/ui-kit/scroll-cue';
 
 @Component({
   selector: 'app-home-hero',
   standalone: true,
   imports: [
     NgTemplateOutlet,
-    IconComponent,
-    ScrollCueComponent,
     MatTooltip,
-    AnimationsDirective,
+    QsIconComponent,
+    QsScrollCueComponent,
+    QsAnimationsDirective,
   ],
   templateUrl: './home-hero.component.html',
   styles: `

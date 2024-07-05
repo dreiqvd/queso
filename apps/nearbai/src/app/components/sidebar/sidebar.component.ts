@@ -20,9 +20,9 @@ import {
   getViewportHeight,
   getViewportWidth,
 } from '@queso/common';
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
-import { PillComponent } from '@queso/ui-kit/pill';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsPillComponent } from '@queso/ui-kit/pill';
 
 import { SearchResult } from '../../common/interfaces';
 import { SearchService } from '../../services';
@@ -34,9 +34,9 @@ import { SearchFormComponent } from '../search-form';
   imports: [
     NgClass,
     MatTooltip,
-    IconComponent,
-    PillComponent,
-    AnimationsDirective,
+    QsIconComponent,
+    QsPillComponent,
+    QsAnimationsDirective,
     SearchFormComponent,
   ],
   templateUrl: './sidebar.component.html',

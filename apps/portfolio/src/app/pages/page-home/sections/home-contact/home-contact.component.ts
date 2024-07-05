@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
 import { SOCIAL_LINKS } from '@queso/common';
-import { AnimationsDirective } from '@queso/common/directives';
+import { QsAnimationsDirective } from '@queso/common/directives';
 
 import { ContactFormComponent } from '../../../../components/contact-form';
 
@@ -13,8 +13,8 @@ import { ContactFormComponent } from '../../../../components/contact-form';
   imports: [
     NgOptimizedImage,
     MatTooltip,
+    QsAnimationsDirective,
     ContactFormComponent,
-    AnimationsDirective,
   ],
   templateUrl: './home-contact.component.html',
 })

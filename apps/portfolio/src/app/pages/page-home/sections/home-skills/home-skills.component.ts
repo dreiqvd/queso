@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import anime from 'animejs';
 
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-home-skills',
   standalone: true,
-  imports: [MatTooltip, IconComponent, AnimationsDirective],
+  imports: [MatTooltip, QsIconComponent, QsAnimationsDirective],
   templateUrl: './home-skills.component.html',
 })
 export class HomeSkillsComponent {

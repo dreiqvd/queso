@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { GenericFormFieldDirective } from '../../directives';
+import { QsGenericFormFieldDirective } from '../../directives';
 
 @Component({
   selector: 'qs-textarea',
@@ -16,7 +16,7 @@ import { GenericFormFieldDirective } from '../../directives';
   ],
   templateUrl: './textarea.component.html',
 })
-export class TextareaComponent extends GenericFormFieldDirective {
+export class QsTextareaComponent extends QsGenericFormFieldDirective {
   /** The number of rows to display in the textarea.
    * @defaultValue 5
    */

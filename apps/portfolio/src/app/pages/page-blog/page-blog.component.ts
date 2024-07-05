@@ -1,8 +1,8 @@
 import { Component, computed, inject, Signal } from '@angular/core';
 
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
-import { PillComponent } from '@queso/ui-kit/pill';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsPillComponent } from '@queso/ui-kit/pill';
 
 import { ArticleCardComponent } from '../../components/article-card';
 import { PageContainerComponent } from '../../components/page-container';
@@ -13,10 +13,10 @@ import { ArticlesService } from '../../services';
   selector: 'app-page-blog',
   standalone: true,
   imports: [
-    AnimationsDirective,
+    QsAnimationsDirective,
+    QsIconComponent,
+    QsPillComponent,
     PageContainerComponent,
-    PillComponent,
-    IconComponent,
     ArticleCardComponent,
   ],
   templateUrl: './page-blog.component.html',

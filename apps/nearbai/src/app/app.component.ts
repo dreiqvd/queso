@@ -16,9 +16,9 @@ import {
 import { MatTooltip } from '@angular/material/tooltip';
 
 import { BREAKPOINTS, getViewportWidth } from '@queso/common';
-import { AnimationsDirective } from '@queso/common/directives';
-import { IconComponent } from '@queso/ui-kit/icon';
-import { PillComponent } from '@queso/ui-kit/pill';
+import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsPillComponent } from '@queso/ui-kit/pill';
 
 import {
   ActiveMarker,
@@ -39,10 +39,10 @@ import { SearchService } from './services';
     GoogleMap,
     MapAdvancedMarker,
     MapInfoWindow,
-    AnimationsDirective,
+    QsAnimationsDirective,
+    QsIconComponent,
+    QsPillComponent,
     SearchFormComponent,
-    IconComponent,
-    PillComponent,
     SidebarComponent,
   ],
   selector: 'app-root',
