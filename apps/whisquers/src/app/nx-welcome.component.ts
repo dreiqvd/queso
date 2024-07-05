@@ -1,8 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-nx-welcome',
+  selector: 'qs-nx-welcome',
   standalone: true,
   imports: [CommonModule],
   template: `
@@ -981,4 +981,4 @@ nx affected:e2e</pre>
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class NxWelcomeComponent {}
+export class NxWelcomeComponent { }
