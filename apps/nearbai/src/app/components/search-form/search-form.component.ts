@@ -18,7 +18,7 @@ import { SearchService } from '../../services';
 import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
 
 @Component({
-  selector: 'qs-search-form',
+  selector: 'app-search-form',
   standalone: true,
   imports: [ReactiveFormsModule, MatButton, SelectComponent],
   templateUrl: './search-form.component.html',

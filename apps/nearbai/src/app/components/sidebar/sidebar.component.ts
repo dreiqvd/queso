@@ -29,7 +29,7 @@ import { SearchService } from '../../services';
 import { SearchFormComponent } from '../search-form';
 
 @Component({
-  selector: 'qs-sidebar',
+  selector: 'app-sidebar',
   standalone: true,
   imports: [
     NgClass,

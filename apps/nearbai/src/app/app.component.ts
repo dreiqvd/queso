@@ -45,7 +45,7 @@ import { SearchService } from './services';
     PillComponent,
     SidebarComponent,
   ],
-  selector: 'qs-root',
+  selector: 'app-root',
   styles: `
     .sidebar {
       transition: width 0.5s ease;
