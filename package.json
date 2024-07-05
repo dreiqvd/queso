@@ -5,7 +5,8 @@
   "scripts": {
     "prepare": "husky install",
     "lint:all": "nx run-many --target=lint --all",
-    "format:check": "nx format:check --verbose"
+    "format:check": "nx format:check --verbose",
+    "format:fix": "nx format --verbose"
   },
   "private": true,
   "dependencies": {
