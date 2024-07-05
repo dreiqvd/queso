@@ -90,11 +90,23 @@
         "buildTarget": "portfolio:build"
       }
     },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/portfolio/jest.config.ts"
+      }
+    },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "portfolio:build",
-        "staticFilePath": "dist/apps/portfolio/browser"
+        "staticFilePath": "dist/apps/portfolio/browser",
+        "spa": true,
+        "port": 4200
       }
     },
     "deploy": {
@@ -118,12 +130,6 @@
         }
       },
       "defaultConfiguration": "production"
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["apps/portfolio/**/*.ts", "apps/portfolio/**/*.html"]
-      }
     }
   }
 }
