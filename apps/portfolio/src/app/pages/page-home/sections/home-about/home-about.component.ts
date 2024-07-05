@@ -7,7 +7,7 @@ import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 
 @Component({
-  selector: 'qs-home-about',
+  selector: 'app-home-about',
   standalone: true,
   imports: [
     RouterLink,

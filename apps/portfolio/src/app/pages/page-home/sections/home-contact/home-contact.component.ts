@@ -8,7 +8,7 @@ import { AnimationsDirective } from '@queso/common/directives';
 import { ContactFormComponent } from '../../../../components/contact-form';
 
 @Component({
-  selector: 'qs-home-contact',
+  selector: 'app-home-contact',
   standalone: true,
   imports: [
     NgOptimizedImage,

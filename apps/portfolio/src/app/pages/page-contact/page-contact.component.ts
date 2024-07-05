@@ -8,7 +8,7 @@ import { ContactFormComponent } from '../../components/contact-form';
 import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
-  selector: 'qs-contact',
+  selector: 'app-contact',
   standalone: true,
   imports: [
     NgOptimizedImage,

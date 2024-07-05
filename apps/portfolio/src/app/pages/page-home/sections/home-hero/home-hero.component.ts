@@ -22,7 +22,7 @@ import { IconComponent } from '@queso/ui-kit/icon';
 import { ScrollCueComponent } from '@queso/ui-kit/scroll-cue';
 
 @Component({
-  selector: 'qs-home-hero',
+  selector: 'app-home-hero',
   standalone: true,
   imports: [
     NgTemplateOutlet,

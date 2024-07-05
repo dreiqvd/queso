@@ -9,7 +9,7 @@ import { PillComponent } from '@queso/ui-kit/pill';
 import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
-  selector: 'qs-page-projects',
+  selector: 'app-page-projects',
   standalone: true,
   imports: [
     RouterLink,

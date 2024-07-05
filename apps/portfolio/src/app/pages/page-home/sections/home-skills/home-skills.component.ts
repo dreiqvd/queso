@@ -6,7 +6,7 @@ import { AnimationsDirective } from '@queso/common/directives';
 import { IconComponent } from '@queso/ui-kit/icon';
 
 @Component({
-  selector: 'qs-home-skills',
+  selector: 'app-home-skills',
   standalone: true,
   imports: [MatTooltip, IconComponent, AnimationsDirective],
   templateUrl: './home-skills.component.html',

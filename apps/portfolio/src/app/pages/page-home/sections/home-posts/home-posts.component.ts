@@ -11,7 +11,7 @@ import { ArticleCardComponent } from '../../../../components/article-card';
 import { ArticlesService } from '../../../../services';
 
 @Component({
-  selector: 'qs-home-posts',
+  selector: 'app-home-posts',
   standalone: true,
   imports: [
     RouterLink,

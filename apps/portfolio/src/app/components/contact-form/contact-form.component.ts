@@ -17,7 +17,7 @@ import { TextareaComponent } from '@queso/ui-kit/textarea';
 import { MailingService } from '../../services';
 
 @Component({
-  selector: 'qs-contact-form',
+  selector: 'app-contact-form',
   standalone: true,
   imports: [
     NgTemplateOutlet,

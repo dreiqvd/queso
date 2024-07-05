@@ -10,7 +10,7 @@ import { Article } from '../../interfaces';
 import { ArticlesService } from '../../services';
 
 @Component({
-  selector: 'qs-page-blog',
+  selector: 'app-page-blog',
   standalone: true,
   imports: [
     AnimationsDirective,

@@ -7,7 +7,7 @@ import { PillComponent } from '@queso/ui-kit/pill';
 import { Article } from '../../interfaces';
 
 @Component({
-  selector: 'qs-article-card',
+  selector: 'app-article-card',
   standalone: true,
   imports: [DatePipe, IconComponent, PillComponent],
   templateUrl: './article-card.component.html',

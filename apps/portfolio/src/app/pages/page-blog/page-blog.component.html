@@ -1,4 +1,4 @@
-<qs-page-container>
+<app-page-container>
   <div qsAnimation="fadeIn" class="pt-[102px] pb-8 px-8">
     <header class="text-center">
       <h1
@@ -23,8 +23,8 @@
         tablet-sm:grid-cols-1
       ">
       @for (article of articles(); track $index) {
-        <qs-article-card qsAnimation="fadeIn" class="tablet-sm:max-w-[420px]" [article]="article" />
+        <app-article-card qsAnimation="fadeIn" class="tablet-sm:max-w-[420px]" [article]="article" />
       }
     </main>
   </div>
-</qs-page-container>
+</app-page-container>

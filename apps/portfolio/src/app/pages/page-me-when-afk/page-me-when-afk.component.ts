@@ -8,7 +8,7 @@ import { IconComponent } from '@queso/ui-kit/icon';
 import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
-  selector: 'qs-me-when-afk',
+  selector: 'app-me-when-afk',
   standalone: true,
   imports: [
     RouterLink,

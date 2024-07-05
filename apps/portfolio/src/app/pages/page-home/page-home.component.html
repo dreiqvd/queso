@@ -33,22 +33,22 @@
 
 @if (isContentVisible()) {
   <div qsCustomCursor qsAnimation="fadeIn" class="container w-100" [animDuration]="0.5">
-    <qs-page-container>
+    <app-page-container>
       <section class="min-h-dvh" id="hero">
-        <qs-home-hero (ctaClick)="aboutSection.nativeElement.scrollIntoView()" />
+        <app-home-hero (ctaClick)="aboutSection.nativeElement.scrollIntoView()" />
       </section>
       <section #about class="min-h-dvh" id="about">
-        <qs-home-about (ctaClick)="contactSection.nativeElement.scrollIntoView()" />
+        <app-home-about (ctaClick)="contactSection.nativeElement.scrollIntoView()" />
       </section>
       <section class="min-h-dvh" id="skills">
-        <qs-home-skills />
+        <app-home-skills />
       </section>
       <section class="min-h-dvh" id="posts">
-        <qs-home-posts />
+        <app-home-posts />
       </section>
       <section #contact class="min-h-dvh" id="contact" fram>
-        <qs-home-contact />
+        <app-home-contact />
       </section>
-    </qs-page-container>
+    </app-page-container>
   </div>
 }

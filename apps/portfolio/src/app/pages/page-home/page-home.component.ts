@@ -19,7 +19,7 @@ import { HomePostsComponent } from './sections/home-posts/home-posts.component';
 import { HomeSkillsComponent } from './sections/home-skills/home-skills.component';
 
 @Component({
-  selector: 'qs-home',
+  selector: 'app-home',
   standalone: true,
   imports: [
     AnimationsDirective,

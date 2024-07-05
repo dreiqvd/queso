@@ -8,7 +8,7 @@ import { HamburgerComponent } from '@queso/ui-kit/hamburger';
 import { IconComponent } from '@queso/ui-kit/icon';
 
 @Component({
-  selector: 'qs-navbar',
+  selector: 'app-navbar',
   standalone: true,
   imports: [
     RouterOutlet,
