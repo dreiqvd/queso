@@ -40,7 +40,7 @@
         @if (activeMarker()?.id !== 'center') {
           <div class="flex flex-col gap-1 text-sm text-gray">
             <div class="flex items-center gap-2">
-              <qs-icon class="mb-[2px] text-warn" iconName="location-dot" iconStyle="solid" [iconSize]="14" />
+              <qs-icon class="mb-[2px] text-red" iconName="location-dot" iconStyle="solid" [iconSize]="14" />
               {{ activeMarker()?.address }}
             </div>
             <div class="flex items-center gap-2">

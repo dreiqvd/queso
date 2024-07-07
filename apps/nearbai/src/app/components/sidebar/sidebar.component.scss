@@ -17,8 +17,8 @@
     }
 
     &.closed {
-      --pill-bg-color: var(--color-warn-100);
-      --pill-text-color: var(--color-warn-600);
+      --pill-bg-color: var(--color-red-100);
+      --pill-text-color: var(--color-red-600);
     }
   }
 }
@@ -65,6 +65,7 @@
       38px 19px 0 0px,
       57px 19px 0 0px;
   }
+
   25% {
     box-shadow:
       19px -19px 0 5px,
@@ -77,6 +78,7 @@
       38px 19px 0 5px,
       57px 19px 0 0px;
   }
+
   50% {
     box-shadow:
       19px -19px 0 5px,
@@ -89,6 +91,7 @@
       38px 19px 0 0px,
       57px 19px 0 5px;
   }
+
   62.5% {
     box-shadow:
       19px -19px 0 0px,
@@ -101,6 +104,7 @@
       38px 19px 0 5px,
       57px 19px 0 5px;
   }
+
   75% {
     box-shadow:
       19px -19px 0 0px,
@@ -113,6 +117,7 @@
       38px 19px 0 0px,
       57px 19px 0 5px;
   }
+
   87.5% {
     box-shadow:
       19px -19px 0 0px,

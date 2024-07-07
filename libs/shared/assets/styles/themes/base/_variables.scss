@@ -2,7 +2,7 @@ html {
   /* Colors */
   --color-primary: #{map-get($_primary, 40)};
   --color-accent: #{map-get($_tertiary, 40)};
-  --color-warn: #{map-get($red, 400)};
+  --color-red: #{map-get($red, 400)};
   --color-green: #{map-get($green, 400)};
   --color-gray: #{map-get($gray, 600)};
 
@@ -42,16 +42,16 @@ html {
   --color-gray-900: #{map-get($gray, 900)};
 
   // Semantic Colors
-  --color-warn-50: #{map-get($red, 50)};
-  --color-warn-100: #{map-get($red, 100)};
-  --color-warn-200: #{map-get($red, 200)};
-  --color-warn-300: #{map-get($red, 300)};
-  --color-warn-400: #{map-get($red, 400)};
-  --color-warn-500: #{map-get($red, 500)};
-  --color-warn-600: #{map-get($red, 600)};
-  --color-warn-700: #{map-get($red, 700)};
-  --color-warn-800: #{map-get($red, 800)};
-  --color-warn-900: #{map-get($red, 900)};
+  --color-red-50: #{map-get($red, 50)};
+  --color-red-100: #{map-get($red, 100)};
+  --color-red-200: #{map-get($red, 200)};
+  --color-red-300: #{map-get($red, 300)};
+  --color-red-400: #{map-get($red, 400)};
+  --color-red-500: #{map-get($red, 500)};
+  --color-red-600: #{map-get($red, 600)};
+  --color-red-700: #{map-get($red, 700)};
+  --color-red-800: #{map-get($red, 800)};
+  --color-red-900: #{map-get($red, 900)};
 
   --color-green-50: #{map-get($green, 50)};
   --color-green-100: #{map-get($green, 100)};
