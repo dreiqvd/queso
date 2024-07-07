@@ -1,42 +1,34 @@
-@use 'sass:map';
 @use '@angular/material' as mat;
 
 @import 'palettes/base-palette';
 @import 'palettes/mustard-palette';
 
-$_rest: (
-  secondary: map.get($_palettes, secondary),
-  neutral: map.get($_palettes, neutral),
-  neutral-variant: map.get($_palettes, neutral-variant),
-  error: map.get($_palettes, error),
+$primary: mat.m2-define-palette($yellow, 400);
+$accent: mat.m2-define-palette($dark-blue, 400);
+$warn: mat.m2-define-palette($red, 400);
+$typography: mat.m2-define-typography-config(
+  $font-family: "Archivo, 'Helvetica Neue', sans-serif",
 );
-$_primary: map.merge(map.get($_palettes, primary), $_rest);
-$_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
 
 /** Theme **/
-$app-theme: mat.define-theme(
+$app-theme: mat.m2-define-light-theme(
   (
     color: (
-      theme-type: light,
-      primary: $_primary,
-      tertiary: $_tertiary,
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
     ),
-    typography: (
-      plain-family: "Archivo, 'Helvetica Neue', sans-serif",
-      brand-family: "Archivo, 'Helvetica Neue', sans-serif",
-    ),
+    typography: $typography,
+    density: 0,
   )
 );
 
 @include mat.core();
-
-html {
-  @include mat.core-theme($app-theme);
-  @include mat.form-field-theme($app-theme);
-  @include mat.select-theme($app-theme);
-  @include mat.button-theme($app-theme);
-  @include mat.tooltip-theme($app-theme);
-}
+@include mat.core-theme($app-theme);
+@include mat.form-field-theme($app-theme);
+@include mat.select-theme($app-theme);
+@include mat.button-theme($app-theme);
+@include mat.tooltip-theme($app-theme);
 
 // Additional imports
 @import 'base';

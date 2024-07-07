@@ -7,9 +7,12 @@ html {
   --tooltip-text-color: white;
 
   // Material Overrides
-  --mat-select-panel-background-color: white;
   --mat-option-selected-state-layer-color: var(--color-primary-200);
-  --mat-minimal-pseudo-checkbox-selected-checkmark-color: var(
-    --color--accent-300
-  );
+  --mdc-outlined-text-field-focus-label-text-color: var(--color-gray-600);
+
+  .mat-primary {
+    --mat-minimal-pseudo-checkbox-selected-checkmark-color: var(
+      --color-primary-700
+    );
+  }
 }

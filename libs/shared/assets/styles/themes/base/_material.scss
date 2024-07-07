@@ -8,11 +8,17 @@ html {
   // Outlined Form Field
   --mdc-outlined-text-field-outline-color: var(--color-primary);
   --mdc-outlined-text-field-hover-outline-color: var(--color-primary);
+  --mdc-outlined-text-field-input-text-color: var(--text-default-color);
   --mdc-outlined-text-field-label-text-color: var(--color-gray);
   --mdc-outlined-text-field-hover-label-text-color: var(--color-gray-500);
 
+  // Mat Select
+  --mat-select-enabled-trigger-text-color: var(--text-default-color);
+
   // Mat Option
   --mat-option-label-text-tracking: unset;
+  --mat-option-selected-state-label-text-color: var(--text-default-color);
+  --mat-option-label-text-color: var(--text-default-color);
 
   // Tooltip
   --mdc-plain-tooltip-container-color: var(--tooltip-bg-color);
