@@ -1,8 +1,8 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
-@import 'palettes/base';
-@import 'palettes/mustard';
+@import 'palettes/base-palette';
+@import 'palettes/mustard-palette';
 
 $_rest: (
   secondary: map.get($_palettes, secondary),
