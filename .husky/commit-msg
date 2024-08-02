@@ -2,13 +2,14 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 message="$(cat $1)"
-pattern="^(portfolio|nearbai|whisquers|ui-kit|common|shared|chore|config): [a-z].*$"
-if ! echo "$message" | grep -iqE "$pattern";
+prefix="portfolio|nearbai|whisquers|cashflow|ui-kit|common|shared|chore|config"
+regex="^($prefix): [a-z].*$"
+if ! echo "$message" | grep -iqE "$regex";
 then
   echo "Invalid Commit Message Format"
   echo ""
   echo "Valid pattern:"
-  echo "portfolio|nearbai|whisquers|ui-kit|common|shared|chore|config:<space><message starting with a lowercase letter>"
+  echo "$prefix:<space><message starting with a lowercase letter>"
   echo ""
   echo "Example:"
   echo "feat: add textbox component"
