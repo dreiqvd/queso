@@ -17,9 +17,11 @@
         "tsConfig": "apps/cashflow/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
+          "apps/cashflow/src/assets",
           {
             "glob": "**/*",
-            "input": "apps/cashflow/public"
+            "input": "libs/shared/assets",
+            "output": "./assets"
           }
         ],
         "styles": ["apps/cashflow/src/styles.scss"],
