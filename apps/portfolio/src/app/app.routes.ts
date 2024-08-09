@@ -1,15 +1,15 @@
 import { Route } from '@angular/router';
 
-import { PageHomeComponent } from './pages/page-home/page-home.component';
+import { LandingPageComponent } from './pages/landing/landing-page.component';
 
 export const appRoutes: Route[] = [
-  { path: '', component: PageHomeComponent, pathMatch: 'full' },
+  { path: '', component: LandingPageComponent, pathMatch: 'full' },
   {
     path: 'contact',
     pathMatch: 'full',
     title: 'Connect',
     loadComponent: () =>
-      import('./pages/page-contact/page-contact.component').then(
+      import('./pages/contact/contact.component').then(
         (c) => c.PageContactComponent
       ),
   },
@@ -18,8 +18,8 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     title: 'Projects',
     loadComponent: () =>
-      import('./pages/page-projects/page-projects.component').then(
-        (c) => c.PageProjectsComponent
+      import('./pages/projects/projects.component').then(
+        (c) => c.ProjectsComponent
       ),
   },
   {
@@ -27,17 +27,15 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     title: 'Blog',
     loadComponent: () =>
-      import('./pages/page-blog/page-blog.component').then(
-        (c) => c.PageBlogComponent
-      ),
+      import('./pages/blog/blog.component').then((c) => c.BlogComponent),
   },
   {
     path: 'me-when-afk',
     pathMatch: 'full',
     title: 'Away From Keyboard',
     loadComponent: () =>
-      import('./pages/page-me-when-afk/page-me-when-afk.component').then(
-        (c) => c.PageMeWhenAfkComponent
+      import('./pages/me-when-afk/me-when-afk.component').then(
+        (c) => c.MeWhenAfkComponent
       ),
   },
   { path: '**', redirectTo: '' }, // TODO: Implement a 404 page for the fallback route

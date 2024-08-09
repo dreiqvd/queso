@@ -19,9 +19,9 @@ import { PageContainerComponent } from '../../components/page-container';
     QsIconComponent,
     QsPillComponent,
   ],
-  templateUrl: './page-projects.component.html',
+  templateUrl: './projects.component.html',
 })
-export class PageProjectsComponent {
+export class ProjectsComponent {
   readonly projects = [
     {
       key: 'nearbai.jpg',

@@ -10,7 +10,7 @@ import { Article } from '../../interfaces';
 import { ArticlesService } from '../../services';
 
 @Component({
-  selector: 'app-page-blog',
+  selector: 'app-blog',
   standalone: true,
   imports: [
     QsAnimationsDirective,
@@ -19,10 +19,10 @@ import { ArticlesService } from '../../services';
     PageContainerComponent,
     ArticleCardComponent,
   ],
-  templateUrl: './page-blog.component.html',
+  templateUrl: './blog.component.html',
   providers: [ArticlesService],
 })
-export class PageBlogComponent {
+export class BlogComponent {
   private readonly articlesService = inject(ArticlesService);
   readonly articles: Signal<Article[]> = computed(() =>
     this.articlesService.getArticles()

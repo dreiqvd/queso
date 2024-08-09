@@ -1,0 +1,78 @@
+<div class="overflow-hidden">
+  <header class="relative min-h-dvh view-short:min-h-[768px]">
+    <div
+      class="absolute m-auto h-fit w-fit top-0 left-0 z-20 flex flex-col gap-8 bottom-[80px] right-[220px]
+        desktop-sm:right-[100px]
+        tablet-md:right-0 tablet-md:w-full tablet-md:px-8
+        mobile-md:px-4
+        view-short:bottom-0
+      ">
+      <h1 aria-label="Hi, I am Drei"
+        class="header-title font-extrabold text-8xl mb-0 leading-[7rem]
+          tablet-sm:text-[5.75rem] tablet-sm:leading-[6.25rem]
+          mobile-md:text-[5rem] mobile-md:leading-[5.5rem]
+          mobile-sm:text-[22dvw] mobile-sm:leading-[5rem]
+        "
+      >
+        <!-- Render greeting text either in one line or add a line break. Computation depends on the viewport -->
+        <ng-container *ngTemplateOutlet="greetingTextTmpl; context: { $implicit: greetingText1 }" />
+        @if (shouldBreakText()) {
+          <br />
+        } @else {
+          <span class="greeting-ch space" aria-hidden="true">&nbsp;</span>
+        }
+        <ng-container *ngTemplateOutlet="greetingTextTmpl; context: { $implicit: greetingText2 }" />
+        <ng-template #greetingTextTmpl let-text>
+          @for (ch of text; track $index) {
+            <span
+              class="greeting-ch inline-block"
+              aria-hidden="true"
+              qsAnimation="slideInLeft"
+              animHover="rubberBand"
+              [animDuration]="2"
+              [class.space]="ch === ' '"
+            >
+              {{ ch }}
+            </span>
+          }
+        </ng-template>
+      </h1>
+      <h2
+        qsAnimation="fadeInUp"
+        animHover="grow"
+        class="font-secondary text-accent-purple w-fit font-bold mb-0 text-[2.5rem] leading-[3rem]
+          tablet-sm:text-[2.25rem] tablet-sm:leading-[2.75rem]
+          mobile-md:text-[1.875rem] mobile-md:leading-[2.25rem]
+          mobile-sm:text-[1.75rem] mobile-sm:leading-8
+        "
+      >
+        full-stack developer <br />and design enthusiast
+      </h2>
+      <button
+        type="button"
+        class="cta-btn primary w-fit mt-3"
+        matTooltip="Adventure awaits. Allegedly..."
+        qsAnimation="rotateIn"
+        aria-label="Know more about me"
+        (click)="ctaClick.emit()"
+      >
+        <span>Explore</span>
+        <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
+      </button>
+    </div>
+    <div #headerBlobAnchor class="absolute invisible m-auto top-0 left-0 w-[1px] bottom-[80px] right-[75px]"></div>
+    <div #headerBlobWrapper class="w-max absolute h-fit my-auto mx-0 top-0 bottom-[124px] mobile-md:bottom-[176px]">
+      <img
+        src="assets/svg/gz4k5n.svg"
+        aria-hidden="true"
+        alt="Header Background Blob"
+        qsAnimation="zoomIn"
+        width="520"
+        class="mobile-md:w-[500px]"
+      />
+    </div>
+  </header>
+  <div qsAnimation="fadeIn" class="scroll-cue-container absolute z-30 right-6 bottom-8 view-short:hidden">
+    <qs-scroll-cue tooltip="No way but down..." />
+  </div>
+</div>

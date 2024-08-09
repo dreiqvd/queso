@@ -22,7 +22,7 @@ import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsScrollCueComponent } from '@queso/ui-kit/scroll-cue';
 
 @Component({
-  selector: 'app-home-hero',
+  selector: 'app-landing-hero',
   standalone: true,
   imports: [
     NgTemplateOutlet,
@@ -31,7 +31,7 @@ import { QsScrollCueComponent } from '@queso/ui-kit/scroll-cue';
     QsScrollCueComponent,
     QsAnimationsDirective,
   ],
-  templateUrl: './home-hero.component.html',
+  templateUrl: './landing-hero.component.html',
   styles: `
     .header-title {
       filter: drop-shadow(5px 4px 0 var(--color-accent-red));
@@ -44,7 +44,7 @@ import { QsScrollCueComponent } from '@queso/ui-kit/scroll-cue';
     }
   `,
 })
-export class HomeHeroComponent {
+export class LandingHeroComponent {
   @ViewChild('headerBlobWrapper')
   headerBlobWrapper!: ElementRef<HTMLElement>;
 

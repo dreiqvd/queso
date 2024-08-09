@@ -6,12 +6,12 @@ import { QsAnimationsDirective } from '@queso/common/directives';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
 @Component({
-  selector: 'app-home-skills',
+  selector: 'app-landing-skills',
   standalone: true,
   imports: [MatTooltip, QsIconComponent, QsAnimationsDirective],
-  templateUrl: './home-skills.component.html',
+  templateUrl: './landing-skills.component.html',
 })
-export class HomeSkillsComponent {
+export class LandingSkillsComponent {
   readonly coreSkills = [
     {
       logo: 'angular',

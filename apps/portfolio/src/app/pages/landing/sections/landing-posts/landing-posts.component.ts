@@ -11,7 +11,7 @@ import { ArticleCardComponent } from '../../../../components/article-card';
 import { ArticlesService } from '../../../../services';
 
 @Component({
-  selector: 'app-home-posts',
+  selector: 'app-landing-posts',
   standalone: true,
   imports: [
     RouterLink,
@@ -23,14 +23,14 @@ import { ArticlesService } from '../../../../services';
     ArticleCardComponent,
   ],
   providers: [ArticlesService],
-  templateUrl: './home-posts.component.html',
+  templateUrl: './landing-posts.component.html',
   styles: `
     .btn:hover {
       --text-default-color: white; // make the text white on hover
     }
   `,
 })
-export class HomePostsComponent {
+export class LandingPostsComponent {
   private readonly articlesService = inject(ArticlesService);
   readonly posts = computed(() => this.articlesService.getArticles());
 }

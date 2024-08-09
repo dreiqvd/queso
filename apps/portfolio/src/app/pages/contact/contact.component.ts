@@ -17,7 +17,7 @@ import { PageContainerComponent } from '../../components/page-container';
     PageContainerComponent,
     ContactFormComponent,
   ],
-  templateUrl: './page-contact.component.html',
+  templateUrl: './contact.component.html',
 })
 export class PageContactComponent {
   readonly greetingTxt = 'hello'.split('');

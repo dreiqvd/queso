@@ -1,0 +1,93 @@
+<div class="flex items-center relative overflow-hidden tablet-sm:flex-col tablet-sm:pt-8">
+  <div
+    class="flex flex-col justify-center min-h-dvh ml-[12%] pb-[140px]
+      tablet-sm:ml-0 tablet-sm:px-10 tablet-sm:py-0 tablet-sm:min-h-max
+    ">
+    <div>
+      <h2
+        qsAnimation="bounceInLeft"
+        animHover="wobbleTop"
+        class="text-underlined my-5 text-5xl after:h-3 after:bottom-1
+          mobile-md:text-[10dvw] mobile-md:after:h-[10px]"
+        [animDuration]="1.5"
+      >
+        In a nutshell...
+      </h2>
+    </div>
+    <main>
+      <ul class="flex flex-col list-none my-8 mx-0
+        desktop-md:max-w-[75%] desktop-md:-ml-1
+        desktop-sm:max-w-[61%]
+        tablet-md:my-4 tablet-md:max-w-[50%]
+        tablet-sm:max-w-full
+      ">
+        @for (item of aboutItems; track $index) {
+          <li
+            qsAnimation="flipInX"
+            animHover="grow"
+            class="font-secondary text-accent-purple text-xl font-semibold leading-[2.2rem] mb-6
+              desktop-md:leading-[1.875rem] mobile-md:text-lg"
+            [animDelay]="item.delay"
+          >
+            <div class="flex">
+              <span class="inline-block mr-2">&bull;</span>
+              @if (!item.isLink) {
+                <span class="inline-block">{{ item.text }}</span>
+              } @else {
+                <a
+                  routerLink="/me-when-afk"
+                  class="inline-flex items-center gap-2 text-accent-purple hover:text-accent-purple">
+                  <span>Here's me when AFK</span>
+                  <qs-icon iconName="arrow-up-right-from-square" [iconSize]="14" />
+                </a>
+              }
+            </div>
+          </li>
+        }
+      </ul>
+    </main>
+    <div>
+      <div class="inline-block mb-4" qsAnimation="rotateIn" [animDelay]="1">
+        <button
+          type="button"
+          class="cta-btn primary"
+          matTooltip="Got an interesting project?"
+          aria-label="Connect with me"
+          (click)="ctaClick.emit()"
+        >
+          <span>Let's Connect</span>
+          <qs-icon iconName="arrow" iconStyle="custom" class="arrow-icon" [iconSize]="14" />
+        </button>
+      </div>
+    </div>
+  </div>
+  <aside
+    #sideContentRef
+    class="absolute bottom-0 right-0 h-full w-[35%]
+      tablet-sm:w-full tablet-sm:relative tablet-sm:h-[540px]
+    ">
+    <div class="image-wrapper relative h-full w-full">
+      <img
+        src="assets/svg/kpz952.svg"
+        aria-hidden="true"
+        alt="Portrait blob"
+        qsAnimation="fadeInRight"
+        class="absolute bottom-0 z-10 left-10 w-[380px]
+          desktop-sm:w-[320px] desktop-sm:-bottom-6 desktop-sm:left-6
+          tablet-md:left-[unset] tablet-md:-right-16"
+        [animDuration]="1.5"
+      />
+      <img
+        ngSrc="assets/img/p-min.png"
+        priority
+        width="400"
+        height="649"
+        alt="Portrait photo"
+        aria-label="Portrait photo"
+        qsAnimation="fadeInRight"
+        class="absolute z-10 -bottom-1 desktop-sm:w-[320px] tablet-md:-right-8"
+        [animDuration]="1.5"
+      />
+    </div>
+  </aside>
+</div>

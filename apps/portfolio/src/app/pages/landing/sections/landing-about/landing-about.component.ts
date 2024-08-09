@@ -7,7 +7,7 @@ import { QsAnimationsDirective } from '@queso/common/directives';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
 @Component({
-  selector: 'app-home-about',
+  selector: 'app-landing-about',
   standalone: true,
   imports: [
     NgOptimizedImage,
@@ -16,9 +16,9 @@ import { QsIconComponent } from '@queso/ui-kit/icon';
     QsAnimationsDirective,
     QsIconComponent,
   ],
-  templateUrl: './home-about.component.html',
+  templateUrl: './landing-about.component.html',
 })
-export class HomeAboutComponent {
+export class LandingAboutComponent {
   // Event that is emitted when the user clicks on the CTA button
   @Output() ctaClick = new EventEmitter<void>();
 

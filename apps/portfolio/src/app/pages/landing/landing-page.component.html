@@ -35,19 +35,19 @@
   <div qsCustomCursor qsAnimation="fadeIn" class="container w-100" [animDuration]="0.5">
     <app-page-container>
       <section class="min-h-dvh" id="hero">
-        <app-home-hero (ctaClick)="aboutSection.nativeElement.scrollIntoView()" />
+        <app-landing-hero (ctaClick)="aboutSection.nativeElement.scrollIntoView()" />
       </section>
       <section #about class="min-h-dvh" id="about">
-        <app-home-about (ctaClick)="contactSection.nativeElement.scrollIntoView()" />
+        <app-landing-about (ctaClick)="contactSection.nativeElement.scrollIntoView()" />
       </section>
       <section class="min-h-dvh" id="skills">
-        <app-home-skills />
+        <app-landing-skills />
       </section>
       <section class="min-h-dvh" id="posts">
-        <app-home-posts />
+        <app-landing-posts />
       </section>
       <section #contact class="min-h-dvh" id="contact" fram>
-        <app-home-contact />
+        <app-landing-contact />
       </section>
     </app-page-container>
   </div>

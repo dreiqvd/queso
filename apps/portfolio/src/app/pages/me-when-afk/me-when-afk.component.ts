@@ -17,6 +17,6 @@ import { PageContainerComponent } from '../../components/page-container';
     QsIconComponent,
     PageContainerComponent,
   ],
-  templateUrl: './page-me-when-afk.component.html',
+  templateUrl: './me-when-afk.component.html',
 })
-export class PageMeWhenAfkComponent { }
+export class MeWhenAfkComponent {}

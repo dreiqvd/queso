@@ -15,26 +15,26 @@ import {
 
 import { PageContainerComponent } from '../../components/page-container';
 
-import { HomeAboutComponent } from './sections/home-about/home-about.component';
-import { HomeContactComponent } from './sections/home-contact/home-contact.component';
-import { HomeHeroComponent } from './sections/home-hero/home-hero.component';
-import { HomePostsComponent } from './sections/home-posts/home-posts.component';
-import { HomeSkillsComponent } from './sections/home-skills/home-skills.component';
+import { LandingAboutComponent } from './sections/landing-about/landing-about.component';
+import { LandingContactComponent } from './sections/landing-contact/landing-contact.component';
+import { LandingHeroComponent } from './sections/landing-hero/landing-hero.component';
+import { LandingPostsComponent } from './sections/landing-posts/landing-posts.component';
+import { LandingSkillsComponent } from './sections/landing-skills/landing-skills.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-landing-page',
   standalone: true,
   imports: [
     QsAnimationsDirective,
     QsCursorDirective,
     PageContainerComponent,
-    HomeHeroComponent,
-    HomeAboutComponent,
-    HomeSkillsComponent,
-    HomePostsComponent,
-    HomeContactComponent,
+    LandingHeroComponent,
+    LandingAboutComponent,
+    LandingSkillsComponent,
+    LandingPostsComponent,
+    LandingContactComponent,
   ],
-  templateUrl: './page-home.component.html',
+  templateUrl: './landing-page.component.html',
   styles: `
     .backdrop {
       background-color: var(--color-accent);
@@ -46,7 +46,7 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
     }
   `,
 })
-export class PageHomeComponent {
+export class LandingPageComponent {
   /** Element reference for the introductory backdrop */
   @ViewChild('backdrop', { read: QsAnimationsDirective })
   backdrop!: QsAnimationsDirective;

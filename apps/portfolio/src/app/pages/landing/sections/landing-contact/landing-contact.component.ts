@@ -8,7 +8,7 @@ import { QsAnimationsDirective } from '@queso/common/directives';
 import { ContactFormComponent } from '../../../../components/contact-form';
 
 @Component({
-  selector: 'app-home-contact',
+  selector: 'app-landing-contact',
   standalone: true,
   imports: [
     NgOptimizedImage,
@@ -16,8 +16,8 @@ import { ContactFormComponent } from '../../../../components/contact-form';
     QsAnimationsDirective,
     ContactFormComponent,
   ],
-  templateUrl: './home-contact.component.html',
+  templateUrl: './landing-contact.component.html',
 })
-export class HomeContactComponent {
+export class LandingContactComponent {
   readonly socialLinks = SOCIAL_LINKS;
 }
