@@ -17,7 +17,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { debounceTime, fromEvent } from 'rxjs';
 
 import { BREAKPOINTS, getViewportWidth } from '@queso/common';
-import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsScrollCueComponent } from '@queso/ui-kit/scroll-cue';
 

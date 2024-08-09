@@ -9,7 +9,8 @@
   "exports": {
     "./package.json": "./package.json",
     ".": "./src/index.ts",
-    "./directives": "./src/directives/index.ts",
+    "./animations": "./src/animations/index.ts",
+    "./cursor": "./src/cursor/index.ts",
     "./services": "./src/services/index.ts",
     "./strategies": "./src/strategies/index.ts"
   }

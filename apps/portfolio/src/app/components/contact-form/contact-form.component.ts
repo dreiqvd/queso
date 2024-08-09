@@ -9,7 +9,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltip } from '@angular/material/tooltip';
 
-import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsInputComponent } from '@queso/ui-kit/input';
 import { QsTextareaComponent } from '@queso/ui-kit/textarea';

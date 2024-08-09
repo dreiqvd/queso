@@ -8,10 +8,8 @@ import {
 } from '@angular/core';
 import anime from 'animejs';
 
-import {
-  QsAnimationsDirective,
-  QsCursorDirective,
-} from '@queso/common/directives';
+import { QsAnimationsDirective } from '@queso/common/animations';
+import { QsCursorDirective } from '@queso/common/cursor';
 
 import { PageContainerComponent } from '../../components/page-container';
 

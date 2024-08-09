@@ -3,7 +3,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { SOCIAL_LINKS } from '@queso/common';
-import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsHamburgerComponent } from '@queso/ui-kit/hamburger';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 

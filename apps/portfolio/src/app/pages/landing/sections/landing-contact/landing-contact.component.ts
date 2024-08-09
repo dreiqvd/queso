@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
 import { SOCIAL_LINKS } from '@queso/common';
-import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsAnimationsDirective } from '@queso/common/animations';
 
 import { ContactFormComponent } from '../../../../components/contact-form';
 

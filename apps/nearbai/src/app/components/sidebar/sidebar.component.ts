@@ -20,7 +20,7 @@ import {
   getViewportHeight,
   getViewportWidth,
 } from '@queso/common';
-import { QsAnimationsDirective } from '@queso/common/directives';
+import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsPillComponent } from '@queso/ui-kit/pill';
 
