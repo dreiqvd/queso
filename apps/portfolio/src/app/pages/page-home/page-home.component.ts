@@ -8,7 +8,10 @@ import {
 } from '@angular/core';
 import anime from 'animejs';
 
-import { QsAnimationsDirective, QsCursorDirective } from '@queso/common/directives';
+import {
+  QsAnimationsDirective,
+  QsCursorDirective,
+} from '@queso/common/directives';
 
 import { PageContainerComponent } from '../../components/page-container';
 
@@ -36,6 +39,10 @@ import { HomeSkillsComponent } from './sections/home-skills/home-skills.componen
     .backdrop {
       background-color: var(--color-accent);
       z-index: var(--z-fixed);
+    }
+
+    #backdrop-svg-wrapper {
+      visibility: hidden;
     }
   `,
 })
