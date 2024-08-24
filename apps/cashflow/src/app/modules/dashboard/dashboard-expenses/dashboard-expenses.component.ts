@@ -9,13 +9,13 @@ import { Expense } from '../../../models';
 import { ExpenseService } from '../../../services';
 
 @Component({
-  selector: 'app-expenses-table',
+  selector: 'app-dashboard-expenses',
   standalone: true,
   imports: [MatTableModule, CurrencyPipe, QsOrdinalPipe],
-  templateUrl: './expenses-table.component.html',
-  styleUrl: './expenses-table.component.scss',
+  templateUrl: './dashboard-expenses.component.html',
+  styleUrl: './dashboard-expenses.component.scss',
 })
-export class ExpensesTableComponent {
+export class DashboardExpensesComponent {
   private readonly expenseService = inject(ExpenseService);
 
   readonly tblColumns = [

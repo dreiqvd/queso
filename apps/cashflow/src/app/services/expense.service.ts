@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Expense } from '../../models';
+import { Expense } from '../models';
 
 import expensesData from './expenses.json';
 
