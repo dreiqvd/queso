@@ -24,7 +24,7 @@ export class LandingAboutComponent {
 
   readonly aboutItems = [
     {
-      text: 'From pixels to databases — 6+ of years building things on the web.',
+      text: 'From pixels to databases — 7+ of years building things on the web.',
       delay: 0.5,
     },
     {
