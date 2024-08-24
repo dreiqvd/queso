@@ -11,6 +11,7 @@
     ".": "./src/index.ts",
     "./animations": "./src/animations/index.ts",
     "./cursor": "./src/cursor/index.ts",
+    "./pipes": "./src/pipes/index.ts",
     "./services": "./src/services/index.ts",
     "./strategies": "./src/strategies/index.ts"
   }
