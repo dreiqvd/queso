@@ -1,3 +1,7 @@
 import { Route } from '@angular/router';
 
-export const appRoutes: Route[] = [];
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
+
+export const appRoutes: Route[] = [
+  { path: '', pathMatch: 'full', component: DashboardComponent },
+];
