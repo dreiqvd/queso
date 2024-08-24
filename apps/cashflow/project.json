@@ -25,6 +25,12 @@
           }
         ],
         "styles": ["apps/cashflow/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared/assets/styles/core",
+            "libs/shared/assets/styles/themes"
+          ]
+        },
         "scripts": [],
         "server": "apps/cashflow/src/main.server.ts",
         "prerender": true,

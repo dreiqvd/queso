@@ -37,6 +37,10 @@
                 "onlyDependOnLibsWithTags": ["scope:shared", "scope:nearbai"]
               },
               {
+                "sourceTag": "scope:cashflow",
+                "onlyDependOnLibsWithTags": ["scope:shared", "scope:nearbai"]
+              },
+              {
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": ["type:utils", "type:ui"]
               },

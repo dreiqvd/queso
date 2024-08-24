@@ -4,9 +4,6 @@
   "overrides": [
     {
       "files": ["*.ts"],
-      "parserOptions": {
-        "project": ["apps/portfolio/tsconfig.*?.json"]
-      },
       "extends": [
         "plugin:@nx/angular",
         "plugin:@angular-eslint/recommended",
