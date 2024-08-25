@@ -38,6 +38,7 @@ export class DashboardExpensesComponent {
   ];
   readonly period1ExpensesDataSource = new MatTableDataSource<IExpenseRow>();
   readonly period2ExpensesDataSource = new MatTableDataSource<IExpenseRow>();
+  readonly selectedPeriodIndex = new Date().getDate() > 15 ? 0 : 1;
 
   expenses: Expense[] = [];
 
