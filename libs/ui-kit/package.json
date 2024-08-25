@@ -13,6 +13,7 @@
     "./package.json": "./package.json",
     ".": "./src/index.ts",
     "./core": "./src/core/index.ts",
+    "./form-field": "./src/form-field/index.ts",
     "./hamburger": "./src/hamburger/index.ts",
     "./icon": "./src/icon/index.ts",
     "./input": "./src/input/index.ts",
