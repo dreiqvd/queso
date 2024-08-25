@@ -18,7 +18,6 @@
     "./icon": "./src/icon/index.ts",
     "./pill": "./src/pill/index.ts",
     "./scroll-cue": "./src/scroll-cue/index.ts",
-    "./select": "./src/select/index.ts",
     "./tabs": "./src/tabs/index.ts"
   }
 }
