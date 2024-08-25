@@ -29,33 +29,35 @@
     </ng-container>
 
     <ng-container matColumnDef="lastPaymentDate">
-      <th *matHeaderCellDef mat-header-cell>Last Payment Date</th>
+      <th *matHeaderCellDef mat-header-cell class="w-[200px]">Last Payment Date</th>
       <td *matCellDef="let element" mat-cell>
         {{ element.lastPaymentDate | date: 'MMM dd' }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="isPaid">
-      <th *matHeaderCellDef mat-header-cell>
-        <div class="text-center">
-          Paid?
-        </div>
+      <th *matHeaderCellDef mat-header-cell class="center">
+        Paid?
       </th>
-      <td *matCellDef="let element" mat-cell>
-        <div class="text-center" [ngClass]="element.isPaid ? 'text-green' : 'text-red'">
+      <td *matCellDef="let element" mat-cell class="center">
+        <span
+          [ngClass]="element.isPaid ? 'text-green' : 'text-red'"
+        >
           <qs-icon
             iconStyle="solid"
             [iconSize]="20"
             [iconName]="element.isPaid ? 'circle-check' : 'circle-xmark'"
           />
-        </div>
+        </span>
       </td>
     </ng-container>
 
     <ng-container matColumnDef="action">
-      <th *matHeaderCellDef mat-header-cell>Action</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.name }}
+      <th *matHeaderCellDef mat-header-cell class="center">Action</th>
+      <td *matCellDef="let element" mat-cell class="center">
+        <button mat-flat-button color="accent" type="button">
+          Mark as {{ element.isPaid ? 'Unpaid' : 'Paid' }}
+        </button>
       </td>
     </ng-container>
 

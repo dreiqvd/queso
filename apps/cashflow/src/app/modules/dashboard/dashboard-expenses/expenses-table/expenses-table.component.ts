@@ -1,5 +1,6 @@
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { Component, effect, input, ViewChild } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
@@ -16,6 +17,7 @@ import { Expense } from 'apps/cashflow/src/app/models';
     DatePipe,
     MatTableModule,
     MatSortModule,
+    MatButtonModule,
     QsOrdinalPipe,
     QsIconComponent,
   ],

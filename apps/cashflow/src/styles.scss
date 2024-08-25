@@ -29,6 +29,7 @@ html {
   @include mat.core-theme($app-theme);
   @include mat.table-theme($app-theme);
   @include mat.tabs-theme($app-theme);
+  @include mat.button-theme($app-theme);
 }
 
 // Additional imports

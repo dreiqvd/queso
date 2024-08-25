@@ -2,10 +2,18 @@ table.mat-mdc-table {
   .mat-mdc-header-cell {
     background-color: var(--color-gray-100);
     font-weight: bold;
+
+    &.center {
+      text-align: center;
+    }
   }
 
   .mat-mdc-cell {
     --mat-table-row-item-label-text-tracking: normal;
+
+    &.center {
+      text-align: center;
+    }
   }
 
   .mat-mdc-row {
