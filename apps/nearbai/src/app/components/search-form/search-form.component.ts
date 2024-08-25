@@ -9,10 +9,10 @@ import {
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 
-import { QsSelectableItem } from '@queso/ui-kit';
+import { QsSelectableItem } from '@queso/ui-kit/core';
 import { QsSelectComponent } from '@queso/ui-kit/select';
 
-import { Origin, SearchParams } from '../../common/interfaces';
+import { Origin, SearchParams } from '../../core/interfaces';
 import { SearchService } from '../../services';
 
 import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';

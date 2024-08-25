@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
 
+import { ORIGINS } from '../components/search-form/search-form.data';
 import {
   MapCenter,
   Origin,
   SearchParams,
   SearchResult,
-} from '../common/interfaces';
-import { ORIGINS } from '../components/search-form/search-form.data';
+} from '../core/interfaces';
 
 @Injectable({
   providedIn: 'root',

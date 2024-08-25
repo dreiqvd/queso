@@ -3,8 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOption, MatSelect } from '@angular/material/select';
 
-import { QsGenericFormFieldDirective } from '../../directives';
-import { QsSelectableItem } from '../../interfaces';
+import { QsGenericFormFieldDirective, QsSelectableItem } from '../core';
 
 @Component({
   selector: 'qs-select',

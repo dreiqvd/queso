@@ -24,7 +24,7 @@ import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsPillComponent } from '@queso/ui-kit/pill';
 
-import { SearchResult } from '../../common/interfaces';
+import { SearchResult } from '../../core/interfaces';
 import { SearchService } from '../../services';
 import { SearchFormComponent } from '../search-form';
 

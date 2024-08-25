@@ -1,6 +1,6 @@
-import { } from '@angular/google-maps';
+import {} from '@angular/google-maps';
 
-import { QsSelectableItem } from '@queso/ui-kit';
+import { QsSelectableItem } from '@queso/ui-kit/core';
 
 export interface SearchParams {
   origin: string;

@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { QsGenericFormFieldDirective } from '../../directives';
+import { QsGenericFormFieldDirective } from '../core';
 
 @Component({
   selector: 'qs-input',

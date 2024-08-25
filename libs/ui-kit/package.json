@@ -12,12 +12,13 @@
   "exports": {
     "./package.json": "./package.json",
     ".": "./src/index.ts",
-    "./hamburger": "./src/components/hamburger/index.ts",
-    "./icon": "./src/components/icon/index.ts",
-    "./input": "./src/components/input/index.ts",
-    "./pill": "./src/components/pill/index.ts",
-    "./scroll-cue": "./src/components/scroll-cue/index.ts",
-    "./select": "./src/components/select/index.ts",
-    "./textarea": "./src/components/textarea/index.ts"
+    "./core": "./src/core/index.ts",
+    "./hamburger": "./src/hamburger/index.ts",
+    "./icon": "./src/icon/index.ts",
+    "./input": "./src/input/index.ts",
+    "./pill": "./src/pill/index.ts",
+    "./scroll-cue": "./src/scroll-cue/index.ts",
+    "./select": "./src/select/index.ts",
+    "./textarea": "./src/textarea/index.ts"
   }
 }

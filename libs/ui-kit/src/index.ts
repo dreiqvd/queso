@@ -1,1 +1,1 @@
-export * from './interfaces';
+export const UI_KIT = 'ui-kit';

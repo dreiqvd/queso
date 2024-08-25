@@ -20,15 +20,15 @@ import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsPillComponent } from '@queso/ui-kit/pill';
 
+import { SearchFormComponent } from './components/search-form';
+import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {
   ActiveMarker,
   MapCenter,
   Origin,
   SearchResult,
-} from './common/interfaces';
-import { SearchFormComponent } from './components/search-form';
-import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+} from './core/interfaces';
 import { SearchService } from './services';
 
 @Component({
