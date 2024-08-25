@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import {
   FormControl,
   FormGroup,
@@ -9,6 +9,8 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 
@@ -25,7 +27,10 @@ import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  private readonly auth: Auth = inject(Auth);
+  private readonly auth = inject(Auth);
+  private readonly route = inject(Router);
+
+  private readonly snackBar = inject(MatSnackBar);
 
   readonly loginForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.email]),
@@ -34,7 +39,27 @@ export class LoginComponent {
 
   onLogin(): void {
     const { username, password } = this.loginForm.value;
-    console.log(username, password);
-    // this.auth.signInWithEmailAndPassword(username, password);
+    if (!this.loginForm.valid) return;
+
+    signInWithEmailAndPassword(
+      this.auth,
+      username as string,
+      password as string
+    )
+      .then(() => {
+        this.route.navigate(['']);
+      })
+      .catch((err) => {
+        let message = 'Login failed.';
+        if (err.code === 400) {
+          message = 'Invalid email or password.';
+        }
+        this.snackBar.open(message, 'Close', {
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+          panelClass: 'snackbar-error',
+          duration: 2000,
+        });
+      });
   }
 }
