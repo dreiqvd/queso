@@ -1,60 +1,72 @@
-<div class="table-wrapper">
-  <table mat-table [dataSource]="tblDataSource">
-    <ng-container matColumnDef="name">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.name }}
-      </td>
-    </ng-container>
+<mat-tab-group>
+  <mat-tab label="1st Period">
+    <ng-container *ngTemplateOutlet="expensesTable" />
+  </mat-tab>
 
-    <ng-container matColumnDef="amount">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Amount</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.amount | currency : 'PHP' }}
-      </td>
-    </ng-container>
+  <mat-tab label="2nd Period">
+    <ng-container *ngTemplateOutlet="expensesTable" />
+  </mat-tab>
+</mat-tab-group>
 
-    <ng-container matColumnDef="dueDate">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Due Date</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.dueDate | ordinal }}
-      </td>
-    </ng-container>
+<ng-template #expensesTable>
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="tblDataSource">
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.name }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="lastPaymentDate">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Last Payment Date</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.lastPaymentDate }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="amount">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Amount</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.amount | currency : 'PHP' }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="paymentAccount">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Account</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.paymentAccount }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="dueDate">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Due Date</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.dueDate | ordinal }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="isPaid">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Paid?</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.isPaid }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="lastPaymentDate">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Last Payment Date</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.lastPaymentDate }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="action">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Action</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.name }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="paymentAccount">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Account</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.paymentAccount }}
+        </td>
+      </ng-container>
 
-    <tr *matHeaderRowDef="tblColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: tblColumns" mat-row></tr>
-    <tr *matNoDataRow>
-      <td class="mat-cell text-center" [attr.colspan]="tblColumns.length">
-        No records found.
-      </td>
-    </tr>
-  </table>
-</div>
+      <ng-container matColumnDef="isPaid">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Paid?</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.isPaid }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Action</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.name }}
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="tblColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: tblColumns" mat-row></tr>
+      <tr *matNoDataRow>
+        <td class="mat-cell text-center" [attr.colspan]="tblColumns.length">
+          No records found.
+        </td>
+      </tr>
+    </table>
+  </div>
+</ng-template>
