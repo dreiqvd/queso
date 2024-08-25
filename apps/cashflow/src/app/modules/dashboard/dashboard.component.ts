@@ -7,6 +7,5 @@ import { DashboardExpensesComponent } from './dashboard-expenses/dashboard-expen
   standalone: true,
   imports: [DashboardExpensesComponent],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {}

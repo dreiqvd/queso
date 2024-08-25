@@ -14,7 +14,6 @@ import { ExpensesTableComponent } from './expenses-table/expenses-table.componen
   standalone: true,
   imports: [MatTabsModule, QsTabGroupDirective, ExpensesTableComponent],
   templateUrl: './dashboard-expenses.component.html',
-  styleUrl: './dashboard-expenses.component.scss',
 })
 export class DashboardExpensesComponent {
   private readonly expenseService = inject(ExpenseService);

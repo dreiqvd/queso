@@ -22,7 +22,11 @@ import { Expense } from 'apps/cashflow/src/app/models';
     QsIconComponent,
   ],
   templateUrl: './expenses-table.component.html',
-  styleUrl: './expenses-table.component.scss',
+  styles: `
+    td {
+      padding: 16px;
+    }
+  `,
 })
 export class ExpensesTableComponent {
   @ViewChild(MatSort) sort!: MatSort;
