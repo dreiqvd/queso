@@ -20,6 +20,11 @@
           "apps/cashflow/src/assets",
           {
             "glob": "**/*",
+            "input": "apps/cashflow/src/favicons",
+            "output": "."
+          },
+          {
+            "glob": "**/*",
             "input": "libs/shared/assets",
             "output": "./assets"
           }
