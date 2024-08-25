@@ -7,9 +7,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatTooltip } from '@angular/material/tooltip';
 
 import { QsAnimationsDirective } from '@queso/common/animations';
+import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsInputComponent } from '@queso/ui-kit/input';
 import { QsTextareaComponent } from '@queso/ui-kit/textarea';
@@ -23,7 +25,9 @@ import { MailingService } from '../../services';
     NgTemplateOutlet,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatInputModule,
     MatTooltip,
+    QsFormFieldDirective,
     QsAnimationsDirective,
     QsInputComponent,
     QsTextareaComponent,

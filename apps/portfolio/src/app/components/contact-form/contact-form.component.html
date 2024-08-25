@@ -35,56 +35,101 @@
     </div>
   }
   <form class="flex flex-col gap-1" autocomplete="on" [formGroup]="contactForm">
-    <qs-input
-      label="Name"
-      control="name"
-      name="name"
+    <mat-form-field
+      qsFormField
+      class="form-field-wrapper"
       qsAnimation="fadeInUp"
-      matTooltip="Alias, superhero name, or just plain ol' you — who am I chatting with?"
+      matTooltip="Alias, superhero name — who am I chatting with?"
       [hideRequiredMarker]="true"
-      [errorMsgMap]="{
-        required: 'Oops! Looks like you forgot to tell me your name.',
-        maxlength: 'That\'s a long name you got there. Mind shortening it?'
-      }"
-    />
-    <qs-input
-      label="Email"
-      control="email"
-      name="email"
+    >
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        autocomplete="on"
+      />
+      @if (contactForm.get('name')?.hasError('required')) {
+        <mat-error>
+          Looks like you forgot to tell me your name.
+        </mat-error>
+      } @else if (contactForm.get('name')?.hasError('maxlength')) {
+        <mat-error>
+          That's quite a long name you got there.
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field
+      qsFormField
+      class="form-field-wrapper"
       qsAnimation="fadeInUp"
-      matTooltip="Your portal for virtual hellos. Promise, this is not for spams."
+      matTooltip="Your portal for virtual hellos."
       [animDelay]="0.25"
       [hideRequiredMarker]="true"
-      [errorMsgMap]="{
-        required: 'Pinky promise, I am not going to use your email for spams (and scams).',
-        email: 'Oops! That email address doesn\'t look right.'
-      }"
-    />
-    <qs-input
-      label="Subject"
-      control="subject"
-      name="subject"
+    >
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        autocomplete="on"
+      />
+      @if (contactForm.get('email')?.hasError('required')) {
+        <mat-error>
+          Promise, this is not for spams.
+        </mat-error>
+      } @else if (contactForm.get('email')?.hasError('email')) {
+        <mat-error>
+          Oops! That email address doesn't look right.
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field
+      qsFormField
+      class="form-field-wrapper"
       qsAnimation="fadeInUp"
       matTooltip="Give me a hint — what's brewing?"
       [animDelay]="0.5"
       [hideRequiredMarker]="true"
-      [errorMsgMap]="{
-        required: 'Looks like we\'re missing a subject here.',
-        maxlength: 'At this point, your subject can already be your message.'
-      }"
-    />
-    <qs-textarea
-      label="Message"
-      control="message"
-      name="message"
+    >
+      <mat-label>Subject</mat-label>
+      <input
+        matInput
+        formControlName="subject"
+        autocomplete="on"
+      />
+      @if (contactForm.get('subject')?.hasError('required')) {
+        <mat-error>
+          Looks like we're missing a subject here.
+        </mat-error>
+      } @else if (contactForm.get('subject')?.hasError('maxlength')) {
+        <mat-error>
+          At this point, your subject can already be your message.
+        </mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field
+      qsFormField
+      class="form-field-wrapper"
       qsAnimation="fadeInUp"
       matTooltip="Got a story? The floor is yours."
       [animDelay]="0.75"
       [hideRequiredMarker]="true"
-      [errorMsgMap]="{
-        required: 'We\'ve got a blank message field here.'
-      }"
-    />
+    >
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        formControlName="message"
+        autocomplete="on"
+        [rows]="5"
+      ></textarea>
+      @if (contactForm.get('message')?.hasError('required')) {
+        <mat-error>
+          We've got a blank message field here.
+        </mat-error>
+      }
+    </mat-form-field>
 
     <button
       type="button"
@@ -95,7 +140,7 @@
       [animDelay]="1"
       [disabled]="submitDisabled()"
       [matTooltip]="
-        submitDisabled() ? 'Oops... The form isn\'t error-free just yet' : 'Lezzgooo...'
+        submitDisabled() ? 'Oops... The form isn\'t error-free just yet.' : 'Lezzgooo...'
       "
       (click)="onSubmitForm()"
     >
