@@ -30,12 +30,6 @@ import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
     QsFormFieldDirective,
   ],
   templateUrl: './search-form.component.html',
-  styles: `
-    .search-btn {
-      --mdc-filled-button-label-text-size: 1rem;
-      --mdc-filled-button-container-height: 56px;
-    }
-  `,
 })
 export class SearchFormComponent implements OnInit {
   // Dependencies
