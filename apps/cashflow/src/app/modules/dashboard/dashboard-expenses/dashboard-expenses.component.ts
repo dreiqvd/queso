@@ -30,9 +30,8 @@ export class DashboardExpensesComponent {
         .getExpenses()
         .pipe(take(1))
         .subscribe((expenses) => {
-          const data = expenses.sort((a, b) => b.amount - a.amount);
-          this.period1Expenses = data.filter((d) => d.period === 1);
-          this.period2Expenses = data.filter((d) => d.period === 2);
+          this.period1Expenses = expenses.filter((d) => d.period === 1);
+          this.period2Expenses = expenses.filter((d) => d.period === 2);
         });
     });
   }

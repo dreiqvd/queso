@@ -17,7 +17,7 @@
     <ng-container matColumnDef="dueDate">
       <th *matHeaderCellDef mat-header-cell mat-sort-header>Due Date</th>
       <td *matCellDef="let element" mat-cell>
-        {{ element.dueDate | ordinal }}
+        {{ element.paymentDay | ordinal }}
       </td>
     </ng-container>
 
@@ -25,6 +25,15 @@
       <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Account</th>
       <td *matCellDef="let element" mat-cell>
         {{ element.paymentAccount }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="billingCycle">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Billing Cycle</th>
+      <td *matCellDef="let element" mat-cell>
+        <span class="capitalize">
+          {{ element.billingCycle }}
+        </span>
       </td>
     </ng-container>
 

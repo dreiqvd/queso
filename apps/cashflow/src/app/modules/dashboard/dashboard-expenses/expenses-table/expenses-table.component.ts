@@ -38,47 +38,33 @@ export class ExpensesTableComponent {
     'amount',
     'dueDate',
     'paymentAccount',
+    'billingCycle',
     'lastPaymentDate',
     'isPaid',
     'action',
   ];
-  tblDataSource = new MatTableDataSource<IExpenseRow>();
+  tblDataSource = new MatTableDataSource<Expense>();
 
   constructor() {
     effect(() => {
-      this.tblDataSource.data = this.expenses().map(this.mapExpenseToRow);
       this.tblDataSource.sort = this.sort;
+      this.tblDataSource.data = this.getTableSourceData();
     });
   }
 
-  private mapExpenseToRow(expense: Expense): IExpenseRow {
-    const {
-      name,
-      amount,
-      paymentDay,
-      lastPaymentDate,
-      isPaid,
-      paymentAccount,
-    } = expense;
+  private getTableSourceData(): Expense[] {
+    let data = this.expenses();
 
-    return {
-      name,
-      amount,
-      dueDate: paymentDay,
-      lastPaymentDate,
-      paymentAccount,
-      isPaid: !!isPaid,
-      action: 'Pay',
-    };
+    // Filter out yearly subscriptions that are not yet due
+    const currentMonth = new Date().getMonth();
+    data = data.filter((d) => {
+      if (d.billingCycle === 'yearly') {
+        return d.paymentMonth === currentMonth + 1;
+      }
+
+      return true;
+    });
+
+    return data.sort((a, b) => b.amount - a.amount);
   }
-}
-
-interface IExpenseRow {
-  name: string;
-  amount: number;
-  dueDate: number;
-  lastPaymentDate: Date | undefined;
-  paymentAccount: string;
-  isPaid: boolean;
-  action: string;
 }

@@ -13,6 +13,7 @@ export interface Expense extends BaseModel {
   endDate?: string;
   isPaid?: boolean;
   lastPaymentDate?: Date;
+  paymentMonth?: number; // for non-monthly recurring expenses
 }
 
 export type ExpenseCategory =
