@@ -1,0 +1,12 @@
+html {
+  // Button
+  --mdc-filled-button-label-text-tracking: unset;
+  --mdc-filled-button-container-shape: 4px; // border-radius
+}
+
+// A probable known bug under Material
+// https://github.com/angular/components/issues/26179
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-label-text-color: var(--text-default-color);
+  --mat-filled-button-state-layer-color: var(--text-default-color);
+}

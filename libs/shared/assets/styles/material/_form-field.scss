@@ -1,7 +1,4 @@
-/** Contains common overrides for material components **/
-
 html {
-  // Form Field
   --mat-form-field-subscript-text-size: 13px;
   --mat-form-field-subscript-text-line-height: 1rem;
 
@@ -11,24 +8,6 @@ html {
   --mdc-outlined-text-field-input-text-color: var(--text-default-color);
   --mdc-outlined-text-field-label-text-color: var(--color-gray);
   --mdc-outlined-text-field-hover-label-text-color: var(--color-gray-500);
-
-  // Mat Select
-  --mat-select-enabled-trigger-text-color: var(--text-default-color);
-
-  // Mat Option
-  --mat-option-label-text-tracking: unset;
-  --mat-option-selected-state-label-text-color: var(--text-default-color);
-  --mat-option-label-text-color: var(--text-default-color);
-
-  // Tooltip
-  --mdc-plain-tooltip-container-color: var(--tooltip-bg-color);
-  --mdc-plain-tooltip-supporting-text-color: var(--tooltip-text-color);
-  --mdc-plain-tooltip-supporting-text-size: 0.75rem;
-  --mdc-plain-tooltip-container-shape: 4px;
-
-  // Button
-  --mdc-filled-button-label-text-tracking: unset;
-  --mdc-filled-button-container-shape: 4px; // border-radius
 }
 
 mat-form-field {
@@ -55,11 +34,4 @@ mat-form-field {
 .mat-mdc-form-field-bottom-align::before {
   // This controls the fixed height of the bottom-aligned subscript
   display: none !important;
-}
-
-// A probable known bug under Material
-// https://github.com/angular/components/issues/26179
-.mat-mdc-unelevated-button.mat-primary {
-  --mdc-filled-button-label-text-color: var(--text-default-color);
-  --mat-filled-button-state-layer-color: var(--text-default-color);
 }
