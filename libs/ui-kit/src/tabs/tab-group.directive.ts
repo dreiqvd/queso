@@ -3,7 +3,7 @@ import { MAT_TABS_CONFIG } from '@angular/material/tabs';
 
 @Directive({
   standalone: true,
-  selector: '[qs-tab-group]',
+  selector: '[qsTabGroup]',
   providers: [
     {
       provide: MAT_TABS_CONFIG,

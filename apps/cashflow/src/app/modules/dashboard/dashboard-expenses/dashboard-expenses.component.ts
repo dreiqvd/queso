@@ -1,10 +1,11 @@
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgTemplateOutlet } from '@angular/common';
 import { afterNextRender, Component, inject } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { take } from 'rxjs';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
+import { QsTabGroupDirective } from '@queso/ui-kit/tabs';
 
 import { Expense } from '../../../models';
 import { ExpenseService } from '../../../services';
@@ -12,7 +13,14 @@ import { ExpenseService } from '../../../services';
 @Component({
   selector: 'app-dashboard-expenses',
   standalone: true,
-  imports: [CurrencyPipe, MatTableModule, MatTabsModule, QsOrdinalPipe],
+  imports: [
+    NgTemplateOutlet,
+    CurrencyPipe,
+    MatTableModule,
+    MatTabsModule,
+    QsOrdinalPipe,
+    QsTabGroupDirective,
+  ],
   templateUrl: './dashboard-expenses.component.html',
   styleUrl: './dashboard-expenses.component.scss',
 })

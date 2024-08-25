@@ -83,12 +83,12 @@ export class QsGenericFormFieldDirective implements OnInit {
           errorMsg = this.errorMsgMap()[errorKey];
         } else if (
           DEFAULT_ERROR_MESSAGES[
-          errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
+            errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
           ]
         ) {
           errorMsg =
             DEFAULT_ERROR_MESSAGES[
-            errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
+              errorKey as keyof typeof DEFAULT_ERROR_MESSAGES
             ];
         } else {
           console.error('No validation message found for error:', errorKey);
