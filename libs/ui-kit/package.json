@@ -16,11 +16,9 @@
     "./form-field": "./src/form-field/index.ts",
     "./hamburger": "./src/hamburger/index.ts",
     "./icon": "./src/icon/index.ts",
-    "./input": "./src/input/index.ts",
     "./pill": "./src/pill/index.ts",
     "./scroll-cue": "./src/scroll-cue/index.ts",
     "./select": "./src/select/index.ts",
-    "./tabs": "./src/tabs/index.ts",
-    "./textarea": "./src/textarea/index.ts"
+    "./tabs": "./src/tabs/index.ts"
   }
 }

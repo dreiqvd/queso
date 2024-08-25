@@ -13,8 +13,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsInputComponent } from '@queso/ui-kit/input';
-import { QsTextareaComponent } from '@queso/ui-kit/textarea';
 
 import { MailingService } from '../../services';
 
@@ -29,8 +27,6 @@ import { MailingService } from '../../services';
     MatTooltip,
     QsFormFieldDirective,
     QsAnimationsDirective,
-    QsInputComponent,
-    QsTextareaComponent,
     QsIconComponent,
   ],
   templateUrl: './contact-form.component.html',
