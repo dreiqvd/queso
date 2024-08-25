@@ -44,11 +44,32 @@ export class ExpensesTableComponent {
     'action',
   ];
   tblDataSource = new MatTableDataSource<Expense>();
+  paymentAccounts: Array<{
+    total: number;
+    name: string;
+  }> = [];
 
   constructor() {
     effect(() => {
       this.tblDataSource.sort = this.sort;
-      this.tblDataSource.data = this.getTableSourceData();
+      const data = this.getTableSourceData();
+      this.tblDataSource.data = data;
+      this.paymentAccounts = data.reduce(
+        (acc, curr) => {
+          const account = acc.find((a) => a.name === curr.paymentAccount);
+          if (account) {
+            account.total += curr.amount;
+          } else {
+            acc.push({
+              name: curr.paymentAccount,
+              total: curr.amount,
+            });
+          }
+
+          return acc;
+        },
+        [] as Array<{ total: number; name: string }>
+      );
     });
   }
 

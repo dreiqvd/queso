@@ -1,81 +1,98 @@
-<div class="table-wrapper">
-  <table mat-table matSort [dataSource]="tblDataSource">
-    <ng-container matColumnDef="name">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.name }}
-      </td>
-    </ng-container>
+<div class="flex gap-8">
+  <div class="table-wrapper w-full">
+    <table mat-table matSort [dataSource]="tblDataSource">
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.name }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="amount">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Amount</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.amount | currency : 'PHP' }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="amount">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Amount</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.amount | currency : 'PHP' }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="dueDate">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Due Date</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.paymentDay | ordinal }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="dueDate">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Due Date</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.paymentDay | ordinal }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="paymentAccount">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Account</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.paymentAccount }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="paymentAccount">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Account</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.paymentAccount }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="billingCycle">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Billing Cycle</th>
-      <td *matCellDef="let element" mat-cell>
-        <span class="capitalize">
-          {{ element.billingCycle }}
-        </span>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="billingCycle">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Billing Cycle</th>
+        <td *matCellDef="let element" mat-cell>
+          <span class="capitalize">
+            {{ element.billingCycle }}
+          </span>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="lastPaymentDate">
-      <th *matHeaderCellDef mat-header-cell class="w-[200px]">Last Payment Date</th>
-      <td *matCellDef="let element" mat-cell>
-        {{ element.lastPaymentDate | date: 'MMM dd' }}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="lastPaymentDate">
+        <th *matHeaderCellDef mat-header-cell class="w-[200px]">Last Payment Date</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.lastPaymentDate | date: 'MMM dd' }}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="isPaid">
-      <th *matHeaderCellDef mat-header-cell class="center">
-        Paid?
-      </th>
-      <td *matCellDef="let element" mat-cell class="center">
-        <span
-          [ngClass]="element.isPaid ? 'text-green' : 'text-red'"
-        >
-          <qs-icon
-            iconStyle="solid"
-            [iconSize]="20"
-            [iconName]="element.isPaid ? 'circle-check' : 'circle-xmark'"
-          />
-        </span>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="isPaid">
+        <th *matHeaderCellDef mat-header-cell class="center">
+          Paid?
+        </th>
+        <td *matCellDef="let element" mat-cell class="center">
+          <span
+            [ngClass]="element.isPaid ? 'text-green' : 'text-red'"
+          >
+            <qs-icon
+              iconStyle="solid"
+              [iconSize]="20"
+              [iconName]="element.isPaid ? 'circle-check' : 'circle-xmark'"
+            />
+          </span>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="action">
-      <th *matHeaderCellDef mat-header-cell class="center">Action</th>
-      <td *matCellDef="let element" mat-cell class="center">
-        <button mat-flat-button color="accent" type="button">
-          Mark as {{ element.isPaid ? 'Unpaid' : 'Paid' }}
-        </button>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell class="center">Action</th>
+        <td *matCellDef="let element" mat-cell class="center">
+          <button mat-flat-button color="accent" type="button">
+            Mark as {{ element.isPaid ? 'Unpaid' : 'Paid' }}
+          </button>
+        </td>
+      </ng-container>
 
-    <tr *matHeaderRowDef="tblColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: tblColumns" mat-row></tr>
-    <tr *matNoDataRow>
-      <td class="mat-cell text-center" [attr.colspan]="tblColumns.length">
-        No records found.
-      </td>
-    </tr>
-  </table>
+      <tr *matHeaderRowDef="tblColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: tblColumns" mat-row></tr>
+      <tr *matNoDataRow>
+        <td class="mat-cell text-center" [attr.colspan]="tblColumns.length">
+          No records found.
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="w-[360px]">
+    <h2 class="mb-6">Payment Accounts Total:</h2>
+    <div class="flex flex-col">
+      @for (account of paymentAccounts; track $index) {
+        <div class="grid grid-cols-2 items-center border border-gray-200 border-solid">
+          <span class="border-r border-gray-200 border-solid p-2">
+            {{ account.name }}
+          </span>
+          <span class="p-2">
+            {{ account.total | currency : 'PHP' }}
+          </span>
+        </div>
+      }
+    </div>
+  </div>
 </div>

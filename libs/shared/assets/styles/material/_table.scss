@@ -1,4 +1,6 @@
 table.mat-mdc-table {
+  border: solid 1px var(--color-gray-100);
+
   .mat-mdc-header-cell {
     background-color: var(--color-gray-100);
     font-weight: bold;
