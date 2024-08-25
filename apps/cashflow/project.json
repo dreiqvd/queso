@@ -20,7 +20,7 @@
           "apps/cashflow/src/assets",
           {
             "glob": "**/*",
-            "input": "apps/cashflow/src/favicons",
+            "input": "apps/cashflow/src/assets/favicons",
             "output": "."
           },
           {
