@@ -1,0 +1,37 @@
+<div class="h-dvh flex justify-center items-center">
+  <div class="shadow bg-white p-6 rounded min-w-[360px]">
+    <form class="flex flex-col gap-4" [formGroup]="loginForm">
+      <mat-form-field qsFormField subscriptSizing="fixed">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" type="email" />
+        @if (loginForm.get('username')?.hasError('required')) {
+          <mat-error>
+            This field is required.
+          </mat-error>
+        } @else if (loginForm.get('username')?.hasError('email')) {
+          <mat-error>
+            Invalid email address.
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field qsFormField subscriptSizing="fixed">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" />
+        <mat-error>
+          This field is required.
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        type="submit"
+        color="primary"
+        (click)="onLogin()"
+      >
+        Login
+      </button>
+
+    </form>
+  </div>
+</div>

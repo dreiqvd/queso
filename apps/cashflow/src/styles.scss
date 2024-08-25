@@ -30,6 +30,8 @@ html {
   @include mat.table-theme($app-theme);
   @include mat.tabs-theme($app-theme);
   @include mat.button-theme($app-theme);
+  @include mat.form-field-theme($app-theme);
+  @include mat.input-theme($app-theme);
 }
 
 // Additional imports
