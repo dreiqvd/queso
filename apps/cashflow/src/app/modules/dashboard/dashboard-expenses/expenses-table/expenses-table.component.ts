@@ -76,16 +76,32 @@ export class ExpensesTableComponent {
   private getTableSourceData(): Expense[] {
     let data = this.expenses();
 
-    // Filter out yearly subscriptions that are not yet due
+    // Filter out yearly expenses that are not yet due
     const currentMonth = new Date().getMonth();
     data = data.filter((d) => {
       if (d.billingCycle === 'yearly') {
         return new Date(d.dueDate as string).getMonth() === currentMonth;
+      } else if (d.billingCycle === 'quarterly') {
+        const dueMonths = this.getQuarterlyDueMonths(d.dueDate as string);
+        return dueMonths.includes(currentMonth);
+      } else {
+        return true; // Monthly expenses are always displayed
       }
-
-      return true;
     });
 
     return data.sort((a, b) => b.amount - a.amount);
+  }
+
+  /** Compute the months a quarterly expense is paid */
+  private getQuarterlyDueMonths(dueDate: string): number[] {
+    const dueMonths: number[] = [];
+    const startMonthIndex = new Date(dueDate).getMonth();
+
+    for (let i = 0; i < 4; i++) {
+      const monthIndex = (startMonthIndex + i * 3) % 12;
+      dueMonths.push(monthIndex);
+    }
+
+    return dueMonths;
   }
 }
