@@ -36,7 +36,8 @@ export class DashboardExpensesComponent {
     'isPaid',
     'action',
   ];
-  readonly tblDataSource = new MatTableDataSource<IExpenseRow>();
+  readonly period1ExpensesDataSource = new MatTableDataSource<IExpenseRow>();
+  readonly period2ExpensesDataSource = new MatTableDataSource<IExpenseRow>();
 
   expenses: Expense[] = [];
 
@@ -46,12 +47,17 @@ export class DashboardExpensesComponent {
         .getExpenses()
         .pipe(take(1))
         .subscribe((expenses) => {
-          const data: IExpenseRow[] = expenses.map((e) =>
-            this.mapExpenseToRow(e)
-          );
-          this.tblDataSource.data = data;
+          const data = expenses.sort((a, b) => b.amount - a.amount);
+          this.period1ExpensesDataSource.data = this.getPeriodExpenses(data, 1);
+          this.period2ExpensesDataSource.data = this.getPeriodExpenses(data, 2);
         });
     });
+  }
+
+  private getPeriodExpenses(data: Expense[], period: number): IExpenseRow[] {
+    return data
+      .filter((e) => e.period === period)
+      .map((e) => this.mapExpenseToRow(e));
   }
 
   private mapExpenseToRow(expense: Expense): IExpenseRow {

@@ -1,16 +1,25 @@
+<h1 class="text-2xl mb-4">Upcoming Expenses</h1>
 <mat-tab-group qsTabGroup>
   <mat-tab label="1st Period">
-    <ng-container *ngTemplateOutlet="expensesTable" />
+    <div class="py-6">
+      <ng-container
+        *ngTemplateOutlet="expensesTable; context: { $implicit: period1ExpensesDataSource }"
+      />
+    </div>
   </mat-tab>
 
   <mat-tab label="2nd Period">
-    <ng-container *ngTemplateOutlet="expensesTable" />
+    <div class="py-6">
+      <ng-container
+        *ngTemplateOutlet="expensesTable; context: { $implicit: period2ExpensesDataSource }"
+      />
+    </div>
   </mat-tab>
 </mat-tab-group>
 
-<ng-template #expensesTable>
+<ng-template #expensesTable let-dataSource>
   <div class="table-wrapper">
-    <table mat-table [dataSource]="tblDataSource">
+    <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
         <td *matCellDef="let element" mat-cell>
