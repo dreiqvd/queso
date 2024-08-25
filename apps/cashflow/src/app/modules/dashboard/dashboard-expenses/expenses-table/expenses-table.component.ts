@@ -48,6 +48,7 @@ export class ExpensesTableComponent {
     total: number;
     name: string;
   }> = [];
+  totalExpenses = 0;
 
   constructor() {
     effect(() => {
@@ -70,6 +71,8 @@ export class ExpensesTableComponent {
         },
         [] as Array<{ total: number; name: string }>
       );
+
+      this.totalExpenses = data.reduce((acc, curr) => acc + curr.amount, 0);
     });
   }
 
