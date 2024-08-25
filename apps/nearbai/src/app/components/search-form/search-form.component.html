@@ -1,23 +1,37 @@
 <form class="my-12" [formGroup]="searchForm">
-  <qs-select
-    name="Origin"
-    control="origin"
-    label="Origin"
-    [options]="sourceLocations"
-  />
+  <mat-form-field qsFormField>
+    <mat-label>Origin</mat-label>
+    <mat-select formControlName="origin">
+      @for (option of sourceLocations; track option.value) {
+        <mat-option [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
   <div class="grid grid-cols-2 gap-4 mt-6 mb-4">
-    <qs-select
-      name="Category"
-      control="category"
-      label="Category"
-      [options]="categories"
-    />
-    <qs-select
-      name="Radius"
-      control="radius"
-      label="Radius (m)"
-      [options]="radiusOptions"
-    />
+    <mat-form-field qsFormField>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        @for (option of categories; track option.value) {
+          <mat-option [value]="option.value">
+            {{ option.label }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field qsFormField>
+      <mat-label>Radius (m)</mat-label>
+      <mat-select formControlName="radius">
+        @for (option of radiusOptions; track option.value) {
+          <mat-option [value]="option.value">
+            {{ option.label }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
   </div>
   <button
     mat-flat-button

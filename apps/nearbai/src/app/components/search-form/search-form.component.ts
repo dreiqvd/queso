@@ -8,9 +8,11 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { QsSelectableItem } from '@queso/ui-kit/core';
-import { QsSelectComponent } from '@queso/ui-kit/select';
+import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 
 import { Origin, SearchParams } from '../../core/interfaces';
 import { SearchService } from '../../services';
@@ -20,7 +22,13 @@ import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
 @Component({
   selector: 'app-search-form',
   standalone: true,
-  imports: [ReactiveFormsModule, MatButton, QsSelectComponent],
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButton,
+    QsFormFieldDirective,
+  ],
   templateUrl: './search-form.component.html',
   styles: `
     .search-btn {
