@@ -2,80 +2,13 @@
 <mat-tab-group qsTabGroup [selectedIndex]="selectedPeriodIndex">
   <mat-tab label="1st Period">
     <div class="py-6">
-      <ng-container
-        *ngTemplateOutlet="expensesTable; context: { $implicit: period1ExpensesDataSource }"
-      />
+      <app-expenses-table [expenses]="period1Expenses" />
     </div>
   </mat-tab>
 
   <mat-tab label="2nd Period">
     <div class="py-6">
-      <ng-container
-        *ngTemplateOutlet="expensesTable; context: { $implicit: period2ExpensesDataSource }"
-      />
+      <app-expenses-table [expenses]="period2Expenses" />
     </div>
   </mat-tab>
 </mat-tab-group>
-
-<ng-template #expensesTable let-dataSource>
-  <div class="table-wrapper">
-    <table mat-table [dataSource]="dataSource">
-      <ng-container matColumnDef="name">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
-        <td *matCellDef="let element" mat-cell>
-          {{ element.name }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="amount">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header>Amount</th>
-        <td *matCellDef="let element" mat-cell>
-          {{ element.amount | currency : 'PHP' }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="dueDate">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header>Due Date</th>
-        <td *matCellDef="let element" mat-cell>
-          {{ element.dueDate | ordinal }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="lastPaymentDate">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header>Last Payment Date</th>
-        <td *matCellDef="let element" mat-cell>
-          {{ element.lastPaymentDate }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="paymentAccount">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Account</th>
-        <td *matCellDef="let element" mat-cell>
-          {{ element.paymentAccount }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="isPaid">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header>Paid?</th>
-        <td *matCellDef="let element" mat-cell>
-          {{ element.isPaid }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="action">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header>Action</th>
-        <td *matCellDef="let element" mat-cell>
-          {{ element.name }}
-        </td>
-      </ng-container>
-
-      <tr *matHeaderRowDef="tblColumns" mat-header-row></tr>
-      <tr *matRowDef="let row; columns: tblColumns" mat-row></tr>
-      <tr *matNoDataRow>
-        <td class="mat-cell text-center" [attr.colspan]="tblColumns.length">
-          No records found.
-        </td>
-      </tr>
-    </table>
-  </div>
-</ng-template>
