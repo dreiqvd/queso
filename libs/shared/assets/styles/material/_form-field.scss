@@ -8,6 +8,8 @@ html {
   --mdc-outlined-text-field-input-text-color: var(--text-default-color);
   --mdc-outlined-text-field-label-text-color: var(--color-gray);
   --mdc-outlined-text-field-hover-label-text-color: var(--color-gray-500);
+  --mdc-outlined-text-field-label-text-tracking: normal;
+  --mat-form-field-subscript-text-tracking: normal;
 }
 
 mat-form-field {
@@ -20,18 +22,6 @@ mat-form-field {
 
 .mat-mdc-form-field-subscript-wrapper {
   .mat-mdc-form-field-error-wrapper {
-    padding-left: 2px; // Adjust left padding of mat-error content
+    padding-left: 0;
   }
-}
-
-// Override the styling for the subscript (this is usually the
-// error or hint message below the form field)
-.mat-mdc-form-field-error-wrapper {
-  position: relative !important;
-  margin-top: 6px;
-}
-
-.mat-mdc-form-field-bottom-align::before {
-  // This controls the fixed height of the bottom-aligned subscript
-  display: none !important;
 }
