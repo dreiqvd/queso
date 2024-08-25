@@ -11,9 +11,14 @@ export interface Expense extends BaseModel {
   startDate?: string;
   endDate?: string;
   isPaid?: boolean;
-  lastPaymentDate?: Date;
+  lastPaymentDate?: FirestoreResponseDate | Date;
   dueDate?: string; // Date string reference of the original due date for non-monthly expenses
 }
+
+export type FirestoreResponseDate = {
+  seconds: number;
+  nanoseconds: number;
+};
 
 export type ExpenseCategory =
   | 'Credit/Loan'

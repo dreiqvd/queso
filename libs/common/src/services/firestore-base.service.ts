@@ -61,7 +61,10 @@ export abstract class QsFirestoreBaseService<T> {
    * Update a record based on id.
    * @todo Add error handling
    */
-  public update(id: string, payload: T): Observable<{ data: T }> {
+  public update(
+    id: string,
+    payload: Partial<T>
+  ): Observable<{ data: Partial<T> }> {
     const resourceRef = doc(this.firestore, this.resource, id);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return from(updateDoc(resourceRef, payload as any)).pipe(

@@ -41,7 +41,9 @@
       <ng-container matColumnDef="lastPaymentDate">
         <th *matHeaderCellDef mat-header-cell class="w-[200px]">Last Payment Date</th>
         <td *matCellDef="let element" mat-cell>
-          {{ element.lastPaymentDate | date: 'MMM dd' }}
+          @if (element.isPaid) {
+            {{ element.lastPaymentDate | date: 'MMM dd' }}
+          }
         </td>
       </ng-container>
 
@@ -63,9 +65,9 @@
       </ng-container>
 
       <ng-container matColumnDef="action">
-        <th *matHeaderCellDef mat-header-cell class="center">Action</th>
+        <th *matHeaderCellDef mat-header-cell class="center w-[250px]">Action</th>
         <td *matCellDef="let element" mat-cell class="center">
-          <button mat-flat-button color="accent" type="button">
+          <button mat-flat-button color="accent" type="button" (click)="togglePaidStatus(element)">
             Mark as {{ element.isPaid ? 'Unpaid' : 'Paid' }}
           </button>
         </td>

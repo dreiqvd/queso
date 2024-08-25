@@ -1,5 +1,5 @@
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
-import { Component, effect, input, ViewChild } from '@angular/core';
+import { Component, effect, inject, input, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -7,7 +7,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
-import { Expense } from '../../../../models';
+import { Expense, FirestoreResponseDate } from '../../../../models';
+import { ExpenseService } from '../../../../services';
 
 @Component({
   selector: 'app-expenses-table',
@@ -34,6 +35,8 @@ import { Expense } from '../../../../models';
 })
 export class ExpensesTableComponent {
   @ViewChild(MatSort) sort!: MatSort;
+
+  private readonly expenseService = inject(ExpenseService);
 
   expenses = input.required<Expense[]>();
 
@@ -96,7 +99,16 @@ export class ExpensesTableComponent {
       }
     });
 
-    return data.sort((a, b) => b.amount - a.amount);
+    return data
+      .sort((a, b) => b.amount - a.amount)
+      .map((d) => ({
+        ...d,
+        lastPaymentDate: d.lastPaymentDate
+          ? new Date(
+              (d.lastPaymentDate as FirestoreResponseDate).seconds * 1000
+            )
+          : undefined,
+      }));
   }
 
   /** Compute the months a quarterly expense is paid */
@@ -110,5 +122,18 @@ export class ExpensesTableComponent {
     }
 
     return dueMonths;
+  }
+
+  togglePaidStatus(expense: Expense): void {
+    const isPaid = !expense.isPaid;
+    this.expenseService
+      .update(expense.id as string, {
+        isPaid,
+      })
+      .subscribe(() => {
+        const lastPaymentDate = isPaid ? new Date() : undefined;
+        expense.isPaid = isPaid;
+        expense.lastPaymentDate = lastPaymentDate;
+      });
   }
 }
