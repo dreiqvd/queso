@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+import { QsPlatformService } from '@queso/common/services';
 import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 
 @Component({
@@ -29,6 +30,7 @@ import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 export class LoginComponent {
   private readonly auth = inject(Auth);
   private readonly route = inject(Router);
+  public readonly platformService = inject(QsPlatformService);
 
   private readonly snackBar = inject(MatSnackBar);
 
