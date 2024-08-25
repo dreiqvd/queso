@@ -27,7 +27,7 @@ export class DashboardExpensesComponent {
   constructor() {
     afterNextRender(() => {
       this.expenseService
-        .getExpenses()
+        .list()
         .pipe(take(1))
         .subscribe((expenses) => {
           // Expenses that are paid on the 30th of the month (excluding 30th expenses).
@@ -36,7 +36,6 @@ export class DashboardExpensesComponent {
             (d) =>
               (d.paymentDay >= 1 && d.paymentDay <= 15) || d.paymentDay === 31
           );
-
           // Expenses that are paid on the 15th of the month (excluding 15th expenses).
           this.period2Expenses = expenses.filter(
             (d) => d.paymentDay >= 16 && d.paymentDay <= 30

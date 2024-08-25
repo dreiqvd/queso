@@ -6,7 +6,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsIconComponent } from '@queso/ui-kit/icon';
-import { Expense } from 'apps/cashflow/src/app/models';
+
+import { Expense } from '../../../../models';
 
 @Component({
   selector: 'app-expenses-table',
@@ -24,6 +25,9 @@ import { Expense } from 'apps/cashflow/src/app/models';
   templateUrl: './expenses-table.component.html',
   styles: `
     td {
+      --mdc-filled-button-container-height: 36px;
+      --mdc-filled-button-label-text-size: 0.875rem;
+
       padding: 16px;
     }
   `,
