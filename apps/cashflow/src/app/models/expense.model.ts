@@ -5,7 +5,6 @@ export interface Expense extends BaseModel {
   amount: number;
   paymentAccount: string;
   category: ExpenseCategory;
-  period: 1 | 2;
   isRecurring: boolean;
   paymentDay: number;
   billingCycle: 'monthly' | 'quarterly' | 'yearly';
@@ -13,7 +12,7 @@ export interface Expense extends BaseModel {
   endDate?: string;
   isPaid?: boolean;
   lastPaymentDate?: Date;
-  paymentMonth?: number; // for non-monthly recurring expenses
+  dueDate?: string; // Date string reference of the original due date for non-monthly expenses
 }
 
 export type ExpenseCategory =

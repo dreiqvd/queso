@@ -2,12 +2,14 @@
 <mat-tab-group qsTabGroup [selectedIndex]="selectedPeriodIndex">
   <mat-tab label="1st Period">
     <div class="py-6">
+      <p class="text-gray text-sm">Expenses that are paid on the 30th of the month (excluding 30th expenses).</p>
       <app-expenses-table [expenses]="period1Expenses" />
     </div>
   </mat-tab>
 
   <mat-tab label="2nd Period">
     <div class="py-6">
+      <p class="text-gray text-sm">Expenses that are paid on the 15th of the month (excluding 15th expenses).</p>
       <app-expenses-table [expenses]="period2Expenses" />
     </div>
   </mat-tab>

@@ -59,7 +59,7 @@ export class ExpensesTableComponent {
     const currentMonth = new Date().getMonth();
     data = data.filter((d) => {
       if (d.billingCycle === 'yearly') {
-        return d.paymentMonth === currentMonth + 1;
+        return new Date(d.dueDate as string).getMonth() === currentMonth;
       }
 
       return true;

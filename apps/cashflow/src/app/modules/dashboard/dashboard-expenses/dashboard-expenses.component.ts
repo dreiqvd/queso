@@ -30,8 +30,17 @@ export class DashboardExpensesComponent {
         .getExpenses()
         .pipe(take(1))
         .subscribe((expenses) => {
-          this.period1Expenses = expenses.filter((d) => d.period === 1);
-          this.period2Expenses = expenses.filter((d) => d.period === 2);
+          // Expenses that are paid on the 30th of the month (excluding 30th expenses).
+          // Note: 31st expenses should be paid on 30th of the month and thus included for period 2
+          this.period1Expenses = expenses.filter(
+            (d) =>
+              (d.paymentDay >= 1 && d.paymentDay <= 15) || d.paymentDay === 31
+          );
+
+          // Expenses that are paid on the 15th of the month (excluding 15th expenses).
+          this.period2Expenses = expenses.filter(
+            (d) => d.paymentDay >= 16 && d.paymentDay <= 30
+          );
         });
     });
   }
