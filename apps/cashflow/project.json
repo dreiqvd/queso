@@ -103,6 +103,23 @@
         "staticFilePath": "dist/apps/cashflow/browser",
         "spa": true
       }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "version": 2
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "cashflow:build:production",
+          "serveTarget": "cashflow:serve:production"
+        },
+        "development": {
+          "buildTarget": "cashflow:build:development",
+          "serveTarget": "cashflow:serve:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }
