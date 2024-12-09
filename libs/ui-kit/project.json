@@ -3,8 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ui-kit/src",
   "prefix": "qs",
-  "tags": ["type:ui", "scope:shared"],
   "projectType": "library",
+  "tags": ["type:ui", "scope:shared"],
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint"

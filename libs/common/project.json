@@ -3,8 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/common/src",
   "prefix": "qs",
-  "tags": ["type:utils", "scope:shared"],
   "projectType": "library",
+  "tags": ["type:utils", "scope:shared"],
   "targets": {
     "lint": {
       "executor": "@nx/eslint:lint"
