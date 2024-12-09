@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 message="$(cat $1)"
 prefix="portfolio|nearbai|whisquers|cashflow|ui-kit|common|shared|chore|config"
 regex="^($prefix): [a-z].*$"
