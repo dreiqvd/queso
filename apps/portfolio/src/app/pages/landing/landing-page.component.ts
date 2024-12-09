@@ -1,6 +1,5 @@
 import {
-  afterNextRender,
-  AfterRenderPhase,
+  afterRenderEffect,
   Component,
   ElementRef,
   signal,
@@ -62,24 +61,22 @@ export class LandingPageComponent {
   readonly isContentVisible = signal(false);
 
   constructor() {
-    afterNextRender(
-      () => {
-        this.introVisibility.set('visible');
-        anime({
-          targets: '#backdrop-svg-wrapper path',
-          strokeDashoffset: [anime.setDashoffset, 0],
-          easing: 'easeInOutSine',
-          duration: 1500,
-          direction: 'alternate',
-          delay: (_: HTMLElement, i: number) => i * 250,
-        }).finished.then(() => {
-          this.backdrop.animate().then(() => {
-            this.backdrop.removeElement();
-            this.isContentVisible.set(true);
-          });
+    afterRenderEffect(() => {
+      this.introVisibility.set('visible');
+      anime({
+        targets: '#backdrop-svg-wrapper path',
+        // eslint-disable-next-line import/no-named-as-default-member
+        strokeDashoffset: [anime.setDashoffset, 0],
+        easing: 'easeInOutSine',
+        duration: 1500,
+        direction: 'alternate',
+        delay: (_: HTMLElement, i: number) => i * 250,
+      }).finished.then(() => {
+        this.backdrop.animate().then(() => {
+          this.backdrop.removeElement();
+          this.isContentVisible.set(true);
         });
-      },
-      { phase: AfterRenderPhase.Read }
-    );
+      });
+    });
   }
 }

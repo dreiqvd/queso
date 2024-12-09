@@ -1,4 +1,3 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
@@ -10,12 +9,7 @@ import { ContactFormComponent } from '../../../../components/contact-form';
 @Component({
   selector: 'app-landing-contact',
   standalone: true,
-  imports: [
-    NgOptimizedImage,
-    MatTooltip,
-    QsAnimationsDirective,
-    ContactFormComponent,
-  ],
+  imports: [MatTooltip, QsAnimationsDirective, ContactFormComponent],
   templateUrl: './landing-contact.component.html',
 })
 export class LandingContactComponent {

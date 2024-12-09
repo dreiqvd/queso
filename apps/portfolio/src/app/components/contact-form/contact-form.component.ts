@@ -1,4 +1,3 @@
-import { NgTemplateOutlet } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import {
   FormControl,
@@ -12,7 +11,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 
 import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
-import { QsIconComponent } from '@queso/ui-kit/icon';
 
 import { MailingService } from '../../services';
 
@@ -20,14 +18,12 @@ import { MailingService } from '../../services';
   selector: 'app-contact-form',
   standalone: true,
   imports: [
-    NgTemplateOutlet,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatTooltip,
     QsFormFieldDirective,
     QsAnimationsDirective,
-    QsIconComponent,
   ],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss',

@@ -4,8 +4,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
 import { QsAnimationsDirective } from '@queso/common/animations';
-import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsPillComponent } from '@queso/ui-kit/pill';
 
 import { ArticleCardComponent } from '../../../../components/article-card';
 import { ArticlesService } from '../../../../services';
@@ -17,8 +15,6 @@ import { ArticlesService } from '../../../../services';
     RouterLink,
     NgOptimizedImage,
     MatTooltip,
-    QsIconComponent,
-    QsPillComponent,
     QsAnimationsDirective,
     ArticleCardComponent,
   ],
