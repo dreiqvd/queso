@@ -39,7 +39,7 @@
         "server": "apps/portfolio/src/main.server.ts",
         "prerender": true,
         "ssr": {
-          "entry": "apps/portfolio/server.ts"
+          "entry": "apps/portfolio/src/server.ts"
         }
       },
       "configurations": {
