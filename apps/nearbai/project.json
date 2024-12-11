@@ -39,7 +39,7 @@
         "server": "apps/nearbai/src/main.server.ts",
         "prerender": true,
         "ssr": {
-          "entry": "apps/nearbai/server.ts"
+          "entry": "apps/nearbai/src/server.ts"
         }
       },
       "configurations": {
