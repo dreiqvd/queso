@@ -1,13 +1,13 @@
 /** Contains common imports for base styles **/
-// Tailwind
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-@import '../core/normalize';
-@import '../core/animations';
+@forward '../core/tailwind';
+@forward '../core/normalize';
+@forward '../core/animations';
+@forward '../core/mixins';
+@forward '../core/globals';
 
-@import '../material/material';
+@use '../material/material' as material;
 
-@import './base/variables';
-@import './base/globals';
+@mixin core-theme() {
+  @include material.overrides();
+}

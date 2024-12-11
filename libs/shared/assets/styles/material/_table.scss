@@ -1,26 +1,28 @@
-table.mat-mdc-table {
-  border: solid 1px var(--color-gray-100);
+@mixin apply-theme() {
+  table.mat-mdc-table {
+    border: solid 1px var(--color-gray-100);
 
-  .mat-mdc-header-cell {
-    background-color: var(--color-gray-100);
-    font-weight: bold;
+    .mat-mdc-header-cell {
+      background-color: var(--color-gray-100);
+      font-weight: bold;
 
-    &.center {
-      text-align: center;
+      &.center {
+        text-align: center;
+      }
     }
-  }
 
-  .mat-mdc-cell {
-    --mat-table-row-item-label-text-tracking: normal;
+    .mat-mdc-cell {
+      --mat-table-row-item-label-text-tracking: normal;
 
-    &.center {
-      text-align: center;
+      &.center {
+        text-align: center;
+      }
     }
-  }
 
-  .mat-mdc-row {
-    &:hover {
-      background-color: var(--color-gray-50);
+    .mat-mdc-row {
+      &:hover {
+        background-color: var(--color-gray-50);
+      }
     }
   }
 }

@@ -1,15 +1,15 @@
-html {
-  // Button
-  --mdc-filled-button-label-text-tracking: normal;
-  --mdc-text-button-label-text-tracking: normal;
-  --mdc-filled-button-container-shape: 4px; // border-radius
-  --mdc-filled-button-label-text-size: 1rem;
-  --mdc-filled-button-container-height: 56px;
-}
+@mixin apply-theme() {
+  html {
+    // Button
+    --mdc-filled-button-label-text-tracking: normal;
+    --mdc-text-button-label-text-tracking: normal;
+    --mdc-filled-button-container-shape: 4px; // border-radius
+    --mdc-filled-button-label-text-size: 1rem;
+    --mdc-filled-button-container-height: 56px;
+  }
 
-// A probable known bug under Material
-// https://github.com/angular/components/issues/26179
-.mat-mdc-unelevated-button.mat-primary {
-  --mdc-filled-button-label-text-color: var(--text-default-color);
-  --mat-filled-button-state-layer-color: var(--text-default-color);
+  .mat-mdc-unelevated-button.mat-primary {
+    --mdc-filled-button-label-text-color: var(--text-default-color);
+    --mat-filled-button-state-layer-color: var(--text-default-color);
+  }
 }

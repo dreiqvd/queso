@@ -1,8 +1,10 @@
-html {
-  --mat-select-enabled-trigger-text-color: var(--text-default-color);
+@mixin apply-theme() {
+  html {
+    --mat-select-enabled-trigger-text-color: var(--text-default-color);
 
-  // Mat Option
-  --mat-option-label-text-tracking: unset;
-  --mat-option-selected-state-label-text-color: var(--text-default-color);
-  --mat-option-label-text-color: var(--text-default-color);
+    // Mat Option
+    --mat-option-label-text-tracking: unset;
+    --mat-option-selected-state-label-text-color: var(--text-default-color);
+    --mat-option-label-text-color: var(--text-default-color);
+  }
 }

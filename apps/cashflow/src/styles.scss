@@ -1,11 +1,11 @@
 @use '@angular/material' as mat;
 
-@import 'palettes/base-palette';
-@import 'palettes/rose-palette';
+@use 'palettes/base-palette' as base_palette;
+@use 'palettes/rose-palette' as rose_palette;
 
-$primary: mat.m2-define-palette($pink, 400);
-$accent: mat.m2-define-palette($royal-blue, 400);
-$warn: mat.m2-define-palette($red, 400);
+$primary: mat.m2-define-palette(rose_palette.$pink, 400);
+$accent: mat.m2-define-palette(rose_palette.$royal-blue, 400);
+$warn: mat.m2-define-palette(base_palette.$red, 400);
 $typography: mat.m2-define-typography-config(
   $font-family: "Inter, 'Helvetica Neue', sans-serif",
 );
@@ -36,8 +36,8 @@ html {
 }
 
 // Additional imports
-@import 'base';
-@import 'rose-theme';
+@use 'base';
+@use 'rose-theme';
 
 h1,
 h2,

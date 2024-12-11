@@ -1,13 +1,13 @@
-@import './hacks';
-@import './mixins';
-@import './options';
+@use './hacks' as hacks;
+@use './mixins' as mixins;
+@use './options' as options;
 
 /* Bounce To Right */
 @mixin bounceToRight($backgroundColor, $textColor: var(--text-default-color)) {
-  @include hacks();
+  @include hacks.hacks();
   position: relative;
-  @include prefixed(transition-property, color);
-  @include prefixed(transition-duration, $slowDuration);
+  @include mixins.prefixed(transition-property, color);
+  @include mixins.prefixed(transition-duration, options.$slowDuration);
 
   &:before {
     content: '';
@@ -18,11 +18,11 @@
     right: 0;
     bottom: 0;
     background: $backgroundColor;
-    @include prefixed(transform, scaleX(0));
-    @include prefixed(transform-origin, 0 50%);
-    @include prefixed(transition-property, transform);
-    @include prefixed(transition-duration, $slowDuration);
-    @include prefixed(transition-timing-function, ease-out);
+    @include mixins.prefixed(transform, scaleX(0));
+    @include mixins.prefixed(transform-origin, 0 50%);
+    @include mixins.prefixed(transition-property, transform);
+    @include mixins.prefixed(transition-duration, options.$slowDuration);
+    @include mixins.prefixed(transition-timing-function, ease-out);
   }
 
   &:hover,
@@ -31,8 +31,8 @@
     color: $textColor !important;
 
     &:before {
-      @include prefixed(transform, scaleX(1));
-      @include prefixed(
+      @include mixins.prefixed(transform, scaleX(1));
+      @include mixins.prefixed(
         transition-timing-function,
         cubic-bezier(0.52, 1.64, 0.37, 0.66)
       );
@@ -42,10 +42,10 @@
 
 /* Float Shadow */
 @mixin floatShadow {
-  @include hacks();
+  @include hacks.hacks();
   position: relative;
-  @include prefixed(transition-duration, $mediumDuration);
-  @include prefixed(transition-property, transform);
+  @include mixins.prefixed(transition-duration, options.$mediumDuration);
+  @include mixins.prefixed(transition-property, transform);
 
   &:before {
     pointer-events: none;
@@ -62,21 +62,21 @@
       rgba(0, 0, 0, 0.35) 0%,
       rgba(0, 0, 0, 0) 80%
     ); /* W3C */
-    @include prefixed(transition-duration, $mediumDuration);
-    @include prefixed(transition-property, 'transform, opacity');
+    @include mixins.prefixed(transition-duration, options.$mediumDuration);
+    @include mixins.prefixed(transition-property, 'transform, opacity');
   }
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(
+    @include mixins.prefixed(
       transform,
       translateY(-5px)
     ); /* move the element up by 5px */
 
     &:before {
       opacity: 1;
-      @include prefixed(
+      @include mixins.prefixed(
         transform,
         translateY(5px)
       ); /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
@@ -85,141 +85,144 @@
 }
 
 /* Wobble Top */
-@include keyframes(#{$nameSpace}__wobbleTop) {
+@include mixins.keyframes(#{options.$nameSpace}__wobbleTop) {
   16.65% {
-    @include prefixed(transform, skew(-12deg));
+    @include mixins.prefixed(transform, skew(-12deg));
   }
 
   33.3% {
-    @include prefixed(transform, skew(10deg));
+    @include mixins.prefixed(transform, skew(10deg));
   }
 
   49.95% {
-    @include prefixed(transform, skew(-6deg));
+    @include mixins.prefixed(transform, skew(-6deg));
   }
 
   66.6% {
-    @include prefixed(transform, skew(4deg));
+    @include mixins.prefixed(transform, skew(4deg));
   }
 
   83.25% {
-    @include prefixed(transform, skew(-2deg));
+    @include mixins.prefixed(transform, skew(-2deg));
   }
 
   100% {
-    @include prefixed(transform, skew(0));
+    @include mixins.prefixed(transform, skew(0));
   }
 }
 
 @mixin wobbleTop {
-  @include hacks();
-  @include prefixed(transform-origin, 0 100%);
+  @include hacks.hacks();
+  @include mixins.prefixed(transform-origin, 0 100%);
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}__wobbleTop);
-    @include prefixed(animation-duration, 1s);
-    @include prefixed(animation-timing-function, ease-in-out);
-    @include prefixed(animation-iteration-count, 1);
+    @include mixins.prefixed(animation-name, #{options.$nameSpace}__wobbleTop);
+    @include mixins.prefixed(animation-duration, 1s);
+    @include mixins.prefixed(animation-timing-function, ease-in-out);
+    @include mixins.prefixed(animation-iteration-count, 1);
   }
 }
 
 /* Grow */
 @mixin grow {
-  @include hacks();
-  @include prefixed(transition-duration, $mediumDuration);
-  @include prefixed(transition-property, transform);
+  @include hacks.hacks();
+  @include mixins.prefixed(transition-duration, options.$mediumDuration);
+  @include mixins.prefixed(transition-property, transform);
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(transform, scale(1.1));
+    @include mixins.prefixed(transform, scale(1.1));
   }
 }
 
 /* Wobble Skew */
-@include keyframes(#{$nameSpace}__wobbleSkew) {
+@include mixins.keyframes(#{options.$nameSpace}__wobbleSkew) {
   16.65% {
-    @include prefixed(transform, skew(-12deg));
+    @include mixins.prefixed(transform, skew(-12deg));
   }
 
   33.3% {
-    @include prefixed(transform, skew(10deg));
+    @include mixins.prefixed(transform, skew(10deg));
   }
 
   49.95% {
-    @include prefixed(transform, skew(-6deg));
+    @include mixins.prefixed(transform, skew(-6deg));
   }
 
   66.6% {
-    @include prefixed(transform, skew(4deg));
+    @include mixins.prefixed(transform, skew(4deg));
   }
 
   83.25% {
-    @include prefixed(transform, skew(-2deg));
+    @include mixins.prefixed(transform, skew(-2deg));
   }
 
   100% {
-    @include prefixed(transform, skew(0));
+    @include mixins.prefixed(transform, skew(0));
   }
 }
 
 @mixin wobbleSkew {
-  @include hacks();
+  @include hacks.hacks();
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}__wobbleSkew);
-    @include prefixed(animation-duration, 1s);
-    @include prefixed(animation-timing-function, ease-in-out);
-    @include prefixed(animation-iteration-count, 1);
+    @include mixins.prefixed(animation-name, #{options.$nameSpace}__wobbleSkew);
+    @include mixins.prefixed(animation-duration, 1s);
+    @include mixins.prefixed(animation-timing-function, ease-in-out);
+    @include mixins.prefixed(animation-iteration-count, 1);
   }
 }
 
 /* Wobble Vertical */
-@include keyframes(#{$nameSpace}__wobbleVertical) {
+@include mixins.keyframes(#{options.$nameSpace}__wobbleVertical) {
   16.65% {
-    @include prefixed(transform, translateY(8px));
+    @include mixins.prefixed(transform, translateY(8px));
   }
 
   33.3% {
-    @include prefixed(transform, translateY(-6px));
+    @include mixins.prefixed(transform, translateY(-6px));
   }
 
   49.95% {
-    @include prefixed(transform, translateY(4px));
+    @include mixins.prefixed(transform, translateY(4px));
   }
 
   66.6% {
-    @include prefixed(transform, translateY(-2px));
+    @include mixins.prefixed(transform, translateY(-2px));
   }
 
   83.25% {
-    @include prefixed(transform, translateY(1px));
+    @include mixins.prefixed(transform, translateY(1px));
   }
 
   100% {
-    @include prefixed(transform, translateY(0));
+    @include mixins.prefixed(transform, translateY(0));
   }
 }
 
 @mixin wobbleVertical {
-  @include hacks();
+  @include hacks.hacks();
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}__wobbleVertical);
-    @include prefixed(animation-duration, 1s);
-    @include prefixed(animation-timing-function, ease-in-out);
-    @include prefixed(animation-iteration-count, 1);
+    @include mixins.prefixed(
+      animation-name,
+      #{options.$nameSpace}__wobbleVertical
+    );
+    @include mixins.prefixed(animation-duration, 1s);
+    @include mixins.prefixed(animation-timing-function, ease-in-out);
+    @include mixins.prefixed(animation-iteration-count, 1);
   }
 }
 
 /** Rubber Band */
-@include keyframes(#{$nameSpace}__rubberBand) {
+@include mixins.keyframes(#{options.$nameSpace}__rubberBand) {
   from {
     transform: scale3d(1, 1, 1);
   }
@@ -253,13 +256,13 @@
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}__rubberBand);
-    @include prefixed(animation-duration, 1s);
+    @include mixins.prefixed(animation-name, #{options.$nameSpace}__rubberBand);
+    @include mixins.prefixed(animation-duration, 1s);
   }
 }
 
 /** Swing */
-@include keyframes(#{$nameSpace}__swing) {
+@include mixins.keyframes(#{options.$nameSpace}__swing) {
   20% {
     transform: rotate3d(0, 0, 1, 15deg);
   }
@@ -287,12 +290,12 @@
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}__swing);
+    @include mixins.prefixed(animation-name, #{options.$nameSpace}__swing);
   }
 }
 
 /** Headshake */
-@include keyframes(#{$nameSpace}__headShake) {
+@include mixins.keyframes(#{options.$nameSpace}__headShake) {
   0% {
     transform: translateX(0);
   }
@@ -324,43 +327,43 @@
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}__headShake);
+    @include mixins.prefixed(animation-name, #{options.$nameSpace}__headShake);
   }
 }
 
 /* Rotate */
 @mixin rotate {
-  @include hacks();
-  @include prefixed(transition-duration, $mediumDuration);
-  @include prefixed(transition-property, transform);
+  @include hacks.hacks();
+  @include mixins.prefixed(transition-duration, options.$mediumDuration);
+  @include mixins.prefixed(transition-property, transform);
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(transform, rotate(4deg));
+    @include mixins.prefixed(transform, rotate(4deg));
   }
 }
 
 /* Push */
-@include keyframes(#{$nameSpace}-push) {
+@include mixins.keyframes(#{options.$nameSpace}-push) {
   50% {
-    @include prefixed(transform, scale(0.8));
+    @include mixins.prefixed(transform, scale(0.8));
   }
 
   100% {
-    @include prefixed(transform, scale(1));
+    @include mixins.prefixed(transform, scale(1));
   }
 }
 
 @mixin push {
-  @include hacks();
+  @include hacks.hacks();
 
   &:hover,
   &:focus,
   &:active {
-    @include prefixed(animation-name, #{$nameSpace}-push);
-    @include prefixed(animation-duration, 0.3s);
-    @include prefixed(animation-timing-function, linear);
-    @include prefixed(animation-iteration-count, 1);
+    @include mixins.prefixed(animation-name, #{options.$nameSpace}-push);
+    @include mixins.prefixed(animation-duration, 0.3s);
+    @include mixins.prefixed(animation-timing-function, linear);
+    @include mixins.prefixed(animation-iteration-count, 1);
   }
 }

@@ -1,11 +1,13 @@
-html {
-  --mat-snack-bar-button-color: white;
-}
+@mixin apply-theme() {
+  html {
+    --mat-snack-bar-button-color: white;
+  }
 
-.mdc-snackbar {
-  --mdc-snackbar-container-color: var(--color-accent);
+  .mdc-snackbar {
+    --mdc-snackbar-container-color: var(--color-accent);
 
-  &.snackbar-error {
-    --mdc-snackbar-container-color: var(--color-red);
+    &.snackbar-error {
+      --mdc-snackbar-container-color: var(--color-red);
+    }
   }
 }

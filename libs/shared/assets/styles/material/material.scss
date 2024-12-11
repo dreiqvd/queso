@@ -1,9 +1,19 @@
 /** Contains basic overrides for material components **/
 
-@import './button';
-@import './form-field';
-@import './select';
-@import './snackbar';
-@import './table';
-@import './tabs';
-@import './tooltip';
+@use './button' as button;
+@use './form-field' as form-field;
+@use './select' as select;
+@use './snackbar' as snackbar;
+@use './table' as table;
+@use './tabs' as tabs;
+@use './tooltip' as tooltip;
+
+@mixin overrides() {
+  @include button.apply-theme();
+  @include form-field.apply-theme();
+  @include select.apply-theme();
+  @include snackbar.apply-theme();
+  @include table.apply-theme();
+  @include tabs.apply-theme();
+  @include tooltip.apply-theme();
+}

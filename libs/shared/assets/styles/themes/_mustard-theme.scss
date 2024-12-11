@@ -1,3 +1,9 @@
 /** Contains common imports for mustard theme styles **/
-@import './mustard/variables';
-@import './mustard/globals';
+@use './base' as base;
+@forward './mustard/variables';
+@forward './mustard/globals';
+
+@mixin apply-theme($theme) {
+  @include base.apply-variables($theme);
+  @include base.core-theme();
+}

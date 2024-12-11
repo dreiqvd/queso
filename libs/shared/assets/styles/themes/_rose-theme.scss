@@ -1,1 +1,7 @@
-@import './rose/variables';
+@use './base' as base;
+@forward './rose/variables';
+
+@mixin apply-theme($theme) {
+  @include base.apply-variables($theme);
+  @include base.core-theme();
+}

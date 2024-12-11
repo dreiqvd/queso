@@ -1,27 +1,29 @@
-html {
-  --mat-form-field-subscript-text-size: 13px;
-  --mat-form-field-subscript-text-line-height: 1rem;
+@mixin apply-theme() {
+  html {
+    --mat-form-field-subscript-text-size: 13px;
+    --mat-form-field-subscript-text-line-height: 1rem;
 
-  // Outlined Form Field
-  --mdc-outlined-text-field-outline-color: var(--color-primary);
-  --mdc-outlined-text-field-hover-outline-color: var(--color-primary);
-  --mdc-outlined-text-field-input-text-color: var(--text-default-color);
-  --mdc-outlined-text-field-label-text-color: var(--color-gray);
-  --mdc-outlined-text-field-hover-label-text-color: var(--color-gray-500);
-  --mdc-outlined-text-field-label-text-tracking: normal;
-  --mat-form-field-subscript-text-tracking: normal;
-}
+    // Outlined Form Field
+    --mdc-outlined-text-field-outline-color: var(--color-primary);
+    --mdc-outlined-text-field-hover-outline-color: var(--color-primary);
+    --mdc-outlined-text-field-input-text-color: var(--text-default-color);
+    --mdc-outlined-text-field-label-text-color: var(--color-gray);
+    --mdc-outlined-text-field-hover-label-text-color: var(--color-gray-500);
+    --mdc-outlined-text-field-label-text-tracking: normal;
+    --mat-form-field-subscript-text-tracking: normal;
+  }
 
-mat-form-field {
-  width: 100%;
-}
+  mat-form-field {
+    width: 100%;
+  }
 
-.mdc-notched-outline__notch {
-  border-right: 0; // Remove right border from the inside of mat-label
-}
+  .mdc-notched-outline__notch {
+    border-right: 0; // Remove right border from the inside of mat-label
+  }
 
-.mat-mdc-form-field-subscript-wrapper {
-  .mat-mdc-form-field-error-wrapper {
-    padding-left: 0;
+  .mat-mdc-form-field-subscript-wrapper {
+    .mat-mdc-form-field-error-wrapper {
+      padding-left: 0;
+    }
   }
 }

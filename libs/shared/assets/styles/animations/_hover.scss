@@ -1,4 +1,4 @@
-@import './hover/effects';
+@use './hover/effects' as *;
 
 .hvr {
   &__bounceToRight {

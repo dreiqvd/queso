@@ -1,11 +1,13 @@
 @use '@angular/material' as mat;
 
-@import 'palettes/base-palette';
-@import 'palettes/mustard-palette';
+@use '_palettes/base-palette' as base-palette;
+@use '_palettes/mustard-palette' as mustard-palette;
+@use 'base' as base;
+@use 'mustard-theme' as mustard;
 
-$primary: mat.m2-define-palette($yellow, 400);
-$accent: mat.m2-define-palette($dark-blue, 400);
-$warn: mat.m2-define-palette($red, 400);
+$primary: mat.m2-define-palette(mustard-palette.$yellow, 400);
+$accent: mat.m2-define-palette(mustard-palette.$dark-blue, 400);
+$warn: mat.m2-define-palette(base-palette.$red, 400);
 $typography: mat.m2-define-typography-config(
   $font-family: "Archivo, 'Helvetica Neue', sans-serif",
 );
@@ -30,9 +32,7 @@ $app-theme: mat.m2-define-light-theme(
 @include mat.button-theme($app-theme);
 @include mat.tooltip-theme($app-theme);
 
-// Additional imports
-@import 'base';
-@import 'mustard-theme';
+@include mustard.apply-theme($app-theme);
 
 // Typography
 body {
