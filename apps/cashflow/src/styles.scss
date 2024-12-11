@@ -1,7 +1,9 @@
 @use '@angular/material' as mat;
 
-@use 'palettes/base-palette' as base_palette;
-@use 'palettes/rose-palette' as rose_palette;
+@use '_palettes/base-palette' as base_palette;
+@use '_palettes/rose-palette' as rose_palette;
+@use 'base' as base;
+@use 'rose-theme' as rose;
 
 $primary: mat.m2-define-palette(rose_palette.$pink, 400);
 $accent: mat.m2-define-palette(rose_palette.$royal-blue, 400);
@@ -24,20 +26,15 @@ $app-theme: mat.m2-define-light-theme(
 );
 
 @include mat.core();
+@include mat.core-theme($app-theme);
+@include mat.table-theme($app-theme);
+@include mat.tabs-theme($app-theme);
+@include mat.button-theme($app-theme);
+@include mat.form-field-theme($app-theme);
+@include mat.input-theme($app-theme);
+@include mat.snack-bar-theme($app-theme);
 
-html {
-  @include mat.core-theme($app-theme);
-  @include mat.table-theme($app-theme);
-  @include mat.tabs-theme($app-theme);
-  @include mat.button-theme($app-theme);
-  @include mat.form-field-theme($app-theme);
-  @include mat.input-theme($app-theme);
-  @include mat.snack-bar-theme($app-theme);
-}
-
-// Additional imports
-@use 'base';
-@use 'rose-theme';
+@include rose.apply-theme($app-theme);
 
 h1,
 h2,
