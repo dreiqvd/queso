@@ -40,7 +40,7 @@
         "server": "apps/cashflow/src/main.server.ts",
         "prerender": true,
         "ssr": {
-          "entry": "apps/cashflow/server.ts"
+          "entry": "apps/cashflow/src/server.ts"
         }
       },
       "configurations": {
