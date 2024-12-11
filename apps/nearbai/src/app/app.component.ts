@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import {
   Component,
   computed,
@@ -13,14 +12,10 @@ import {
   MapAdvancedMarker,
   MapInfoWindow,
 } from '@angular/google-maps';
-import { MatTooltip } from '@angular/material/tooltip';
 
 import { BREAKPOINTS, getViewportWidth } from '@queso/common';
-import { QsAnimationsDirective } from '@queso/common/animations';
 import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsPillComponent } from '@queso/ui-kit/pill';
 
-import { SearchFormComponent } from './components/search-form';
 import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {
@@ -34,15 +29,10 @@ import { SearchService } from './services';
 @Component({
   standalone: true,
   imports: [
-    NgClass,
-    MatTooltip,
     GoogleMap,
     MapAdvancedMarker,
     MapInfoWindow,
-    QsAnimationsDirective,
     QsIconComponent,
-    QsPillComponent,
-    SearchFormComponent,
     SidebarComponent,
   ],
   selector: 'app-root',
