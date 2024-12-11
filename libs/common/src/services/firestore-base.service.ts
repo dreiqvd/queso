@@ -10,6 +10,7 @@ import {
   Firestore,
   updateDoc,
   WithFieldValue,
+  writeBatch,
 } from '@angular/fire/firestore';
 import { from, map, Observable, of, switchMap } from 'rxjs';
 
@@ -81,5 +82,27 @@ export abstract class QsFirestoreBaseService<T> {
     return from(deleteDoc(resourceRef)).pipe(() => {
       return of({ message: 'Success', id });
     });
+  }
+
+  /**
+   * Bulk update records based on ids.
+   * @todo Add error handling
+   */
+  public bulkUpdate(
+    ids: string[],
+    payload: Partial<T>
+  ): Observable<{ message: string; ids: string[] }> {
+    const batch = writeBatch(this.firestore);
+
+    ids.forEach((id) => {
+      const docRef = doc(this.firestore, `${this.resource}/${id}`);
+      batch.update(docRef, payload);
+    });
+
+    return from(batch.commit()).pipe(
+      switchMap(() => {
+        return of({ message: 'Success', ids });
+      })
+    );
   }
 }

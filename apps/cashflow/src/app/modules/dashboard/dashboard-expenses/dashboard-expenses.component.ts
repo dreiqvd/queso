@@ -1,4 +1,6 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { afterNextRender, Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { take } from 'rxjs';
 
@@ -12,8 +14,22 @@ import { ExpensesTableComponent } from './expenses-table/expenses-table.componen
 @Component({
   selector: 'app-dashboard-expenses',
   standalone: true,
-  imports: [MatTabsModule, QsTabGroupDirective, ExpensesTableComponent],
+  imports: [
+    NgTemplateOutlet,
+    MatTabsModule,
+    MatButtonModule,
+    QsTabGroupDirective,
+    ExpensesTableComponent,
+  ],
   templateUrl: './dashboard-expenses.component.html',
+  styles: `
+    .table-heading {
+      --mdc-filled-button-container-height: 36px;
+      --mdc-filled-button-label-text-color: white;
+
+      width: calc(100% - 328px);
+    }
+  `,
 })
 export class DashboardExpensesComponent {
   private readonly expenseService = inject(ExpenseService);
@@ -42,5 +58,26 @@ export class DashboardExpensesComponent {
           );
         });
     });
+  }
+
+  markAllAsUnpaid(): void {
+    const expenses =
+      this.selectedPeriodIndex === 0
+        ? this.period1Expenses
+        : this.period2Expenses;
+
+    this.expenseService
+      .bulkUpdate(
+        expenses.map((d) => d.id as string),
+        { isPaid: false }
+      )
+      .subscribe(() => {
+        expenses.forEach((d) => (d.isPaid = false));
+        if (this.selectedPeriodIndex === 0) {
+          this.period1Expenses = [...expenses];
+        } else {
+          this.period2Expenses = [...expenses];
+        }
+      });
   }
 }
