@@ -1,0 +1,39 @@
+<header class="dialog-header flex justify-between items-center pr-4 bg-gray-100 pt-2 border-t-4">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <button
+    mat-dialog-close
+    aria-label="close"
+    type="button"
+    class="ml-8 leading-[0px]"
+    matTooltip="Close dialog"
+    tabindex="-1"
+  >
+    <qs-icon iconName="xmark" class="text-gray" [iconSize]="20"/>
+  </button>
+</header>
+<div mat-dialog-content>
+  @switch (data.content.type) {
+    @case ('message') {
+      <div>
+        {{ data.content.message }}
+      </div>
+    } @case ('component') {
+      <ng-container #componentContainer />
+    }
+  }
+</div>
+@if (data.actions?.length) {
+  <div mat-dialog-actions class="flex justify-end">
+    @for (action of data.actions; track $index) {
+      <button
+        mat-flat-button
+        type="button"
+        [color]="action.color"
+        [disabled]="action.disabled$ | async"
+        (click)="onActionClick(action)"
+      >
+        {{ action.label }}
+      </button>
+    }
+  </div>
+}

@@ -1,0 +1,26 @@
+:host {
+  --mat-dialog-actions-alignment: right;
+  --mat-dialog-headline-padding: 16px;
+  --mdc-dialog-subhead-line-height: normal;
+  --mdc-dialog-supporting-text-color: var(--text-body-color);
+  --mat-dialog-actions-padding: 8px;
+  --mdc-dialog-subhead-tracking: normal;
+
+  ::ng-deep {
+    .mdc-dialog__title::before {
+      display: none;
+    }
+
+    .mat-mdc-dialog-actions {
+      --mdc-filled-button-label-text-size: 0.875rem;
+      --mdc-filled-button-container-height: 36px;
+
+      margin-top: 16px;
+      border-top: solid 1px var(--color-gray-100);
+    }
+  }
+}
+
+.dialog-header {
+  border-top: solid 4px var(--dialog-header-border-color, var(--color-primary));
+}
