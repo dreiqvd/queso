@@ -9,7 +9,6 @@ import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
   selector: 'app-contact',
-  standalone: true,
   imports: [
     NgOptimizedImage,
     MatTooltip,

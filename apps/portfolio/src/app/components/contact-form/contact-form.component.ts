@@ -16,7 +16,6 @@ import { MailingService } from '../../services';
 
 @Component({
   selector: 'app-contact-form',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,

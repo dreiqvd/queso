@@ -8,7 +8,6 @@ import { QsIconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-landing-about',
-  standalone: true,
   imports: [
     NgOptimizedImage,
     RouterLink,

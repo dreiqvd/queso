@@ -13,7 +13,6 @@ import { ExpensesTableComponent } from './expenses-table/expenses-table.componen
 
 @Component({
   selector: 'app-dashboard-expenses',
-  standalone: true,
   imports: [
     NgTemplateOutlet,
     MatTabsModule,

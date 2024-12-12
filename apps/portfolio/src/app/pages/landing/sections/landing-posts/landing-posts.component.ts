@@ -10,7 +10,6 @@ import { ArticlesService } from '../../../../services';
 
 @Component({
   selector: 'app-landing-posts',
-  standalone: true,
   imports: [
     RouterLink,
     NgOptimizedImage,

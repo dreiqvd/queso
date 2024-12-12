@@ -20,7 +20,6 @@ import { LandingSkillsComponent } from './sections/landing-skills/landing-skills
 
 @Component({
   selector: 'app-landing-page',
-  standalone: true,
   imports: [
     QsAnimationsDirective,
     QsCursorDirective,

@@ -30,7 +30,6 @@ import { SearchFormComponent } from '../search-form';
 
 @Component({
   selector: 'app-sidebar',
-  standalone: true,
   imports: [
     NgClass,
     MatTooltip,

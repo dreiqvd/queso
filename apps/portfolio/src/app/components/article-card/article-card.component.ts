@@ -8,7 +8,6 @@ import { Article } from '../../interfaces';
 
 @Component({
   selector: 'app-article-card',
-  standalone: true,
   imports: [DatePipe, QsIconComponent, QsPillComponent],
   templateUrl: './article-card.component.html',
 })

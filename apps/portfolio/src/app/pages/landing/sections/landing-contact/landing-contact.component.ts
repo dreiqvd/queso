@@ -8,7 +8,6 @@ import { ContactFormComponent } from '../../../../components/contact-form';
 
 @Component({
   selector: 'app-landing-contact',
-  standalone: true,
   imports: [MatTooltip, QsAnimationsDirective, ContactFormComponent],
   templateUrl: './landing-contact.component.html',
 })

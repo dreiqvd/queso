@@ -9,7 +9,6 @@ import { ArticlesService } from '../../services';
 
 @Component({
   selector: 'app-blog',
-  standalone: true,
   imports: [
     QsAnimationsDirective,
     PageContainerComponent,

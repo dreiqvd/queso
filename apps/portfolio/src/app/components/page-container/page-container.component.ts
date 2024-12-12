@@ -5,8 +5,7 @@ import { NavbarComponent } from '../navbar';
 /** This is a generic component that wraps up a standard app page */
 @Component({
   selector: 'app-page-container',
-  standalone: true,
   imports: [NavbarComponent],
   templateUrl: './page-container.component.html',
 })
-export class PageContainerComponent { }
+export class PageContainerComponent {}

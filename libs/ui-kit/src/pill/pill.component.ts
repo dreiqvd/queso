@@ -2,7 +2,6 @@ import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'qs-pill',
-  standalone: true,
   templateUrl: './pill.component.html',
   styles: `
     .pill {

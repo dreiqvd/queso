@@ -17,7 +17,6 @@ import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,

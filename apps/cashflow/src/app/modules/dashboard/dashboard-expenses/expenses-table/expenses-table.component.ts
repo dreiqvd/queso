@@ -16,7 +16,6 @@ import { ExpenseFormComponent } from '../../../expenses';
 
 @Component({
   selector: 'app-expenses-table',
-  standalone: true,
   imports: [
     NgClass,
     CurrencyPipe,

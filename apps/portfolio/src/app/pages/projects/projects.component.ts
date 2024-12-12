@@ -9,7 +9,6 @@ import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
   selector: 'app-page-projects',
-  standalone: true,
   imports: [
     MatTooltip,
     PageContainerComponent,

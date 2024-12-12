@@ -29,7 +29,6 @@ import {
 
 @Component({
   selector: 'qs-dialog',
-  standalone: true,
   imports: [AsyncPipe, MatDialogModule, MatTooltip, MatButton, QsIconComponent],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',

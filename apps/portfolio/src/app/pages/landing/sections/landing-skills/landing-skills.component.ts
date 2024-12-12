@@ -7,7 +7,6 @@ import { QsIconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-landing-skills',
-  standalone: true,
   imports: [MatTooltip, QsIconComponent, QsAnimationsDirective],
   templateUrl: './landing-skills.component.html',
 })

@@ -6,7 +6,6 @@ type ScrollCueAppearance = 'mouse' | 'arrow-circle' | 'arrow' | 'chevron';
 
 @Component({
   selector: 'qs-scroll-cue',
-  standalone: true,
   imports: [NgClass, MatTooltip],
   templateUrl: './scroll-cue.component.html',
   styleUrl: './scroll-cue.component.scss',

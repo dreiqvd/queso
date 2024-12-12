@@ -9,7 +9,6 @@ import { QsIconComponent } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
   imports: [
     RouterLink,
     RouterLinkActive,

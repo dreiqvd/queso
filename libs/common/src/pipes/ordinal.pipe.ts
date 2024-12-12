@@ -2,7 +2,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'ordinal',
-  standalone: true,
 })
 export class QsOrdinalPipe implements PipeTransform {
   transform(value: number): string {

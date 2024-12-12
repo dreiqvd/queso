@@ -21,7 +21,6 @@ import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
 
 @Component({
   selector: 'app-search-form',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,

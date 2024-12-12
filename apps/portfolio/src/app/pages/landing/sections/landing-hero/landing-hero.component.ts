@@ -23,7 +23,6 @@ import { QsScrollCueComponent } from '@queso/ui-kit/scroll-cue';
 
 @Component({
   selector: 'app-landing-hero',
-  standalone: true,
   imports: [
     NgTemplateOutlet,
     MatTooltip,

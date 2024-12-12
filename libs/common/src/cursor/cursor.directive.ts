@@ -14,7 +14,6 @@ import { getViewportWidth } from '../helpers';
  * This directive provides a custom cursor inside the container element.
  */
 @Directive({
-  standalone: true,
   selector: '[qsCustomCursor]',
 })
 export class QsCursorDirective {

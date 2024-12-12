@@ -6,7 +6,6 @@ import { DashboardExpensesComponent } from './dashboard-expenses/dashboard-expen
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
   imports: [DashboardExpensesComponent, NavbarComponent],
   templateUrl: './dashboard.component.html',
 })

@@ -27,7 +27,6 @@ import {
 import { SearchService } from './services';
 
 @Component({
-  standalone: true,
   imports: [
     GoogleMap,
     MapAdvancedMarker,

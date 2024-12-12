@@ -10,7 +10,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'qs-icon',
-  standalone: true,
   imports: [MatIcon],
   templateUrl: './icon.component.html',
   styles: `

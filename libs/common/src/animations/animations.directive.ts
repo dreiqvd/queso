@@ -21,7 +21,6 @@ import { QsPlatformService } from '../services';
  *  The class is then removed after a certain duration to avoid conflicts with other animations.
  * */
 @Directive({
-  standalone: true,
   selector: '[qsAnimation]',
 })
 export class QsAnimationsDirective implements OnInit, OnDestroy {
