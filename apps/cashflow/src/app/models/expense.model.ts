@@ -11,7 +11,7 @@ export interface Expense extends BaseModel {
   startDate?: string;
   endDate?: string;
   isPaid?: boolean;
-  lastPaymentDate?: FirestoreResponseDate | Date;
+  lastPaymentDate?: FirestoreResponseDate | Date | null;
   dueDate?: string; // Date string reference of the original due date for non-monthly expenses
 }
 
