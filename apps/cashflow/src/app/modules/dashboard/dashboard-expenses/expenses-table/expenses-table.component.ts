@@ -2,6 +2,7 @@ import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { Component, effect, inject, input, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
@@ -22,6 +23,7 @@ import { ExpenseService } from '../../../../services';
     MatSortModule,
     MatButtonModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
     QsOrdinalPipe,
     QsIconComponent,
   ],
@@ -32,6 +34,19 @@ import { ExpenseService } from '../../../../services';
       --mdc-filled-button-label-text-size: 0.875rem;
 
       padding: 16px;
+    }
+
+    tr.loading {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 100;
+      }
     }
   `,
 })
@@ -105,6 +120,7 @@ export class ExpensesTableComponent {
       .sort((a, b) => b.amount - a.amount)
       .map((d) => ({
         ...d,
+        isLoading: false,
         lastPaymentDate: d.lastPaymentDate
           ? new Date(
               (d.lastPaymentDate as FirestoreResponseDate).seconds * 1000
@@ -128,6 +144,7 @@ export class ExpensesTableComponent {
 
   togglePaidStatus(expense: Expense): void {
     const isPaid = !expense.isPaid;
+    expense.isLoading = true;
     this.expenseService
       .update(expense.id as string, {
         isPaid,
@@ -137,6 +154,7 @@ export class ExpensesTableComponent {
         const lastPaymentDate = isPaid ? new Date() : null;
         expense.isPaid = isPaid;
         expense.lastPaymentDate = lastPaymentDate;
+        expense.isLoading = false;
       });
   }
 }

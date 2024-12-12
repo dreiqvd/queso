@@ -99,10 +99,17 @@
       </ng-container>
 
       <tr *matHeaderRowDef="tblColumns" mat-header-row></tr>
-      <tr *matRowDef="let row; columns: tblColumns" mat-row></tr>
+      <tr
+        *matRowDef="let row; columns: tblColumns"
+        mat-row
+        class="relative"
+        [class.loading]="row.isLoading">
+      </tr>
       <tr *matNoDataRow>
-        <td class="mat-cell text-center" [attr.colspan]="tblColumns.length">
-          No records found.
+        <td class="mat-cell" [attr.colspan]="tblColumns.length">
+          <div class="flex justify-center">
+            <mat-spinner color="accent" [diameter]="32"/>
+          </div>
         </td>
       </tr>
     </table>

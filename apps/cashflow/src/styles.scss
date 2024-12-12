@@ -34,6 +34,7 @@ $app-theme: mat.m2-define-light-theme(
 @include mat.input-theme($app-theme);
 @include mat.snack-bar-theme($app-theme);
 @include mat.menu-theme($app-theme);
+@include mat.progress-spinner-theme($app-theme);
 
 @include rose.apply-theme($app-theme);
 
