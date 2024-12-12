@@ -55,6 +55,11 @@ export class DialogComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // Remove focus from the active element inside the dialog. This is to prevent the
+    // accessibility issue when opening a dialog
+    // https://stackoverflow.com/questions/79159883/warning-blocked-aria-hidden-on-an-element-because-its-descendant-retained-focu
+    (document.activeElement as HTMLElement)?.blur();
+
     setTimeout(() => {
       // Generate a dynamic component as dialog content and assign properties
       if (this.data.content.type === 'component' && this.componentContainer) {
