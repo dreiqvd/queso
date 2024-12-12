@@ -78,12 +78,18 @@ export class ExpensesTableComponent {
         [] as Array<{ total: number; name: string }>
       );
 
-      this.totalExpenses = data.reduce((acc, curr) => acc + curr.amount, 0);
+      this.computeTotalExpenses();
     });
+  }
+
+  private computeTotalExpenses(): void {
+    const data = this.tblDataSource.data;
+    this.totalExpenses = data.reduce((acc, curr) => acc + curr.amount, 0);
   }
 
   private getTableSourceData(): Expense[] {
     let data = this.expenses();
+    console.log(data);
 
     // Filter out yearly expenses that are not yet due
     const currentMonth = new Date().getMonth();
@@ -141,10 +147,18 @@ export class ExpensesTableComponent {
   }
 
   onEditExpense(expense: Expense): void {
-    this.dialogService.showCustomComponent(
-      'Edit Expense',
-      ExpenseFormComponent,
-      { expense }
-    );
+    this.dialogService
+      .showCustomComponent('Edit Expense', ExpenseFormComponent, { expense })
+      .subscribe((result: Expense) => {
+        const dataIdx = this.tblDataSource.data.findIndex(
+          (d) => d.id === result.id
+        );
+        this.tblDataSource.data[dataIdx] = {
+          ...expense,
+          ...result,
+        };
+        this.tblDataSource.data = [...this.tblDataSource.data];
+        this.computeTotalExpenses();
+      });
   }
 }

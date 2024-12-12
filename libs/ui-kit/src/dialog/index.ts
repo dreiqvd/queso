@@ -1,2 +1,1 @@
-export * from './dialog.service';
-export * from './dialog.interface';
+export * from './public-api';
