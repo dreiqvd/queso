@@ -72,7 +72,7 @@
           </button>
 
           <mat-menu #actionMenu="matMenu">
-            <button mat-menu-item type="button" (click)="togglePaidStatus(element)">
+            <button mat-menu-item type="button" (click)="onTogglePaidStatus(element)">
               <div class="flex items-center">
                 <qs-icon iconName="circle-check" [iconSize]="20" />
                 <span>
@@ -81,7 +81,7 @@
               </div>
             </button>
 
-            <button mat-menu-item type="button">
+            <button mat-menu-item type="button" (click)="onEditExpense(element)">
               <div class="flex items-center">
                 <qs-icon iconName="pen-to-square" [iconSize]="20" />
                 <span>Edit</span>

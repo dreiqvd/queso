@@ -7,10 +7,12 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
+import { DialogService } from '@queso/ui-kit/dialog';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
 import { Expense, FirestoreResponseDate } from '../../../../models';
 import { ExpenseService } from '../../../../services';
+import { ExpenseFormComponent } from '../../../expenses';
 
 @Component({
   selector: 'app-expenses-table',
@@ -28,32 +30,13 @@ import { ExpenseService } from '../../../../services';
     QsIconComponent,
   ],
   templateUrl: './expenses-table.component.html',
-  styles: `
-    td {
-      --mdc-filled-button-container-height: 36px;
-      --mdc-filled-button-label-text-size: 0.875rem;
-
-      padding: 16px;
-    }
-
-    tr.loading {
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.5);
-        z-index: 100;
-      }
-    }
-  `,
+  styleUrl: './expenses-table.component.scss',
 })
 export class ExpensesTableComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   private readonly expenseService = inject(ExpenseService);
+  private readonly dialogService = inject(DialogService);
 
   expenses = input.required<Expense[]>();
 
@@ -142,7 +125,7 @@ export class ExpensesTableComponent {
     return dueMonths;
   }
 
-  togglePaidStatus(expense: Expense): void {
+  onTogglePaidStatus(expense: Expense): void {
     const isPaid = !expense.isPaid;
     expense.isLoading = true;
     this.expenseService
@@ -156,5 +139,13 @@ export class ExpensesTableComponent {
         expense.lastPaymentDate = lastPaymentDate;
         expense.isLoading = false;
       });
+  }
+
+  onEditExpense(expense: Expense): void {
+    this.dialogService.showCustomComponent(
+      'Edit Expense',
+      ExpenseFormComponent,
+      { expense }
+    );
   }
 }
