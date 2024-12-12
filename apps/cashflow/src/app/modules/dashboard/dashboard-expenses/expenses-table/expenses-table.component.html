@@ -67,9 +67,34 @@
       <ng-container matColumnDef="action">
         <th *matHeaderCellDef mat-header-cell class="center w-[250px]">Action</th>
         <td *matCellDef="let element" mat-cell class="center">
-          <button mat-flat-button color="accent" type="button" (click)="togglePaidStatus(element)">
-            Mark as {{ element.isPaid ? 'Unpaid' : 'Paid' }}
+          <button mat-button aria-label="Actions" type="button" [matMenuTriggerFor]="actionMenu">
+            <qs-icon iconName="ellipsis-vertical" [iconSize]="16" />
           </button>
+
+          <mat-menu #actionMenu="matMenu">
+            <button mat-menu-item type="button" (click)="togglePaidStatus(element)">
+              <div class="flex items-center">
+                <qs-icon iconName="circle-check" [iconSize]="20" />
+                <span>
+                  Mark as {{ element.isPaid ? 'Unpaid' : 'Paid' }}
+                </span>
+              </div>
+            </button>
+
+            <button mat-menu-item type="button">
+              <div class="flex items-center">
+                <qs-icon iconName="pen-to-square" [iconSize]="20" />
+                <span>Edit</span>
+              </div>
+            </button>
+
+            <button mat-menu-item type="button">
+              <div class="flex items-center text-red">
+                <qs-icon iconName="trash-can" class="text-red" [iconSize]="20" />
+                <span>Delete</span>
+              </div>
+            </button>
+          </mat-menu>
         </td>
       </ng-container>
 

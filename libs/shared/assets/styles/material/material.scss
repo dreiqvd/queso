@@ -2,6 +2,7 @@
 
 @use './button' as button;
 @use './form-field' as form-field;
+@use './menu' as menu;
 @use './select' as select;
 @use './snackbar' as snackbar;
 @use './table' as table;
@@ -11,6 +12,7 @@
 @mixin overrides() {
   @include button.apply-theme();
   @include form-field.apply-theme();
+  @include menu.apply-theme();
   @include select.apply-theme();
   @include snackbar.apply-theme();
   @include table.apply-theme();

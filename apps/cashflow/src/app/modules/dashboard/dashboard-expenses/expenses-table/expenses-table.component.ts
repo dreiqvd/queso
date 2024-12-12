@@ -1,6 +1,7 @@
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 import { Component, effect, inject, input, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
@@ -20,6 +21,7 @@ import { ExpenseService } from '../../../../services';
     MatTableModule,
     MatSortModule,
     MatButtonModule,
+    MatMenuModule,
     QsOrdinalPipe,
     QsIconComponent,
   ],
@@ -129,9 +131,10 @@ export class ExpensesTableComponent {
     this.expenseService
       .update(expense.id as string, {
         isPaid,
+        lastPaymentDate: isPaid ? new Date() : null,
       })
       .subscribe(() => {
-        const lastPaymentDate = isPaid ? new Date() : undefined;
+        const lastPaymentDate = isPaid ? new Date() : null;
         expense.isPaid = isPaid;
         expense.lastPaymentDate = lastPaymentDate;
       });

@@ -1,0 +1,7 @@
+@mixin apply-theme() {
+  html {
+    --mat-menu-item-spacing: 12px;
+    --mat-menu-item-icon-color: inherit;
+    --mat-menu-item-label-text-color: var(--text-default-color);
+  }
+}

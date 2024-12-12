@@ -1,4 +1,9 @@
 @mixin apply-theme() {
+  html {
+    --mat-table-row-item-label-text-color: var(--text-default-color);
+    --mat-table-header-headline-color: var(--text-default-color);
+  }
+
   table.mat-mdc-table {
     border: solid 1px var(--color-gray-100);
 
