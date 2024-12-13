@@ -1,4 +1,9 @@
 <div class="shadow bg-white rounded overflow-hidden relative">
+  @if (isEditing()) {
+    <div class="absolute top-0 left-0 w-full">
+      <mat-progress-bar mode="indeterminate" color="primary"/>
+    </div>
+  }
   @if (isLoading()) {
     <qs-overlay-spinner />
   }
@@ -23,15 +28,16 @@
           } @else {
             <div class="flex items-center gap-4 pr-6">
               <input
+                #balanceInput
                 type="number"
                 class="w-full pb-2 border-b border-b-gray-200 outline-none focus:outline-none"
-                [(ngModel)]="account.balance"
+                [ngModel]="account.balance"
               />
               <button
                 mat-icon-button
                 type="button"
                 matTooltip="Save"
-                (click)="onEditBalance(account)"
+                (click)="onEditBalance(account, balanceInput.value)"
               >
                 <qs-icon iconName="check" class="text-primary" [iconSize]="16" />
               </button>

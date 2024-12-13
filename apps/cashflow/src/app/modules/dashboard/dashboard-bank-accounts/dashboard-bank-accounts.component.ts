@@ -2,7 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { QsIconComponent } from '@queso/ui-kit/icon';
@@ -17,7 +17,7 @@ import { BankAccountService } from '../../../services';
     FormsModule,
     CurrencyPipe,
     MatButtonModule,
-    MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatTooltipModule,
     QsIconComponent,
     QsOverlaySpinnerComponent,
@@ -28,16 +28,19 @@ export class DashboardBankAccountsComponent implements OnInit {
   private readonly bankAccountService = inject(BankAccountService);
 
   readonly isLoading = signal(true);
+  readonly isEditing = signal(false);
 
   bankAccounts: DashboardBankAccount[] = [];
   totalBalance = 0;
 
   ngOnInit(): void {
     this.bankAccountService.list().subscribe((data) => {
-      this.bankAccounts = data.map((bankAccount) => ({
-        ...bankAccount,
-        isEditMode: false,
-      }));
+      this.bankAccounts = data
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((bankAccount) => ({
+          ...bankAccount,
+          isEditMode: false,
+        }));
       this.computeTotalBalance();
       this.isLoading.set(false);
     });
@@ -50,9 +53,24 @@ export class DashboardBankAccountsComponent implements OnInit {
     );
   }
 
-  onEditBalance(account: DashboardBankAccount): void {
-    this.computeTotalBalance();
-    account.isEditMode = false;
+  onEditBalance(account: DashboardBankAccount, amount: string): void {
+    const value = parseFloat(amount);
+    if (account.balance === value) {
+      account.isEditMode = false;
+      return;
+    }
+
+    this.isEditing.set(true);
+    this.bankAccountService
+      .update(account.id as string, {
+        balance: value,
+      })
+      .subscribe(() => {
+        this.computeTotalBalance();
+        account.balance = value;
+        account.isEditMode = false;
+        this.isEditing.set(false);
+      });
   }
 }
 
