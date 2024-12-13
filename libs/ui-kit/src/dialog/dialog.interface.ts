@@ -2,31 +2,31 @@
 import { ThemePalette } from '@angular/material/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export const DialogActionTypes = {
+export const QsDialogActionTypes = {
   OK: 'OK', // used for form submissions and doing actions
   CANCEL: 'CANCEL',
 } as const;
 
-export interface DialogData {
+export interface QsDialogData {
   title: string;
-  content: DialogMessageProps | DialogComponentProps;
-  actions?: DialogAction[] | null;
+  content: QsDialogMessageProps | QsDialogComponentProps;
+  actions?: QsDialogAction[] | null;
 }
 
-export interface DialogMessageProps {
+export interface QsDialogMessageProps {
   type: 'message';
   message: string;
 }
 
-export interface DialogComponentProps {
+export interface QsDialogComponentProps {
   type: 'component';
   component: any;
   props: any; // extra properties to be passed to the component
 }
 
-export interface DialogAction {
+export interface QsDialogAction {
   label: string;
-  type: (typeof DialogActionTypes)[keyof typeof DialogActionTypes];
+  type: (typeof QsDialogActionTypes)[keyof typeof QsDialogActionTypes];
   data?: any;
   className?: string;
   color?: ThemePalette;
@@ -34,8 +34,8 @@ export interface DialogAction {
   closeHandler?: () => Observable<any>;
 }
 
-export const DIALOG_BUTTONS = {
-  CLOSE: { label: 'Close', type: DialogActionTypes.CANCEL },
-  CANCEL: { label: 'Cancel', type: DialogActionTypes.CANCEL },
-  SUBMIT: { label: 'Submit', type: DialogActionTypes.OK },
+export const QS_DIALOG_BUTTONS = {
+  CLOSE: { label: 'Close', type: QsDialogActionTypes.CANCEL },
+  CANCEL: { label: 'Cancel', type: QsDialogActionTypes.CANCEL },
+  SUBMIT: { label: 'Submit', type: QsDialogActionTypes.OK },
 };

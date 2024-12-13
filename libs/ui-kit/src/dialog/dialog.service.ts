@@ -2,14 +2,14 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import { DialogComponent } from './dialog.component';
-import { DialogHandler } from './dialog.handler';
-import { DIALOG_BUTTONS, DialogData } from './dialog.interface';
+import { QsDialogComponent } from './dialog.component';
+import { QsDialogHandler } from './dialog.handler';
+import { QS_DIALOG_BUTTONS, QsDialogData } from './dialog.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DialogService {
+export class QsDialogService {
   constructor(public dialog: MatDialog) {}
 
   /** Display a simple dialog message */
@@ -17,15 +17,15 @@ export class DialogService {
     title: string,
     message: string,
     dialogOptions?: MatDialogConfig
-  ): DialogHandler<DialogComponent> {
-    const data: DialogData = {
+  ): QsDialogHandler<QsDialogComponent> {
+    const data: QsDialogData = {
       title,
       content: { type: 'message', message },
-      actions: [DIALOG_BUTTONS.CLOSE],
+      actions: [QS_DIALOG_BUTTONS.CLOSE],
     };
 
-    return new DialogHandler(
-      this.dialog.open(DialogComponent, {
+    return new QsDialogHandler(
+      this.dialog.open(QsDialogComponent, {
         data,
         disableClose: true,
         ...dialogOptions,
@@ -38,20 +38,20 @@ export class DialogService {
     title: string,
     component: any,
     props: any,
-    actions?: DialogData['actions'],
+    actions?: QsDialogData['actions'],
     dialogOptions?: MatDialogConfig
-  ): DialogHandler<DialogComponent> {
+  ): QsDialogHandler<QsDialogComponent> {
     if (!actions) {
-      actions = [DIALOG_BUTTONS.CANCEL, DIALOG_BUTTONS.SUBMIT];
+      actions = [QS_DIALOG_BUTTONS.CANCEL, QS_DIALOG_BUTTONS.SUBMIT];
     }
-    const data: DialogData = {
+    const data: QsDialogData = {
       title,
       content: { type: 'component', component, props },
       actions,
     };
 
-    return new DialogHandler(
-      this.dialog.open(DialogComponent, {
+    return new QsDialogHandler(
+      this.dialog.open(QsDialogComponent, {
         data,
         disableClose: true,
         ...dialogOptions,

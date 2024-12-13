@@ -2,7 +2,7 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable, Subscriber } from 'rxjs';
 
-export class DialogHandler<T> extends Observable<any> {
+export class QsDialogHandler<T> extends Observable<any> {
   public closed$!: Subscriber<any>;
 
   constructor(public dialogRef: MatDialogRef<T>) {

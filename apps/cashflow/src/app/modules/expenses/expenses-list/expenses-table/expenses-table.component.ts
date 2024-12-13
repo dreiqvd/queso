@@ -8,7 +8,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
-import { DialogService } from '@queso/ui-kit/dialog';
+import { QsDialogService } from '@queso/ui-kit/dialog';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
 import { Expense, FirestoreResponseDate } from '../../../../models';
@@ -37,7 +37,7 @@ export class ExpensesTableComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   private readonly expenseService = inject(ExpenseService);
-  private readonly dialogService = inject(DialogService);
+  private readonly dialogService = inject(QsDialogService);
 
   expenses = input.required<TableExpense[]>();
 

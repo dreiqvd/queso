@@ -22,9 +22,9 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { QsIconComponent } from '../icon';
 
 import {
-  DialogAction,
-  DialogActionTypes,
-  DialogData,
+  QsDialogAction,
+  QsDialogActionTypes,
+  QsDialogData,
 } from './dialog.interface';
 
 @Component({
@@ -33,7 +33,7 @@ import {
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })
-export class DialogComponent implements OnInit, AfterViewInit {
+export class QsDialogComponent implements OnInit, AfterViewInit {
   @ViewChild('componentContainer', { read: ViewContainerRef })
   componentContainer?: ViewContainerRef;
 
@@ -41,8 +41,8 @@ export class DialogComponent implements OnInit, AfterViewInit {
   readonly destroyRef = inject(DestroyRef);
 
   constructor(
-    public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    public dialogRef: MatDialogRef<QsDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: QsDialogData
   ) {}
 
   ngOnInit(): void {
@@ -75,7 +75,7 @@ export class DialogComponent implements OnInit, AfterViewInit {
         // dialogOkDisabled$ = handles the disabled state of the OK button
         // dialogCloseHandler = handles the close event of the dialog
         const okAction = this.data.actions?.find(
-          (a) => a.type === DialogActionTypes.OK
+          (a) => a.type === QsDialogActionTypes.OK
         );
         if (okAction) {
           setTimeout(() => {
@@ -93,8 +93,8 @@ export class DialogComponent implements OnInit, AfterViewInit {
     this.dialogRef.close(data);
   }
 
-  onActionClick(action: DialogAction): void {
-    if (action.type === DialogActionTypes.CANCEL) {
+  onActionClick(action: QsDialogAction): void {
+    if (action.type === QsDialogActionTypes.CANCEL) {
       this.close();
     } else if (action.closeHandler) {
       this.showLoader.set(true);
