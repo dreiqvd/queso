@@ -1,1 +1,1 @@
-export * from './spinner.directive';
+export * from './overlay-spinner/overlay-spinner.component';
