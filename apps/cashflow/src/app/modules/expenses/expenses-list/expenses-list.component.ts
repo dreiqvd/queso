@@ -1,23 +1,28 @@
-import { NgTemplateOutlet } from '@angular/common';
+import { CurrencyPipe, NgTemplateOutlet } from '@angular/common';
 import { afterNextRender, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { take } from 'rxjs';
 
+import { QsDialogService } from '@queso/ui-kit/dialog';
+import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsTabGroupDirective } from '@queso/ui-kit/tabs';
 
 import { Expense } from '../../../models';
 import { ExpenseService } from '../../../services';
+import { ExpenseFormComponent } from '../expense-form/expense-form.component';
 
 import { ExpensesTableComponent } from './expenses-table/expenses-table.component';
 
 @Component({
   selector: 'app-expenses-list',
   imports: [
+    CurrencyPipe,
     NgTemplateOutlet,
     MatTabsModule,
     MatButtonModule,
     QsTabGroupDirective,
+    QsIconComponent,
     ExpensesTableComponent,
   ],
   templateUrl: './expenses-list.component.html',
@@ -32,10 +37,12 @@ import { ExpensesTableComponent } from './expenses-table/expenses-table.componen
 })
 export class ExpensesListComponent {
   private readonly expenseService = inject(ExpenseService);
+  private readonly dialogService = inject(QsDialogService);
 
   readonly selectedPeriodIndex = new Date().getDate() > 15 ? 0 : 1;
   period1Expenses: Expense[] = [];
   period2Expenses: Expense[] = [];
+  overallTotal = 0;
 
   expenses: Expense[] = [];
 
@@ -54,6 +61,11 @@ export class ExpensesListComponent {
           // Expenses that are paid on the 15th of the month (excluding 15th expenses).
           this.period2Expenses = expenses.filter(
             (d) => d.paymentDay >= 16 && d.paymentDay <= 30
+          );
+
+          this.overallTotal = expenses.reduce(
+            (acc, expense) => acc + expense.amount,
+            0
           );
         });
     });
@@ -77,6 +89,14 @@ export class ExpensesListComponent {
         } else {
           this.period2Expenses = [...expenses];
         }
+      });
+  }
+
+  onAddExpense(): void {
+    this.dialogService
+      .showCustomComponent('Add Expense', ExpenseFormComponent, {})
+      .subscribe((expense) => {
+        console.log(expense);
       });
   }
 }

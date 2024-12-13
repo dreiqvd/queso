@@ -1,4 +1,11 @@
-<h1 class="text-2xl mb-4">Upcoming Expenses</h1>
+<header class="mb-4">
+  <h1 class="text-2xl">Upcoming Expenses</h1>
+  <div class="mt-4">
+    <h2 class="text-xl text-gray">
+      MONTHLY TOTAL: {{ overallTotal | currency : 'PHP' }}
+    </h2>
+  </div>
+</header>
 <mat-tab-group qsTabGroup [selectedIndex]="selectedPeriodIndex">
   <mat-tab label="1st Period">
     <div class="py-6">
@@ -22,12 +29,25 @@
 </mat-tab-group>
 
 <ng-template #markAllBtn>
-  <button
-    mat-flat-button
-    color="primary"
-    type="button"
-    (click)="markAllAsUnpaid()"
-  >
-    Mark all as Unpaid
-  </button>
+  <div class="flex items-center gap-4">
+    <button
+      mat-stroked-button
+      type="button"
+      color="primary"
+      (click)="markAllAsUnpaid()"
+    >
+      Mark all as Unpaid
+    </button>
+    <button
+      mat-flat-button
+      color="accent"
+      type="button"
+      (click)="onAddExpense()"
+    >
+      <span class="flex items-center gap-2">
+        <qs-icon iconName="plus" [iconSize]="20" />
+        Add Expense
+      </span>
+    </button>
+  </div>
 </ng-template>
