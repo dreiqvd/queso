@@ -1,5 +1,25 @@
-<nav class="bg-accent text-white w-full flex justify-between items-center px-6 h-[48px]">
-  <div></div>
+<nav class="bg-accent text-white w-full flex justify-between items-center px-6 h-[64px]">
+  <div>
+    <ul class="flex gap-8 items-center">
+      @for (route of routes; track $index) {
+        <li>
+          <a
+            class="text-white flex items-center gap-2 hover:text-gray-100"
+            routerLinkActive="active"
+            [routerLink]="route.path"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+          <qs-icon
+              [iconName]="route.icon"
+              [iconStyle]="route.iconStyle"
+              [iconSize]="20"
+            />
+            {{ route.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
   <div>
     <button type="button" (click)="signOut()">
       Sign Out
