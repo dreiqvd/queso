@@ -37,7 +37,7 @@ export class ExpensesTableComponent {
   private readonly expenseService = inject(ExpenseService);
   private readonly dialogService = inject(DialogService);
 
-  expenses = input.required<Expense[]>();
+  expenses = input.required<TableExpense[]>();
 
   readonly tblColumns = [
     'name',
@@ -129,7 +129,7 @@ export class ExpensesTableComponent {
     return dueMonths;
   }
 
-  onTogglePaidStatus(expense: Expense): void {
+  onTogglePaidStatus(expense: TableExpense): void {
     const isPaid = !expense.isPaid;
     expense.isLoading = true;
     this.expenseService
@@ -145,7 +145,7 @@ export class ExpensesTableComponent {
       });
   }
 
-  onEditExpense(expense: Expense): void {
+  onEditExpense(expense: TableExpense): void {
     this.dialogService
       .showCustomComponent('Edit Expense', ExpenseFormComponent, { expense })
       .subscribe((result: Expense) => {
@@ -160,4 +160,8 @@ export class ExpensesTableComponent {
         this.computeTotalExpenses();
       });
   }
+}
+
+interface TableExpense extends Expense {
+  isLoading?: boolean;
 }
