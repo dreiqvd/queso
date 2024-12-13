@@ -8,6 +8,20 @@
     --mdc-filled-button-container-height: 56px;
     --mdc-filled-button-label-text-color: var(--text-default-color);
     --mat-filled-button-state-layer-color: var(--text-default-color);
+
+    // Mat Icon Button
+    --mdc-icon-button-icon-size: inherit;
+    --mat-icon-button-state-layer-color: var(--color-gray-50);
+
+    .mat-mdc-icon-button {
+      line-height: 0;
+
+      img,
+      svg {
+        width: inherit;
+        height: inherit;
+      }
+    }
   }
 
   .mat-mdc-unelevated-button.mat-primary {
