@@ -1,39 +1,44 @@
-<div class="shadow bg-white p-6 flex flex-col gap-4 rounded">
-  <h2 class="text-xl">
-    Bank Accounts
-  </h2>
-  <div class="flex flex-col gap-2 mb-4">
-    <h3 class="text-gray text-lg">Total:</h3>
-    <span class="font-bold text-2xl">
-      {{ totalBalance | currency : 'PHP' }}
-    </span>
-  </div>
-  <div class="flex flex-col gap-4">
-    @for (account of bankAccounts; track $index) {
-      <div class="flex flex-col gap-1 px-4 border-l-4" [style.borderColor]="account.color">
-        <h4 class="text-base font-semibold text-gray-500">{{ account.name }}</h4>
-        @if (!account.isEditMode) {
-          <span class="flex items-center my-1" (dblclick)="account.isEditMode = true">
-            {{ account.balance | currency : 'PHP' }}
-          </span>
-        } @else {
-          <div class="flex items-center gap-4 pr-6">
-            <input
-              type="number"
-              class="w-full pb-2 border-b border-b-gray-200 outline-none focus:outline-none"
-              [(ngModel)]="account.balance"
-            />
-            <button
-              mat-icon-button
-              type="button"
-              matTooltip="Save"
-              (click)="onEditBalance(account)"
-            >
-              <qs-icon iconName="check" class="text-primary" [iconSize]="16" />
-            </button>
-          </div>
-        }
-      </div>
-    }
+<div class="shadow bg-white rounded overflow-hidden relative">
+  @if (isLoading()) {
+    <qs-overlay-spinner />
+  }
+  <div class="flex flex-col gap-4 p-6 h-[388px]">
+    <h2 class="text-xl">
+      Bank Accounts
+    </h2>
+    <div class="flex flex-col gap-2 mb-4">
+      <h3 class="text-gray text-lg">Total:</h3>
+      <span class="font-bold text-2xl">
+        {{ totalBalance | currency : 'PHP' }}
+      </span>
+    </div>
+    <div class="flex flex-col gap-4">
+      @for (account of bankAccounts; track $index) {
+        <div class="flex flex-col gap-1 px-4 border-l-4" [style.borderColor]="account.color">
+          <h4 class="text-base font-semibold text-gray-500">{{ account.name }}</h4>
+          @if (!account.isEditMode) {
+            <span class="flex items-center my-1" (dblclick)="account.isEditMode = true">
+              {{ account.balance | currency : 'PHP' }}
+            </span>
+          } @else {
+            <div class="flex items-center gap-4 pr-6">
+              <input
+                type="number"
+                class="w-full pb-2 border-b border-b-gray-200 outline-none focus:outline-none"
+                [(ngModel)]="account.balance"
+              />
+              <button
+                mat-icon-button
+                type="button"
+                matTooltip="Save"
+                (click)="onEditBalance(account)"
+              >
+                <qs-icon iconName="check" class="text-primary" [iconSize]="16" />
+              </button>
+            </div>
+          }
+        </div>
+      }
+    </div>
   </div>
 </div>

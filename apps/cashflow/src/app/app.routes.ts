@@ -6,7 +6,6 @@ import {
 import { Route } from '@angular/router';
 
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { ExpensesComponent } from './modules/expenses/expenses.component';
 import { LoginComponent } from './modules/login/login.component';
 
 const redirectUnauthorizedToLogin = (): AuthPipe =>

@@ -1,54 +1,46 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
 
 import { BankAccount } from '../../../models/bank-account.model';
+import { BankAccountService } from '../../../services';
 
 @Component({
   selector: 'app-dashboard-bank-accounts',
-  standalone: true,
   imports: [
     FormsModule,
     CurrencyPipe,
     MatButtonModule,
+    MatProgressSpinnerModule,
     MatTooltipModule,
     QsIconComponent,
+    QsOverlaySpinnerComponent,
   ],
   templateUrl: './dashboard-bank-accounts.component.html',
 })
 export class DashboardBankAccountsComponent implements OnInit {
-  readonly bankAccounts: DashboardBankAccount[] = [
-    {
-      name: 'BDO',
-      balance: 888888,
-      accountNumber: '1234567890',
-      color: '#004EA8',
-      isEditMode: false,
-    },
-    {
-      name: 'BPI',
-      balance: 888888,
-      accountNumber: '1234567890',
-      color: '#B11116',
-      isEditMode: false,
-    },
-    {
-      name: 'UnionBank',
-      balance: 888888,
-      accountNumber: '1234567890',
-      color: '#F7931E',
-      isEditMode: false,
-    },
-  ];
+  private readonly bankAccountService = inject(BankAccountService);
 
+  readonly isLoading = signal(true);
+
+  bankAccounts: DashboardBankAccount[] = [];
   totalBalance = 0;
 
   ngOnInit(): void {
-    this.computeTotalBalance();
+    this.bankAccountService.list().subscribe((data) => {
+      this.bankAccounts = data.map((bankAccount) => ({
+        ...bankAccount,
+        isEditMode: false,
+      }));
+      this.computeTotalBalance();
+      this.isLoading.set(false);
+    });
   }
 
   private computeTotalBalance(): void {
