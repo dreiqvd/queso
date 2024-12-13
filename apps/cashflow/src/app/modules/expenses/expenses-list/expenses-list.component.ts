@@ -12,7 +12,7 @@ import { ExpenseService } from '../../../services';
 import { ExpensesTableComponent } from './expenses-table/expenses-table.component';
 
 @Component({
-  selector: 'app-dashboard-expenses',
+  selector: 'app-expenses-list',
   imports: [
     NgTemplateOutlet,
     MatTabsModule,
@@ -20,7 +20,7 @@ import { ExpensesTableComponent } from './expenses-table/expenses-table.componen
     QsTabGroupDirective,
     ExpensesTableComponent,
   ],
-  templateUrl: './dashboard-expenses.component.html',
+  templateUrl: './expenses-list.component.html',
   styles: `
     .table-heading {
       --mdc-filled-button-container-height: 36px;
@@ -30,7 +30,7 @@ import { ExpensesTableComponent } from './expenses-table/expenses-table.componen
     }
   `,
 })
-export class DashboardExpensesComponent {
+export class ExpensesListComponent {
   private readonly expenseService = inject(ExpenseService);
 
   readonly selectedPeriodIndex = new Date().getDate() > 15 ? 0 : 1;
