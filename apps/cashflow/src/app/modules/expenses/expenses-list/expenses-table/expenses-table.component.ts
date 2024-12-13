@@ -89,7 +89,6 @@ export class ExpensesTableComponent {
 
   private getTableSourceData(): Expense[] {
     let data = this.expenses();
-    console.log(data);
 
     // Filter out yearly expenses that are not yet due
     const currentMonth = new Date().getMonth();

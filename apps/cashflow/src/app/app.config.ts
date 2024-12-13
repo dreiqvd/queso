@@ -25,6 +25,8 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(),
     provideFirebaseApp(() =>
+      // This is okay to be exposed since the firestore database has
+      // a rule that only allows authenticated users to read/write.
       initializeApp({
         apiKey: 'AIzaSyCzmF8uTEEOKMQj9nz70sdqdTQ_Bzo6xsQ',
         authDomain: 'dreiq-cashflow.firebaseapp.com',
