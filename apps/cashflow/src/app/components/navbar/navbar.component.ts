@@ -8,7 +8,13 @@ import { IconStyle, QsIconComponent } from '@queso/ui-kit/icon';
   selector: 'app-navbar',
   imports: [RouterModule, QsIconComponent],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  styles: `
+    a {
+      &.active {
+        background-color: var(--color-accent-300);
+      }
+    }
+  `,
 })
 export class NavbarComponent {
   private readonly auth = inject(Auth);

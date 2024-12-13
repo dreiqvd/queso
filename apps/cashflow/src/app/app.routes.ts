@@ -5,6 +5,7 @@ import {
 } from '@angular/fire/auth-guard';
 import { Route } from '@angular/router';
 
+import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { ExpensesComponent } from './modules/expenses/expenses.component';
 import { LoginComponent } from './modules/login/login.component';
 
@@ -15,12 +16,17 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'expenses',
+    component: DashboardComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'expenses',
     pathMatch: 'full',
-    component: ExpensesComponent,
+    loadComponent: () =>
+      import('./modules/expenses/expenses.component').then(
+        (m) => m.ExpensesComponent
+      ),
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
