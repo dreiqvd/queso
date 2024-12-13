@@ -5,6 +5,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { DialogService } from '@queso/ui-kit/dialog';
@@ -23,6 +24,7 @@ import { ExpenseFormComponent } from '../../../expenses';
     MatTableModule,
     MatSortModule,
     MatButtonModule,
+    MatTooltipModule,
     MatMenuModule,
     MatProgressSpinnerModule,
     QsOrdinalPipe,

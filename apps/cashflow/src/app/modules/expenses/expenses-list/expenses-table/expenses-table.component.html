@@ -67,8 +67,14 @@
       <ng-container matColumnDef="action">
         <th *matHeaderCellDef mat-header-cell class="center w-[250px]">Action</th>
         <td *matCellDef="let element" mat-cell class="center">
-          <button mat-button aria-label="Actions" type="button" [matMenuTriggerFor]="actionMenu">
-            <qs-icon iconName="ellipsis-vertical" [iconSize]="16" />
+          <button
+            mat-icon-button
+            aria-label="Actions"
+            type="button"
+            matTooltip="Actions"
+            [matMenuTriggerFor]="actionMenu"
+          >
+            <qs-icon iconName="ellipsis-vertical" [iconSize]="20" />
           </button>
 
           <mat-menu #actionMenu="matMenu">

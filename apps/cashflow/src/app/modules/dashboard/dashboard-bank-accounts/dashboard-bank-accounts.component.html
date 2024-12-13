@@ -10,9 +10,29 @@
   </div>
   <div class="flex flex-col gap-4">
     @for (account of bankAccounts; track $index) {
-      <div class="flex flex-col gap-1 pl-4 border-l-4" [style.borderColor]="account.color">
+      <div class="flex flex-col gap-1 px-4 border-l-4" [style.borderColor]="account.color">
         <h4 class="text-base font-semibold text-gray-500">{{ account.name }}</h4>
-        <span>{{ account.balance | currency : 'PHP' }}</span>
+        @if (!account.isEditMode) {
+          <span class="flex items-center my-1" (dblclick)="account.isEditMode = true">
+            {{ account.balance | currency : 'PHP' }}
+          </span>
+        } @else {
+          <div class="flex items-center gap-4 pr-6">
+            <input
+              type="number"
+              class="w-full pb-2 border-b border-b-gray-200 outline-none focus:outline-none"
+              [(ngModel)]="account.balance"
+            />
+            <button
+              mat-icon-button
+              type="button"
+              matTooltip="Save"
+              (click)="onEditBalance(account)"
+            >
+              <qs-icon iconName="check" class="text-primary" [iconSize]="16" />
+            </button>
+          </div>
+        }
       </div>
     }
   </div>
