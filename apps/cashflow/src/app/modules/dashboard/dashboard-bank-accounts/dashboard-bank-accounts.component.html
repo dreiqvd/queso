@@ -1,0 +1,19 @@
+<div class="shadow bg-white p-6 flex flex-col gap-4 rounded">
+  <h2 class="text-xl">
+    Bank Accounts
+  </h2>
+  <div class="flex flex-col gap-2 mb-4">
+    <h3 class="text-gray text-lg">Total:</h3>
+    <span class="font-bold text-2xl">
+      {{ totalBalance | currency : 'PHP' }}
+    </span>
+  </div>
+  <div class="flex flex-col gap-4">
+    @for (account of bankAccounts; track $index) {
+      <div class="flex flex-col gap-1 pl-4 border-l-4" [style.borderColor]="account.color">
+        <h4 class="text-base font-semibold text-gray-500">{{ account.name }}</h4>
+        <span>{{ account.balance | currency : 'PHP' }}</span>
+      </div>
+    }
+  </div>
+</div>

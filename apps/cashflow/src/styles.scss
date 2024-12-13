@@ -38,6 +38,10 @@ $app-theme: mat.m2-define-light-theme(
 
 @include rose.apply-theme($app-theme);
 
+html {
+  --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+}
+
 h1,
 h2,
 h3 {
@@ -45,6 +49,6 @@ h3 {
 }
 
 body {
-  font-family: Inter, 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1rem;
 }

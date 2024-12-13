@@ -1,3 +1,4 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -98,6 +99,10 @@ module.exports = {
       DEFAULT: 'var(--box-shadow-default)',
       sidebar: '2px 0 4px -2px var(--color-gray-200)',
     },
+    fontFamily: () => ({
+      ...fontFamily,
+      body: ['var(--font-body)'],
+    }),
   },
   plugins: [],
   // Following blocklist are preferred to be used without default styling
