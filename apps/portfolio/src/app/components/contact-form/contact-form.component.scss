@@ -4,6 +4,11 @@
   width: 100%;
 }
 
+form {
+  --mdc-outlined-text-field-outline-color: var(--color-primary);
+  --mdc-outlined-text-field-hover-outline-color: var(--color-primary);
+}
+
 .form-overlay {
   &:before {
     content: '';

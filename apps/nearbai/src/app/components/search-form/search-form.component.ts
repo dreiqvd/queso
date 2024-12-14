@@ -28,6 +28,12 @@ import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
     QsFormFieldDirective,
   ],
   templateUrl: './search-form.component.html',
+  styles: `
+    form {
+      --mdc-outlined-text-field-outline-color: var(--color-primary);
+      --mdc-outlined-text-field-hover-outline-color: var(--color-primary);
+    }
+  `,
 })
 export class SearchFormComponent implements OnInit {
   // Dependencies
