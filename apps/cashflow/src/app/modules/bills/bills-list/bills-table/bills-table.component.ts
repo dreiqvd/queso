@@ -6,10 +6,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { of, switchMap, tap } from 'rxjs';
+import { filter, of, switchMap, tap } from 'rxjs';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
-import { QsDialogService } from '@queso/ui-kit/dialog';
+import { QsDialogActionTypes, QsDialogService } from '@queso/ui-kit/dialog';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
 import { BILLING_CYCLES } from '../../../../app.constants';
@@ -172,6 +172,25 @@ export class BillsTableComponent {
         this.tblDataSource.data = [...this.tblDataSource.data];
         this.computeTotalBills();
         bill.isLoading = false;
+      });
+  }
+
+  onDeleteBill(bill: TableBill): void {
+    this.dialogService
+      .showConfirmation(
+        'Delete Bill?',
+        'Are you sure you want to delete this bill?'
+      )
+      .pipe(
+        filter((result) => result.type === QsDialogActionTypes.OK),
+        tap(() => (bill.isLoading = true)),
+        switchMap(() => this.billService.delete(bill.id as string))
+      )
+      .subscribe((response) => {
+        this.tblDataSource.data = this.tblDataSource.data.filter(
+          (d) => d.id !== response.id
+        );
+        this.computeTotalBills();
       });
   }
 }

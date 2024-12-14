@@ -94,7 +94,7 @@
               </div>
             </button>
 
-            <button mat-menu-item type="button">
+            <button mat-menu-item type="button" (click)="onDeleteBill(element)">
               <div class="flex items-center text-red">
                 <qs-icon iconName="trash-can" class="text-red" [iconSize]="20" />
                 <span>Delete</span>

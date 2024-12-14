@@ -33,6 +33,27 @@ export class QsDialogService {
     );
   }
 
+  /** Display a confirmation message dialog */
+  showConfirmation(
+    title: string,
+    message: string,
+    dialogOptions?: MatDialogConfig
+  ): QsDialogHandler<QsDialogComponent> {
+    const data: QsDialogData = {
+      title,
+      content: { type: 'message', message },
+      actions: [QS_DIALOG_BUTTONS.CANCEL, QS_DIALOG_BUTTONS.CONFIRM],
+    };
+
+    return new QsDialogHandler(
+      this.dialog.open(QsDialogComponent, {
+        data,
+        disableClose: true,
+        ...dialogOptions,
+      })
+    );
+  }
+
   /** Display a dialog with custom component as content */
   showCustomComponent(
     title: string,

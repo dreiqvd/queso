@@ -38,4 +38,5 @@ export const QS_DIALOG_BUTTONS = {
   CLOSE: { label: 'Close', type: QsDialogActionTypes.CANCEL },
   CANCEL: { label: 'Cancel', type: QsDialogActionTypes.CANCEL },
   SUBMIT: { label: 'Submit', type: QsDialogActionTypes.OK },
+  CONFIRM: { label: 'Confirm', type: QsDialogActionTypes.OK },
 };
