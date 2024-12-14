@@ -12,8 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { format } from 'date-fns';
-import { BehaviorSubject, Observable, of, switchMap, take } from 'rxjs';
+import { BehaviorSubject, Observable, of, take } from 'rxjs';
 
 import { BILLING_CATEGORIES, BILLING_CYCLES } from '../../../app.constants';
 import { Bill } from '../../../models';
@@ -102,32 +101,6 @@ export class BillFormComponent implements OnInit {
       return;
     }
 
-    if (this.bill) {
-      return this.billService
-        .update(this.bill.id as string, {
-          ...(this.billForm.value as Partial<Bill>),
-        })
-        .pipe(
-          switchMap((result) =>
-            of({
-              ...this.bill,
-              ...result.data,
-            })
-          )
-        );
-    } else {
-      const payload = this.billForm.value as Partial<Bill>;
-      if (payload.startDate) {
-        payload.startDate = format(payload.startDate, 'yyyy-MM-dd');
-      }
-
-      if (payload.endDate) {
-        payload.endDate = format(payload.endDate, 'yyyy-MM-dd');
-      }
-
-      return this.billService
-        .create(payload)
-        .pipe(switchMap((result) => of(result.data)));
-    }
+    return of(this.billForm.value as Partial<Bill>);
   }
 }

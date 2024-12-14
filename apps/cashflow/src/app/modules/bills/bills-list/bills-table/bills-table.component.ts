@@ -6,6 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { of, switchMap, tap } from 'rxjs';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsDialogService } from '@queso/ui-kit/dialog';
@@ -151,7 +152,16 @@ export class BillsTableComponent {
   onEditBill(bill: TableBill): void {
     this.dialogService
       .showCustomComponent('Edit Bill', BillFormComponent, { bill })
-      .subscribe((result: Bill) => {
+      .pipe(
+        tap(() => (bill.isLoading = true)),
+        switchMap((formValue: Bill) => {
+          return this.billService.update(bill.id as string, {
+            ...(formValue as Partial<Bill>),
+          });
+        }),
+        switchMap((result) => of(result.data))
+      )
+      .subscribe((result: Partial<Bill>) => {
         const dataIdx = this.tblDataSource.data.findIndex(
           (d) => d.id === result.id
         );
@@ -161,6 +171,7 @@ export class BillsTableComponent {
         };
         this.tblDataSource.data = [...this.tblDataSource.data];
         this.computeTotalBills();
+        bill.isLoading = false;
       });
   }
 }
