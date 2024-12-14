@@ -2,9 +2,11 @@
   --mat-dialog-actions-alignment: right;
   --mat-dialog-headline-padding: 16px;
   --mdc-dialog-subhead-line-height: normal;
-  --mdc-dialog-supporting-text-color: var(--text-body-color);
+  --mdc-dialog-supporting-text-color: var(--text-default-color);
   --mat-dialog-actions-padding: 8px;
   --mdc-dialog-subhead-tracking: normal;
+  --mdc-dialog-supporting-text-tracking: normal;
+  --mdc-dialog-subhead-weight: 600;
 
   ::ng-deep {
     .mdc-dialog__title::before {
