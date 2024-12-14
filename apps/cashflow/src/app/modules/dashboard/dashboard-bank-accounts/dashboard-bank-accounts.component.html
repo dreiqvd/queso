@@ -1,4 +1,4 @@
-<div class="shadow bg-white rounded overflow-hidden relative">
+<div class="shadow bg-white rounded overflow-hidden relative h-[388px]">
   @if (isEditing()) {
     <div class="absolute top-0 left-0 w-full">
       <mat-progress-bar mode="indeterminate" color="primary"/>
@@ -7,14 +7,14 @@
   @if (isLoading()) {
     <qs-overlay-spinner />
   }
-  <div class="flex flex-col gap-4 p-6 h-[388px]">
-    <h2 class="text-xl">
+  <div class="flex flex-col gap-4 p-6">
+    <h2 class="text-xl text-primary">
       Bank Accounts
     </h2>
     <div class="flex flex-col gap-2 mb-4">
       <h3 class="text-gray text-lg">Total:</h3>
       <span class="font-bold text-2xl">
-        {{ totalBalance | currency : 'PHP' }}
+        {{ totalBalance | currency : 'PHP' : undefined : '1.0-0' }}
       </span>
     </div>
     <div class="flex flex-col gap-4">
@@ -23,7 +23,7 @@
           <h4 class="text-base font-semibold text-gray-500">{{ account.name }}</h4>
           @if (!account.isEditMode) {
             <span class="flex items-center my-1" (dblclick)="account.isEditMode = true">
-              {{ account.balance | currency : 'PHP' }}
+              {{ account.balance | currency : 'PHP' : undefined : '1.0-0' }}
             </span>
           } @else {
             <div class="flex items-center gap-4 pr-6">
