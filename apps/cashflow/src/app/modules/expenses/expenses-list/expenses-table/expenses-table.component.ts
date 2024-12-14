@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsDialogService } from '@queso/ui-kit/dialog';
 import { QsIconComponent } from '@queso/ui-kit/icon';
+import { BILLING_CYCLES } from 'apps/cashflow/src/app/app.constants';
 
 import { Expense, FirestoreResponseDate } from '../../../../models';
 import { ExpenseService } from '../../../../services';
@@ -95,9 +96,9 @@ export class ExpensesTableComponent {
     // Filter out yearly expenses that are not yet due
     const currentMonth = new Date().getMonth();
     data = data.filter((d) => {
-      if (d.billingCycle === 'yearly') {
+      if (d.billingCycle === BILLING_CYCLES.Yearly) {
         return new Date(d.dueDate as string).getMonth() === currentMonth;
-      } else if (d.billingCycle === 'quarterly') {
+      } else if (d.billingCycle === BILLING_CYCLES.Quarterly) {
         const dueMonths = this.getQuarterlyDueMonths(d.dueDate as string);
         return dueMonths.includes(currentMonth);
       } else {

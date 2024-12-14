@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { take } from 'rxjs';
 
 import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
@@ -34,16 +35,19 @@ export class DashboardBankAccountsComponent implements OnInit {
   totalBalance = 0;
 
   ngOnInit(): void {
-    this.bankAccountService.list().subscribe((data) => {
-      this.bankAccounts = data
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .map((bankAccount) => ({
-          ...bankAccount,
-          isEditMode: false,
-        }));
-      this.computeTotalBalance();
-      this.isLoading.set(false);
-    });
+    this.bankAccountService
+      .list()
+      .pipe(take(1))
+      .subscribe((data) => {
+        this.bankAccounts = data
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((bankAccount) => ({
+            ...bankAccount,
+            isEditMode: false,
+          }));
+        this.computeTotalBalance();
+        this.isLoading.set(false);
+      });
   }
 
   private computeTotalBalance(): void {
