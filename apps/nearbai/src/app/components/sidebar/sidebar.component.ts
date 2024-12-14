@@ -1,7 +1,6 @@
 import { NgClass } from '@angular/common';
 import {
   afterNextRender,
-  AfterRenderPhase,
   Component,
   DestroyRef,
   ElementRef,
@@ -72,16 +71,15 @@ export class SidebarComponent {
       .pipe(takeUntilDestroyed())
       .subscribe((res) => this.handleSearchEnd(res));
 
-    afterNextRender(
-      () => {
+    afterNextRender({
+      write: () => {
         this.adjustLayout();
 
         fromEvent(window, 'resize')
           .pipe(debounceTime(300), takeUntilDestroyed(this.destroyRef))
           .subscribe(() => this.adjustLayout());
       },
-      { phase: AfterRenderPhase.Write }
-    );
+    });
   }
 
   /** Adjust positioning and display of DOM elements based on certain states */

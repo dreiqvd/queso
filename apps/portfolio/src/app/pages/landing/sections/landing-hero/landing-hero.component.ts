@@ -1,7 +1,6 @@
 import { NgTemplateOutlet } from '@angular/common';
 import {
   afterNextRender,
-  AfterRenderPhase,
   Component,
   DestroyRef,
   ElementRef,
@@ -62,8 +61,8 @@ export class LandingHeroComponent {
   readonly shouldBreakText = signal(false);
 
   constructor() {
-    afterNextRender(
-      () => {
+    afterNextRender({
+      write: () => {
         this.adjustLayout();
 
         // Adjust layout on window resize
@@ -71,8 +70,7 @@ export class LandingHeroComponent {
           .pipe(takeUntilDestroyed(this.destroyRef), debounceTime(100))
           .subscribe(() => this.adjustLayout());
       },
-      { phase: AfterRenderPhase.Write }
-    );
+    });
   }
 
   /** Adjust positioning and display of DOM elements based on certain states */

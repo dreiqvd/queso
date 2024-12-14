@@ -1,6 +1,5 @@
 import {
   afterNextRender,
-  AfterRenderPhase,
   Component,
   inject,
   OnInit,
@@ -50,8 +49,8 @@ export class SearchFormComponent implements OnInit {
   readonly buttonLabel = signal<string>('Find');
 
   constructor() {
-    afterNextRender(() => this.checkGeolocation(), {
-      phase: AfterRenderPhase.Read,
+    afterNextRender({
+      read: () => this.checkGeolocation(),
     });
   }
 
