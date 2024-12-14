@@ -32,6 +32,9 @@ $app-theme: mat.m2-define-light-theme(
 @include mat.button-theme($app-theme);
 @include mat.form-field-theme($app-theme);
 @include mat.input-theme($app-theme);
+@include mat.select-theme($app-theme);
+@include mat.slide-toggle-theme($app-theme);
+@include mat.datepicker-theme($app-theme);
 @include mat.snack-bar-theme($app-theme);
 @include mat.menu-theme($app-theme);
 @include mat.progress-spinner-theme($app-theme);

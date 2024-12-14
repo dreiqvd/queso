@@ -1,6 +1,11 @@
 <form [formGroup]="expenseForm">
+  <div class="mb-4 flex justify-end">
+    <mat-slide-toggle formControlName="isRecurring">
+      Is Recurring?
+    </mat-slide-toggle>
+  </div>
   <mat-form-field>
-    <mat-label>Amount</mat-label>
+    <mat-label>Name</mat-label>
     <input matInput formControlName="name" placeholder="Name" required>
   </mat-form-field>
 
@@ -11,6 +16,59 @@
 
   <mat-form-field>
     <mat-label>Category</mat-label>
-    <input matInput formControlName="category" placeholder="Category" required>
+    <mat-select formControlName="category" placeholder="e.g. Subscriptions" required>
+      @for (category of billingCategories; track $index) {
+        <mat-option [value]="category">
+          {{ category | titlecase }}
+        </mat-option>
+      }
+    </mat-select>
   </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Billing Cycle</mat-label>
+    <mat-select formControlName="billingCycle" placeholder="e.g. Monthly" required>
+      @for (billingCycle of billingCycles; track $index) {
+        <mat-option [value]="billingCycle">
+          {{ billingCycle | titlecase }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <div class="grid grid-cols-2 gap-4">
+    <mat-form-field>
+      <mat-label>Payment Day</mat-label>
+      <input matInput formControlName="paymentDay" placeholder="Payment Day" type="number" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Payment Account</mat-label>
+      <mat-select formControlName="paymentAccount" placeholder="Payment Account" required>
+        @for (account of paymentAccounts$ | async; track account.id) {
+          <mat-option [value]="account.name">
+            {{ account.name }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <mat-form-field class="example-form-field">
+      <mat-label>Start Date (optional)</mat-label>
+      <input matInput formControlName="startDate" [matDatepicker]="startDatePicker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="startDatePicker" />
+      <mat-datepicker #startDatePicker />
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+      <mat-label>End Date (optional)</mat-label>
+      <input matInput formControlName="endDate" [matDatepicker]="endDatePicker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="endDatePicker" />
+      <mat-datepicker #endDatePicker />
+    </mat-form-field>
+  </div>
 </form>

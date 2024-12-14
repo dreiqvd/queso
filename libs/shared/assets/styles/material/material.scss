@@ -1,6 +1,7 @@
 /** Contains basic overrides for material components **/
 
 @use './button' as button;
+@use './datepicker' as datepicker;
 @use './form-field' as form-field;
 @use './menu' as menu;
 @use './select' as select;
@@ -11,6 +12,7 @@
 
 @mixin overrides() {
   @include button.apply-theme();
+  @include datepicker.apply-theme();
   @include form-field.apply-theme();
   @include menu.apply-theme();
   @include select.apply-theme();

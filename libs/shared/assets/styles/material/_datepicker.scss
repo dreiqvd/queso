@@ -1,0 +1,12 @@
+@mixin apply-theme() {
+  .mat-datepicker-toggle {
+    button.mat-mdc-icon-button {
+      --mat-icon-button-state-layer-color: transparent;
+
+      svg {
+        width: var(--mdc-icon-button-icon-size, 24px);
+        height: var(--mdc-icon-button-icon-size, 24px);
+      }
+    }
+  }
+}
