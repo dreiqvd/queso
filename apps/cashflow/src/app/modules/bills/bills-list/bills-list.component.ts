@@ -74,6 +74,7 @@ export class BillsListComponent {
     const bills =
       this.selectedPeriodIndex === 0 ? this.period1Bills : this.period2Bills;
 
+    this.isLoading.set(true);
     this.billService
       .bulkUpdate(
         bills.map((d) => d.id as string),
@@ -86,6 +87,7 @@ export class BillsListComponent {
         } else {
           this.period2Bills = [...bills];
         }
+        this.isLoading.set(false);
       });
   }
 
