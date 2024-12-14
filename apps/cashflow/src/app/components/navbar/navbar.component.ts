@@ -33,12 +33,6 @@ export class NavbarComponent {
       icon: 'coins',
       iconStyle: 'light' as IconStyle,
     },
-    {
-      path: '/income',
-      label: 'Income',
-      icon: 'wallet',
-      iconStyle: 'light' as IconStyle,
-    },
   ];
 
   signOut(): void {

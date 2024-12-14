@@ -1,0 +1,44 @@
+<div class="shadow bg-white rounded overflow-hidden relative h-[388px]">
+  <div class="flex flex-col gap-4 p-6 h-full">
+    <header class="flex justify-between items-center">
+      <h2 class="text-xl text-primary">
+        Source of Funds
+      </h2>
+      <div class="flex gap-4 items-baseline">
+        <span class="text-gray">Total:</span>
+        <span class="text-xl text-white font-bold bg-accent py-2 px-4 rounded">
+          {{ overallTotal | currency : 'PHP' : undefined : '1.0-0' }} <span class="text-base font-normal text-gray-50">/ mo.</span>
+        </span>
+      </div>
+    </header>
+    <div class="grid grid-cols-4 gap-4 h-full">
+      @for (source of fundSources; track $index) {
+        <div
+          class="h-full border border-gray-100 border-solid rounded p-4 border-l-4"
+          [style.borderLeftColor]="source.color"
+        >
+          <div class="mb-8">
+            <h3 class="text-lg text-gray" [style.color]="source.color">
+              {{ source.name }}
+            </h3>
+            <h4 class="text-2xl font-semibold mt-2">
+              {{ source.total | currency : 'PHP' : undefined : '1.0-0' }} <span class="text-gray text-base font-normal"> / mo.</span>
+            </h4>
+          </div>
+          <div class="flex flex-col gap-4">
+            @for (receivable of source.receivables; let idx = $index; track $index) {
+              <div class="flex flex-col gap-1">
+                <h5 class="text-gray-400 font-medium font-heading">
+                  {{ idx + 1 | ordinal }} Period
+                </h5>
+                <p class="font-semibold text-gray-900">
+                  {{ receivable | currency : 'PHP' : undefined : '1.0-0' }}
+                </p>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

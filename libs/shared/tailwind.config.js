@@ -102,6 +102,7 @@ module.exports = {
     fontFamily: () => ({
       ...fontFamily,
       body: ['var(--font-body)'],
+      heading: ['var(--font-heading)'],
     }),
   },
   plugins: [],

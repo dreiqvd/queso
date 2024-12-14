@@ -44,12 +44,13 @@ $app-theme: mat.m2-define-light-theme(
 
 html {
   --font-body: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-heading: 'Oswald', 'Helvetica Neue', sans-serif;
 }
 
 h1,
 h2,
 h3 {
-  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-family: var(--font-heading);
 }
 
 body {
