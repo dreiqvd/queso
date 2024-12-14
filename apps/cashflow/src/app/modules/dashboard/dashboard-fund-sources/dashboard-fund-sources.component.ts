@@ -19,6 +19,8 @@ export class DashboardSourceOfFundsComponent implements OnInit {
 
   fundSources: DashboardFundSource[] = [];
   overallTotal = 0;
+  period1Total = 0;
+  period2Total = 0;
 
   ngOnInit(): void {
     this.fundSourceService.list().subscribe((data) => {
@@ -29,10 +31,11 @@ export class DashboardSourceOfFundsComponent implements OnInit {
           total: source.receivables.reduce((acc, r) => acc + r, 0),
         }));
 
-      this.overallTotal = this.fundSources.reduce(
-        (acc, source) => acc + source.total,
-        0
-      );
+      this.fundSources.forEach((source) => {
+        this.overallTotal += source.total;
+        this.period1Total += source.receivables[0];
+        this.period2Total += source.receivables[1] || 0;
+      });
 
       this.isLoading.set(false);
     });
