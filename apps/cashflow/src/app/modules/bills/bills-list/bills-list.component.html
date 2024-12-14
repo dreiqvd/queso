@@ -1,5 +1,5 @@
 <header class="mb-4">
-  <h1 class="text-2xl">Upcoming Expenses</h1>
+  <h1 class="text-2xl">Upcoming Bills</h1>
   <div class="mt-4">
     <h2 class="text-xl text-gray">
       MONTHLY TOTAL: {{ overallTotal | currency : 'PHP' }}
@@ -10,20 +10,20 @@
   <mat-tab label="1st Period">
     <div class="py-6">
       <div class="flex justify-between items-center mb-4 table-heading">
-        <p class="text-gray text-sm">Expenses that are paid on the 30th of the month (excluding 30th expenses).</p>
+        <p class="text-gray text-sm">Bills that are paid on the 30th of the month (excluding 30th bills).</p>
         <ng-template [ngTemplateOutlet]="markAllBtn" />
       </div>
-      <app-expenses-table [expenses]="period1Expenses" />
+      <app-bills-table [bills]="period1Bills" />
     </div>
   </mat-tab>
 
   <mat-tab label="2nd Period">
     <div class="py-6">
       <div class="flex justify-between items-center mb-4 table-heading">
-        <p class="text-gray text-sm">Expenses that are paid on the 15th of the month (excluding 15th expenses).</p>
+        <p class="text-gray text-sm">Bills that are paid on the 15th of the month (excluding 15th bills).</p>
         <ng-template [ngTemplateOutlet]="markAllBtn" />
       </div>
-      <app-expenses-table [expenses]="period2Expenses" />
+      <app-bills-table [bills]="period2Bills" />
     </div>
   </mat-tab>
 </mat-tab-group>
@@ -42,11 +42,11 @@
       mat-flat-button
       color="accent"
       type="button"
-      (click)="onAddExpense()"
+      (click)="onAddBill()"
     >
       <span class="flex items-center gap-2">
         <qs-icon iconName="plus" [iconSize]="20" />
-        Add Expense
+        Add Bill
       </span>
     </button>
   </div>

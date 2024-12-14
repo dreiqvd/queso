@@ -1,3 +1,3 @@
 export * from './bank-account.service';
-export * from './expense.service';
+export * from './bill.service';
 export * from './payment-account.service';

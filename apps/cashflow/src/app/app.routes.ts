@@ -20,12 +20,10 @@ export const appRoutes: Route[] = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
-    path: 'expenses',
+    path: 'bills',
     pathMatch: 'full',
     loadComponent: () =>
-      import('./modules/expenses/expenses.component').then(
-        (m) => m.ExpensesComponent
-      ),
+      import('./modules/bills/bills.component').then((m) => m.BillsComponent),
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },

@@ -10,14 +10,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsDialogService } from '@queso/ui-kit/dialog';
 import { QsIconComponent } from '@queso/ui-kit/icon';
-import { BILLING_CYCLES } from 'apps/cashflow/src/app/app.constants';
 
-import { Expense, FirestoreResponseDate } from '../../../../models';
-import { ExpenseService } from '../../../../services';
-import { ExpenseFormComponent } from '../../../expenses';
+import { BILLING_CYCLES } from '../../../../app.constants';
+import { Bill, FirestoreResponseDate } from '../../../../models';
+import { BillService } from '../../../../services';
+import { BillFormComponent } from '../../bill-form/bill-form.component';
 
 @Component({
-  selector: 'app-expenses-table',
+  selector: 'app-bills-table',
   imports: [
     NgClass,
     CurrencyPipe,
@@ -31,16 +31,16 @@ import { ExpenseFormComponent } from '../../../expenses';
     QsOrdinalPipe,
     QsIconComponent,
   ],
-  templateUrl: './expenses-table.component.html',
-  styleUrl: './expenses-table.component.scss',
+  templateUrl: './bills-table.component.html',
+  styleUrl: './bills-table.component.scss',
 })
-export class ExpensesTableComponent {
+export class BillsTableComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
-  private readonly expenseService = inject(ExpenseService);
+  private readonly billService = inject(BillService);
   private readonly dialogService = inject(QsDialogService);
 
-  expenses = input.required<TableExpense[]>();
+  bills = input.required<TableBill[]>();
 
   readonly tblColumns = [
     'name',
@@ -52,12 +52,12 @@ export class ExpensesTableComponent {
     'isPaid',
     'action',
   ];
-  tblDataSource = new MatTableDataSource<Expense>();
+  tblDataSource = new MatTableDataSource<Bill>();
   paymentAccounts: Array<{
     total: number;
     name: string;
   }> = [];
-  totalExpenses = 0;
+  totalBills = 0;
 
   constructor() {
     effect(() => {
@@ -81,19 +81,19 @@ export class ExpensesTableComponent {
         [] as Array<{ total: number; name: string }>
       );
 
-      this.computeTotalExpenses();
+      this.computeTotalBills();
     });
   }
 
-  private computeTotalExpenses(): void {
+  private computeTotalBills(): void {
     const data = this.tblDataSource.data;
-    this.totalExpenses = data.reduce((acc, curr) => acc + curr.amount, 0);
+    this.totalBills = data.reduce((acc, curr) => acc + curr.amount, 0);
   }
 
-  private getTableSourceData(): Expense[] {
-    let data = this.expenses();
+  private getTableSourceData(): Bill[] {
+    let data = this.bills();
 
-    // Filter out yearly expenses that are not yet due
+    // Filter out yearly bills that are not yet due
     const currentMonth = new Date().getMonth();
     data = data.filter((d) => {
       if (d.billingCycle === BILLING_CYCLES.Yearly) {
@@ -102,7 +102,7 @@ export class ExpensesTableComponent {
         const dueMonths = this.getQuarterlyDueMonths(d.dueDate as string);
         return dueMonths.includes(currentMonth);
       } else {
-        return true; // Monthly expenses are always displayed
+        return true; // Monthly bills are always displayed
       }
     });
 
@@ -119,7 +119,7 @@ export class ExpensesTableComponent {
       }));
   }
 
-  /** Compute the months a quarterly expense is paid */
+  /** Compute the months a quarterly bill is paid */
   private getQuarterlyDueMonths(dueDate: string): number[] {
     const dueMonths: number[] = [];
     const startMonthIndex = new Date(dueDate).getMonth();
@@ -132,39 +132,39 @@ export class ExpensesTableComponent {
     return dueMonths;
   }
 
-  onTogglePaidStatus(expense: TableExpense): void {
-    const isPaid = !expense.isPaid;
-    expense.isLoading = true;
-    this.expenseService
-      .update(expense.id as string, {
+  onTogglePaidStatus(bill: TableBill): void {
+    const isPaid = !bill.isPaid;
+    bill.isLoading = true;
+    this.billService
+      .update(bill.id as string, {
         isPaid,
         lastPaymentDate: isPaid ? new Date() : null,
       })
       .subscribe(() => {
         const lastPaymentDate = isPaid ? new Date() : null;
-        expense.isPaid = isPaid;
-        expense.lastPaymentDate = lastPaymentDate;
-        expense.isLoading = false;
+        bill.isPaid = isPaid;
+        bill.lastPaymentDate = lastPaymentDate;
+        bill.isLoading = false;
       });
   }
 
-  onEditExpense(expense: TableExpense): void {
+  onEditBill(bill: TableBill): void {
     this.dialogService
-      .showCustomComponent('Edit Expense', ExpenseFormComponent, { expense })
-      .subscribe((result: Expense) => {
+      .showCustomComponent('Edit Bill', BillFormComponent, { bill })
+      .subscribe((result: Bill) => {
         const dataIdx = this.tblDataSource.data.findIndex(
           (d) => d.id === result.id
         );
         this.tblDataSource.data[dataIdx] = {
-          ...expense,
+          ...bill,
           ...result,
         };
         this.tblDataSource.data = [...this.tblDataSource.data];
-        this.computeTotalExpenses();
+        this.computeTotalBills();
       });
   }
 }
 
-interface TableExpense extends Expense {
+interface TableBill extends Bill {
   isLoading?: boolean;
 }

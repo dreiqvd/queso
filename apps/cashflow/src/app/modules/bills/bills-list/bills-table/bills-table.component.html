@@ -87,7 +87,7 @@
               </div>
             </button>
 
-            <button mat-menu-item type="button" (click)="onEditExpense(element)">
+            <button mat-menu-item type="button" (click)="onEditBill(element)">
               <div class="flex items-center">
                 <qs-icon iconName="pen-to-square" [iconSize]="20" />
                 <span>Edit</span>
@@ -122,9 +122,9 @@
   </div>
   <div class="w-[360px]">
     <div class="mb-8">
-      <h2>Total Expenses:</h2>
+      <h2>Total Bills:</h2>
       <p class="font-bold text-2xl mt-2">
-        {{ totalExpenses | currency : 'PHP' }}
+        {{ totalBills | currency : 'PHP' }}
       </p>
     </div>
 

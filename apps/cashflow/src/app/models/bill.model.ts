@@ -1,10 +1,10 @@
 import { BaseModel } from './base.model';
 
-export interface Expense extends BaseModel {
+export interface Bill extends BaseModel {
   name: string;
   amount: number;
   paymentAccount: string;
-  category: ExpenseCategory;
+  category: BillCategory;
   isRecurring: boolean;
   paymentDay: number;
   billingCycle: 'monthly' | 'quarterly' | 'yearly';
@@ -12,7 +12,7 @@ export interface Expense extends BaseModel {
   endDate?: string;
   isPaid?: boolean;
   lastPaymentDate?: FirestoreResponseDate | Date | null;
-  dueDate?: string; // Date string reference of the original due date for non-monthly expenses
+  dueDate?: string; // Date string reference of the original due date for non-monthly bills
 }
 
 export type FirestoreResponseDate = {
@@ -20,8 +20,9 @@ export type FirestoreResponseDate = {
   nanoseconds: number;
 };
 
-export type ExpenseCategory =
-  | 'Credit/Loan'
+export type BillCategory =
   | 'Utility'
   | 'Subscriptions'
-  | 'Insurance';
+  | 'Insurance'
+  | 'Credit/Loan'
+  | 'Plan';

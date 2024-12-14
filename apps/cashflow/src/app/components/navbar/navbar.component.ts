@@ -28,8 +28,8 @@ export class NavbarComponent {
       iconStyle: 'custom' as IconStyle,
     },
     {
-      path: '/expenses',
-      label: 'Expenses',
+      path: '/bills',
+      label: 'Bills',
       icon: 'coins',
       iconStyle: 'light' as IconStyle,
     },

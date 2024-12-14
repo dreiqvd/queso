@@ -16,11 +16,11 @@ import { format } from 'date-fns';
 import { BehaviorSubject, Observable, of, switchMap, take } from 'rxjs';
 
 import { BILLING_CATEGORIES, BILLING_CYCLES } from '../../../app.constants';
-import { Expense } from '../../../models';
-import { ExpenseService, PaymentAccountService } from '../../../services';
+import { Bill } from '../../../models';
+import { BillService, PaymentAccountService } from '../../../services';
 
 @Component({
-  selector: 'app-expense-form',
+  selector: 'app-bill-form',
   imports: [
     AsyncPipe,
     TitleCasePipe,
@@ -32,23 +32,22 @@ import { ExpenseService, PaymentAccountService } from '../../../services';
     MatDatepickerModule,
   ],
   providers: [provideNativeDateAdapter()],
-  templateUrl: './expense-form.component.html',
-  styleUrl: './expense-form.component.scss',
+  templateUrl: './bill-form.component.html',
 })
-export class ExpenseFormComponent implements OnInit {
-  expense!: Expense;
+export class BillFormComponent implements OnInit {
+  bill!: Bill;
 
-  private readonly expenseService = inject(ExpenseService);
+  private readonly billService = inject(BillService);
   private readonly paymentAccountService = inject(PaymentAccountService);
 
   readonly dialogOkDisabled$ = new BehaviorSubject(true);
-  readonly dialogCloseHandler = (): Observable<Partial<Expense>> | void =>
+  readonly dialogCloseHandler = (): Observable<Partial<Bill>> | void =>
     this.submit();
   readonly paymentAccounts$ = this.paymentAccountService.list().pipe(take(1));
   readonly billingCycles = Object.values(BILLING_CYCLES);
   readonly billingCategories = BILLING_CATEGORIES;
 
-  expenseForm = new FormGroup({
+  billForm = new FormGroup({
     name: new FormControl('', Validators.required),
     amount: new FormControl(0, Validators.required),
     category: new FormControl('', Validators.required),
@@ -61,11 +60,11 @@ export class ExpenseFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.expenseForm.valueChanges.subscribe(() => {
-      this.dialogOkDisabled$.next(this.expenseForm.invalid);
+    this.billForm.valueChanges.subscribe(() => {
+      this.dialogOkDisabled$.next(this.billForm.invalid);
     });
 
-    if (this.expense) {
+    if (this.bill) {
       const {
         name,
         amount,
@@ -74,16 +73,14 @@ export class ExpenseFormComponent implements OnInit {
         paymentDay,
         paymentAccount,
         isRecurring,
-      } = this.expense;
+      } = this.bill;
 
-      const startDate = this.expense.startDate
-        ? new Date(this.expense.startDate)
+      const startDate = this.bill.startDate
+        ? new Date(this.bill.startDate)
         : null;
-      const endDate = this.expense.endDate
-        ? new Date(this.expense.endDate)
-        : null;
+      const endDate = this.bill.endDate ? new Date(this.bill.endDate) : null;
 
-      this.expenseForm.patchValue(
+      this.billForm.patchValue(
         {
           name,
           amount,
@@ -100,26 +97,26 @@ export class ExpenseFormComponent implements OnInit {
     }
   }
 
-  private submit(): Observable<Partial<Expense>> | void {
-    if (this.expenseForm.invalid) {
+  private submit(): Observable<Partial<Bill>> | void {
+    if (this.billForm.invalid) {
       return;
     }
 
-    if (this.expense) {
-      return this.expenseService
-        .update(this.expense.id as string, {
-          ...(this.expenseForm.value as Partial<Expense>),
+    if (this.bill) {
+      return this.billService
+        .update(this.bill.id as string, {
+          ...(this.billForm.value as Partial<Bill>),
         })
         .pipe(
           switchMap((result) =>
             of({
-              ...this.expense,
+              ...this.bill,
               ...result.data,
             })
           )
         );
     } else {
-      const payload = this.expenseForm.value as Partial<Expense>;
+      const payload = this.billForm.value as Partial<Bill>;
       if (payload.startDate) {
         payload.startDate = format(payload.startDate, 'yyyy-MM-dd');
       }
@@ -128,7 +125,7 @@ export class ExpenseFormComponent implements OnInit {
         payload.endDate = format(payload.endDate, 'yyyy-MM-dd');
       }
 
-      return this.expenseService
+      return this.billService
         .create(payload)
         .pipe(switchMap((result) => of(result.data)));
     }
