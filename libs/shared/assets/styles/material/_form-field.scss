@@ -4,8 +4,8 @@
     --mat-form-field-subscript-text-line-height: 1rem;
 
     // Outlined Form Field
-    --mdc-outlined-text-field-outline-color: var(--color-gray-300);
-    --mdc-outlined-text-field-hover-outline-color: var(--color-gray-300);
+    --mdc-outlined-text-field-outline-color: var(--color-gray-400);
+    --mdc-outlined-text-field-hover-outline-color: var(--color-gray-400);
     --mdc-outlined-text-field-input-text-color: var(--text-default-color);
     --mdc-outlined-text-field-label-text-color: var(--color-gray);
     --mdc-outlined-text-field-hover-label-text-color: var(--color-gray-500);
@@ -18,6 +18,10 @@
 
     .mat-mdc-form-field-hint-wrapper {
       padding: 0;
+    }
+
+    .mat-mdc-form-field-hint {
+      color: var(--color-gray);
     }
   }
 
