@@ -6,6 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { format } from 'date-fns';
 import { filter, of, switchMap, tap } from 'rxjs';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
@@ -155,6 +156,14 @@ export class BillsTableComponent {
       .pipe(
         tap(() => (bill.isLoading = true)),
         switchMap((formValue: Bill) => {
+          if (formValue.startDate) {
+            formValue.startDate = format(formValue.startDate, 'yyyy-MM-dd');
+          }
+
+          if (formValue.endDate) {
+            formValue.endDate = format(formValue.endDate, 'yyyy-MM-dd');
+          }
+
           return this.billService.update(bill.id as string, {
             ...(formValue as Partial<Bill>),
           });

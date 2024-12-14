@@ -4,9 +4,7 @@
       <mat-progress-bar mode="indeterminate" color="primary"/>
     </div>
   }
-  @if (isLoading()) {
-    <qs-overlay-spinner />
-  }
+  <qs-overlay-spinner [hidden]="!isLoading()" />
   <div class="flex flex-col gap-4 p-6">
     <h2 class="text-xl text-primary">
       Bank Accounts

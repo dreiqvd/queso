@@ -1,6 +1,4 @@
-@if (isLoading()) {
-  <qs-overlay-spinner />
-}
+<qs-overlay-spinner [hidden]="!isLoading()" />
 <header class="mb-4">
   <h1 class="text-2xl">Upcoming Bills</h1>
   <div class="mt-4">

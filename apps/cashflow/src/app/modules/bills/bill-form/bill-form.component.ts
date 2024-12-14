@@ -18,7 +18,7 @@ import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 
 import { BILLING_CATEGORIES, BILLING_CYCLES } from '../../../app.constants';
 import { Bill } from '../../../models';
-import { BillService, PaymentAccountService } from '../../../services';
+import { PaymentAccountService } from '../../../services';
 
 @Component({
   selector: 'app-bill-form',
@@ -39,7 +39,6 @@ import { BillService, PaymentAccountService } from '../../../services';
 export class BillFormComponent implements OnInit {
   bill!: Bill;
 
-  private readonly billService = inject(BillService);
   private readonly paymentAccountService = inject(PaymentAccountService);
 
   readonly dialogOkDisabled$ = new BehaviorSubject(true);

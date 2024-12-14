@@ -1,19 +1,21 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
+import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
 
 import { FundSource } from '../../../models';
 import { FundSourceService } from '../../../services';
 
 @Component({
   selector: 'app-dashboard-fund-sources',
-  imports: [CurrencyPipe, QsOrdinalPipe],
+  imports: [CurrencyPipe, QsOrdinalPipe, QsOverlaySpinnerComponent],
   templateUrl: './dashboard-fund-sources.component.html',
-  styleUrl: './dashboard-fund-sources.component.scss',
 })
 export class DashboardSourceOfFundsComponent implements OnInit {
   private readonly fundSourceService = inject(FundSourceService);
+
+  isLoading = signal(true);
 
   fundSources: DashboardFundSource[] = [];
   overallTotal = 0;
@@ -31,6 +33,8 @@ export class DashboardSourceOfFundsComponent implements OnInit {
         (acc, source) => acc + source.total,
         0
       );
+
+      this.isLoading.set(false);
     });
   }
 }
