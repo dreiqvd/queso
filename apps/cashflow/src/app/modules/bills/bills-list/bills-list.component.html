@@ -13,7 +13,7 @@
   <mat-tab label="1st Period">
     <div class="py-6">
       <div class="flex justify-between items-center mb-4 table-heading">
-        <p class="text-gray text-sm">Bills that are paid on the 30th of the month (excluding 30th bills).</p>
+        <p class="text-gray text-sm m-0">Bills that are paid before the 30th of the month (excluding 30th bills).</p>
         <ng-template [ngTemplateOutlet]="markAllBtn" />
       </div>
       <app-bills-table [bills]="period1Bills" />
@@ -23,7 +23,7 @@
   <mat-tab label="2nd Period">
     <div class="py-6">
       <div class="flex justify-between items-center mb-4 table-heading">
-        <p class="text-gray text-sm">Bills that are paid on the 15th of the month (excluding 15th bills).</p>
+        <p class="text-gray text-sm m-0">Bills that are paid before the 15th of the month (excluding 15th bills).</p>
         <ng-template [ngTemplateOutlet]="markAllBtn" />
       </div>
       <app-bills-table [bills]="period2Bills" />

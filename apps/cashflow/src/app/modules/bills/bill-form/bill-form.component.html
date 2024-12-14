@@ -4,17 +4,17 @@
       Is Recurring?
     </mat-slide-toggle>
   </div>
-  <mat-form-field>
+  <mat-form-field qsFormField>
     <mat-label>Name</mat-label>
     <input matInput formControlName="name" placeholder="Name" required>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field qsFormField>
     <mat-label>Amount</mat-label>
     <input matInput formControlName="amount" placeholder="Amount" type="number" required>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field qsFormField>
     <mat-label>Category</mat-label>
     <mat-select formControlName="category" placeholder="e.g. Subscriptions" required>
       @for (category of billingCategories; track $index) {
@@ -25,7 +25,7 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field qsFormField>
     <mat-label>Billing Cycle</mat-label>
     <mat-select formControlName="billingCycle" placeholder="e.g. Monthly" required>
       @for (billingCycle of billingCycles; track $index) {
@@ -37,12 +37,12 @@
   </mat-form-field>
 
   <div class="grid grid-cols-2 gap-4">
-    <mat-form-field>
+    <mat-form-field qsFormField>
       <mat-label>Payment Day</mat-label>
       <input matInput formControlName="paymentDay" placeholder="Payment Day" type="number" required>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field qsFormField>
       <mat-label>Payment Account</mat-label>
       <mat-select formControlName="paymentAccount" placeholder="Payment Account" required>
         @for (account of paymentAccounts$ | async; track account.id) {
@@ -55,7 +55,7 @@
   </div>
 
   <div class="grid grid-cols-2 gap-4">
-    <mat-form-field class="example-form-field">
+    <mat-form-field qsFormField class="example-form-field">
       <mat-label>Start Date (optional)</mat-label>
       <input matInput formControlName="startDate" [matDatepicker]="startDatePicker" />
       <mat-hint>MM/DD/YYYY</mat-hint>
@@ -63,7 +63,7 @@
       <mat-datepicker #startDatePicker />
     </mat-form-field>
 
-    <mat-form-field class="example-form-field">
+    <mat-form-field qsFormField class="example-form-field">
       <mat-label>End Date (optional)</mat-label>
       <input matInput formControlName="endDate" [matDatepicker]="endDatePicker" />
       <mat-hint>MM/DD/YYYY</mat-hint>

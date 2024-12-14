@@ -54,13 +54,13 @@ export class BillsListComponent {
   constructor() {
     afterNextRender(() => {
       this.billService.list().subscribe((bills) => {
-        // Bills that are paid on the 30th of the month (excluding 30th bills).
-        // Note: 31st bills should be paid on 30th of the month and thus included for period 2
+        // Bills that are paid before the 30th of the month (excluding 30th bills).
+        // Note: 31st bills should be paid before 30th of the month and thus included for period 1
         this.period1Bills = bills.filter(
           (d) =>
             (d.paymentDay >= 1 && d.paymentDay <= 15) || d.paymentDay === 31
         );
-        // Bills that are paid on the 15th of the month (excluding 15th bills).
+        // Bills that are paid before the 15th of the month (excluding 15th bills).
         this.period2Bills = bills.filter(
           (d) => d.paymentDay >= 16 && d.paymentDay <= 30
         );
