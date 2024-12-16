@@ -70,9 +70,9 @@ export class DashboardBankAccountsComponent implements OnInit {
         balance: value,
       })
       .subscribe(() => {
-        this.computeTotalBalance();
         account.balance = value;
         account.isEditMode = false;
+        this.computeTotalBalance();
         this.isEditing.set(false);
       });
   }
