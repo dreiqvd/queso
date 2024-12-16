@@ -12,6 +12,10 @@ import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
 import { BankAccount } from '../../../models/bank-account.model';
 import { BankAccountService } from '../../../services';
 
+interface DashboardBankAccount extends BankAccount {
+  isEditMode: boolean;
+}
+
 @Component({
   selector: 'app-dashboard-bank-accounts',
   imports: [
@@ -76,8 +80,4 @@ export class DashboardBankAccountsComponent implements OnInit {
         this.isEditing.set(false);
       });
   }
-}
-
-interface DashboardBankAccount extends BankAccount {
-  isEditMode: boolean;
 }

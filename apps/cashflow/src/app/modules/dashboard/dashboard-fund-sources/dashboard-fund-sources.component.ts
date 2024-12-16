@@ -7,6 +7,10 @@ import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
 import { FundSource } from '../../../models';
 import { FundSourceService } from '../../../services';
 
+interface DashboardFundSource extends FundSource {
+  total: number;
+}
+
 @Component({
   selector: 'app-dashboard-fund-sources',
   imports: [CurrencyPipe, QsOrdinalPipe, QsOverlaySpinnerComponent],
@@ -40,8 +44,4 @@ export class DashboardSourceOfFundsComponent implements OnInit {
       this.isLoading.set(false);
     });
   }
-}
-
-interface DashboardFundSource extends FundSource {
-  total: number;
 }

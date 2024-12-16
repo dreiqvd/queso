@@ -18,6 +18,10 @@ import { Bill, FirestoreResponseDate } from '../../../../models';
 import { BillService } from '../../../../services';
 import { BillFormComponent } from '../../bill-form/bill-form.component';
 
+interface TableBill extends Bill {
+  isLoading?: boolean;
+}
+
 @Component({
   selector: 'app-bills-table',
   imports: [
@@ -202,8 +206,4 @@ export class BillsTableComponent {
         this.computeTotalBills();
       });
   }
-}
-
-interface TableBill extends Bill {
-  isLoading?: boolean;
 }
