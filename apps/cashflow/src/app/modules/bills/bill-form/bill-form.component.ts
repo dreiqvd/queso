@@ -47,6 +47,7 @@ export class BillFormComponent implements OnInit {
   readonly paymentAccounts$ = this.paymentAccountService.list().pipe(take(1));
   readonly billingCycles = Object.values(BILLING_CYCLES);
   readonly billingCategories = BILLING_CATEGORIES;
+  readonly paymentDays = Array.from({ length: 31 }, (_, i) => i + 1);
 
   billForm = new FormGroup({
     name: new FormControl('', Validators.required),

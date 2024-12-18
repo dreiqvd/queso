@@ -39,7 +39,13 @@
   <div class="grid grid-cols-2 gap-4">
     <mat-form-field qsFormField>
       <mat-label>Payment Day</mat-label>
-      <input matInput formControlName="paymentDay" placeholder="Payment Day" type="number" required>
+      <mat-select formControlName="paymentDay" placeholder="Payment Day" required>
+        @for (paymentDay of paymentDays; track $index) {
+          <mat-option [value]="paymentDay">
+            {{ paymentDay }}
+          </mat-option>
+        }
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field qsFormField>
