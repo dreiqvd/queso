@@ -1,6 +1,6 @@
 <div class="flex gap-8">
-  <div class="table-wrapper w-full">
-    <table mat-table matSort [dataSource]="tblDataSource">
+  <div #tableWrapper class="table-wrapper w-full overflow-y-auto border-b border-solid border-gray-100 mt-4">
+    <table mat-table matSort class="h-full" [dataSource]="tblDataSource">
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
         <td *matCellDef="let element" mat-cell>
@@ -122,9 +122,9 @@
   </div>
   <div class="w-[360px]">
     <div class="mb-8">
-      <h2>Total Bill:</h2>
+      <h2>Total Amount:</h2>
       <p class="font-bold text-2xl mt-2">
-        {{ totalBills | currency : 'PHP' }}
+        {{ totalBills() | currency : 'PHP' }}
       </p>
     </div>
 

@@ -1,5 +1,6 @@
 @use './base' as base;
 @forward './rose/variables';
+@forward './mustard/globals';
 
 @mixin apply-theme($theme) {
   @include base.apply-variables($theme);

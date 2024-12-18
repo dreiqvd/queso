@@ -1,5 +1,15 @@
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
-import { Component, effect, inject, input, ViewChild } from '@angular/core';
+import {
+  afterRenderEffect,
+  Component,
+  effect,
+  ElementRef,
+  inject,
+  input,
+  Renderer2,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -9,11 +19,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { format } from 'date-fns';
 import { filter, of, switchMap, tap } from 'rxjs';
 
+import { getViewportHeight } from '@queso/common';
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsDialogActionTypes, QsDialogService } from '@queso/ui-kit/dialog';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
-import { BILLING_CYCLES } from '../../../../app.constants';
 import { Bill, FirestoreResponseDate } from '../../../../models';
 import { BillService } from '../../../../services';
 import { BillFormComponent } from '../../bill-form/bill-form.component';
@@ -42,10 +52,13 @@ interface TableBill extends Bill {
 })
 export class BillsTableComponent {
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('tableWrapper') tableWrapper!: ElementRef<HTMLDivElement>;
 
   private readonly billService = inject(BillService);
   private readonly dialogService = inject(QsDialogService);
+  private readonly renderer2 = inject(Renderer2);
 
+  totalBills = signal(0);
   bills = input.required<TableBill[]>();
 
   readonly tblColumns = [
@@ -63,9 +76,18 @@ export class BillsTableComponent {
     total: number;
     name: string;
   }> = [];
-  totalBills = 0;
 
   constructor() {
+    afterRenderEffect(() => {
+      setTimeout(() => {
+        const tableWrapper = this.tableWrapper.nativeElement;
+        const yOffset = tableWrapper.getBoundingClientRect().top;
+        const height = getViewportHeight() - yOffset - 32;
+        this.renderer2.setStyle(tableWrapper, 'height', `${height}px`);
+        console.log('height computed');
+      });
+    });
+
     effect(() => {
       this.tblDataSource.sort = this.sort;
       const data = this.getTableSourceData();
@@ -93,45 +115,17 @@ export class BillsTableComponent {
 
   private computeTotalBills(): void {
     const data = this.tblDataSource.data;
-    this.totalBills = data.reduce((acc, curr) => acc + curr.amount, 0);
+    this.totalBills.set(data.reduce((acc, curr) => acc + curr.amount, 0));
   }
 
   private getTableSourceData(): Bill[] {
-    let data = this.bills();
-
-    // Filter out yearly bills that are not yet due
-    const currentMonth = new Date().getMonth();
-    data = data.filter((d) => {
-      if (d.billingCycle === BILLING_CYCLES.Yearly) {
-        return new Date(d.dueDate as string).getMonth() === currentMonth;
-      } else if (d.billingCycle === BILLING_CYCLES.Quarterly) {
-        const dueMonths = this.getQuarterlyDueMonths(d.dueDate as string);
-        return dueMonths.includes(currentMonth);
-      } else {
-        return true; // Monthly bills are always displayed
-      }
-    });
-
-    return data.map((d) => ({
+    return this.bills().map((d) => ({
       ...d,
       isLoading: false,
       lastPaymentDate: d.lastPaymentDate
         ? new Date((d.lastPaymentDate as FirestoreResponseDate).seconds * 1000)
         : undefined,
     }));
-  }
-
-  /** Compute the months a quarterly bill is paid */
-  private getQuarterlyDueMonths(dueDate: string): number[] {
-    const dueMonths: number[] = [];
-    const startMonthIndex = new Date(dueDate).getMonth();
-
-    for (let i = 0; i < 4; i++) {
-      const monthIndex = (startMonthIndex + i * 3) % 12;
-      dueMonths.push(monthIndex);
-    }
-
-    return dueMonths;
   }
 
   onTogglePaidStatus(bill: TableBill): void {
