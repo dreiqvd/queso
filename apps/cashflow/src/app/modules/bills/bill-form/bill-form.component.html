@@ -19,7 +19,7 @@
     <mat-select formControlName="category" placeholder="e.g. Subscriptions" required>
       @for (category of billingCategories; track $index) {
         <mat-option [value]="category">
-          {{ category | titlecase }}
+          {{ category }}
         </mat-option>
       }
     </mat-select>
