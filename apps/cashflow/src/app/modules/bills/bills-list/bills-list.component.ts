@@ -47,24 +47,28 @@ export class BillsListComponent {
   readonly selectedPeriodIndex = new Date().getDate() > 15 ? 0 : 1;
   period1Bills: Bill[] = [];
   period2Bills: Bill[] = [];
+  allBills: Bill[] = [];
   overallTotal = 0;
-
-  bills: Bill[] = [];
 
   constructor() {
     afterNextRender(() => {
       this.billService.list().subscribe((bills) => {
         // Bills that are paid before the 30th of the month (excluding 30th bills).
         // Note: 31st bills should be paid before 30th of the month and thus included for period 1
-        this.period1Bills = bills.filter(
-          (d) =>
-            (d.paymentDay >= 1 && d.paymentDay <= 15) || d.paymentDay === 31
-        );
+        this.period1Bills = bills
+          .filter(
+            (d) =>
+              (d.paymentDay >= 1 && d.paymentDay <= 15) || d.paymentDay === 31
+          )
+          .sort((a, b) => b.amount - a.amount);
         // Bills that are paid before the 15th of the month (excluding 15th bills).
-        this.period2Bills = bills.filter(
-          (d) => d.paymentDay >= 16 && d.paymentDay <= 30
-        );
+        this.period2Bills = bills
+          .filter((d) => d.paymentDay >= 16 && d.paymentDay <= 30)
+          .sort((a, b) => b.amount - a.amount);
 
+        this.allBills = [...this.period1Bills, ...this.period2Bills].sort(
+          (a, b) => a.paymentDay - b.paymentDay
+        );
         this.overallTotal = bills.reduce((acc, bill) => acc + bill.amount, 0);
       });
     });

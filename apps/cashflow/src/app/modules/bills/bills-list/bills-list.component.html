@@ -27,6 +27,16 @@
       <app-bills-table [bills]="period2Bills" />
     </div>
   </mat-tab>
+
+  <mat-tab label="All Bills">
+    <div class="py-6">
+      <!-- <div class="flex justify-between items-center mb-4 table-heading">
+        <p class="text-gray text-sm m-0">Bills that are paid before the 15th of the month (excluding 15th bills).</p>
+        <ng-template [ngTemplateOutlet]="markAllBtn" />
+      </div> -->
+      <app-bills-table [bills]="allBills" />
+    </div>
+  </mat-tab>
 </mat-tab-group>
 
 <ng-template #markAllBtn>

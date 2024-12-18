@@ -112,17 +112,13 @@ export class BillsTableComponent {
       }
     });
 
-    return data
-      .sort((a, b) => b.amount - a.amount)
-      .map((d) => ({
-        ...d,
-        isLoading: false,
-        lastPaymentDate: d.lastPaymentDate
-          ? new Date(
-              (d.lastPaymentDate as FirestoreResponseDate).seconds * 1000
-            )
-          : undefined,
-      }));
+    return data.map((d) => ({
+      ...d,
+      isLoading: false,
+      lastPaymentDate: d.lastPaymentDate
+        ? new Date((d.lastPaymentDate as FirestoreResponseDate).seconds * 1000)
+        : undefined,
+    }));
   }
 
   /** Compute the months a quarterly bill is paid */
