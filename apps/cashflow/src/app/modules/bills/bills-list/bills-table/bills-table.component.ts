@@ -54,12 +54,14 @@ export class BillsTableComponent {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('tableWrapper') tableWrapper!: ElementRef<HTMLDivElement>;
 
+  /** Whether to hide the Mark All as Unpaid action button */
+  readonly bills = input.required<TableBill[]>();
+
   private readonly billService = inject(BillService);
   private readonly dialogService = inject(QsDialogService);
   private readonly renderer2 = inject(Renderer2);
 
   totalBills = signal(0);
-  bills = input.required<TableBill[]>();
 
   readonly tblColumns = [
     'name',
@@ -84,7 +86,6 @@ export class BillsTableComponent {
         const yOffset = tableWrapper.getBoundingClientRect().top;
         const height = getViewportHeight() - yOffset - 32;
         this.renderer2.setStyle(tableWrapper, 'height', `${height}px`);
-        console.log('height computed');
       });
     });
 

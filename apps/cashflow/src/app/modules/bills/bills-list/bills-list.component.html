@@ -39,7 +39,10 @@
       <div class="pt-6">
         <div class="flex justify-between items-center table-heading">
           <p class="text-gray text-sm m-0">All unfiltered bills.</p>
-          <ng-template [ngTemplateOutlet]="markAllBtn" />
+          <ng-template
+            [ngTemplateOutlet]="markAllBtn"
+            [ngTemplateOutletContext]="{ $implicit: { hideMarkAllAsUnpaidBtn: true } }"
+          />
         </div>
         <app-bills-table [bills]="allBills" />
       </div>
@@ -47,16 +50,18 @@
   </mat-tab>
 </mat-tab-group>
 
-<ng-template #markAllBtn>
+<ng-template #markAllBtn let-hideMarkAllAsUnpaidBtn>
   <div class="flex items-center gap-4">
-    <button
-      mat-stroked-button
-      type="button"
-      color="primary"
-      (click)="markAllAsUnpaid()"
-    >
-      Mark all as Unpaid
-    </button>
+    @if (!hideMarkAllAsUnpaidBtn) {
+      <button
+        mat-stroked-button
+        type="button"
+        color="primary"
+        (click)="markAllAsUnpaid()"
+      >
+        Mark all as Unpaid
+      </button>
+    }
     <button
       mat-flat-button
       color="accent"
