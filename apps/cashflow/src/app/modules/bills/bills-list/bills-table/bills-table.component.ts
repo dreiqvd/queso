@@ -1,29 +1,19 @@
 import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
-import {
-  afterRenderEffect,
-  Component,
-  effect,
-  ElementRef,
-  inject,
-  input,
-  Renderer2,
-  signal,
-  ViewChild,
-} from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { format } from 'date-fns';
 import { filter, of, switchMap, tap } from 'rxjs';
 
-import { getViewportHeight } from '@queso/common';
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsDialogActionTypes, QsDialogService } from '@queso/ui-kit/dialog';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
+import { BaseTableDirective } from '../../../../directives';
 import { Bill, FirestoreResponseDate } from '../../../../models';
 import { BillService } from '../../../../services';
 import { BillFormComponent } from '../../bill-form/bill-form.component';
@@ -48,49 +38,54 @@ interface TableBill extends Bill {
     QsIconComponent,
   ],
   templateUrl: './bills-table.component.html',
-  styleUrl: './bills-table.component.scss',
-})
-export class BillsTableComponent {
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild('tableWrapper') tableWrapper!: ElementRef<HTMLDivElement>;
+  styles: `
+    td {
+      --mat-icon-button-state-layer-color: var(--color-gray-100);
 
+      padding: 16px;
+    }
+
+    tr.loading {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 100;
+      }
+    }
+  `,
+})
+export class BillsTableComponent extends BaseTableDirective<TableBill> {
   /** Whether to hide the Mark All as Unpaid action button */
   readonly bills = input.required<TableBill[]>();
 
   private readonly billService = inject(BillService);
   private readonly dialogService = inject(QsDialogService);
-  private readonly renderer2 = inject(Renderer2);
 
   totalBills = signal(0);
-
-  readonly tblColumns = [
-    'name',
-    'amount',
-    'dueDate',
-    'paymentAccount',
-    'billingCycle',
-    'lastPaymentDate',
-    'isPaid',
-    'action',
-  ];
-  tblDataSource = new MatTableDataSource<Bill>();
   paymentAccounts: Array<{
     total: number;
     name: string;
   }> = [];
 
   constructor() {
-    afterRenderEffect(() => {
-      setTimeout(() => {
-        const tableWrapper = this.tableWrapper.nativeElement;
-        const yOffset = tableWrapper.getBoundingClientRect().top;
-        const height = getViewportHeight() - yOffset - 32;
-        this.renderer2.setStyle(tableWrapper, 'height', `${height}px`);
-      });
-    });
+    super();
+    this.tblColumns = [
+      'name',
+      'amount',
+      'dueDate',
+      'paymentAccount',
+      'billingCycle',
+      'lastPaymentDate',
+      'isPaid',
+      'action',
+    ];
 
     effect(() => {
-      this.tblDataSource.sort = this.sort;
       const data = this.getTableSourceData();
       this.tblDataSource.data = data;
       this.paymentAccounts = data.reduce(
