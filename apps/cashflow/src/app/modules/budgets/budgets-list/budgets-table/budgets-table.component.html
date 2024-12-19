@@ -1,0 +1,65 @@
+<div class="flex gap-8">
+  <div #tableWrapper class="table-wrapper w-full overflow-y-auto border-b border-solid border-gray-100 mt-4">
+    <table mat-table matSort class="h-full" [dataSource]="tblDataSource" [fixedLayout]="true">
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Amount</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.amount | currency : 'PHP' : undefined : '1.0-0' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th *matHeaderCellDef mat-header-cell class="center w-[250px]">Action</th>
+        <td *matCellDef="let element" mat-cell class="center">
+          <button
+            mat-icon-button
+            aria-label="Actions"
+            type="button"
+            matTooltip="Actions"
+            [matMenuTriggerFor]="actionMenu"
+          >
+            <qs-icon iconName="ellipsis-vertical" [iconSize]="20" />
+          </button>
+
+          <mat-menu #actionMenu="matMenu">
+
+            <button mat-menu-item type="button" (click)="onEditBudget(element)">
+              <div class="flex items-center">
+                <qs-icon iconName="pen-to-square" [iconSize]="20" />
+                <span>Edit</span>
+              </div>
+            </button>
+
+            <button mat-menu-item type="button" (click)="onDeleteBudget(element)">
+              <div class="flex items-center text-red">
+                <qs-icon iconName="trash-can" class="text-red" [iconSize]="20" />
+                <span>Delete</span>
+              </div>
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="tblColumns; sticky: true" mat-header-row></tr>
+      <tr
+        *matRowDef="let row; columns: tblColumns"
+        mat-row
+        class="relative"
+        [class.loading]="row.isLoading">
+      </tr>
+      <tr *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="tblColumns.length">
+          <div class="flex justify-center">
+            <mat-spinner color="accent" [diameter]="32"/>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>

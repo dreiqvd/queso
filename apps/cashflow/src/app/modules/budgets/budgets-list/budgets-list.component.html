@@ -1,0 +1,11 @@
+<header class="mb-4">
+  <h1 class="text-2xl">Regular Budget Allocation</h1>
+  <div class="mt-4">
+    <h2 class="text-xl text-gray">
+      MONTHLY TOTAL: {{ monthlyTotal | currency : 'PHP' }}
+    </h2>
+  </div>
+</header>
+<div>
+  <app-budgets-table [budgets]="budgets" />
+</div>
