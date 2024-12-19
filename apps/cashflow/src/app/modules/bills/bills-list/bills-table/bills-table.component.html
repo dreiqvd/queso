@@ -1,6 +1,6 @@
 <div class="flex gap-8">
   <div #tableWrapper class="table-wrapper w-full overflow-y-auto border-b border-solid border-gray-100 mt-4">
-    <table mat-table matSort class="h-full" [dataSource]="tblDataSource">
+    <table mat-table matSort class="h-full" [dataSource]="tblDataSource" [fixedLayout]="true">
       <ng-container matColumnDef="name">
         <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
         <td *matCellDef="let element" mat-cell>
@@ -104,7 +104,7 @@
         </td>
       </ng-container>
 
-      <tr *matHeaderRowDef="tblColumns" mat-header-row></tr>
+      <tr *matHeaderRowDef="tblColumns; sticky: true" mat-header-row></tr>
       <tr
         *matRowDef="let row; columns: tblColumns"
         mat-row
