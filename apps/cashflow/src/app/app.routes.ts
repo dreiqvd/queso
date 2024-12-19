@@ -27,15 +27,5 @@ export const appRoutes: Route[] = [
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
-  {
-    path: 'income',
-    pathMatch: 'full',
-    loadComponent: () =>
-      import('./modules/income/income.component').then(
-        (m) => m.IncomeComponent
-      ),
-    canActivate: [AuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
-  },
   { path: 'login', pathMatch: 'full', component: LoginComponent },
 ];
