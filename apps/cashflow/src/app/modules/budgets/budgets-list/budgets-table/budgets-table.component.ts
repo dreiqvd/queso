@@ -6,8 +6,8 @@ import { MatTableModule } from '@angular/material/table';
 
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
+import { Budget } from '../../../../core/models/budget.model';
 import { BaseTableDirective } from '../../../../directives';
-import { Budget } from '../../../../models/budget.model';
 
 interface TableBudget extends Budget {
   isLoading?: boolean;

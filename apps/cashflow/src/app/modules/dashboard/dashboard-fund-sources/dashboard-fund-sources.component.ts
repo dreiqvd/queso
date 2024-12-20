@@ -3,7 +3,7 @@ import { Component, effect, input } from '@angular/core';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
 
-import { FundSource } from '../../../models';
+import { FundSource } from '../../../core/models';
 
 interface DashboardFundSource extends FundSource {
   total: number;

@@ -13,9 +13,9 @@ import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsDialogActionTypes, QsDialogService } from '@queso/ui-kit/dialog';
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
+import { Bill, FirestoreResponseDate } from '../../../../core/models';
+import { BillService } from '../../../../core/services';
 import { BaseTableDirective } from '../../../../directives';
-import { Bill, FirestoreResponseDate } from '../../../../models';
-import { BillService } from '../../../../services';
 import { BillFormComponent } from '../../bill-form/bill-form.component';
 
 interface TableBill extends Bill {

@@ -10,9 +10,9 @@ import { QsIconComponent } from '@queso/ui-kit/icon';
 import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
 import { QsTabGroupDirective } from '@queso/ui-kit/tabs';
 
-import { BILLING_CYCLES } from '../../../app.constants';
-import { Bill } from '../../../models';
-import { BillService } from '../../../services';
+import { BILLING_CYCLES } from '../../../core/constants';
+import { Bill } from '../../../core/models';
+import { BillService } from '../../../core/services';
 import { BillFormComponent } from '../bill-form/bill-form.component';
 
 import { BillsTableComponent } from './bills-table/bills-table.component';

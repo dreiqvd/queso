@@ -7,8 +7,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
-import { BankAccount } from '../../../models/bank-account.model';
-import { BankAccountService } from '../../../services';
+import { BankAccount } from '../../../core/models/bank-account.model';
+import { BankAccountService } from '../../../core/services';
 
 interface DashboardBankAccount extends BankAccount {
   isEditMode: boolean;

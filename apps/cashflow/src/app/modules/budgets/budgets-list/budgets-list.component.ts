@@ -1,8 +1,8 @@
 import { CurrencyPipe } from '@angular/common';
 import { afterNextRender, Component, inject } from '@angular/core';
 
-import { Budget } from '../../../models/budget.model';
-import { BudgetService } from '../../../services';
+import { Budget } from '../../../core/models/budget.model';
+import { BudgetService } from '../../../core/services';
 
 import { BudgetsTableComponent } from './budgets-table/budgets-table.component';
 

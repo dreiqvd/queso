@@ -16,9 +16,9 @@ import { BehaviorSubject, Observable, of, take } from 'rxjs';
 
 import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
 
-import { BILLING_CATEGORIES, BILLING_CYCLES } from '../../../app.constants';
-import { Bill } from '../../../models';
-import { PaymentAccountService } from '../../../services';
+import { BILLING_CATEGORIES, BILLING_CYCLES } from '../../../core/constants';
+import { Bill } from '../../../core/models';
+import { PaymentAccountService } from '../../../core/services';
 
 @Component({
   selector: 'app-bill-form',
