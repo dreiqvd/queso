@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -28,25 +28,12 @@ interface DashboardBankAccount extends BankAccount {
 })
 export class DashboardBankAccountsComponent {
   bankAccounts = input.required<DashboardBankAccount[]>();
+  bankAccountsTotalBalance = input.required<number>();
+  accountUpdated = output<void>();
 
   private readonly bankAccountService = inject(BankAccountService);
 
   readonly isEditing = signal(false);
-
-  totalBalance = 0;
-
-  constructor() {
-    effect(() => {
-      this.computeTotalBalance();
-    });
-  }
-
-  private computeTotalBalance(): void {
-    this.totalBalance = this.bankAccounts().reduce(
-      (acc, bankAccount) => acc + bankAccount.balance,
-      0
-    );
-  }
 
   onEditBalance(account: DashboardBankAccount, amount: string): void {
     const value = parseFloat(amount);
@@ -63,8 +50,8 @@ export class DashboardBankAccountsComponent {
       .subscribe(() => {
         account.balance = value;
         account.isEditMode = false;
-        this.computeTotalBalance();
         this.isEditing.set(false);
+        this.accountUpdated.emit();
       });
   }
 }

@@ -16,26 +16,23 @@ interface DashboardFundSource extends FundSource {
 })
 export class DashboardSourceOfFundsComponent {
   fundSources = input.required<DashboardFundSource[]>();
+  fundSourcesTotalAmount = input.required<number>();
 
-  overallTotal = 0;
   period1Total = 0;
   period2Total = 0;
 
   constructor() {
     effect(() => {
-      const { overallTotal, period1Total, period2Total } =
-        this.fundSources().reduce(
-          (totals, source) => {
-            totals.overallTotal += source.total;
-            totals.period1Total += source.receivables[0];
-            totals.period2Total += source.receivables[1] || 0;
+      const { period1Total, period2Total } = this.fundSources().reduce(
+        (totals, source) => {
+          totals.period1Total += source.receivables[0];
+          totals.period2Total += source.receivables[1] || 0;
 
-            return totals;
-          },
-          { overallTotal: 0, period1Total: 0, period2Total: 0 }
-        );
+          return totals;
+        },
+        { period1Total: 0, period2Total: 0 }
+      );
 
-      this.overallTotal = overallTotal;
       this.period1Total = period1Total;
       this.period2Total = period2Total;
     });

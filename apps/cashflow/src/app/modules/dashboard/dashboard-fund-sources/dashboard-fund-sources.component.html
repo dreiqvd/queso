@@ -8,7 +8,7 @@
         <div class="flex gap-2 text-right items-baseline">
           <span class="text-gray font-semibold">Monthly Total: </span>
           <span class="font-bold text-accent text-xl">
-            {{ overallTotal | currency : 'PHP' : undefined : '1.0-0' }}
+            {{ fundSourcesTotalAmount() | currency : 'PHP' : undefined : '1.0-0' }}
           </span>
         </div>
 

@@ -1,4 +1,3 @@
-import { CurrencyPipe } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { combineLatest, take } from 'rxjs';
@@ -11,23 +10,24 @@ import { BankAccountService, FundSourceService } from '../../core/services';
 
 import { DashboardBankAccountsComponent } from './dashboard-bank-accounts/dashboard-bank-accounts.component';
 import { DashboardSourceOfFundsComponent } from './dashboard-fund-sources/dashboard-fund-sources.component';
+import { DashboardNextMonthSavingsComponent } from './dashboard-next-month-savings/dashboard-next-month-savings.component';
 
-interface DashboardFundSource extends FundSource {
+export interface DashboardFundSource extends FundSource {
   total: number;
 }
 
-interface DashboardBankAccount extends BankAccount {
+export interface DashboardBankAccount extends BankAccount {
   isEditMode: boolean;
 }
 
 @Component({
   selector: 'app-dashboard',
   imports: [
-    CurrencyPipe,
     QsOverlaySpinnerComponent,
     NavbarComponent,
     DashboardBankAccountsComponent,
     DashboardSourceOfFundsComponent,
+    DashboardNextMonthSavingsComponent,
   ],
   templateUrl: './dashboard.component.html',
 })
@@ -39,6 +39,8 @@ export class DashboardComponent {
   readonly nextMonthSavings = signal(0);
   readonly fundSources = signal<DashboardFundSource[]>([]);
   readonly bankAccounts = signal<DashboardBankAccount[]>([]);
+  readonly fundSourcesTotalAmount = signal(0);
+  readonly bankAccountsTotalBalance = signal(0);
 
   constructor() {
     this.isLoading.set(true);
@@ -57,6 +59,14 @@ export class DashboardComponent {
             }))
         );
 
+        this.fundSourcesTotalAmount.set(
+          fundSources.reduce(
+            (acc, source) =>
+              acc + source.receivables[0] + (source.receivables[1] || 0),
+            0
+          )
+        );
+
         this.bankAccounts.set(
           bankAccounts
             .sort((a, b) => a.name.localeCompare(b.name))
@@ -66,13 +76,22 @@ export class DashboardComponent {
             }))
         );
 
-        this.calculateNextMonthSavings();
+        this.computeBankAccountTotalBalance();
 
         this.isLoading.set(false);
       });
   }
 
-  private calculateNextMonthSavings(): void {
-    // const currentPeriod
+  private computeBankAccountTotalBalance(): void {
+    this.bankAccountsTotalBalance.set(
+      this.bankAccounts().reduce(
+        (acc, bankAccount) => acc + bankAccount.balance,
+        0
+      )
+    );
+  }
+
+  onAccountUpdated(): void {
+    this.computeBankAccountTotalBalance();
   }
 }
