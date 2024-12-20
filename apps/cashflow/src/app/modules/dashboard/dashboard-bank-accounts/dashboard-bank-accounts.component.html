@@ -4,7 +4,6 @@
       <mat-progress-bar mode="indeterminate" color="primary"/>
     </div>
   }
-  <qs-overlay-spinner [hidden]="!isLoading()" />
   <div class="flex flex-col gap-4 p-6">
     <h2 class="text-xl text-primary">
       Bank Accounts
@@ -16,7 +15,7 @@
       </span>
     </div>
     <div class="flex flex-col gap-4">
-      @for (account of bankAccounts; track $index) {
+      @for (account of bankAccounts(); track $index) {
         <div class="flex flex-col gap-1 px-4 border-l-4" [style.borderColor]="account.color">
           <h4 class="text-base font-semibold text-gray-500">{{ account.name }}</h4>
           @if (!account.isEditMode) {

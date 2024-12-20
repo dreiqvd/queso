@@ -1,13 +1,11 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { take } from 'rxjs';
 
 import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
 
 import { BankAccount } from '../../../models/bank-account.model';
 import { BankAccountService } from '../../../services';
@@ -25,37 +23,26 @@ interface DashboardBankAccount extends BankAccount {
     MatProgressBarModule,
     MatTooltipModule,
     QsIconComponent,
-    QsOverlaySpinnerComponent,
   ],
   templateUrl: './dashboard-bank-accounts.component.html',
 })
-export class DashboardBankAccountsComponent implements OnInit {
+export class DashboardBankAccountsComponent {
+  bankAccounts = input.required<DashboardBankAccount[]>();
+
   private readonly bankAccountService = inject(BankAccountService);
 
-  readonly isLoading = signal(true);
   readonly isEditing = signal(false);
 
-  bankAccounts: DashboardBankAccount[] = [];
   totalBalance = 0;
 
-  ngOnInit(): void {
-    this.bankAccountService
-      .list()
-      .pipe(take(1))
-      .subscribe((data) => {
-        this.bankAccounts = data
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map((bankAccount) => ({
-            ...bankAccount,
-            isEditMode: false,
-          }));
-        this.computeTotalBalance();
-        this.isLoading.set(false);
-      });
+  constructor() {
+    effect(() => {
+      this.computeTotalBalance();
+    });
   }
 
   private computeTotalBalance(): void {
-    this.totalBalance = this.bankAccounts.reduce(
+    this.totalBalance = this.bankAccounts().reduce(
       (acc, bankAccount) => acc + bankAccount.balance,
       0
     );

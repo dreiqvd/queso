@@ -1,7 +1,8 @@
 <app-navbar />
 <div class="p-8">
+  <qs-overlay-spinner [hidden]="!isLoading()" />
   <section class="grid grid-cols-[320px_auto] gap-8">
-    <app-dashboard-bank-accounts />
-    <app-dashboard-fund-sources />
+    <app-dashboard-bank-accounts [bankAccounts]="bankAccounts" />
+    <app-dashboard-fund-sources [fundSources]="fundSources" />
   </section>
 </div>

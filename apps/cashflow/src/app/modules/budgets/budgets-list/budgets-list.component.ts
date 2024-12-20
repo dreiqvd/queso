@@ -15,7 +15,6 @@ export class BudgetsListComponent {
   private readonly budgetService = inject(BudgetService);
 
   monthlyTotal = 0;
-
   budgets: Budget[] = [];
 
   constructor() {
