@@ -13,6 +13,7 @@ import { QsTabGroupDirective } from '@queso/ui-kit/tabs';
 import { BILLING_CYCLES } from '../../../core/constants';
 import { Bill } from '../../../core/models';
 import { BillService } from '../../../core/services';
+import { getPeriod } from '../../../core/utils';
 import { BillFormComponent } from '../bill-form/bill-form.component';
 
 import { BillsTableComponent } from './bills-table/bills-table.component';
@@ -61,12 +62,11 @@ export class BillsListComponent {
         // Bills that are paid before the 30th of the month (excluding 30th bills).
         // Note: 31st bills should be paid before 30th of the month and thus included for period 1
         this.period1Bills = periodicalBills.filter(
-          (d) =>
-            (d.paymentDay >= 1 && d.paymentDay <= 15) || d.paymentDay === 31
+          (d) => getPeriod(d.paymentDay) === 1
         );
         // Bills that are paid before the 15th of the month (excluding 15th bills).
         this.period2Bills = periodicalBills.filter(
-          (d) => d.paymentDay >= 16 && d.paymentDay <= 30
+          (d) => getPeriod(d.paymentDay) === 2
         );
 
         this.allBills = bills.sort((a, b) => a.paymentDay - b.paymentDay);
