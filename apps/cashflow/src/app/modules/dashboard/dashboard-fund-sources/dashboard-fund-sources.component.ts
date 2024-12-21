@@ -1,9 +1,10 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, effect, input } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
 
 import { FundSource } from '../../../core/models';
+import { FundSourceService } from '../../../core/services';
 
 interface DashboardFundSource extends FundSource {
   total: number;
@@ -18,23 +19,19 @@ export class DashboardSourceOfFundsComponent {
   fundSources = input.required<DashboardFundSource[]>();
   fundSourcesTotalAmount = input.required<number>();
 
+  private readonly fundSourceService = inject(FundSourceService);
+
   period1Total = 0;
   period2Total = 0;
 
   constructor() {
     effect(() => {
-      const { period1Total, period2Total } = this.fundSources().reduce(
-        (totals, source) => {
-          totals.period1Total += source.receivables[0];
-          totals.period2Total += source.receivables[1] || 0;
-
-          return totals;
-        },
-        { period1Total: 0, period2Total: 0 }
+      const [p1Total, p2Total] = this.fundSourceService.getTotalsByPeriod(
+        this.fundSources()
       );
 
-      this.period1Total = period1Total;
-      this.period2Total = period2Total;
+      this.period1Total = p1Total;
+      this.period2Total = p2Total;
     });
   }
 }

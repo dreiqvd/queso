@@ -3,6 +3,11 @@
     <header class="flex justify-between items-center">
       <h2 class="text-xl text-primary">
         Source of Funds
+        <div class="text-[12px] text-gray italic font-normal font-body flex gap-1 justify-end mt-1">
+          <span>1st Period — receivable within 30th to 14th</span>
+          |
+          <span>2nd Period — receivable within 15th to 29th</span>
+        </div>
       </h2>
       <div class="flex flex-col gap-2 items-end">
         <div class="flex gap-2 text-right items-baseline">
@@ -43,13 +48,13 @@
               {{ source.total | currency : 'PHP' : undefined : '1.0-0' }} <span class="text-gray text-base font-normal"> / mo.</span>
             </h4>
           </div>
-          <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-6">
             @for (receivable of source.receivables; let idx = $index; track $index) {
               <div class="flex flex-col gap-1">
                 <h5 class="text-gray-400 font-medium font-heading">
-                  {{ idx + 1 | ordinal }} Period
+                  {{ idx + 1 | ordinal }} <span class="superscript">st</span> Period
                 </h5>
-                <p class="font-semibold text-gray-900">
+                <p class="font-semibold text-gray-900 mb-0">
                   {{ receivable | currency : 'PHP' : undefined : '1.0-0' }}
                 </p>
               </div>
@@ -58,5 +63,6 @@
         </div>
       }
     </div>
+
   </div>
 </div>

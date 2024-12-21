@@ -1,23 +1,41 @@
 <div class="flex justify-between items-center mb-4">
   <h2>Projections</h2>
   <div class="flex gap-4">
-    @for (period of [1, 2]; track $index) {
-      <div class="flex gap-4">
-        <span class="text-gray text-sm">Include current month's period {{ period }} salary</span>
-        <mat-slide-toggle color="accent" />
-      </div>
-    }
+    <div class="flex gap-4">
+      <label
+        class="text-gray text-sm flex items-center gap-2"
+        for="includePeriod2Income">
+        <span class="mt-1" matTooltip="This is when the current month's income for 2nd period is not yet received.">
+          <qs-icon iconName="circle-info" [iconSize]="16" />
+        </span>
+        Include current month's 2nd period income
+      </label>
+      <mat-slide-toggle
+        name="includePeriod2Income"
+        color="accent"
+        (change)="onTogglePeriod2Income($event)"
+      />
+    </div>
   </div>
 </div>
-<div class="grid grid-cols-[320px_auto] gap-8">
+<div class="grid grid-cols-[320px_320px_auto] gap-8">
   <div class="shadow bg-white rounded overflow-hidden relative">
     <div class="flex flex-col gap-4 p-6">
-      <h3 class="text-xl text-primary">
-        Next Month's Savings
-      </h3>
-      <h3 class="font-body font-bold text-2xl">
+      <header>
+        <h3 class="text-xl text-primary">
+          Next Month's Savings
+        </h3>
+        <p class="mb-0 text-[13px] text-gray">Projected savings at the <b>end</b> of next month.</p>
+      </header>
+      <h4 class="font-body font-bold text-2xl">
         {{ nextMonthSavings() | currency : 'PHP' : undefined : '1.0-0' }}
-      </h3>
+      </h4>
+      <div class="flex flex-col gap-2">
+        <span class="text-sm font-heading text-gray">Net Gain:</span>
+        <span class="text-lg font-medium">
+          {{ monthlyNet() | currency : 'PHP' : undefined : '1.0-0' }}
+        </span>
+      </div>
     </div>
   </div>
 

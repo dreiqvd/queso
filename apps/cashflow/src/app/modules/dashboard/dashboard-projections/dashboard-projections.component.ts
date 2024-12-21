@@ -1,15 +1,26 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, effect, inject, input, signal } from '@angular/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {
+  MatSlideToggleChange,
+  MatSlideToggleModule,
+} from '@angular/material/slide-toggle';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { addMonths } from 'date-fns';
 
+import { QsIconComponent } from '@queso/ui-kit/icon';
+
 import { Bill, Budget } from '../../../core/models';
-import { BillService } from '../../../core/services';
+import { BillService, FundSourceService } from '../../../core/services';
 import { DashboardFundSource } from '../dashboard.component';
 
 @Component({
   selector: 'app-dashboard-projections',
-  imports: [CurrencyPipe, MatSlideToggleModule],
+  imports: [
+    CurrencyPipe,
+    MatSlideToggleModule,
+    MatTooltipModule,
+    QsIconComponent,
+  ],
   templateUrl: './dashboard-projections.component.html',
 })
 export class DashboardProjectionsComponent {
@@ -20,18 +31,21 @@ export class DashboardProjectionsComponent {
   readonly fundSourcesTotalAmount = input.required<number>();
 
   private readonly billService = inject(BillService);
+  private readonly fundSourceService = inject(FundSourceService);
 
+  readonly monthlyNet = signal(0);
   readonly nextMonthSavings = signal(0);
-  readonly enablePeriod1Income = signal(false);
-  readonly enablePeriod2Income = signal(false);
+
+  /** Savings without fund source income */
+  private originalNextMonthSavings = 0;
 
   constructor() {
     effect(() => {
-      this.calculateNextMonthSavings();
+      this.calculateNumbers();
     });
   }
 
-  private calculateNextMonthSavings(): void {
+  private calculateNumbers(): void {
     const totalSavings =
       this.bankAccountsTotalBalance() + this.fundSourcesTotalAmount();
 
@@ -52,7 +66,27 @@ export class DashboardProjectionsComponent {
       0
     );
 
-    const nextMonthSavings = totalSavings - billsToPayAmount - totalBudget;
+    // Compute monthly net
+    const monthlyNet =
+      this.fundSourcesTotalAmount() - billsToPayAmount - totalBudget;
+    this.monthlyNet.set(monthlyNet);
+
+    // Allocated monthly budget is subtracted twice - one for current month and one for next month
+    const nextMonthSavings = totalSavings - billsToPayAmount - totalBudget * 2;
+    this.originalNextMonthSavings = nextMonthSavings;
+    this.nextMonthSavings.set(nextMonthSavings);
+  }
+
+  onTogglePeriod2Income(event: MatSlideToggleChange): void {
+    const [, p2Total] = this.fundSourceService.getTotalsByPeriod(
+      this.fundSources()
+    );
+
+    let nextMonthSavings = this.originalNextMonthSavings;
+    if (event.checked) {
+      nextMonthSavings += p2Total;
+    }
+
     this.nextMonthSavings.set(nextMonthSavings);
   }
 }
