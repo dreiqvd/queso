@@ -12,3 +12,16 @@ export class QsOrdinalPipe implements PipeTransform {
     return value + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0]);
   }
 }
+
+@Pipe({
+  name: 'ordinalSuffix',
+})
+export class QsOrdinalSuffix implements PipeTransform {
+  transform(value: number): string {
+    if (!Number.isInteger(value)) return '';
+
+    const suffixes = ['th', 'st', 'nd', 'rd'];
+    const v = value % 100;
+    return suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0];
+  }
+}
