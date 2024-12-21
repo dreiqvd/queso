@@ -57,7 +57,7 @@ export class BillsListComponent {
   constructor() {
     afterNextRender(() => {
       this.billService.list().subscribe((bills) => {
-        const billsToPay = this.billService.getBillsToPay(bills);
+        const billsToPay = this.billService.filterBillsToPay(bills);
         // Bills that are paid before the 30th of the month (excluding 30th bills).
         // Note: 31st bills should be paid before 30th of the month and thus included for period 1
         this.period1Bills = billsToPay.filter(

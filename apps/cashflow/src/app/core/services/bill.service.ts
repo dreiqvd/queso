@@ -19,7 +19,7 @@ export class BillService extends QsFirestoreBaseService<Bill> {
   }
 
   /** Get payable bills based on the current month. */
-  public getBillsToPay(bills: Bill[], month: Date | null = null): Bill[] {
+  public filterBillsToPay(bills: Bill[], month: Date | null = null): Bill[] {
     const currentMonth = month ? month.getMonth() : new Date().getMonth();
     const data = bills
       .filter((d) => {

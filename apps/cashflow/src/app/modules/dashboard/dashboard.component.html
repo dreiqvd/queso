@@ -15,7 +15,10 @@
   <section class="grid grid-cols-[320px_auto] gap-8">
     <app-dashboard-next-month-savings
       [fundSources]="fundSources()"
+      [budgets]="budgets()"
+      [bills]="bills()"
       [bankAccountsTotalBalance]="bankAccountsTotalBalance()"
+      [fundSourcesTotalAmount]="fundSourcesTotalAmount()"
     />
   </section>
 </div>

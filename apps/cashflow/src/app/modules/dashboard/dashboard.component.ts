@@ -5,8 +5,13 @@ import { combineLatest, take } from 'rxjs';
 import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
 
 import { NavbarComponent } from '../../components/navbar';
-import { BankAccount, FundSource } from '../../core/models';
-import { BankAccountService, FundSourceService } from '../../core/services';
+import { BankAccount, Bill, Budget, FundSource } from '../../core/models';
+import {
+  BankAccountService,
+  BillService,
+  BudgetService,
+  FundSourceService,
+} from '../../core/services';
 
 import { DashboardBankAccountsComponent } from './dashboard-bank-accounts/dashboard-bank-accounts.component';
 import { DashboardSourceOfFundsComponent } from './dashboard-fund-sources/dashboard-fund-sources.component';
@@ -34,11 +39,15 @@ export interface DashboardBankAccount extends BankAccount {
 export class DashboardComponent {
   private readonly fundSourceService = inject(FundSourceService);
   private readonly bankAccountService = inject(BankAccountService);
+  private readonly budgetService = inject(BudgetService);
+  private readonly billService = inject(BillService);
 
   readonly isLoading = signal(false);
   readonly nextMonthSavings = signal(0);
   readonly fundSources = signal<DashboardFundSource[]>([]);
   readonly bankAccounts = signal<DashboardBankAccount[]>([]);
+  readonly budgets = signal<Budget[]>([]);
+  readonly bills = signal<Bill[]>([]);
   readonly fundSourcesTotalAmount = signal(0);
   readonly bankAccountsTotalBalance = signal(0);
 
@@ -47,9 +56,11 @@ export class DashboardComponent {
     combineLatest([
       this.fundSourceService.list(),
       this.bankAccountService.list().pipe(take(1)),
+      this.budgetService.list().pipe(take(1)),
+      this.billService.list().pipe(take(1)),
     ])
       .pipe(takeUntilDestroyed())
-      .subscribe(([fundSources, bankAccounts]) => {
+      .subscribe(([fundSources, bankAccounts, budgets, bills]) => {
         this.fundSources.set(
           fundSources
             .sort((a, b) => b.receivables.length - a.receivables.length)
@@ -60,11 +71,7 @@ export class DashboardComponent {
         );
 
         this.fundSourcesTotalAmount.set(
-          fundSources.reduce(
-            (acc, source) =>
-              acc + source.receivables[0] + (source.receivables[1] || 0),
-            0
-          )
+          this.fundSources().reduce((acc, source) => acc + source.total, 0)
         );
 
         this.bankAccounts.set(
@@ -75,6 +82,9 @@ export class DashboardComponent {
               isEditMode: false,
             }))
         );
+
+        this.budgets.set(budgets);
+        this.bills.set(bills);
 
         this.computeBankAccountTotalBalance();
 
