@@ -19,8 +19,15 @@ export class BillService extends QsFirestoreBaseService<Bill> {
   }
 
   /** Get payable bills based on the current month. */
-  public filterBillsToPay(bills: Bill[], month: Date | null = null): Bill[] {
-    const currentMonth = month ? month.getMonth() : new Date().getMonth();
+  public filterBillsToPay(
+    bills: Bill[],
+    dateReference: Date | null = null
+  ): Bill[] {
+    if (dateReference === null) {
+      dateReference = new Date();
+    }
+
+    const currentMonth = dateReference.getMonth();
     const data = bills
       .filter((d) => {
         if (d.billingCycle === BILLING_CYCLES.Yearly) {
@@ -28,6 +35,19 @@ export class BillService extends QsFirestoreBaseService<Bill> {
         } else if (d.billingCycle === BILLING_CYCLES.Quarterly) {
           const dueMonths = this.getQuarterlyDueMonths(d.dueDate as string);
           return dueMonths.includes(currentMonth);
+        } else if (d.endDate) {
+          const endDate = new Date(d.endDate);
+          const endDateMonth = endDate.getMonth();
+          const endDateYear = endDate.getFullYear();
+          const dateRefEndMonth = dateReference.getMonth();
+          const dateRefEndYear = dateReference.getFullYear();
+          // If bill has an end date, only include when:
+          // 1. End Date Year is greater than the reference date year
+          // 2. End Date Year is equal to the reference date year and End Date Month is greater than or equal to the reference date month
+          return (
+            endDateYear > dateRefEndYear ||
+            (endDateYear === dateRefEndYear && endDateMonth >= dateRefEndMonth)
+          );
         } else {
           return true; // Regular monthly bills are always displayed
         }
