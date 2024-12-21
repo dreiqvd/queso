@@ -52,7 +52,7 @@
             @for (receivable of source.receivables; let idx = $index; track $index) {
               <div class="flex flex-col gap-1">
                 <h5 class="text-gray-400 font-medium font-heading">
-                  {{ idx + 1 | ordinal }} <span class="superscript">st</span> Period
+                  {{ idx + 1 }}<span class="superscript">{{ idx + 1 | ordinalSuffix }}</span> Period
                 </h5>
                 <p class="font-semibold text-gray-900 mb-0">
                   {{ receivable | currency : 'PHP' : undefined : '1.0-0' }}

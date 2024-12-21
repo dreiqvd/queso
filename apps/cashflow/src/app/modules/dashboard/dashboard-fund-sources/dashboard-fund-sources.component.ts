@@ -1,7 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, effect, inject, input } from '@angular/core';
 
-import { QsOrdinalPipe } from '@queso/common/pipes';
+import { QsOrdinalSuffix } from '@queso/common/pipes';
 
 import { FundSource } from '../../../core/models';
 import { FundSourceService } from '../../../core/services';
@@ -12,7 +12,7 @@ interface DashboardFundSource extends FundSource {
 
 @Component({
   selector: 'app-dashboard-fund-sources',
-  imports: [CurrencyPipe, QsOrdinalPipe],
+  imports: [CurrencyPipe, QsOrdinalSuffix],
   templateUrl: './dashboard-fund-sources.component.html',
 })
 export class DashboardSourceOfFundsComponent {
