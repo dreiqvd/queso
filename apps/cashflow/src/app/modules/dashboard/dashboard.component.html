@@ -1,5 +1,5 @@
 <app-navbar />
-<div class="p-8 flex flex-col gap-8">
+<div class="p-8 flex flex-col gap-10">
   <qs-overlay-spinner [hidden]="!isLoading()" />
   <section class="grid grid-cols-[320px_auto] gap-8">
     <app-dashboard-bank-accounts
@@ -12,8 +12,8 @@
       [fundSourcesTotalAmount]="fundSourcesTotalAmount()"
     />
   </section>
-  <section class="grid grid-cols-[320px_auto] gap-8">
-    <app-dashboard-next-month-savings
+  <section>
+    <app-dashboard-projections
       [fundSources]="fundSources()"
       [budgets]="budgets()"
       [bills]="bills()"

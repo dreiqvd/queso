@@ -15,7 +15,7 @@ import {
 
 import { DashboardBankAccountsComponent } from './dashboard-bank-accounts/dashboard-bank-accounts.component';
 import { DashboardSourceOfFundsComponent } from './dashboard-fund-sources/dashboard-fund-sources.component';
-import { DashboardNextMonthSavingsComponent } from './dashboard-next-month-savings/dashboard-next-month-savings.component';
+import { DashboardProjectionsComponent } from './dashboard-projections/dashboard-projections.component';
 
 export interface DashboardFundSource extends FundSource {
   total: number;
@@ -32,7 +32,7 @@ export interface DashboardBankAccount extends BankAccount {
     NavbarComponent,
     DashboardBankAccountsComponent,
     DashboardSourceOfFundsComponent,
-    DashboardNextMonthSavingsComponent,
+    DashboardProjectionsComponent,
   ],
   templateUrl: './dashboard.component.html',
 })

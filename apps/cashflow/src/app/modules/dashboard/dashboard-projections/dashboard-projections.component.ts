@@ -1,5 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, effect, inject, input, signal } from '@angular/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { addMonths } from 'date-fns';
 
 import { Bill, Budget } from '../../../core/models';
@@ -7,11 +8,11 @@ import { BillService } from '../../../core/services';
 import { DashboardFundSource } from '../dashboard.component';
 
 @Component({
-  selector: 'app-dashboard-next-month-savings',
-  imports: [CurrencyPipe],
-  templateUrl: './dashboard-next-month-savings.component.html',
+  selector: 'app-dashboard-projections',
+  imports: [CurrencyPipe, MatSlideToggleModule],
+  templateUrl: './dashboard-projections.component.html',
 })
-export class DashboardNextMonthSavingsComponent {
+export class DashboardProjectionsComponent {
   readonly fundSources = input.required<DashboardFundSource[]>();
   readonly budgets = input.required<Budget[]>();
   readonly bills = input.required<Bill[]>();
