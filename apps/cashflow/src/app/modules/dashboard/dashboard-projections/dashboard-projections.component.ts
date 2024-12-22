@@ -1,17 +1,25 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { Component, effect, inject, input } from '@angular/core';
 import {
   MatSlideToggleChange,
   MatSlideToggleModule,
 } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { addMonths } from 'date-fns';
+import { addMonths, format } from 'date-fns';
 
 import { QsIconComponent } from '@queso/ui-kit/icon';
 
 import { Bill, Budget } from '../../../core/models';
 import { BillService, FundSourceService } from '../../../core/services';
 import { DashboardFundSource } from '../dashboard.component';
+
+interface ProjectedMonthlySavings {
+  amount: number;
+  netGain: number;
+  month: string;
+}
+
+const PROJECTIONS_COUNT = 6; // number of months to be projected
 
 @Component({
   selector: 'app-dashboard-projections',
@@ -33,48 +41,50 @@ export class DashboardProjectionsComponent {
   private readonly billService = inject(BillService);
   private readonly fundSourceService = inject(FundSourceService);
 
-  readonly monthlyNet = signal(0);
-  readonly nextMonthSavings = signal(0);
-
-  /** Savings without fund source income */
-  private originalNextMonthSavings = 0;
+  projectedSavings: ProjectedMonthlySavings[] = [];
 
   constructor() {
     effect(() => {
-      this.calculateNumbers();
+      this.computeProjections();
     });
   }
 
-  private calculateNumbers(): void {
-    const totalSavings =
-      this.bankAccountsTotalBalance() + this.fundSourcesTotalAmount();
-
+  private computeProjections(): void {
+    const projectedSavings = [];
+    const currentDate = new Date();
     const totalBudget = this.budgets().reduce(
       (acc, budget) => acc + budget.amount,
       0
     );
 
-    const nextMonth = addMonths(new Date(), 1);
-    nextMonth.setDate(1);
+    // Total Budget is subtracted because of the assumption that it is not yet spent
+    let currentSavings = this.bankAccountsTotalBalance() - totalBudget;
+    for (let i = 1; i <= PROJECTIONS_COUNT; i++) {
+      const dateRef = addMonths(currentDate, i);
+      dateRef.setDate(1);
+      const month = format(dateRef, 'MMMM yyyy');
 
-    const billsToPay = this.billService.filterBillsToPay(
-      this.bills(),
-      nextMonth
-    );
-    const billsToPayAmount = billsToPay.reduce(
-      (acc, bill) => acc + bill.amount,
-      0
-    );
+      const billsToPay = this.billService.filterBillsToPay(
+        this.bills(),
+        dateRef
+      );
+      const billsToPayAmount = billsToPay.reduce(
+        (acc, bill) => acc + bill.amount,
+        0
+      );
+      const monthlyNet =
+        this.fundSourcesTotalAmount() - billsToPayAmount - totalBudget;
 
-    // Compute monthly net
-    const monthlyNet =
-      this.fundSourcesTotalAmount() - billsToPayAmount - totalBudget;
-    this.monthlyNet.set(monthlyNet);
+      currentSavings += monthlyNet;
 
-    // Allocated monthly budget is subtracted twice - one for current month and one for next month
-    const nextMonthSavings = totalSavings - billsToPayAmount - totalBudget * 2;
-    this.originalNextMonthSavings = nextMonthSavings;
-    this.nextMonthSavings.set(nextMonthSavings);
+      projectedSavings.push({
+        amount: currentSavings,
+        netGain: monthlyNet,
+        month,
+      });
+    }
+
+    this.projectedSavings = [...projectedSavings];
   }
 
   onTogglePeriod2Income(event: MatSlideToggleChange): void {
@@ -82,11 +92,10 @@ export class DashboardProjectionsComponent {
       this.fundSources()
     );
 
-    let nextMonthSavings = this.originalNextMonthSavings;
     if (event.checked) {
-      nextMonthSavings += p2Total;
+      this.projectedSavings.forEach((s) => (s.amount += p2Total));
+    } else {
+      this.projectedSavings.forEach((s) => (s.amount -= p2Total));
     }
-
-    this.nextMonthSavings.set(nextMonthSavings);
   }
 }
