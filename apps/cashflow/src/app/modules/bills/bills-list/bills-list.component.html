@@ -9,7 +9,7 @@
 </header>
 <mat-tab-group
   qsTabGroup
-  [selectedIndex]="selectedPeriodIndex"
+  [selectedIndex]="selectedPeriodIndex()"
   (selectedIndexChange)="selectedPeriodIndex.set($event); loadedTabIndexes().push($event)"
 >
   <mat-tab label="1st Period">
