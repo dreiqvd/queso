@@ -51,6 +51,10 @@ module.exports = [
               onlyDependOnLibsWithTags: ['scope:shared', 'scope:portfolio'],
             },
             {
+              sourceTag: 'scope:portfolio2',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:portfolio2'],
+            },
+            {
               sourceTag: 'scope:nearbai',
               onlyDependOnLibsWithTags: ['scope:shared', 'scope:nearbai'],
             },
@@ -101,21 +105,10 @@ module.exports = [
               'index',
               'unknown',
             ],
-            alphabetize: {
-              order: 'asc',
-              caseInsensitive: true,
-            },
+            alphabetize: { order: 'asc', caseInsensitive: true },
             pathGroups: [
-              {
-                pattern: '@/**',
-                group: 'internal',
-                position: 'after',
-              },
-              {
-                pattern: './**',
-                group: 'sibling',
-                position: 'after',
-              },
+              { pattern: '@/**', group: 'internal', position: 'after' },
+              { pattern: './**', group: 'sibling', position: 'after' },
             ],
             'newlines-between': 'always',
           },
@@ -132,38 +125,18 @@ module.exports = [
         ],
         'no-trailing-spaces': 'error',
         semi: 'error',
-        quotes: [
-          2,
-          'single',
-          {
-            avoidEscape: true,
-          },
-        ],
+        quotes: [2, 'single', { avoidEscape: true }],
         '@typescript-eslint/explicit-function-return-type': 'error',
       },
     })),
-  ...compat
-    .config({
-      extends: ['plugin:@nx/javascript'],
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.js', '**/*.jsx'],
-      rules: {
-        ...config.rules,
-      },
-    })),
-  ...compat
-    .config({
-      env: {
-        jest: true,
-      },
-    })
-    .map((config) => ({
-      ...config,
-      files: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.spec.js', '**/*.spec.jsx'],
-      rules: {
-        ...config.rules,
-      },
-    })),
+  ...compat.config({ extends: ['plugin:@nx/javascript'] }).map((config) => ({
+    ...config,
+    files: ['**/*.js', '**/*.jsx'],
+    rules: { ...config.rules },
+  })),
+  ...compat.config({ env: { jest: true } }).map((config) => ({
+    ...config,
+    files: ['**/*.spec.ts', '**/*.spec.tsx', '**/*.spec.js', '**/*.spec.jsx'],
+    rules: { ...config.rules },
+  })),
 ];

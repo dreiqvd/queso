@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "portfolio2/src",
-  "tags": [],
+  "tags": ["type:app", "scope:portfolio2"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -16,18 +16,11 @@
         "polyfills": ["zone.js"],
         "tsConfig": "portfolio2/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "portfolio2/public"
-          }
-        ],
+        "assets": [{ "glob": "**/*", "input": "portfolio2/public" }],
         "styles": ["portfolio2/src/styles.scss"],
         "scripts": [],
         "server": "portfolio2/src/main.server.ts",
-        "ssr": {
-          "entry": "portfolio2/src/server.ts"
-        },
+        "ssr": { "entry": "portfolio2/src/server.ts" },
         "outputMode": "server"
       },
       "configurations": {
@@ -57,30 +50,20 @@
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
-        "production": {
-          "buildTarget": "portfolio2:build:production"
-        },
-        "development": {
-          "buildTarget": "portfolio2:build:development"
-        }
+        "production": { "buildTarget": "portfolio2:build:production" },
+        "development": { "buildTarget": "portfolio2:build:development" }
       },
       "defaultConfiguration": "development"
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
-      "options": {
-        "buildTarget": "portfolio2:build"
-      }
+      "options": { "buildTarget": "portfolio2:build" }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint"
-    },
+    "lint": { "executor": "@nx/eslint:lint" },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "portfolio2/jest.config.ts"
-      }
+      "options": { "jestConfig": "portfolio2/jest.config.ts" }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
