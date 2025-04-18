@@ -70,7 +70,8 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
-      "style": "scss"
+      "style": "scss",
+      "skipTests": true
     },
     "@nx/angular:library": {
       "linter": "eslint",
