@@ -10,4 +10,5 @@ export const BILLING_CATEGORIES = [
   'Insurance',
   'Credit/Loan',
   'Plan',
+  'Others',
 ];
