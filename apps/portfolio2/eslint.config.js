@@ -1,10 +1,7 @@
-const nx = require('@nx/eslint-plugin');
-const baseConfig = require('../eslint.config.js');
+const angularEslintConfig = require('../../eslint-angular.config');
 
 module.exports = [
-  ...baseConfig,
-  ...nx.configs['flat/angular'],
-  ...nx.configs['flat/angular-template'],
+  ...angularEslintConfig,
   {
     files: ['**/*.ts'],
     rules: {
@@ -25,10 +22,10 @@ module.exports = [
         },
       ],
     },
-  },
-  {
-    files: ['**/*.html'],
-    // Override or add rules here
-    rules: {},
+    languageOptions: {
+      parserOptions: {
+        project: ['apps/portfolio2/tsconfig.*?.json'],
+      },
+    },
   },
 ];
