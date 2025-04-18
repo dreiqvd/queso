@@ -1,12 +1,13 @@
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
-import express from 'express';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import express, { static as expressStatic } from 'express';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -30,7 +31,7 @@ const angularApp = new AngularNodeAppEngine();
  * Serve static files from /browser
  */
 app.use(
-  express.static(browserDistFolder, {
+  expressStatic(browserDistFolder, {
     maxAge: '1y',
     index: false,
     redirect: false,

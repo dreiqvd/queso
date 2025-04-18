@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 export default {
   displayName: 'nearbai',
   preset: '../../jest.preset.js',

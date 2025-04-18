@@ -1,8 +1,8 @@
 export default {
   displayName: 'portfolio2',
-  preset: '../jest.preset.js',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../coverage/portfolio2',
+  coverageDirectory: '../../coverage/apps/portfolio2',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
