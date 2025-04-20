@@ -29,6 +29,12 @@
           }
         ],
         "styles": ["apps/portfolio2/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared/assets/styles/core",
+            "libs/shared/assets/styles/themes"
+          ]
+        },
         "scripts": [],
         "server": "apps/portfolio2/src/main.server.ts",
         "ssr": { "entry": "apps/portfolio2/src/server.ts" },
