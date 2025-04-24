@@ -1,0 +1,7 @@
+{
+  "name": "portfolio2",
+  "private": true,
+  "dependencies": {
+    "matter-js": "^0.20.0"
+  }
+}
