@@ -60,7 +60,11 @@ module.exports = [
             },
             {
               sourceTag: 'scope:cashflow',
-              onlyDependOnLibsWithTags: ['scope:shared', 'scope:nearbai'],
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:cashflow'],
+            },
+            {
+              sourceTag: 'scope:wedding',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:wedding'],
             },
             {
               sourceTag: 'type:app',
