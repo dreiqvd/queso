@@ -1,5 +1,5 @@
 message="$(cat $1)"
-prefix="portfolio|portfolio2|nearbai|whisquers|cashflow|wedding|ui-kit|common|shared|chore|config"
+prefix="portfolio|portfolio2|nearbai|whisquers|cashflow|wedsite|ui-kit|common|shared|chore|config"
 regex="^($prefix): [a-z].*$"
 if ! echo "$message" | grep -iqE "$regex";
 then

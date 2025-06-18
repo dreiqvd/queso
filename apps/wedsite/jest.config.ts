@@ -1,8 +1,8 @@
 export default {
-  displayName: 'wedding',
+  displayName: 'wedsite',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/wedding',
+  coverageDirectory: '../../coverage/apps/wedsite',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

@@ -1,36 +1,36 @@
 {
-  "name": "wedding",
+  "name": "wedsite",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/wedding/src",
-  "tags": ["type:app", "scope:wedding"],
+  "sourceRoot": "apps/wedsite/src",
+  "tags": ["type:app", "scope:wedsite"],
   "targets": {
     "build": {
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/wedding",
-        "browser": "apps/wedding/src/main.ts",
+        "outputPath": "dist/apps/wedsite",
+        "browser": "apps/wedsite/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/wedding/tsconfig.app.json",
+        "tsConfig": "apps/wedsite/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/wedding/public"
+            "input": "apps/wedsite/public"
           }
         ],
-        "styles": ["apps/wedding/src/styles.scss"],
+        "styles": ["apps/wedsite/src/styles.scss"],
         "stylePreprocessorOptions": {
           "includePaths": [
             "libs/shared/assets/styles/core",
             "libs/shared/assets/styles/themes"
           ]
         },
-        "server": "apps/wedding/src/main.server.ts",
+        "server": "apps/wedsite/src/main.server.ts",
         "ssr": {
-          "entry": "apps/wedding/src/server.ts"
+          "entry": "apps/wedsite/src/server.ts"
         },
         "outputMode": "server"
       },
@@ -63,10 +63,10 @@
       "executor": "@angular/build:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "wedding:build:production"
+          "buildTarget": "wedsite:build:production"
         },
         "development": {
-          "buildTarget": "wedding:build:development",
+          "buildTarget": "wedsite:build:development",
           "hmr": false
         }
       },
@@ -75,7 +75,7 @@
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
       "options": {
-        "buildTarget": "wedding:build"
+        "buildTarget": "wedsite:build"
       }
     },
     "lint": {
@@ -85,16 +85,16 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/wedding/jest.config.ts"
+        "jestConfig": "apps/wedsite/jest.config.ts"
       }
     },
     "serve-static": {
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "wedding:build",
+        "buildTarget": "wedsite:build",
         "port": 4200,
-        "staticFilePath": "dist/apps/wedding/browser",
+        "staticFilePath": "dist/apps/wedsite/browser",
         "spa": true
       }
     }
