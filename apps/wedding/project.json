@@ -67,9 +67,7 @@
         },
         "development": {
           "buildTarget": "wedding:build:development",
-          "liveReload": true,
-          "hmr": true,
-          "watch": true
+          "hmr": false
         }
       },
       "defaultConfiguration": "development"
