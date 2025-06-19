@@ -97,6 +97,28 @@
         "staticFilePath": "dist/apps/wedsite/browser",
         "spa": true
       }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "version": 2
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "wedsite:build:production",
+          "serveTarget": "wedsite:serve:production"
+        },
+        "staging": {
+          "buildTarget": "wedsite:build:production",
+          "serveTarget": "wedsite:serve:production",
+          "target": "wedsite-staging"
+        },
+        "development": {
+          "buildTarget": "wedsite:build:development",
+          "serveTarget": "wedsite:serve:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }
