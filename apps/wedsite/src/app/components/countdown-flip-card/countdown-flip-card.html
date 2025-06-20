@@ -1,15 +1,15 @@
 <div class="flip-clock">
   @for (tracker of flipCardTrackers() | keyvalue; track $index) {
     <div #flipClockPiece class="flip-clock__piece" [id]="'flip-clock__' + tracker.key">
-        <b class="flip-clock__card card" [class.flip]="flipStatuses()[tracker.key]">
-          <b class="card__top">
+        <span class="flip-clock__card card" [class.flip]="flipStatuses()[tracker.key]">
+          <span class="card__top">
             {{ tracker.value.top }}
-          </b>
-          <b class="card__bottom" [attr.data-value]="tracker.value.bottom"></b>
-          <b class="card__back" [attr.data-value]="tracker.value.back">
-            <b class="card__bottom" [attr.data-value]="tracker.value.backBottom"></b>
-          </b>
-        </b>
+          </span>
+          <span class="card__bottom" [attr.data-value]="tracker.value.bottom"></span>
+          <span class="card__back" [attr.data-value]="tracker.value.back">
+            <span class="card__bottom" [attr.data-value]="tracker.value.backBottom"></span>
+          </span>
+        </span>
         <span class="flip-clock__slot">
           {{ tracker.key }}
         </span>
