@@ -105,6 +105,10 @@ module.exports = {
       body: ['var(--font-body)'],
       heading: ['var(--font-heading)'],
     }),
+    zIndex: {
+      fixed: 'var(--z-fixed)',
+      highest: 'var(--z-highest)',
+    },
   },
   plugins: [],
   // Following blocklist are preferred to be used without default styling

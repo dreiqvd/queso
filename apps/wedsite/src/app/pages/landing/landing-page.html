@@ -1,3 +1,19 @@
+<nav class="fixed top-1/2 left-8 -translate-y-1/2 z-fixed">
+  <ul class="flex flex-col gap-7">
+    @for (navItem of navItems; track $index) {
+      <li>
+        <a
+          class="text-2xl text-primary opacity-60
+            hover:text-primary-300
+          "
+          [routerLink]="navItem.route">
+          {{ navItem.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</nav>
+
 <section>
   <app-hero-section />
 </section>
