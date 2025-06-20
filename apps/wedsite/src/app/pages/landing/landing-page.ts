@@ -12,27 +12,27 @@ export class LandingPage {
   readonly navItems = [
     {
       label: 'Home',
-      route: '/home',
+      fragment: 'home',
     },
     {
       label: 'Details',
-      route: '/details',
+      fragment: 'details',
     },
     {
       label: 'RSVP',
-      route: '/rsvp',
+      fragment: 'rsvp',
     },
     {
       label: 'FAQs',
-      route: '/faqs',
+      fragment: 'faqs',
     },
     {
       label: 'Registry',
-      route: '/registry',
+      fragment: 'registry',
     },
     {
       label: 'Media',
-      route: '/media',
+      fragment: 'media',
     },
   ];
 }

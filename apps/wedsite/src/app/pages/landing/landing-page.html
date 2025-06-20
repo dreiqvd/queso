@@ -6,7 +6,7 @@
           class="text-2xl text-primary opacity-60
             hover:text-primary-300
           "
-          [routerLink]="navItem.route">
+          [routerLink]="[]" [fragment]="navItem.fragment">
           {{ navItem.label }}
         </a>
       </li>
@@ -14,6 +14,21 @@
   </ul>
 </nav>
 
-<section>
+<section class="min-h-dvh" id="home">
   <app-hero-section />
+</section>
+<section class="min-h-dvh" id="details">
+  <p>Details</p>
+</section>
+<section class="min-h-dvh" id="rsvp">
+  <p>RSVP</p>
+</section>
+<section class="min-h-dvh" id="faqs">
+  <p>FAQs</p>
+</section>
+<section class="min-h-dvh" id="registry">
+  <p>Registry</p>
+</section>
+<section class="min-h-dvh" id="media">
+  <p>Media</p>
 </section>
