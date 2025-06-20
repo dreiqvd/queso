@@ -1,5 +1,11 @@
-<div class="flex flex-col justify-center items-center h-dvh">
-   <!-- <h1>
+<div class="flex flex-col justify-center items-center h-dvh relative">
+   <img
+      src="/images/wedding-rings.svg"
+      alt="Wedding rings"
+      aria-label="Wedding rings"
+      class="absolute top-[150px] w-[84px]"
+   />
+   <h1>
       @for(ch of mainHeadingText(); track $index) {
          @if (ch === ' ') {
            <span class="inline-block w-10">&nbsp;</span>
@@ -7,11 +13,23 @@
             <span class="uppercase">{{ ch }}</span>
          }
       }
-   </h1> -->
+   </h1>
    <div class="mt-6 flex flex-col items-center">
       <time datetime="2025-09-13" class="text-2xl">
          Sept 13, 2025
       </time>
       <qs-countdown-flip-card />
+   </div>
+
+   <div class="absolute bottom-7 flex flex-col items-center">
+      <p class="italic text-primary-300 text-xl">
+         Celebrate with us!
+      </p>
+      <img
+         src="/images/arrow.svg"
+         alt="Arrow for details section"
+         aria-label="Arrow direction for details section"
+         class="w-[52px]"
+      />
    </div>
 </div>
