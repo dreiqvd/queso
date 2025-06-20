@@ -13,6 +13,7 @@
     "./package.json": "./package.json",
     ".": "./src/index.ts",
     "./core": "./src/core/index.ts",
+    "./countdown-flip-card": "./src/countdown-flip-card/index.ts",
     "./dialog": "./src/dialog/index.ts",
     "./form-field": "./src/form-field/index.ts",
     "./hamburger": "./src/hamburger/index.ts",

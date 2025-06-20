@@ -1,7 +1,5 @@
-// $halfHeight: 0.72em;
 $halfHeight: 29px;
 $borderRadius: 10px;
-
 
 .flip-clock {
   text-align: center;
@@ -45,7 +43,7 @@ $borderRadius: 10px;
   display: block;
   height: $halfHeight;
   color: #E6DFD3;
-  background: var(--color-toupe-400);
+  background: var(--color-accent-400);
   padding: 7px;
   border-radius: $borderRadius $borderRadius 0 0;
   backface-visibility: hidden;
@@ -59,7 +57,7 @@ $borderRadius: 10px;
   position: absolute;
   top: 50%;
   left: 0;
-  background: var(--color-toupe-300);
+  background: var(--color-accent-300);
   border-radius: 0 0 $borderRadius $borderRadius;
   pointer-events: none;
   overflow: hidden;

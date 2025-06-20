@@ -1,0 +1,17 @@
+:host {
+  qs-countdown-flip-card {
+    ::ng-deep {
+
+      .card__top,
+      .card__bottom,
+      .card__back::before,
+      .card__back::after {
+        background: var(--color-toupe-400);
+      }
+
+      .card__bottom {
+        background: var(--color-toupe-300);
+      }
+    }
+  }
+}

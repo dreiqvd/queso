@@ -11,16 +11,16 @@ import {
 
 @Component({
   imports: [KeyValuePipe],
-  selector: 'app-countdown-flip-card',
+  selector: 'qs-countdown-flip-card',
   templateUrl: './countdown-flip-card.html',
   styleUrl: './countdown-flip-card.scss',
 })
-export class CountdownFlipCard implements OnDestroy {
+export class QsCountdownFlipCard implements OnDestroy {
   @ViewChildren('flipClockPiece') flipClockPieces!: QueryList<
     ElementRef<HTMLDivElement>
   >;
 
-  private readonly targetDate = new Date('2025-09-13T14:00:00.000Z');
+  private readonly targetDate = new Date('2025-09-13T00:00:00.000Z');
   private animationFrameId: number | null = null;
   private throttleOffset = 0;
 
