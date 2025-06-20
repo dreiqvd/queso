@@ -1,0 +1,7 @@
+@use './base' as base;
+@forward './eden/variables';
+
+@mixin apply-theme($theme) {
+  @include base.apply-variables($theme);
+  @include base.core-theme();
+}

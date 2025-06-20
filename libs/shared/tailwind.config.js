@@ -93,6 +93,7 @@ module.exports = {
     },
     textColor: ({ theme }) => ({
       'default-color': 'var(--text-default-color)',
+      'body-light': 'var(--text-body-light)',
       ...theme('colors'),
     }),
     boxShadow: {

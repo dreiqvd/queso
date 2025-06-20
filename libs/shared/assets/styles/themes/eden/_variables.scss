@@ -1,0 +1,16 @@
+html {
+  --text-default-color: var(--color-primary);
+  --text-body-light: #F5F5F5;
+}
+
+@mixin apply-variables($palette) {
+  $toupe: map-get($palette, toupe);
+
+  html {
+    @each $key, $value in $toupe {
+      @if $key !=contrast {
+        --color-toupe-#{$key}: #{$value};
+      }
+    }
+  }
+}
