@@ -1,0 +1,13 @@
+<div class="flex flex-col justify-center items-center h-dvh">
+   <h1>
+      @for(ch of mainHeadingText(); track $index) {
+         <span class="uppercase">{{ ch === ' ' ? '&nbsp;&nbsp;&nbsp;' : ch }}</span>
+      }
+   </h1>
+   <div class="mt-6 flex flex-col items-center">
+      <time datetime="2025-09-13" class="text-2xl">
+         Sept 13, 2025
+      </time>
+      <app-countdown-flip-card />
+   </div>
+</div>

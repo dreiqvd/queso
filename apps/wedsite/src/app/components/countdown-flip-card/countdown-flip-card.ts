@@ -27,14 +27,14 @@ export class CountdownFlipCard implements OnDestroy {
   flipCardTrackers = signal<FlipCardTracker>({
     days: { top: '', bottom: '', back: '', backBottom: '', currentValue: '' },
     hours: { top: '', bottom: '', back: '', backBottom: '', currentValue: '' },
-    minutes: {
+    mins: {
       top: '',
       bottom: '',
       back: '',
       backBottom: '',
       currentValue: '',
     },
-    seconds: {
+    secs: {
       top: '',
       bottom: '',
       back: '',
@@ -45,8 +45,8 @@ export class CountdownFlipCard implements OnDestroy {
   flipStatuses = signal<{ [key: string]: boolean }>({
     days: false,
     hours: false,
-    minutes: false,
-    seconds: false,
+    mins: false,
+    secs: false,
   });
 
   constructor() {
@@ -68,8 +68,8 @@ export class CountdownFlipCard implements OnDestroy {
       hours: this.getDigits(
         Math.floor((timeRemaining / (1000 * 60 * 60)) % 24)
       ),
-      minutes: this.getDigits(Math.floor((timeRemaining / 1000 / 60) % 60)),
-      seconds: this.getDigits(Math.floor((timeRemaining / 1000) % 60)),
+      mins: this.getDigits(Math.floor((timeRemaining / 1000 / 60) % 60)),
+      secs: this.getDigits(Math.floor((timeRemaining / 1000) % 60)),
     };
 
     return [trackers, timeRemaining];
@@ -169,8 +169,8 @@ export class CountdownFlipCard implements OnDestroy {
 interface TimeUnits {
   days: string;
   hours: string;
-  minutes: string;
-  seconds: string;
+  mins: string;
+  secs: string;
 }
 
 interface FlipCardTracker {
@@ -188,14 +188,14 @@ interface FlipCardTracker {
     backBottom: string;
     currentValue: string;
   };
-  minutes: {
+  mins: {
     top: string;
     bottom: string;
     back: string;
     backBottom: string;
     currentValue: string;
   };
-  seconds: {
+  secs: {
     top: string;
     bottom: string;
     back: string;

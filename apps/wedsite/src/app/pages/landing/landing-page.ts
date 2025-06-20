@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
-import { CountdownFlipCard } from '../../components/countdown-flip-card/countdown-flip-card';
+import { HeroSection } from './hero-section/hero-section';
 
 @Component({
-  imports: [CountdownFlipCard],
+  imports: [HeroSection],
   selector: 'app-landing-page',
   templateUrl: './landing-page.html',
-  standalone: true,
 })
 export class LandingPage {}
