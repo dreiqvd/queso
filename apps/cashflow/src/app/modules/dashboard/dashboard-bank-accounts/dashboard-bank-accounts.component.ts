@@ -26,7 +26,7 @@ interface DashboardBankAccount extends BankAccount {
   ],
   templateUrl: './dashboard-bank-accounts.component.html',
 })
-export class DashboardBankAccountsComponent {
+export class DashboardBankAccounts {
   bankAccounts = input.required<DashboardBankAccount[]>();
   bankAccountsTotalBalance = input.required<number>();
   accountUpdated = output<void>();

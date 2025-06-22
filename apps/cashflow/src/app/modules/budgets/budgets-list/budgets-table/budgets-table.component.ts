@@ -44,7 +44,7 @@ interface TableBudget extends Budget {
     }
   `,
 })
-export class BudgetsTableComponent extends BaseTableDirective<TableBudget> {
+export class BudgetsTable extends BaseTableDirective<TableBudget> {
   readonly budgets = input.required<Budget[]>();
 
   constructor() {

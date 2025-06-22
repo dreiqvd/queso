@@ -26,7 +26,7 @@ import { QsFormField } from '@queso/ui-kit/form-field';
   ],
   templateUrl: './login.component.html',
 })
-export class LoginComponent {
+export class Login {
   private readonly auth = inject(Auth);
   private readonly route = inject(Router);
   public readonly platformService = inject(QsPlatformService);

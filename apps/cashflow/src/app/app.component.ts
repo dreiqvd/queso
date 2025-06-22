@@ -6,6 +6,6 @@ import { RouterModule } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class App {
   title = 'cashflow';
 }

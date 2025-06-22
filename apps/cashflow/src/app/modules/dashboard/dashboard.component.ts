@@ -4,7 +4,7 @@ import { combineLatest, take } from 'rxjs';
 
 import { QsOverlaySpinner } from '@queso/ui-kit/spinner';
 
-import { NavbarComponent } from '../../components/navbar';
+import { Navbar } from '../../components/navbar';
 import { BankAccount, Bill, Budget, FundSource } from '../../core/models';
 import {
   BankAccountService,
@@ -13,9 +13,9 @@ import {
   FundSourceService,
 } from '../../core/services';
 
-import { DashboardBankAccountsComponent } from './dashboard-bank-accounts/dashboard-bank-accounts.component';
-import { DashboardSourceOfFundsComponent } from './dashboard-fund-sources/dashboard-fund-sources.component';
-import { DashboardProjectionsComponent } from './dashboard-projections/dashboard-projections.component';
+import { DashboardBankAccounts } from './dashboard-bank-accounts/dashboard-bank-accounts.component';
+import { DashboardSourceOfFunds } from './dashboard-fund-sources/dashboard-fund-sources.component';
+import { DashboardProjections } from './dashboard-projections/dashboard-projections.component';
 
 export interface DashboardFundSource extends FundSource {
   total: number;
@@ -29,14 +29,14 @@ export interface DashboardBankAccount extends BankAccount {
   selector: 'app-dashboard',
   imports: [
     QsOverlaySpinner,
-    NavbarComponent,
-    DashboardBankAccountsComponent,
-    DashboardSourceOfFundsComponent,
-    DashboardProjectionsComponent,
+    Navbar,
+    DashboardBankAccounts,
+    DashboardSourceOfFunds,
+    DashboardProjections,
   ],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent {
+export class Dashboard {
   private readonly fundSourceService = inject(FundSourceService);
   private readonly bankAccountService = inject(BankAccountService);
   private readonly budgetService = inject(BudgetService);

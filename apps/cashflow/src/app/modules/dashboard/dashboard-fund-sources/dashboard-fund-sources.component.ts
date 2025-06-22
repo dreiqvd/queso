@@ -15,7 +15,7 @@ interface DashboardFundSource extends FundSource {
   imports: [CurrencyPipe, QsOrdinalSuffix],
   templateUrl: './dashboard-fund-sources.component.html',
 })
-export class DashboardSourceOfFundsComponent {
+export class DashboardSourceOfFunds {
   fundSources = input.required<DashboardFundSource[]>();
   fundSourcesTotalAmount = input.required<number>();
 

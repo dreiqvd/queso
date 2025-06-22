@@ -26,7 +26,7 @@ const PROJECTIONS_COUNT = 6; // number of months to be projected
   imports: [CurrencyPipe, MatSlideToggleModule, MatTooltipModule, QsIcon],
   templateUrl: './dashboard-projections.component.html',
 })
-export class DashboardProjectionsComponent {
+export class DashboardProjections {
   readonly fundSources = input.required<DashboardFundSource[]>();
   readonly budgets = input.required<Budget[]>();
   readonly bills = input.required<Bill[]>();

@@ -4,14 +4,14 @@ import { afterNextRender, Component, inject } from '@angular/core';
 import { Budget } from '../../../core/models/budget.model';
 import { BudgetService } from '../../../core/services';
 
-import { BudgetsTableComponent } from './budgets-table/budgets-table.component';
+import { BudgetsTable } from './budgets-table/budgets-table.component';
 
 @Component({
   selector: 'app-budgets-list',
-  imports: [CurrencyPipe, BudgetsTableComponent],
+  imports: [CurrencyPipe, BudgetsTable],
   templateUrl: './budgets-list.component.html',
 })
-export class BudgetsListComponent {
+export class BudgetsList {
   private readonly budgetService = inject(BudgetService);
 
   monthlyTotal = 0;

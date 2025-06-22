@@ -36,7 +36,7 @@ import { PaymentAccountService } from '../../../core/services';
   providers: [provideNativeDateAdapter()],
   templateUrl: './bill-form.component.html',
 })
-export class BillFormComponent implements OnInit {
+export class BillForm implements OnInit {
   bill!: Bill;
 
   private readonly paymentAccountService = inject(PaymentAccountService);

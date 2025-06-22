@@ -16,7 +16,7 @@ import { IconStyle, QsIcon } from '@queso/ui-kit/icon';
     }
   `,
 })
-export class NavbarComponent {
+export class Navbar {
   private readonly auth = inject(Auth);
   private readonly router = inject(Router);
 

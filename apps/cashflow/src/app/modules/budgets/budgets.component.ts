@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import { NavbarComponent } from '../../components/navbar';
+import { Navbar } from '../../components/navbar';
 
-import { BudgetsListComponent } from './budgets-list/budgets-list.component';
+import { BudgetsList } from './budgets-list/budgets-list.component';
 
 @Component({
   selector: 'app-budgets',
-  imports: [NavbarComponent, BudgetsListComponent],
+  imports: [Navbar, BudgetsList],
   templateUrl: './budgets.component.html',
 })
-export class BudgetsComponent {}
+export class Budgets {}

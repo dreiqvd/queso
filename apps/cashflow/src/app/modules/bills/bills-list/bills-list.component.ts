@@ -13,9 +13,9 @@ import { QsTabGroup } from '@queso/ui-kit/tabs';
 import { Bill } from '../../../core/models';
 import { BillService } from '../../../core/services';
 import { getPeriod } from '../../../core/utils';
-import { BillFormComponent } from '../bill-form/bill-form.component';
+import { BillForm } from '../bill-form/bill-form.component';
 
-import { BillsTableComponent } from './bills-table/bills-table.component';
+import { BillsTable } from './bills-table/bills-table.component';
 
 @Component({
   selector: 'app-bills-list',
@@ -27,7 +27,7 @@ import { BillsTableComponent } from './bills-table/bills-table.component';
     QsTabGroup,
     QsIcon,
     QsOverlaySpinner,
-    BillsTableComponent,
+    BillsTable,
   ],
   templateUrl: './bills-list.component.html',
   styles: `
@@ -39,7 +39,7 @@ import { BillsTableComponent } from './bills-table/bills-table.component';
     }
   `,
 })
-export class BillsListComponent {
+export class BillsList {
   private readonly billService = inject(BillService);
   private readonly dialogService = inject(QsDialogService);
 
@@ -100,7 +100,7 @@ export class BillsListComponent {
 
   onAddBill(): void {
     this.dialogService
-      .showCustomComponent('Add Bill', BillFormComponent, {})
+      .showCustomComponent('Add Bill', BillForm, {})
       .pipe(
         tap(() => this.isLoading.set(true)),
         switchMap((bill: Partial<Bill>) => {

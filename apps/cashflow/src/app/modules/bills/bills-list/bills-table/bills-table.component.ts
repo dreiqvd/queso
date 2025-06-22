@@ -16,7 +16,7 @@ import { QsIcon } from '@queso/ui-kit/icon';
 import { Bill, FirestoreResponseDate } from '../../../../core/models';
 import { BillService } from '../../../../core/services';
 import { BaseTableDirective } from '../../../../directives';
-import { BillFormComponent } from '../../bill-form/bill-form.component';
+import { BillForm } from '../../bill-form/bill-form.component';
 
 interface TableBill extends Bill {
   isLoading?: boolean;
@@ -59,7 +59,7 @@ interface TableBill extends Bill {
     }
   `,
 })
-export class BillsTableComponent extends BaseTableDirective<TableBill> {
+export class BillsTable extends BaseTableDirective<TableBill> {
   /** Whether to hide the Mark All as Unpaid action button */
   readonly bills = input.required<TableBill[]>();
 
@@ -142,7 +142,7 @@ export class BillsTableComponent extends BaseTableDirective<TableBill> {
 
   onEditBill(bill: TableBill): void {
     this.dialogService
-      .showCustomComponent('Edit Bill', BillFormComponent, { bill })
+      .showCustomComponent('Edit Bill', BillForm, { bill })
       .pipe(
         tap(() => (bill.isLoading = true)),
         switchMap((formValue: Bill) => {
