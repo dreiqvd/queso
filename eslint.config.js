@@ -51,10 +51,6 @@ module.exports = [
               onlyDependOnLibsWithTags: ['scope:shared', 'scope:portfolio'],
             },
             {
-              sourceTag: 'scope:portfolio2',
-              onlyDependOnLibsWithTags: ['scope:shared', 'scope:portfolio2'],
-            },
-            {
               sourceTag: 'scope:nearbai',
               onlyDependOnLibsWithTags: ['scope:shared', 'scope:nearbai'],
             },

@@ -1,9 +1,0 @@
-@use 'mixins' as *;
-
-:host {
-  position: fixed;
-  z-index: 200;
-  height: 96px;
-  width: 100%;
-  top: 0;
-}
