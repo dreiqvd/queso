@@ -20,7 +20,7 @@ import { QsIcon } from '@queso/ui-kit/icon';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent {
+export class Navbar {
   @ViewChild('sidebar', { read: QsAnimations })
   sidebar!: QsAnimations;
 

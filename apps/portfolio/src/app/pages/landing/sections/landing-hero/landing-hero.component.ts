@@ -36,7 +36,7 @@ import { QsScrollCue } from '@queso/ui-kit/scroll-cue';
     }
   `,
 })
-export class LandingHeroComponent {
+export class LandingHero {
   @ViewChild('headerBlobWrapper')
   headerBlobWrapper!: ElementRef<HTMLElement>;
 

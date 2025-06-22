@@ -28,7 +28,7 @@ import { MailingService } from '../../services';
   styleUrl: './contact-form.component.scss',
   providers: [MailingService],
 })
-export class ContactFormComponent implements OnInit {
+export class ContactForm implements OnInit {
   /** Mailing Service dependency */
   private readonly mailingService = inject(MailingService);
 

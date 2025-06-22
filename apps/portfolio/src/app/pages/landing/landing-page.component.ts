@@ -10,25 +10,25 @@ import anime from 'animejs';
 import { QsAnimations } from '@queso/common/animations';
 import { QsCursorDirective } from '@queso/common/cursor';
 
-import { PageContainerComponent } from '../../components/page-container';
+import { PageContainer } from '../../components/page-container';
 
-import { LandingAboutComponent } from './sections/landing-about/landing-about.component';
-import { LandingContactComponent } from './sections/landing-contact/landing-contact.component';
-import { LandingHeroComponent } from './sections/landing-hero/landing-hero.component';
-import { LandingPostsComponent } from './sections/landing-posts/landing-posts.component';
-import { LandingSkillsComponent } from './sections/landing-skills/landing-skills.component';
+import { LandingAbout } from './sections/landing-about/landing-about.component';
+import { LandingContact } from './sections/landing-contact/landing-contact.component';
+import { LandingHero } from './sections/landing-hero/landing-hero.component';
+import { LandingPosts } from './sections/landing-posts/landing-posts.component';
+import { LandingSkills } from './sections/landing-skills/landing-skills.component';
 
 @Component({
   selector: 'app-landing-page',
   imports: [
     QsAnimations,
     QsCursorDirective,
-    PageContainerComponent,
-    LandingHeroComponent,
-    LandingAboutComponent,
-    LandingSkillsComponent,
-    LandingPostsComponent,
-    LandingContactComponent,
+    PageContainer,
+    LandingHero,
+    LandingAbout,
+    LandingSkills,
+    LandingPosts,
+    LandingContact,
   ],
   templateUrl: './landing-page.component.html',
   styles: `
@@ -42,7 +42,7 @@ import { LandingSkillsComponent } from './sections/landing-skills/landing-skills
     }
   `,
 })
-export class LandingPageComponent {
+export class LandingPage {
   /** Element reference for the introductory backdrop */
   @ViewChild('backdrop', { read: QsAnimations })
   backdrop!: QsAnimations;
@@ -64,7 +64,7 @@ export class LandingPageComponent {
       this.introVisibility.set('visible');
       anime({
         targets: '#backdrop-svg-wrapper path',
-        // eslint-disable-next-line import/no-named-as-default-member
+
         strokeDashoffset: [anime.setDashoffset, 0],
         easing: 'easeInOutSine',
         duration: 1500,

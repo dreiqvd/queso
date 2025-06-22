@@ -4,8 +4,8 @@ import { MatTooltip } from '@angular/material/tooltip';
 
 import { QsAnimations } from '@queso/common/animations';
 
-import { ContactFormComponent } from '../../components/contact-form';
-import { PageContainerComponent } from '../../components/page-container';
+import { ContactForm } from '../../components/contact-form';
+import { PageContainer } from '../../components/page-container';
 
 @Component({
   selector: 'app-contact',
@@ -13,12 +13,12 @@ import { PageContainerComponent } from '../../components/page-container';
     NgOptimizedImage,
     MatTooltip,
     QsAnimations,
-    PageContainerComponent,
-    ContactFormComponent,
+    PageContainer,
+    ContactForm,
   ],
   templateUrl: './contact.component.html',
 })
-export class PageContactComponent {
+export class ContactPage {
   readonly greetingTxt = 'hello'.split('');
   readonly messages = [
     "Clarifications? Questions? Let's <br /> hear them — I won't bite.",

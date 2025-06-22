@@ -11,7 +11,7 @@ import { QsIcon } from '@queso/ui-kit/icon';
   imports: [NgOptimizedImage, RouterLink, MatTooltip, QsAnimations, QsIcon],
   templateUrl: './landing-about.component.html',
 })
-export class LandingAboutComponent {
+export class LandingAbout {
   // Event that is emitted when the user clicks on the CTA button
   @Output() ctaClick = new EventEmitter<void>();
 

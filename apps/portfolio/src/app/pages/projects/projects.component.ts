@@ -5,14 +5,14 @@ import { QsAnimations } from '@queso/common/animations';
 import { QsIcon } from '@queso/ui-kit/icon';
 import { QsPill } from '@queso/ui-kit/pill';
 
-import { PageContainerComponent } from '../../components/page-container';
+import { PageContainer } from '../../components/page-container';
 
 @Component({
   selector: 'app-page-projects',
-  imports: [MatTooltip, PageContainerComponent, QsAnimations, QsIcon, QsPill],
+  imports: [MatTooltip, PageContainer, QsAnimations, QsIcon, QsPill],
   templateUrl: './projects.component.html',
 })
-export class ProjectsComponent {
+export class ProjectsPage {
   readonly projects = [
     {
       key: 'nearbai.jpg',

@@ -5,17 +5,11 @@ import { RouterLink } from '@angular/router';
 import { QsAnimations } from '@queso/common/animations';
 import { QsIcon } from '@queso/ui-kit/icon';
 
-import { PageContainerComponent } from '../../components/page-container';
+import { PageContainer } from '../../components/page-container';
 
 @Component({
   selector: 'app-me-when-afk',
-  imports: [
-    RouterLink,
-    MatTooltip,
-    QsAnimations,
-    QsIcon,
-    PageContainerComponent,
-  ],
+  imports: [RouterLink, MatTooltip, QsAnimations, QsIcon, PageContainer],
   templateUrl: './me-when-afk.component.html',
 })
-export class MeWhenAfkComponent {}
+export class MeWhenAfkPage {}

@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 
 import { QsAnimations } from '@queso/common/animations';
 
-import { ArticleCardComponent } from '../../../../components/article-card';
+import { ArticleCard } from '../../../../components/article-card';
 import { ArticlesService } from '../../../../services';
 
 @Component({
@@ -15,7 +15,7 @@ import { ArticlesService } from '../../../../services';
     NgOptimizedImage,
     MatTooltip,
     QsAnimations,
-    ArticleCardComponent,
+    ArticleCard,
   ],
   providers: [ArticlesService],
   templateUrl: './landing-posts.component.html',
@@ -25,7 +25,7 @@ import { ArticlesService } from '../../../../services';
     }
   `,
 })
-export class LandingPostsComponent {
+export class LandingPosts {
   private readonly articlesService = inject(ArticlesService);
   readonly posts = computed(() => this.articlesService.getArticles());
 }

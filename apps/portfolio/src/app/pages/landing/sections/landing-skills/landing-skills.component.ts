@@ -10,7 +10,7 @@ import { QsIcon } from '@queso/ui-kit/icon';
   imports: [MatTooltip, QsIcon, QsAnimations],
   templateUrl: './landing-skills.component.html',
 })
-export class LandingSkillsComponent {
+export class LandingSkills {
   readonly coreSkills = [
     {
       logo: 'angular',
@@ -42,7 +42,6 @@ export class LandingSkillsComponent {
   ];
 
   rotateElement(target: string, value: number): void {
-    // eslint-disable-next-line import/no-named-as-default-member
     anime.remove(target);
     anime({
       targets: target,

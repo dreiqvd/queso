@@ -11,7 +11,7 @@ import { Article } from '../../interfaces';
   imports: [DatePipe, QsIcon, QsPill],
   templateUrl: './article-card.component.html',
 })
-export class ArticleCardComponent {
+export class ArticleCard {
   readonly article = input.required<Article>();
   readonly showImage = input(true);
 }
