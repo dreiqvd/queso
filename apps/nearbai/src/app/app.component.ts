@@ -17,7 +17,7 @@ import { BREAKPOINTS, getViewportWidth } from '@queso/common';
 import { QsIcon } from '@queso/ui-kit/icon';
 
 import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { Sidebar } from './components/sidebar/sidebar.component';
 import {
   ActiveMarker,
   MapCenter,
@@ -27,13 +27,7 @@ import {
 import { SearchService } from './services';
 
 @Component({
-  imports: [
-    GoogleMap,
-    MapAdvancedMarker,
-    MapInfoWindow,
-    QsIcon,
-    SidebarComponent,
-  ],
+  imports: [GoogleMap, MapAdvancedMarker, MapInfoWindow, QsIcon, Sidebar],
   selector: 'app-root',
   styles: `
     .sidebar {
@@ -46,9 +40,9 @@ import { SearchService } from './services';
   `,
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class App {
   @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
-  @ViewChild(SidebarComponent) sidebar!: SidebarComponent;
+  @ViewChild(Sidebar) sidebar!: Sidebar;
 
   private readonly searchService = inject(SearchService);
   private readonly renderer = inject(Renderer2);

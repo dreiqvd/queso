@@ -19,28 +19,21 @@ import {
   getViewportHeight,
   getViewportWidth,
 } from '@queso/common';
-import { QsAnimationsDirective } from '@queso/common/animations';
+import { QsAnimations } from '@queso/common/animations';
 import { QsIcon } from '@queso/ui-kit/icon';
 import { QsPill } from '@queso/ui-kit/pill';
 
 import { SearchResult } from '../../core/interfaces';
 import { SearchService } from '../../services';
-import { SearchFormComponent } from '../search-form';
+import { SearchForm } from '../search-form';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [
-    NgClass,
-    MatTooltip,
-    QsIcon,
-    QsPill,
-    QsAnimationsDirective,
-    SearchFormComponent,
-  ],
+  imports: [NgClass, MatTooltip, QsIcon, QsPill, QsAnimations, SearchForm],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
-export class SidebarComponent {
+export class Sidebar {
   @ViewChild('resultsWrapper') resultsWrapperRef?: ElementRef<HTMLElement>;
   @Output() toggleDirections = new EventEmitter<SearchResult['location']>();
   @Output() toggleSidebar = new EventEmitter<boolean>();

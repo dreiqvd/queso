@@ -35,7 +35,7 @@ import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
     }
   `,
 })
-export class SearchFormComponent implements OnInit {
+export class SearchForm implements OnInit {
   // Dependencies
   private readonly searchService = inject(SearchService);
 
