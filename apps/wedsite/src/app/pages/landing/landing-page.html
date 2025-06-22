@@ -1,34 +1,38 @@
 <nav class="fixed top-1/2 left-8 -translate-y-1/2 z-fixed">
   <ul class="flex flex-col gap-7">
     @for (navItem of navItems; track $index) {
-      <li>
-        <a
-          class="text-2xl text-primary opacity-60
-            hover:text-primary-300
-          "
-          [routerLink]="[]" [fragment]="navItem.fragment">
-          {{ navItem.label }}
-        </a>
+      <li
+        class="nav-item cursor-pointer text-2xl text-primary opacity-60
+          hover:text-primary-300
+        "
+        role="navigation"
+        [class.active]="activeRoute() === navItem.route"
+        (click)="onMenuItemClick(navItem.route)"
+        (keydown.enter)="onMenuItemClick(navItem.route)"
+      >
+        <span>{{ navItem.label }}</span>
       </li>
     }
   </ul>
 </nav>
 
-<section class="min-h-dvh" id="home">
+<section #section class="min-h-dvh" id="home">
   <app-hero-section />
 </section>
-<section class="min-h-dvh" id="details">
-  <p>Details</p>
+<section #section class="min-h-dvh" id="details">
+  <div class="flex items-center justify-center min-h-dvh">
+    <h1>DETAILS</h1>
+  </div>
 </section>
-<section class="min-h-dvh" id="rsvp">
+<section #section class="min-h-dvh" id="rsvp">
   <p>RSVP</p>
 </section>
-<section class="min-h-dvh" id="faqs">
+<section #section class="min-h-dvh" id="faqs">
   <p>FAQs</p>
 </section>
-<section class="min-h-dvh" id="registry">
+<section #section class="min-h-dvh" id="registry">
   <p>Registry</p>
 </section>
-<section class="min-h-dvh" id="media">
+<section #section class="min-h-dvh" id="media">
   <p>Media</p>
 </section>
