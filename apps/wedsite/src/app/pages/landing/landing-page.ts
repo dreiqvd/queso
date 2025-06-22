@@ -8,10 +8,11 @@ import {
   ViewChildren,
 } from '@angular/core';
 
+import { DetailsSection } from './details-section/details-section';
 import { HeroSection } from './hero-section/hero-section';
 
 @Component({
-  imports: [HeroSection],
+  imports: [HeroSection, DetailsSection],
   selector: 'app-landing-page',
   templateUrl: './landing-page.html',
   styles: `
@@ -43,7 +44,6 @@ export class LandingPage implements OnDestroy {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               this.activeRoute.set(entry.target.id);
-              console.log(this.activeRoute());
             }
           });
         },

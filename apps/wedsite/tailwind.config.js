@@ -27,6 +27,10 @@ module.exports = {
           900: 'var(--color-toupe-900)',
         },
       },
+      fontFamily: {
+        'main-heading': ['var(--font-heading)', 'serif'],
+        'sub-heading': ['var(--font-subheading)', 'serif'],
+      },
     },
   },
 };

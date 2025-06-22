@@ -26,6 +26,11 @@ $app-theme: mat.m2-define-light-theme((color: (primary: $primary,
 @include eden.apply-theme($app-theme);
 @include eden.apply-variables(eden-palette.$palette);
 
+html {
+  --font-heading: 'Lilita One', serif;
+  --font-subheading: 'Anonymous Pro', monospace;
+}
+
 body {
   font-family: 'Sour Gummy', serif;
   background:
@@ -34,13 +39,25 @@ body {
   background-blend-mode: overlay;
 }
 
-h1 {
-  font-family: 'Lilita One';
-  font-size: 4rem;
+h1,
+h2,
+h3 {
   font-weight: normal;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 4rem;
 }
 
 h2 {
   font-size: 1.75rem;
-  font-weight: normal;
+}
+
+.section-header {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  border: solid 4px var(--color-primary);
+  border-radius: 10px;
+  padding: 10px 24px;
 }
