@@ -97,6 +97,7 @@ module.exports = [
       files: ['**/*.ts', '**/*.tsx'],
       rules: {
         ...config.rules,
+        'no-console': 'warn',
         'import/no-unresolved': 'error',
         'import/order': [
           'error',
