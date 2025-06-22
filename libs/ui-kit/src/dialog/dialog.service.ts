@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
-import { QsDialogComponent } from './dialog.component';
+import { QsDialog } from './dialog.component';
 import { QsDialogHandler } from './dialog.handler';
 import { QS_DIALOG_BUTTONS, QsDialogData } from './dialog.interface';
 
@@ -17,7 +17,7 @@ export class QsDialogService {
     title: string,
     message: string,
     dialogOptions?: MatDialogConfig
-  ): QsDialogHandler<QsDialogComponent> {
+  ): QsDialogHandler<QsDialog> {
     const data: QsDialogData = {
       title,
       content: { type: 'message', message },
@@ -25,7 +25,7 @@ export class QsDialogService {
     };
 
     return new QsDialogHandler(
-      this.dialog.open(QsDialogComponent, {
+      this.dialog.open(QsDialog, {
         data,
         disableClose: true,
         ...dialogOptions,
@@ -38,7 +38,7 @@ export class QsDialogService {
     title: string,
     message: string,
     dialogOptions?: MatDialogConfig
-  ): QsDialogHandler<QsDialogComponent> {
+  ): QsDialogHandler<QsDialog> {
     const data: QsDialogData = {
       title,
       content: { type: 'message', message },
@@ -46,7 +46,7 @@ export class QsDialogService {
     };
 
     return new QsDialogHandler(
-      this.dialog.open(QsDialogComponent, {
+      this.dialog.open(QsDialog, {
         data,
         disableClose: true,
         ...dialogOptions,
@@ -61,7 +61,7 @@ export class QsDialogService {
     props: any,
     actions?: QsDialogData['actions'],
     dialogOptions?: MatDialogConfig
-  ): QsDialogHandler<QsDialogComponent> {
+  ): QsDialogHandler<QsDialog> {
     if (!actions) {
       actions = [QS_DIALOG_BUTTONS.CANCEL, QS_DIALOG_BUTTONS.SUBMIT];
     }
@@ -72,7 +72,7 @@ export class QsDialogService {
     };
 
     return new QsDialogHandler(
-      this.dialog.open(QsDialogComponent, {
+      this.dialog.open(QsDialog, {
         data,
         disableClose: true,
         ...dialogOptions,

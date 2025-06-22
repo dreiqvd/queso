@@ -9,8 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltip } from '@angular/material/tooltip';
 
-import { QsAnimationsDirective } from '@queso/common/animations';
-import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
+import { QsAnimations } from '@queso/common/animations';
+import { QsFormField } from '@queso/ui-kit/form-field';
 
 import { MailingService } from '../../services';
 
@@ -21,8 +21,8 @@ import { MailingService } from '../../services';
     MatFormFieldModule,
     MatInputModule,
     MatTooltip,
-    QsFormFieldDirective,
-    QsAnimationsDirective,
+    QsFormField,
+    QsAnimations,
   ],
   templateUrl: './contact-form.component.html',
   styleUrl: './contact-form.component.scss',

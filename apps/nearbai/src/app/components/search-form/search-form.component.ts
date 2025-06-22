@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 import { QsSelectableItem } from '@queso/ui-kit/core';
-import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
+import { QsFormField } from '@queso/ui-kit/form-field';
 
 import { Origin, SearchParams } from '../../core/interfaces';
 import { SearchService } from '../../services';
@@ -25,7 +25,7 @@ import { CATEGORIES, DEFAULTS, ORIGINS, RADIUS } from './search-form.data';
     MatFormFieldModule,
     MatSelectModule,
     MatButton,
-    QsFormFieldDirective,
+    QsFormField,
   ],
   templateUrl: './search-form.component.html',
   styles: `

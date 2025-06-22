@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import anime from 'animejs';
 
-import { QsAnimationsDirective } from '@queso/common/animations';
-import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsAnimations } from '@queso/common/animations';
+import { QsIcon } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-landing-skills',
-  imports: [MatTooltip, QsIconComponent, QsAnimationsDirective],
+  imports: [MatTooltip, QsIcon, QsAnimations],
   templateUrl: './landing-skills.component.html',
 })
 export class LandingSkillsComponent {

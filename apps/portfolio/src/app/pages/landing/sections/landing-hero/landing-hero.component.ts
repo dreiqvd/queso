@@ -16,19 +16,13 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { debounceTime, fromEvent } from 'rxjs';
 
 import { BREAKPOINTS, getViewportWidth } from '@queso/common';
-import { QsAnimationsDirective } from '@queso/common/animations';
-import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsScrollCueComponent } from '@queso/ui-kit/scroll-cue';
+import { QsAnimations } from '@queso/common/animations';
+import { QsIcon } from '@queso/ui-kit/icon';
+import { QsScrollCue } from '@queso/ui-kit/scroll-cue';
 
 @Component({
   selector: 'app-landing-hero',
-  imports: [
-    NgTemplateOutlet,
-    MatTooltip,
-    QsIconComponent,
-    QsScrollCueComponent,
-    QsAnimationsDirective,
-  ],
+  imports: [NgTemplateOutlet, MatTooltip, QsIcon, QsScrollCue, QsAnimations],
   templateUrl: './landing-hero.component.html',
   styles: `
     .header-title {

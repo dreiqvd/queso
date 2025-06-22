@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { combineLatest, take } from 'rxjs';
 
-import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
+import { QsOverlaySpinner } from '@queso/ui-kit/spinner';
 
 import { NavbarComponent } from '../../components/navbar';
 import { BankAccount, Bill, Budget, FundSource } from '../../core/models';
@@ -28,7 +28,7 @@ export interface DashboardBankAccount extends BankAccount {
 @Component({
   selector: 'app-dashboard',
   imports: [
-    QsOverlaySpinnerComponent,
+    QsOverlaySpinner,
     NavbarComponent,
     DashboardBankAccountsComponent,
     DashboardSourceOfFundsComponent,

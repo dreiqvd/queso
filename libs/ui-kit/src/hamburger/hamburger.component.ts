@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'qs-hamburger',
   templateUrl: './hamburger.component.html',
 })
-export class QsHamburgerComponent {}
+export class QsHamburger {}

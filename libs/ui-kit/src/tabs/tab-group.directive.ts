@@ -12,4 +12,4 @@ import { MAT_TABS_CONFIG } from '@angular/material/tabs';
     },
   ],
 })
-export class QsTabGroupDirective {}
+export class QsTabGroup {}

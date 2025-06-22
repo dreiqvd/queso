@@ -2,11 +2,11 @@ import { Component, inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router, RouterModule } from '@angular/router';
 
-import { IconStyle, QsIconComponent } from '@queso/ui-kit/icon';
+import { IconStyle, QsIcon } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterModule, QsIconComponent],
+  imports: [RouterModule, QsIcon],
   templateUrl: './navbar.component.html',
   styles: `
     a {

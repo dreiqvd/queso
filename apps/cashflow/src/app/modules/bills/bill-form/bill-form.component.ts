@@ -14,7 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BehaviorSubject, Observable, of, take } from 'rxjs';
 
-import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
+import { QsFormField } from '@queso/ui-kit/form-field';
 
 import { BILLING_CATEGORIES, BILLING_CYCLES } from '../../../core/constants';
 import { Bill } from '../../../core/models';
@@ -31,7 +31,7 @@ import { PaymentAccountService } from '../../../core/services';
     MatSelectModule,
     MatSlideToggleModule,
     MatDatepickerModule,
-    QsFormFieldDirective,
+    QsFormField,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './bill-form.component.html',

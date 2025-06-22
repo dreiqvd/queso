@@ -13,6 +13,6 @@ import { Component, input } from '@angular/core';
     }
   `,
 })
-export class QsPillComponent {
+export class QsPill {
   readonly text = input.required<string>();
 }

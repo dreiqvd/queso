@@ -1,14 +1,14 @@
 import { DatePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 
-import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsPillComponent } from '@queso/ui-kit/pill';
+import { QsIcon } from '@queso/ui-kit/icon';
+import { QsPill } from '@queso/ui-kit/pill';
 
 import { Article } from '../../interfaces';
 
 @Component({
   selector: 'app-article-card',
-  imports: [DatePipe, QsIconComponent, QsPillComponent],
+  imports: [DatePipe, QsIcon, QsPill],
   templateUrl: './article-card.component.html',
 })
 export class ArticleCardComponent {

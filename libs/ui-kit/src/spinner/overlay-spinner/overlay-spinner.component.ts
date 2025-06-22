@@ -7,7 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './overlay-spinner.component.html',
   styleUrl: './overlay-spinner.component.scss',
 })
-export class QsOverlaySpinnerComponent {
+export class QsOverlaySpinner {
   diameter = signal(32);
   color = signal<'primary' | 'accent'>('primary');
 }

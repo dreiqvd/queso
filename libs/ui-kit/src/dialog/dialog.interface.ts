@@ -9,7 +9,7 @@ export const QsDialogActionTypes = {
 
 export interface QsDialogData {
   title: string;
-  content: QsDialogMessageProps | QsDialogComponentProps;
+  content: QsDialogMessageProps | QsDialogProps;
   actions?: QsDialogAction[] | null;
 }
 
@@ -18,7 +18,7 @@ export interface QsDialogMessageProps {
   message: string;
 }
 
-export interface QsDialogComponentProps {
+export interface QsDialogProps {
   type: 'component';
   component: any;
   props: any; // extra properties to be passed to the component

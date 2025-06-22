@@ -6,9 +6,9 @@ import { format } from 'date-fns';
 import { switchMap, tap } from 'rxjs';
 
 import { QsDialogService } from '@queso/ui-kit/dialog';
-import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsOverlaySpinnerComponent } from '@queso/ui-kit/spinner';
-import { QsTabGroupDirective } from '@queso/ui-kit/tabs';
+import { QsIcon } from '@queso/ui-kit/icon';
+import { QsOverlaySpinner } from '@queso/ui-kit/spinner';
+import { QsTabGroup } from '@queso/ui-kit/tabs';
 
 import { Bill } from '../../../core/models';
 import { BillService } from '../../../core/services';
@@ -24,9 +24,9 @@ import { BillsTableComponent } from './bills-table/bills-table.component';
     NgTemplateOutlet,
     MatTabsModule,
     MatButtonModule,
-    QsTabGroupDirective,
-    QsIconComponent,
-    QsOverlaySpinnerComponent,
+    QsTabGroup,
+    QsIcon,
+    QsOverlaySpinner,
     BillsTableComponent,
   ],
   templateUrl: './bills-list.component.html',

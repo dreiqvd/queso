@@ -3,7 +3,7 @@ import { Component, computed, inject } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
-import { QsAnimationsDirective } from '@queso/common/animations';
+import { QsAnimations } from '@queso/common/animations';
 
 import { ArticleCardComponent } from '../../../../components/article-card';
 import { ArticlesService } from '../../../../services';
@@ -14,7 +14,7 @@ import { ArticlesService } from '../../../../services';
     RouterLink,
     NgOptimizedImage,
     MatTooltip,
-    QsAnimationsDirective,
+    QsAnimations,
     ArticleCardComponent,
   ],
   providers: [ArticlesService],

@@ -7,7 +7,7 @@ import {
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { addMonths, format } from 'date-fns';
 
-import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsIcon } from '@queso/ui-kit/icon';
 
 import { Bill, Budget } from '../../../core/models';
 import { BillService, FundSourceService } from '../../../core/services';
@@ -23,12 +23,7 @@ const PROJECTIONS_COUNT = 6; // number of months to be projected
 
 @Component({
   selector: 'app-dashboard-projections',
-  imports: [
-    CurrencyPipe,
-    MatSlideToggleModule,
-    MatTooltipModule,
-    QsIconComponent,
-  ],
+  imports: [CurrencyPipe, MatSlideToggleModule, MatTooltipModule, QsIcon],
   templateUrl: './dashboard-projections.component.html',
 })
 export class DashboardProjectionsComponent {

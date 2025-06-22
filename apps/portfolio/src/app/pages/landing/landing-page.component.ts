@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import anime from 'animejs';
 
-import { QsAnimationsDirective } from '@queso/common/animations';
+import { QsAnimations } from '@queso/common/animations';
 import { QsCursorDirective } from '@queso/common/cursor';
 
 import { PageContainerComponent } from '../../components/page-container';
@@ -21,7 +21,7 @@ import { LandingSkillsComponent } from './sections/landing-skills/landing-skills
 @Component({
   selector: 'app-landing-page',
   imports: [
-    QsAnimationsDirective,
+    QsAnimations,
     QsCursorDirective,
     PageContainerComponent,
     LandingHeroComponent,
@@ -44,8 +44,8 @@ import { LandingSkillsComponent } from './sections/landing-skills/landing-skills
 })
 export class LandingPageComponent {
   /** Element reference for the introductory backdrop */
-  @ViewChild('backdrop', { read: QsAnimationsDirective })
-  backdrop!: QsAnimationsDirective;
+  @ViewChild('backdrop', { read: QsAnimations })
+  backdrop!: QsAnimations;
 
   @ViewChild('contact')
   contactSection!: ElementRef<HTMLElement>;

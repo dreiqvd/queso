@@ -11,7 +11,7 @@ import { filter, of, switchMap, tap } from 'rxjs';
 
 import { QsOrdinalPipe } from '@queso/common/pipes';
 import { QsDialogActionTypes, QsDialogService } from '@queso/ui-kit/dialog';
-import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsIcon } from '@queso/ui-kit/icon';
 
 import { Bill, FirestoreResponseDate } from '../../../../core/models';
 import { BillService } from '../../../../core/services';
@@ -35,7 +35,7 @@ interface TableBill extends Bill {
     MatMenuModule,
     MatProgressSpinnerModule,
     QsOrdinalPipe,
-    QsIconComponent,
+    QsIcon,
   ],
   templateUrl: './bills-table.component.html',
   styles: `

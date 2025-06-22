@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { QsPlatformService } from '@queso/common/services';
-import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
+import { QsFormField } from '@queso/ui-kit/form-field';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ import { QsFormFieldDirective } from '@queso/ui-kit/form-field';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    QsFormFieldDirective,
+    QsFormField,
   ],
   templateUrl: './login.component.html',
 })

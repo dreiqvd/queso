@@ -1,21 +1,15 @@
 import { Component } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 
-import { QsAnimationsDirective } from '@queso/common/animations';
-import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsPillComponent } from '@queso/ui-kit/pill';
+import { QsAnimations } from '@queso/common/animations';
+import { QsIcon } from '@queso/ui-kit/icon';
+import { QsPill } from '@queso/ui-kit/pill';
 
 import { PageContainerComponent } from '../../components/page-container';
 
 @Component({
   selector: 'app-page-projects',
-  imports: [
-    MatTooltip,
-    PageContainerComponent,
-    QsAnimationsDirective,
-    QsIconComponent,
-    QsPillComponent,
-  ],
+  imports: [MatTooltip, PageContainerComponent, QsAnimations, QsIcon, QsPill],
   templateUrl: './projects.component.html',
 })
 export class ProjectsComponent {

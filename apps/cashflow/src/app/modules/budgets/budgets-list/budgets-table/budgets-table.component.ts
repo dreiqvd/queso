@@ -4,7 +4,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 
-import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsIcon } from '@queso/ui-kit/icon';
 
 import { Budget } from '../../../../core/models/budget.model';
 import { BaseTableDirective } from '../../../../directives';
@@ -20,7 +20,7 @@ interface TableBudget extends Budget {
     MatTableModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    QsIconComponent,
+    QsIcon,
   ],
   templateUrl: './budgets-table.component.html',
   styles: `

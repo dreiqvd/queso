@@ -4,7 +4,6 @@ import {
   Component,
   DestroyRef,
   inject,
-  Inject,
   OnInit,
   signal,
   ViewChild,
@@ -19,7 +18,7 @@ import {
 } from '@angular/material/dialog';
 import { MatTooltip } from '@angular/material/tooltip';
 
-import { QsIconComponent } from '../icon';
+import { QsIcon } from '../icon';
 
 import {
   QsDialogAction,
@@ -29,21 +28,19 @@ import {
 
 @Component({
   selector: 'qs-dialog',
-  imports: [AsyncPipe, MatDialogModule, MatTooltip, MatButton, QsIconComponent],
+  imports: [AsyncPipe, MatDialogModule, MatTooltip, MatButton, QsIcon],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })
-export class QsDialogComponent implements OnInit, AfterViewInit {
+export class QsDialog implements OnInit, AfterViewInit {
   @ViewChild('componentContainer', { read: ViewContainerRef })
   componentContainer?: ViewContainerRef;
 
-  readonly showLoader = signal<boolean>(false);
-  readonly destroyRef = inject(DestroyRef);
+  private readonly dialogRef = inject(MatDialogRef<QsDialog>);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly data: QsDialogData = inject(MAT_DIALOG_DATA);
 
-  constructor(
-    public dialogRef: MatDialogRef<QsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: QsDialogData
-  ) {}
+  readonly showLoader = signal<boolean>(false);
 
   ngOnInit(): void {
     this.data.actions?.forEach((action) => {

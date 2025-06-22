@@ -10,7 +10,7 @@ type ScrollCueAppearance = 'mouse' | 'arrow-circle' | 'arrow' | 'chevron';
   templateUrl: './scroll-cue.component.html',
   styleUrl: './scroll-cue.component.scss',
 })
-export class QsScrollCueComponent {
+export class QsScrollCue {
   /** Appearance type of the scroll cue.
    *  @defaultValue 'arrow-circle'
    */

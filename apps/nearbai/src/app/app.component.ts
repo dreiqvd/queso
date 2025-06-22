@@ -14,7 +14,7 @@ import {
 } from '@angular/google-maps';
 
 import { BREAKPOINTS, getViewportWidth } from '@queso/common';
-import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsIcon } from '@queso/ui-kit/icon';
 
 import { DEFAULTS, ORIGINS } from './components/search-form/search-form.data';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -31,7 +31,7 @@ import { SearchService } from './services';
     GoogleMap,
     MapAdvancedMarker,
     MapInfoWindow,
-    QsIconComponent,
+    QsIcon,
     SidebarComponent,
   ],
   selector: 'app-root',

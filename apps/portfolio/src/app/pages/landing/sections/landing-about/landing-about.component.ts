@@ -3,18 +3,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 
-import { QsAnimationsDirective } from '@queso/common/animations';
-import { QsIconComponent } from '@queso/ui-kit/icon';
+import { QsAnimations } from '@queso/common/animations';
+import { QsIcon } from '@queso/ui-kit/icon';
 
 @Component({
   selector: 'app-landing-about',
-  imports: [
-    NgOptimizedImage,
-    RouterLink,
-    MatTooltip,
-    QsAnimationsDirective,
-    QsIconComponent,
-  ],
+  imports: [NgOptimizedImage, RouterLink, MatTooltip, QsAnimations, QsIcon],
   templateUrl: './landing-about.component.html',
 })
 export class LandingAboutComponent {

@@ -1,6 +1,6 @@
 import { Component, computed, inject, Signal } from '@angular/core';
 
-import { QsAnimationsDirective } from '@queso/common/animations';
+import { QsAnimations } from '@queso/common/animations';
 
 import { ArticleCardComponent } from '../../components/article-card';
 import { PageContainerComponent } from '../../components/page-container';
@@ -9,11 +9,7 @@ import { ArticlesService } from '../../services';
 
 @Component({
   selector: 'app-blog',
-  imports: [
-    QsAnimationsDirective,
-    PageContainerComponent,
-    ArticleCardComponent,
-  ],
+  imports: [QsAnimations, PageContainerComponent, ArticleCardComponent],
   templateUrl: './blog.component.html',
   providers: [ArticlesService],
 })

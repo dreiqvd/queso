@@ -20,8 +20,8 @@ import {
   getViewportWidth,
 } from '@queso/common';
 import { QsAnimationsDirective } from '@queso/common/animations';
-import { QsIconComponent } from '@queso/ui-kit/icon';
-import { QsPillComponent } from '@queso/ui-kit/pill';
+import { QsIcon } from '@queso/ui-kit/icon';
+import { QsPill } from '@queso/ui-kit/pill';
 
 import { SearchResult } from '../../core/interfaces';
 import { SearchService } from '../../services';
@@ -32,8 +32,8 @@ import { SearchFormComponent } from '../search-form';
   imports: [
     NgClass,
     MatTooltip,
-    QsIconComponent,
-    QsPillComponent,
+    QsIcon,
+    QsPill,
     QsAnimationsDirective,
     SearchFormComponent,
   ],

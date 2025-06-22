@@ -23,7 +23,7 @@ import { QsPlatformService } from '../services';
 @Directive({
   selector: '[qsAnimation]',
 })
-export class QsAnimationsDirective implements OnInit, OnDestroy {
+export class QsAnimations implements OnInit, OnDestroy {
   // Dependencies
   private readonly renderer = inject(Renderer2);
   private readonly elementRef = inject(ElementRef);
