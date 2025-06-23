@@ -1,4 +1,7 @@
-<nav class="fixed top-1/2 left-8 -translate-y-1/2 z-fixed">
+<nav
+  class="fixed top-1/2 left-8 -translate-y-1/2 z-fixed"
+  [style.display]="isMenuHidden() ? 'none' : 'block'"
+>
   <ul class="flex flex-col gap-7 p-0 list-none">
     @for (navItem of navItems; track $index) {
       <li
@@ -27,6 +30,9 @@
 </section>
 <section #section class="min-h-dvh" id="faqs">
   <app-faqs-section />
+</section>
+<section #section class="h-dvh" id="hashtag">
+  <app-hashtag-section />
 </section>
 <section #section class="min-h-dvh" id="registry">
   <p>Registry</p>

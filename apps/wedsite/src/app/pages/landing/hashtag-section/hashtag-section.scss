@@ -1,0 +1,23 @@
+.container {
+  background-image: url('/images/hashtag-bg_1280w.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  // TODO: Implement responsive background images
+  // @media (min-width: 768px) {
+  //   background-image: url('/images/bg-1280.webp');
+  // }
+
+  // @media (min-width: 1280px) {
+  //   background-image: url('/images/bg-1920.webp');
+  // }
+
+  // @media (min-width: 1921px) {
+  //   background-image: url('/images/bg-3840.webp');
+  // }
+}
+
+h2 {
+  font-family: 'Flapstick', sans-serif;
+}

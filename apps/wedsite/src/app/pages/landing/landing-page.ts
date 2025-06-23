@@ -10,10 +10,11 @@ import {
 
 import { DetailsSection } from './details-section/details-section';
 import { FAQSSection } from './faqs-section/faqs-section';
+import { HashtagSection } from './hashtag-section/hashtag-section';
 import { HeroSection } from './hero-section/hero-section';
 
 @Component({
-  imports: [HeroSection, DetailsSection, FAQSSection],
+  imports: [HeroSection, DetailsSection, FAQSSection, HashtagSection],
   selector: 'app-landing-page',
   templateUrl: './landing-page.html',
   styles: `
@@ -41,6 +42,7 @@ export class LandingPage implements OnDestroy {
   @ViewChildren('section') sections!: QueryList<ElementRef<HTMLElement>>;
 
   readonly activeRoute = signal<string>('home');
+  readonly isMenuHidden = signal<boolean>(false);
 
   readonly navItems = NAV_ITEMS;
   private intersectionObserver$?: IntersectionObserver;
@@ -52,7 +54,13 @@ export class LandingPage implements OnDestroy {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              this.activeRoute.set(entry.target.id);
+              const elementId = entry.target.id;
+              if (elementId === 'hashtag') {
+                this.isMenuHidden.set(true);
+              } else {
+                this.isMenuHidden.set(false);
+                this.activeRoute.set(entry.target.id);
+              }
             }
           });
         },

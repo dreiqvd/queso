@@ -27,6 +27,16 @@ $app-theme: mat.m2-define-light-theme((color: (primary: $primary,
 @include eden.apply-theme($app-theme);
 @include eden.apply-variables(eden-palette.$palette);
 
+@font-face {
+  font-family: 'Flapstick';
+  src: url('/fonts/FlapstickDEMO.woff2') format('woff2'),
+    url('/fonts/FlapstickDEMO.woff') format('woff'),
+    url('/fonts/FlapstickDEMO.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   --font-heading: 'Lilita One', serif;
   --font-subheading: 'Anonymous Pro', monospace;
