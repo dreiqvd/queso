@@ -9,10 +9,11 @@ import {
 } from '@angular/core';
 
 import { DetailsSection } from './details-section/details-section';
+import { FAQSSection } from './faqs-section/faqs-section';
 import { HeroSection } from './hero-section/hero-section';
 
 @Component({
-  imports: [HeroSection, DetailsSection],
+  imports: [HeroSection, DetailsSection, FAQSSection],
   selector: 'app-landing-page',
   templateUrl: './landing-page.html',
   styles: `

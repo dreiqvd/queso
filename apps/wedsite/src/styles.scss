@@ -22,6 +22,7 @@ $app-theme: mat.m2-define-light-theme((color: (primary: $primary,
 @include mat.core();
 
 @include mat.core-theme($app-theme);
+@include mat.expansion-theme($app-theme);
 
 @include eden.apply-theme($app-theme);
 @include eden.apply-variables(eden-palette.$palette);
@@ -52,6 +53,14 @@ h1 {
 
 h2 {
   font-size: 1.75rem;
+}
+
+a {
+  color: var(--color-toupe-500);
+
+  &:hover {
+    color: var(--color-toupe-600);
+  }
 }
 
 .section-header {

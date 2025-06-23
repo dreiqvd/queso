@@ -1,5 +1,6 @@
 /** Contains basic overrides for material components **/
 
+@use './accordion' as accordion;
 @use './button' as button;
 @use './datepicker' as datepicker;
 @use './form-field' as form-field;
@@ -11,6 +12,7 @@
 @use './tooltip' as tooltip;
 
 @mixin overrides() {
+  @include accordion.apply-theme();
   @include button.apply-theme();
   @include datepicker.apply-theme();
   @include form-field.apply-theme();

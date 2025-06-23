@@ -1,0 +1,17 @@
+// Material Overrides
+@use '@angular/material' as mat;
+
+:root {
+  @include mat.expansion-overrides((
+    actions-divider-color: var(--color-toupe-200),
+    container-background-color: transparent,
+    header-text-color: var(--color-accent),
+    header-indicator-color: var(--color-toupe-400),
+  ));
+}
+
+mat-accordion {
+  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    border-bottom: 1px solid var(--color-toupe-200);
+  }
+}

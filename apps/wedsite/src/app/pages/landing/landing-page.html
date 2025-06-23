@@ -1,5 +1,5 @@
 <nav class="fixed top-1/2 left-8 -translate-y-1/2 z-fixed">
-  <ul class="flex flex-col gap-7">
+  <ul class="flex flex-col gap-7 p-0 list-none">
     @for (navItem of navItems; track $index) {
       <li
         class="nav-item cursor-pointer text-2xl text-primary opacity-60
@@ -26,7 +26,7 @@
   <p>RSVP</p>
 </section>
 <section #section class="min-h-dvh" id="faqs">
-  <p>FAQs</p>
+  <app-faqs-section />
 </section>
 <section #section class="min-h-dvh" id="registry">
   <p>Registry</p>

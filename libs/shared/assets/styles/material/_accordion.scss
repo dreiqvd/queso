@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+@mixin apply-theme() {
+  :root {
+    @include mat.expansion-overrides((container-text-color: var(--text-default-color),
+        header-text-size: 1rem,
+        container-text-size: 1rem,
+        container-shape: 0, // removes border-radius around the expansion panel
+        header-expanded-state-height: 48px,
+      ));
+  }
+}
+
+mat-accordion {
+  .mat-expansion-panel-spacing {
+    margin: 0;
+  }
+
+  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 8px;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0 8px 16px;
+  }
+}

@@ -1,6 +1,7 @@
 @use './base' as base;
 @forward './eden/variables';
 @forward './eden/globals';
+@forward './eden/material';
 
 @mixin apply-theme($theme) {
   @include base.apply-variables($theme);

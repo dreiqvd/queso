@@ -1,0 +1,32 @@
+<div class="min-h-dvh flex flex-col items-center justify-center pt-[64px] pb-8 gap-[80px]">
+  <h2 class="section-header text-center">
+    FAQs
+  </h2>
+  <div class="flex flex-col items-center w-full relative gap-[104px] max-w-[1000px]">
+    <mat-accordion>
+      @for (item of faqs; track $index) {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ item.title }}</mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div>
+            <div [innerHTML]="item.content"></div>
+          </div>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+    <img
+      src="/images/flowers.svg"
+      alt="Flowers illustration"
+      width="60"
+    >
+    <img
+      src="/images/faq.svg"
+      alt="FAQs illustration"
+      width="200"
+      class="mt-8 absolute top-1/2 -translate-y-1/2 left-full ml-[96px] pb-[100px]"
+    >
+  </div>
+
+</div>
