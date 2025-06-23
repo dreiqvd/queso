@@ -4,6 +4,7 @@
 @use './button' as button;
 @use './datepicker' as datepicker;
 @use './form-field' as form-field;
+@use './input' as input;
 @use './menu' as menu;
 @use './select' as select;
 @use './snackbar' as snackbar;
@@ -16,6 +17,7 @@
   @include button.apply-theme();
   @include datepicker.apply-theme();
   @include form-field.apply-theme();
+  @include input.apply-theme();
   @include menu.apply-theme();
   @include select.apply-theme();
   @include snackbar.apply-theme();

@@ -12,9 +12,16 @@ import { DetailsSection } from './details-section/details-section';
 import { FAQSSection } from './faqs-section/faqs-section';
 import { HashtagSection } from './hashtag-section/hashtag-section';
 import { HeroSection } from './hero-section/hero-section';
+import { RSVPSection } from './rsvp-section/rsvp-section';
 
 @Component({
-  imports: [HeroSection, DetailsSection, FAQSSection, HashtagSection],
+  imports: [
+    HeroSection,
+    DetailsSection,
+    RSVPSection,
+    FAQSSection,
+    HashtagSection,
+  ],
   selector: 'app-landing-page',
   templateUrl: './landing-page.html',
   styles: `

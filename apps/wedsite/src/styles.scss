@@ -23,6 +23,9 @@ $app-theme: mat.m2-define-light-theme((color: (primary: $primary,
 
 @include mat.core-theme($app-theme);
 @include mat.expansion-theme($app-theme);
+@include mat.form-field-theme($app-theme);
+@include mat.input-theme($app-theme);
+@include mat.button-theme($app-theme);
 
 @include eden.apply-theme($app-theme);
 @include eden.apply-variables(eden-palette.$palette);
@@ -48,6 +51,19 @@ body {
     linear-gradient(to right, #F7EFE4, #dfd4c5),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E") center/200px;
   background-blend-mode: overlay;
+}
+
+/** Material overrides **/
+html {
+  // Form Field
+  --mat-form-field-container-vertical-padding: 12px;
+  --mat-form-field-container-height: 42px;
+  --mat-form-field-outlined-outline-color: var(--color-primary);
+  --mat-form-field-outlined-outline-width: 2px;
+  --mat-form-field-outlined-hover-outline-color: var(--color-primary-500);
+
+  // Button
+  --mat-button-filled-container-height: 42px;
 }
 
 h1,
