@@ -111,6 +111,9 @@ module.exports = {
     },
   },
   plugins: [],
+  corePlugins: {
+    preflight: false, // Disable Tailwind's default styles
+  },
   // Following blocklist are preferred to be used without default styling
   blocklist: ['container'],
 };
