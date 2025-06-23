@@ -21,8 +21,16 @@ import { HeroSection } from './hero-section/hero-section';
       opacity: 1;
 
       span {
+        padding-left: 16px;
+        position: relative;
+
         &::before {
-          content: url('/images/asterisk.svg');
+          content: '*';
+          font-family: 'Anonymous Pro', monospace;
+          font-weight: 700;
+          position: absolute;
+          top: -4px;
+          left: 0;
           margin-right: 4px;
         }
       }
