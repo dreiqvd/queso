@@ -12,6 +12,8 @@ import { DetailsSection } from './details-section/details-section';
 import { FAQSSection } from './faqs-section/faqs-section';
 import { HashtagSection } from './hashtag-section/hashtag-section';
 import { HeroSection } from './hero-section/hero-section';
+import { MediaSection } from './media-section/media-section';
+import { RegistrySection } from './registry-section/registry-section';
 import { RSVPSection } from './rsvp-section/rsvp-section';
 
 @Component({
@@ -21,6 +23,8 @@ import { RSVPSection } from './rsvp-section/rsvp-section';
     RSVPSection,
     FAQSSection,
     HashtagSection,
+    RegistrySection,
+    MediaSection,
   ],
   selector: 'app-landing-page',
   templateUrl: './landing-page.html',
