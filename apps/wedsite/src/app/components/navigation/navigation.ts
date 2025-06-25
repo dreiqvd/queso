@@ -3,12 +3,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 
-import { QsHamburger } from '@queso/ui-kit/hamburger';
 import { QsSlidebar } from '@queso/ui-kit/slidebar';
 
 @Component({
   selector: 'app-navigation',
-  imports: [RouterModule, MatButtonModule, MatTooltip, QsHamburger, QsSlidebar],
+  imports: [RouterModule, MatButtonModule, MatTooltip, QsSlidebar],
   templateUrl: './navigation.html',
   styles: `
     :host {
@@ -18,6 +17,7 @@ import { QsSlidebar } from '@queso/ui-kit/slidebar';
     .nav-item {
       &.active a {
         opacity: 1;
+        color: #ffc780;
       }
     }
   `,

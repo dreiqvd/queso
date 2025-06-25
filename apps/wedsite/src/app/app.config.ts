@@ -25,6 +25,7 @@ export const appConfig: ApplicationConfig = {
       withEnabledBlockingInitialNavigation(),
       withInMemoryScrolling({
         anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'top',
       })
     ),
   ],

@@ -1,12 +1,11 @@
 <button
-  matIconButton
   type="button"
   aria-label="Open menu"
   matTooltip="Open Menu"
-  class="!fixed !z-fixed top-8 right-8 scale-x-[-1]"
+  class="!fixed !z-fixed bg-transparent outline-none border-0 cursor-pointer top-8 right-8 scale-x-[-1]"
   (click)="isSidebarOpen.set(true)"
 >
-  <qs-hamburger />
+  <img src="/images/menu.svg" alt="Menu icon" width="35">
 </button>
 
 <qs-slidebar
