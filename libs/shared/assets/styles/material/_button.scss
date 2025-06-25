@@ -7,12 +7,24 @@
       outlined-outline-width: 2px,
       outlined-outline-color: var(--color-primary),
     ));
+
+    @include mat.icon-button-overrides((
+      icon-color: var(--color-primary),
+    ));
   }
 
   .mat-mdc-outlined-button.mat-primary {
     @include mat.button-overrides((
       outlined-outline-color: var(--color-primary),
     ));
+  }
+
+  .mat-mdc-icon-button {
+    &:hover {
+      @include mat.icon-button-overrides((
+        icon-color: var(--color-primary-500),
+      ));
+    }
   }
 }
 

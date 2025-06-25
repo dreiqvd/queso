@@ -20,6 +20,7 @@
     "./icon": "./src/icon/index.ts",
     "./pill": "./src/pill/index.ts",
     "./scroll-cue": "./src/scroll-cue/index.ts",
+    "./slidebar": "./src/slidebar/index.ts",
     "./spinner": "./src/spinner/index.ts",
     "./tabs": "./src/tabs/index.ts"
   }
