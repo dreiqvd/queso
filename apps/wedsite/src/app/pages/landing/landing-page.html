@@ -1,6 +1,6 @@
 <nav
   class="fixed top-1/2 left-8 -translate-y-1/2 z-fixed"
-  [style.display]="isMenuHidden() ? 'none' : 'block'"
+  [style.opacity]="isMenuHidden() ? '0' : '1'"
 >
   <ul class="flex flex-col gap-7 p-0 list-none">
     @for (navItem of navItems; track $index) {
@@ -10,8 +10,8 @@
           hover:text-primary-300
         "
         [class.active]="activeRoute() === navItem.route"
-        [class.text-primary]="activeRoute() !== 'registry'"
-        [class.text-body-light]="activeRoute() === 'registry'"
+        [class.text-primary]="activeRoute() !== 'gifts'"
+        [class.text-body-light]="activeRoute() === 'gifts'"
         (click)="onMenuItemClick(navItem.route)"
         (keydown.enter)="onMenuItemClick(navItem.route)"
       >
@@ -21,7 +21,7 @@
   </ul>
 </nav>
 
-<section #section class="min-h-dvh" id="home">
+<section #section class="min-h-dvh" id="hello">
   <app-hero-section />
 </section>
 <section #section class="min-h-dvh" id="details">
@@ -36,7 +36,7 @@
 <section #section class="h-dvh" id="hashtag">
   <app-hashtag-section />
 </section>
-<section #section id="registry" class="bg-primary text-body-light pb-[120px]">
+<section #section id="gifts" class="bg-primary text-body-light pb-[120px]">
   <app-registry-section />
 </section>
 <section #section class="min-h-dvh" id="media">

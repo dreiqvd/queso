@@ -52,10 +52,11 @@ import { RSVPSection } from './rsvp-section/rsvp-section';
 export class LandingPage implements OnDestroy {
   @ViewChildren('section') sections!: QueryList<ElementRef<HTMLElement>>;
 
-  readonly activeRoute = signal<string>('home');
+  readonly activeRoute = signal<string>('hello');
   readonly isMenuHidden = signal<boolean>(false);
 
   readonly navItems = NAV_ITEMS;
+  private disableActiveRouteChecking = false;
   private intersectionObserver$?: IntersectionObserver;
 
   constructor() {
@@ -64,6 +65,9 @@ export class LandingPage implements OnDestroy {
       this.intersectionObserver$ = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
+            if (this.disableActiveRouteChecking) {
+              return;
+            }
             if (entry.isIntersecting) {
               const elementId = entry.target.id;
               if (elementId === 'hashtag') {
@@ -89,11 +93,16 @@ export class LandingPage implements OnDestroy {
   onMenuItemClick(route: string): void {
     const section = this.sections.find((s) => s.nativeElement.id === route);
     if (section) {
+      // Disable active route checking while scrolling to the view
+      this.disableActiveRouteChecking = true;
       this.activeRoute.set(route);
       section.nativeElement.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
+      setTimeout(() => {
+        this.disableActiveRouteChecking = false;
+      }, 1000);
     }
   }
 
@@ -107,8 +116,8 @@ export class LandingPage implements OnDestroy {
 
 const NAV_ITEMS = [
   {
-    label: 'Home',
-    route: 'home',
+    label: 'Hello',
+    route: 'hello',
   },
   {
     label: 'Details',
@@ -123,8 +132,8 @@ const NAV_ITEMS = [
     route: 'faqs',
   },
   {
-    label: 'Registry',
-    route: 'registry',
+    label: 'Gifts',
+    route: 'gifts',
   },
   {
     label: 'Media',

@@ -26,6 +26,7 @@ $app-theme: mat.m2-define-light-theme((color: (primary: $primary,
 @include mat.form-field-theme($app-theme);
 @include mat.input-theme($app-theme);
 @include mat.button-theme($app-theme);
+@include mat.tooltip-theme($app-theme);
 
 @include eden.apply-theme($app-theme);
 @include eden.apply-variables(eden-palette.$palette);
@@ -82,4 +83,18 @@ a {
   border: solid 4px var(--color-primary);
   border-radius: 10px;
   padding: 10px 24px;
+}
+
+.slidebar {
+  background-color: var(--color-primary);
+  color: var(--text-body-light);
+
+  .slidebar-close-btn {
+    color: var(--color-gray-50);
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

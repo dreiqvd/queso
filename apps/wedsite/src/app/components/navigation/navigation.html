@@ -1,0 +1,33 @@
+<button
+  matIconButton
+  type="button"
+  aria-label="Open menu"
+  matTooltip="Open Menu"
+  class="!fixed !z-fixed top-8 right-8 scale-x-[-1]"
+  (click)="isSidebarOpen.set(true)"
+>
+  <qs-hamburger />
+</button>
+
+<qs-slidebar
+  position="right"
+  [isSidebarOpen]="isSidebarOpen()"
+  (closed)="isSidebarOpen.set(false)"
+>
+  <ul class="list-none p-0">
+    @for (link of footerLinks; track $index) {
+      <li
+        class="nav-item p-6 border-solid border-0 border-b border-b-primary-100"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a
+          class="text-body-light text-2xl no-underline opacity-80 hover:opacity-100 hover:text-[#ffc780]"
+          [routerLink]="link.route"
+        >
+          {{ link.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</qs-slidebar>

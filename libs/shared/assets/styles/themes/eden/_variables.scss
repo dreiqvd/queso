@@ -1,6 +1,8 @@
 html {
   --text-default-color: var(--color-primary);
   --text-body-light: #F5F5F5;
+  --tooltip-bg-color: var(--color-accent);
+  --tooltip-text-color: var(--text-body-light);
 }
 
 @mixin apply-variables($palette) {

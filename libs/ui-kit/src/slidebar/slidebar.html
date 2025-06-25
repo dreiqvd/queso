@@ -1,5 +1,5 @@
 <div
-  class="bg-white h-dvh w-[300px] fixed z-fixed top-0 transform transition-transform duration-300 ease-in-out"
+  class="slidebar bg-white h-dvh w-[300px] fixed z-fixed top-0 transform transition-transform duration-300 ease-in-out"
   [class.right-0]="position() === 'right'"
   [class.left-0]="position() === 'left'"
   [class.translate-x-full]="position() === 'right' && !isSidebarOpen()"
@@ -9,6 +9,7 @@
   <div class="text-right p-6">
     <button
       matIconButton
+      class="slidebar-close-btn"
       type="button"
       matTooltip="Close"
       (click)="closed.emit()">

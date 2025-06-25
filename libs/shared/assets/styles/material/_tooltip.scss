@@ -1,11 +1,19 @@
+@use '@angular/material' as mat;
+
 @mixin apply-theme() {
-  html {
-    --mdc-plain-tooltip-container-color: var(
-      --tooltip-bg-color,
-      var(--color-gray)
-    );
-    --mdc-plain-tooltip-supporting-text-color: var(--tooltip-text-color, white);
-    --mdc-plain-tooltip-supporting-text-size: 0.75rem;
-    --mdc-plain-tooltip-container-shape: 4px;
+  :root {
+    @include mat.tooltip-overrides((
+      container-color: var(--tooltip-bg-color, var(--color-gray)),
+      supporting-text-color: var(--tooltip-text-color, white),
+    ));
   }
+  // html {
+  //   --mdc-plain-tooltip-container-color: var(
+  //     --tooltip-bg-color,
+  //     var(--color-gray)
+  //   );
+  //   --mdc-plain-tooltip-supporting-text-color: var(--tooltip-text-color, white);
+  //   --mdc-plain-tooltip-supporting-text-size: 0.75rem;
+  //   --mdc-plain-tooltip-container-shape: 4px;
+  // }
 }
