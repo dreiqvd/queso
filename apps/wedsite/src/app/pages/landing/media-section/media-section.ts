@@ -1,9 +1,16 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-media-section',
-  imports: [CommonModule],
+  imports: [NgOptimizedImage, RouterLink],
   templateUrl: './media-section.html',
 })
-export class MediaSection {}
+export class MediaSection {
+  readonly footerLinks = [
+    { label: 'Dress Code', route: '/dress-code' },
+    { label: 'Our Story', route: '/our-story' },
+    { label: 'Our Cats', route: '/our-cats' },
+  ];
+}

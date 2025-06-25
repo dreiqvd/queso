@@ -1,1 +1,47 @@
-<p>media-section works!</p>
+<div class="min-h-dvh flex flex-col items-center relative gap-[80px]">
+  <h2 class="section-header text-center mt-[120px]">
+    PHOTOS & VIDEOS
+  </h2>
+  <div class="flex gap-8">
+    <div class="relative">
+      <img
+        priority
+        ngSrc="/images/highlight.jpg"
+        alt="Highlight image"
+        width="250"
+        height="333"
+      >
+      <img
+        src="/images/line.svg"
+        alt="Line decor"
+        aria-hidden="true"
+        width="170"
+        class="absolute -bottom-[60px] -right-[70px]"
+      >
+    </div>
+    <div class="mt-5">
+      <img src="/images/camera.svg" alt="Camera icon" width="90">
+      <h3 class="text-2xl font-semibold mb-2">
+        We'd love to see the celebration <br />from your POV!
+      </h3>
+      <p>
+        Got any photos/videos you'd love to share? <br />Drop them <a href="#" target="_blank" rel="noreferrer noopener">here!</a>
+      </p>
+    </div>
+  </div>
+
+  <nav class="absolute bottom-4 right-8">
+    <ul class="list-none text-right">
+      @for (link of footerLinks; track $index) {
+        <li class="mb-2">
+          <a
+            class="text-primary text-2xl"
+            [routerLink]="link.route"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>
