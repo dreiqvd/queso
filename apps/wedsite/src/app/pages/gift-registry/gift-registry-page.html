@@ -1,0 +1,16 @@
+<div class="flex flex-col items-center p-12">
+  <h2 class="section-header text-center my-12">
+    REGISTRY
+  </h2>
+
+  <h3 class="font-semibold text-accent text-2xl leading-8">
+    No gifts? Really, no worries! But if you're curious…
+  </h3>
+  <div class="my-12 grid grid-cols-4 gap-16">
+    @for (gift of gifts; track $index) {
+      <div>
+        <app-gift-item [gift]="gift" />
+      </div>
+    }
+  </div>
+</div>
