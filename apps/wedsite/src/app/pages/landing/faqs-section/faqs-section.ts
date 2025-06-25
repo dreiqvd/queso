@@ -100,7 +100,7 @@ const FAQs: { title: string; content: string }[] = [
     title: 'Should we bring gifts?',
     content: `
       <p>Awww, that's so sweet! We've hustled together for four years and managed to purchase some essentials, but we still don't have it all.</p>
-      <p>If you'd like to give a physical gift, we've created a registry for your convenience. As we start this new chapter, a monetary gift would also be a big help.</p>
+      <p>If you'd like to give a physical gift, we've created a <a href="registry" target="_blank" rel="noopener noreferrer">registry</a> for your convenience. As we start this new chapter, a monetary gift would also be a big help.</p>
       <p>Honestly, having friends and loved ones with us on our special day is the greatest gift. Thank you for taking the time to celebrate our love!</p>
     `,
   },

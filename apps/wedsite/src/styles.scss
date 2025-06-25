@@ -53,19 +53,6 @@ body {
   background-blend-mode: overlay;
 }
 
-/** Material overrides **/
-html {
-  // Form Field
-  --mat-form-field-container-vertical-padding: 12px;
-  --mat-form-field-container-height: 42px;
-  --mat-form-field-outlined-outline-color: var(--color-primary);
-  --mat-form-field-outlined-outline-width: 2px;
-  --mat-form-field-outlined-hover-outline-color: var(--color-primary-500);
-
-  // Button
-  --mat-button-filled-container-height: 42px;
-}
-
 h1,
 h2,
 h3 {

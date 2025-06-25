@@ -1,42 +1,67 @@
+@use '@angular/material' as mat;
+
 @mixin apply-theme() {
-  html {
-    // Button
-    --mdc-text-button-label-text-tracking: normal;
-
-    // Flat Button
-    --mdc-filled-button-label-text-tracking: normal;
-    --mdc-filled-button-container-shape: 4px; // border-radius
-    --mdc-filled-button-label-text-size: 1rem;
-    --mdc-filled-button-container-height: 56px;
-    --mdc-filled-button-label-text-color: var(--text-default-color);
-    --mat-filled-button-state-layer-color: var(--text-default-color);
-
-    // Icon Button
-    --mdc-icon-button-icon-size: inherit;
-    --mat-icon-button-state-layer-color: var(--color-gray-50);
-
-    // Stroked Button
-    --mdc-outlined-button-label-text-tracking: normal;
-    --mdc-outlined-button-label-text-size: 1rem;
-
-    .mat-mdc-icon-button {
-      line-height: 0;
-
-      img,
-      svg {
-        width: inherit;
-        height: inherit;
-      }
-    }
-  }
-
-  .mat-mdc-unelevated-button.mat-primary {
-    --mdc-filled-button-label-text-color: var(--text-default-color);
-    --mat-filled-button-state-layer-color: var(--text-default-color);
+  :root {
+    @include mat.button-overrides((
+      filled-label-text-weight: 400,
+      outlined-outline-width: 2px,
+      outlined-outline-color: var(--color-primary),
+    ));
   }
 
   .mat-mdc-outlined-button.mat-primary {
-    --mdc-outlined-button-outline-color: var(--color-primary);
-    --mdc-outlined-button-outline-width: 2px;
+    @include mat.button-overrides((
+      outlined-outline-color: var(--color-primary),
+    ));
   }
 }
+
+
+// @mixin apply-theme() {
+//   html {
+//     // Button
+//     --mdc-text-button-label-text-tracking: normal;
+
+//     // Flat Button
+//     --mdc-filled-button-label-text-tracking: normal;
+//     --mdc-filled-button-container-shape: 4px; // border-radius
+//     --mdc-filled-button-label-text-size: 1rem;
+//     --mdc-filled-button-container-height: 56px;
+//     --mdc-filled-button-label-text-color: var(--text-default-color);
+
+
+//     // Filled Button
+//     --mat-filled-button-state-layer-color: var(--text-default-color);
+
+//     // Outline Button
+//     --mat-button-outlined-outline-width: 2px;
+
+//     // Icon Button
+//     --mat-icon-button-state-layer-color: var(--color-gray-50);
+//     --mdc-icon-button-icon-size: inherit;
+
+//     // Stroked Button
+//     --mdc-outlined-button-label-text-tracking: normal;
+//     --mdc-outlined-button-label-text-size: 1rem;
+
+//     .mat-mdc-icon-button {
+//       line-height: 0;
+
+//       img,
+//       svg {
+//         width: inherit;
+//         height: inherit;
+//       }
+//     }
+//   }
+
+//   .mat-mdc-unelevated-button.mat-primary {
+//     --mdc-filled-button-label-text-color: var(--text-default-color);
+//     --mat-filled-button-state-layer-color: var(--text-default-color);
+//   }
+
+//   .mat-mdc-outlined-button.mat-primary {
+//     --mdc-outlined-button-outline-color: var(--color-primary);
+//     --mdc-outlined-button-outline-width: 2px;
+//   }
+// }

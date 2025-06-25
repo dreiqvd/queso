@@ -5,11 +5,13 @@
   <ul class="flex flex-col gap-7 p-0 list-none">
     @for (navItem of navItems; track $index) {
       <li
-        class="nav-item cursor-pointer text-2xl text-primary opacity-60
+        role="navigation"
+        class="nav-item cursor-pointer text-2xl opacity-60
           hover:text-primary-300
         "
-        role="navigation"
         [class.active]="activeRoute() === navItem.route"
+        [class.text-primary]="activeRoute() !== 'registry'"
+        [class.text-body-light]="activeRoute() === 'registry'"
         (click)="onMenuItemClick(navItem.route)"
         (keydown.enter)="onMenuItemClick(navItem.route)"
       >
@@ -34,7 +36,7 @@
 <section #section class="h-dvh" id="hashtag">
   <app-hashtag-section />
 </section>
-<section #section class="min-h-dvh" id="registry">
+<section #section id="registry" class="bg-primary text-body-light pb-[120px]">
   <app-registry-section />
 </section>
 <section #section class="min-h-dvh" id="media">

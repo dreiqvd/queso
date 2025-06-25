@@ -2,12 +2,32 @@
 @use '@angular/material' as mat;
 
 :root {
-  @include mat.expansion-overrides((
-    actions-divider-color: var(--color-toupe-200),
-    container-background-color: transparent,
-    header-text-color: var(--color-accent),
-    header-indicator-color: var(--color-toupe-400),
-  ));
+  // Expansion Panel
+  @include mat.expansion-overrides((actions-divider-color: var(--color-toupe-200),
+      container-background-color: transparent,
+      header-text-color: var(--color-accent),
+      header-indicator-color: var(--color-toupe-400),
+    ));
+
+  // Form Field
+  @include mat.form-field-overrides((container-vertical-padding: 12px,
+      container-height: 42px,
+      container-text-tracking: normal,
+      outlined-outline-color: var(--color-primary),
+      outlined-outline-width: 2px,
+      outlined-hover-outline-color: var(--color-primary-500),
+      outlined-input-text-color: var(--text-default-color),
+    ));
+
+  // Button
+  @include mat.button-overrides((filled-container-height: 42px,
+      outlined-container-height: 42px,
+    ));
+}
+
+.mat-mdc-outlined-button.mat-primary {
+  @include mat.button-overrides((outlined-label-text-color: var(--color-primary-500),
+    ));
 }
 
 mat-accordion {
