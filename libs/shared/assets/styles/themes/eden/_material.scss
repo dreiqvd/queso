@@ -19,10 +19,11 @@
       container-height: 42px,
       container-text-tracking: normal,
       outlined-outline-color: var(--color-primary),
-      outlined-focus-outline-color: var(--color-accent),
       outlined-outline-width: 2px,
-      outlined-hover-outline-color: var(--color-primary-500),
       outlined-input-text-color: var(--text-default-color),
+      outlined-focus-outline-color: var(--color-accent),
+      outlined-hover-outline-color: var(--color-primary-500),
+      outlined-disabled-outline-color: var(--color-toupe-200),
     )
   );
 
@@ -46,5 +47,11 @@
 mat-accordion {
   .mat-expansion-panel:not([class*='mat-elevation-z']) {
     border-bottom: 1px solid var(--color-toupe-200);
+  }
+}
+
+.mat-form-field-disabled {
+  .mat-mdc-notch-piece {
+    border-width: 2px;
   }
 }

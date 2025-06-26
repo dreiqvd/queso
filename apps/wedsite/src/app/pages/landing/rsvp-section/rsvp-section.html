@@ -9,18 +9,30 @@
     </h3>
   </div>
 
-  <form class="flex flex-col text-center max-w-[440px]">
+  <form
+    class="flex flex-col text-center max-w-[440px]"
+    [formGroup]="rsvpForm"
+    (submit)="onSubmit()"
+  >
     <p>RSVP to reserve your spot or that of your entire party.</p>
     <mat-form-field qsFormField subscriptSizing="dynamic">
       <input
         matInput
-        placeholder="Type your name"
+        placeholder="Type your name or invite code"
         type="text"
+        formControlName="search"
       >
+      @if (rsvpForm.get('search')?.invalid && rsvpForm.get('search')?.errors?.['notFound']) {
+        <mat-error>Peekaboo—we can't see you! Check your name/code or contact us.</mat-error>
+      }
+
+      @if (isSearching()) {
+        <mat-hint>Looking for your invite...</mat-hint>
+      }
     </mat-form-field>
     <button
       matButton="filled"
-      type="button"
+      type="submit"
       color="primary"
       class="mt-2"
     >

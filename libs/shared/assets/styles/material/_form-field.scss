@@ -34,4 +34,11 @@
       padding-left: 0;
     }
   }
+
+  .mat-form-field-disabled {
+    input:hover,
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
 }

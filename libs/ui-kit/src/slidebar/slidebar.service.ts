@@ -12,6 +12,5 @@ export class QsSlidebarService {
 
   closeSidebar(): void {
     this.isSidebarOpen.set(false);
-    console.log('Sidebar closed');
   }
 }

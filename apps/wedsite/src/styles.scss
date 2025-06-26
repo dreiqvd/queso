@@ -8,16 +8,22 @@
 $primary: mat.m2-define-palette(eden-palette.$green, 400);
 $accent: mat.m2-define-palette(eden-palette.$copper, 400);
 $warn: mat.m2-define-palette(base-palette.$red, 400);
-$typography: mat.m2-define-typography-config($font-family: "Sour Gummy, 'Helvetica Neue', sans-serif");
+$typography: mat.m2-define-typography-config(
+  $font-family: "Sour Gummy, 'Helvetica Neue', sans-serif",
+);
 
 /** Theme **/
-$app-theme: mat.m2-define-light-theme((color: (primary: $primary,
-        accent: $accent,
-        warn: $warn,
-      ),
-      typography: $typography,
-      density: 0,
-    ));
+$app-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+      warn: $warn,
+    ),
+    typography: $typography,
+    density: 0,
+  )
+);
 
 @include mat.core();
 
@@ -27,13 +33,15 @@ $app-theme: mat.m2-define-light-theme((color: (primary: $primary,
 @include mat.input-theme($app-theme);
 @include mat.button-theme($app-theme);
 @include mat.tooltip-theme($app-theme);
+@include mat.dialog-theme($app-theme);
 
 @include eden.apply-theme($app-theme);
 @include eden.apply-variables(eden-palette.$palette);
 
 @font-face {
   font-family: 'Flapstick';
-  src: url('/fonts/FlapstickDEMO.woff2') format('woff2'),
+  src:
+    url('/fonts/FlapstickDEMO.woff2') format('woff2'),
     url('/fonts/FlapstickDEMO.woff') format('woff'),
     url('/fonts/FlapstickDEMO.otf') format('opentype');
   font-weight: normal;
@@ -49,8 +57,9 @@ html {
 body {
   font-family: 'Sour Gummy', serif;
   background:
-    linear-gradient(to right, #F7EFE4, #dfd4c5),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E") center/200px;
+    linear-gradient(to right, #f7efe4, #dfd4c5),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")
+      center/200px;
   background-blend-mode: overlay;
 }
 
