@@ -44,21 +44,28 @@ export class RSVPSection {
 
     this.isSearching.set(true);
     searchControl.disable();
-    this.guestService.findGuest(value).subscribe((res) => {
-      this.isSearching.set(false);
-      searchControl.enable();
-      if (res) {
-        this.dialogService.showCustomComponent(
-          '',
-          RsvpDialog,
-          {
-            guestParties: res,
-          },
-          []
-        );
-      } else {
+    this.guestService.findGuest(value).subscribe({
+      next: (res) => {
+        this.isSearching.set(false);
+        searchControl.enable();
+        if (res?.length) {
+          this.dialogService.showCustomComponent(
+            '',
+            RsvpDialog,
+            {
+              guestParties: res,
+            },
+            []
+          );
+        } else {
+          searchControl.setErrors({ notFound: true });
+        }
+      },
+      error: () => {
+        searchControl.enable({ emitEvent: false });
         searchControl.setErrors({ notFound: true });
-      }
+        this.isSearching.set(false);
+      },
     });
   }
 }
