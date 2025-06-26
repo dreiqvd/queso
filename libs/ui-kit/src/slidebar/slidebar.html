@@ -15,10 +15,9 @@
   [class.-translate-x-full]="position() === 'left' && !isSidebarOpen()"
   [class.translate-x-0]="isSidebarOpen()"
 >
-  <div class="text-right p-6">
+  <div class="flex justify-end p-6">
     <button
-      matIconButton
-      class="slidebar-close-btn"
+      class="qs-icon-button slidebar-close-btn hover:!bg-primary-500"
       type="button"
       matTooltip="Close"
       (click)="closed.emit()">

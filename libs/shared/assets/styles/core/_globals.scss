@@ -59,6 +59,23 @@ a {
 }
 
 button {
+  &.qs-icon-button {
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    border-radius: 9999px;
+    padding: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+
+    &:hover {
+      background-color: var(--color-primary-50);
+    }
+  }
+
   &:disabled {
     cursor: not-allowed;
   }
