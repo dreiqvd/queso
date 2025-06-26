@@ -1,0 +1,18 @@
+@if (selectedResponse() === 'YES') {
+  <img src="/images/happy-cat.svg" alt="Happy cat" width="80" class="mb-4 animate-bounce">
+  <p>
+    Woohoo! You're in—we're so excited to celebrate with you. We'll be in touch soon!
+  </p>
+} @else if (selectedResponse() === 'NO') {
+  <img src="/images/sad-cat.svg" alt="Sad cat" width="80" class="mb-4">
+  <p>We'll miss you, but we totally understand! Feel free to reach out anytime.</p>
+}
+<button
+  matButton="outlined"
+  color="primary"
+  type="button"
+  class="mt-4"
+  (click)="closed.emit()"
+>
+  Close
+</button>
