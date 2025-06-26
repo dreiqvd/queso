@@ -29,13 +29,13 @@ export class RSVPSection {
   private readonly guestService = inject(GuestService);
   private readonly dialogService = inject(QsDialogService);
 
-  readonly isSearching = signal(false);
+  protected readonly isSearching = signal(false);
 
-  readonly rsvpForm = new FormGroup({
+  protected readonly rsvpForm = new FormGroup({
     search: new FormControl<string>('', Validators.required),
   });
 
-  onSubmit(): void {
+  onFormSubmit(): void {
     const searchControl = this.rsvpForm.controls.search;
     const value = searchControl.value?.trim()?.toLowerCase();
     if (searchControl.invalid || !value) return;

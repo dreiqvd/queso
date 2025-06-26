@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './media-section.html',
 })
 export class MediaSection {
-  readonly footerLinks = [
+  protected readonly footerLinks = [
     { label: 'Dress Code', route: '/dress-code' },
     { label: 'Our Story', route: '/our-story' },
     { label: 'Our Cats', route: '/our-cats' },

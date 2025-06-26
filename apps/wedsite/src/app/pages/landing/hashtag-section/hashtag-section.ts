@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './hashtag-section.scss',
 })
 export class HashtagSection {
-  readonly hashtag = '#EveryDreiWithTricia'.split('');
+  protected readonly hashtag = '#EveryDreiWithTricia'.split('');
 }

@@ -9,5 +9,7 @@ import { QsCountdownFlipCard } from '@queso/ui-kit/countdown-flip-card';
   imports: [QsCountdownFlipCard],
 })
 export class HeroSection {
-  readonly mainHeadingText = signal<string[]>('Drei + Tricia'.split(''));
+  protected readonly mainHeadingText = signal<string[]>(
+    'Drei + Tricia'.split('')
+  );
 }

@@ -23,8 +23,8 @@ import { QsSlidebar } from '@queso/ui-kit/slidebar';
   `,
 })
 export class Navigation {
-  readonly isSidebarOpen = signal(false);
-  readonly footerLinks = [
+  protected readonly isSidebarOpen = signal(false);
+  protected readonly footerLinks = [
     { label: 'Home', route: '/' },
     { label: 'Dress Code', route: '/dress-code' },
     { label: 'Registry', route: '/registry' },

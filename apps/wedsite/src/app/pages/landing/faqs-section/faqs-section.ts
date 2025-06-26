@@ -25,7 +25,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
   `,
 })
 export class FAQSSection {
-  readonly faqs = FAQs;
+  protected readonly faqs = FAQs;
 }
 
 const FAQs: { title: string; content: string }[] = [

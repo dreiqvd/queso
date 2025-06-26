@@ -52,10 +52,10 @@ import { RSVPSection } from './rsvp-section/rsvp-section';
 export class LandingPage implements OnDestroy {
   @ViewChildren('section') sections!: QueryList<ElementRef<HTMLElement>>;
 
-  readonly activeRoute = signal<string>('hello');
-  readonly isMenuHidden = signal<boolean>(false);
+  protected readonly activeRoute = signal<string>('hello');
+  protected readonly isMenuHidden = signal<boolean>(false);
 
-  readonly navItems = NAV_ITEMS;
+  protected readonly navItems = NAV_ITEMS;
   private disableActiveRouteChecking = false;
   private intersectionObserver$?: IntersectionObserver;
 
