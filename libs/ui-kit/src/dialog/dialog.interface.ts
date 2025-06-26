@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ThemePalette } from '@angular/material/core';
+import { MatDialogConfig } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
+
+export const QsBaseDialogConfig: MatDialogConfig = {
+  disableClose: true,
+  autoFocus: false,
+};
 
 export const QsDialogActionTypes = {
   OK: 'OK', // used for form submissions and doing actions

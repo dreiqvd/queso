@@ -25,4 +25,5 @@
 
 .dialog-header {
   border-top: solid 4px var(--dialog-header-border-color, var(--color-primary));
+  background-color: var(--dialog-header-background, var(--color-gray-100));
 }

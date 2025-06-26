@@ -10,7 +10,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatButton } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
@@ -28,7 +28,7 @@ import {
 
 @Component({
   selector: 'qs-dialog',
-  imports: [AsyncPipe, MatDialogModule, MatTooltip, MatButton, QsIcon],
+  imports: [AsyncPipe, MatDialogModule, MatTooltip, MatButtonModule, QsIcon],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })
@@ -38,7 +38,7 @@ export class QsDialog implements OnInit, AfterViewInit {
 
   private readonly dialogRef = inject(MatDialogRef<QsDialog>);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly data: QsDialogData = inject(MAT_DIALOG_DATA);
+  readonly data: QsDialogData = inject(MAT_DIALOG_DATA);
 
   readonly showLoader = signal<boolean>(false);
 

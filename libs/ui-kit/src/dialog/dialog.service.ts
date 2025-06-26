@@ -1,16 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { QsDialog } from './dialog.component';
 import { QsDialogHandler } from './dialog.handler';
-import { QS_DIALOG_BUTTONS, QsDialogData } from './dialog.interface';
+import {
+  QS_DIALOG_BUTTONS,
+  QsBaseDialogConfig,
+  QsDialogData,
+} from './dialog.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QsDialogService {
-  constructor(public dialog: MatDialog) {}
+  public readonly dialog = inject(MatDialog);
 
   /** Display a simple dialog message */
   showMessage(
@@ -27,7 +31,7 @@ export class QsDialogService {
     return new QsDialogHandler(
       this.dialog.open(QsDialog, {
         data,
-        disableClose: true,
+        ...QsBaseDialogConfig,
         ...dialogOptions,
       })
     );
@@ -48,7 +52,7 @@ export class QsDialogService {
     return new QsDialogHandler(
       this.dialog.open(QsDialog, {
         data,
-        disableClose: true,
+        ...QsBaseDialogConfig,
         ...dialogOptions,
       })
     );
@@ -74,7 +78,7 @@ export class QsDialogService {
     return new QsDialogHandler(
       this.dialog.open(QsDialog, {
         data,
-        disableClose: true,
+        ...QsBaseDialogConfig,
         ...dialogOptions,
       })
     );
