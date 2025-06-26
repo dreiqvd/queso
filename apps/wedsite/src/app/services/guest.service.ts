@@ -9,10 +9,10 @@ import { GUEST_PARTIES } from './guest.data';
   providedIn: 'root',
 })
 export class GuestService {
-  findGuest(param: string): Observable<GuestParty | null> {
+  findGuest(param: string): Observable<GuestParty[] | null> {
     // Search by invite code or member name
     return of(
-      GUEST_PARTIES.find((g) => {
+      GUEST_PARTIES.filter((g) => {
         return (
           g.inviteCode === param ||
           g.members.some((m) => m.toLowerCase().includes(param))

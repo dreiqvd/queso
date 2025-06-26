@@ -1,1 +1,48 @@
-<p>rsvp-dialog works!</p>
+<div class="max-w-[400px]">
+  <header class="flex flex-col items-center gap-1 mb-6">
+    <h3 class="text-xl">Drei and Tricia's Wedding</h3>
+    <h4 class="m-0 text-accent text-base font-normal">
+      <time datetime="2025-09-13">Saturday, Sept 13, 2025</time>
+    </h4>
+  </header>
+
+  <div class="p-4 pb-2">
+    @if (guestParties.length === 1) {
+      <p>We found your invite! Please select your name/group below to RSVP.</p>
+    } @else {
+      <p>We found more than one match in the guest list. Please select your name/group below to RSVP.</p>
+    }
+
+    <div>
+      <mat-radio-group
+        aria-labelledby="Guest Party Selection"
+        class="flex flex-col -ml-3"
+        [(ngModel)]="selectedParty">
+          @for (party of guestParties; track party.id) {
+            <mat-radio-button
+              class="example-radio-button"
+              color="primary"
+              [value]="party.id"
+            >
+              <span>{{ party.partyName }}</span>
+              <span class="font-light ml-2 text-primary-300">({{ party.seats }} seats)</span>
+            </mat-radio-button>
+          }
+      </mat-radio-group>
+    </div>
+
+    <div class="flex justify-center mt-12">
+      <button
+        matButton="filled"
+        color="primary"
+        type="button"
+        tabIndex="-1"
+        [disabled]="!selectedParty"
+        (click)="confirmRsvp()"
+        (keydown)="confirmRsvp()"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>

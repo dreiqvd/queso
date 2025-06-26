@@ -34,6 +34,13 @@
       outlined-container-height: 42px,
     )
   );
+
+  @include mat.dialog-overrides(
+    (
+      container-color: #fefff8,
+      content-padding: 16px,
+    )
+  );
 }
 
 .mat-mdc-outlined-button.mat-primary {

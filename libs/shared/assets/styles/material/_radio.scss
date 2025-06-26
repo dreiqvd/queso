@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+@mixin apply-theme() {
+  .mat-mdc-radio-button.mat-primary {
+    @include mat.radio-overrides(
+      (
+        label-text-color: var(--text-default-color),
+        label-text-size: 1rem,
+      )
+    );
+  }
+}

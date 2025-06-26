@@ -6,6 +6,7 @@
 @use './form-field' as form-field;
 @use './input' as input;
 @use './menu' as menu;
+@use './radio' as radio;
 @use './select' as select;
 @use './snackbar' as snackbar;
 @use './table' as table;
@@ -19,6 +20,7 @@
   @include form-field.apply-theme();
   @include input.apply-theme();
   @include menu.apply-theme();
+  @include radio.apply-theme();
   @include select.apply-theme();
   @include snackbar.apply-theme();
   @include table.apply-theme();

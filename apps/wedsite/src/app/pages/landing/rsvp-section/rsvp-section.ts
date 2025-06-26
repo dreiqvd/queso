@@ -14,6 +14,8 @@ import { QsFormField } from '@queso/ui-kit/form-field';
 
 import { GuestService } from '../../../services/guest.service';
 
+import { RsvpDialog } from './rsvp-dialog/rsvp-dialog';
+
 @Component({
   selector: 'app-rsvp-section',
   imports: [
@@ -42,11 +44,18 @@ export class RSVPSection {
 
     this.isSearching.set(true);
     searchControl.disable();
-    this.guestService.findGuest(value).subscribe((guest) => {
+    this.guestService.findGuest(value).subscribe((res) => {
       this.isSearching.set(false);
       searchControl.enable();
-      if (guest) {
-        this.dialogService.showMessage('', 'Found!');
+      if (res) {
+        this.dialogService.showCustomComponent(
+          '',
+          RsvpDialog,
+          {
+            guestParties: res,
+          },
+          []
+        );
       } else {
         searchControl.setErrors({ notFound: true });
       }
