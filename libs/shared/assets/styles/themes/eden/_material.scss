@@ -3,35 +3,48 @@
 
 :root {
   // Expansion Panel
-  @include mat.expansion-overrides((actions-divider-color: var(--color-toupe-200),
+  @include mat.expansion-overrides(
+    (
+      actions-divider-color: var(--color-toupe-200),
       container-background-color: transparent,
       header-text-color: var(--color-accent),
       header-indicator-color: var(--color-toupe-400),
-    ));
+    )
+  );
 
   // Form Field
-  @include mat.form-field-overrides((container-vertical-padding: 12px,
+  @include mat.form-field-overrides(
+    (
+      container-vertical-padding: 12px,
       container-height: 42px,
       container-text-tracking: normal,
       outlined-outline-color: var(--color-primary),
+      outlined-focus-outline-color: var(--color-accent),
       outlined-outline-width: 2px,
       outlined-hover-outline-color: var(--color-primary-500),
       outlined-input-text-color: var(--text-default-color),
-    ));
+    )
+  );
 
   // Button
-  @include mat.button-overrides((filled-container-height: 42px,
+  @include mat.button-overrides(
+    (
+      filled-container-height: 42px,
       outlined-container-height: 42px,
-    ));
+    )
+  );
 }
 
 .mat-mdc-outlined-button.mat-primary {
-  @include mat.button-overrides((outlined-label-text-color: var(--color-primary-500),
-    ));
+  @include mat.button-overrides(
+    (
+      outlined-label-text-color: var(--color-primary-500),
+    )
+  );
 }
 
 mat-accordion {
-  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+  .mat-expansion-panel:not([class*='mat-elevation-z']) {
     border-bottom: 1px solid var(--color-toupe-200);
   }
 }
