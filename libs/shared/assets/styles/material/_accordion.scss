@@ -2,12 +2,16 @@
 
 @mixin apply-theme() {
   :root {
-    @include mat.expansion-overrides((container-text-color: var(--text-default-color),
+    @include mat.expansion-overrides(
+      (
+        container-text-color: var(--text-default-color),
         header-text-size: 1rem,
         container-text-size: 1rem,
-        container-shape: 0, // removes border-radius around the expansion panel
+        container-shape: 0,
+        // removes border-radius around the expansion panel
         header-expanded-state-height: 48px,
-      ));
+      )
+    );
   }
 }
 
@@ -16,7 +20,7 @@ mat-accordion {
     margin: 0;
   }
 
-  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+  .mat-expansion-panel:not([class*='mat-elevation-z']) {
     box-shadow: none;
   }
 

@@ -2,10 +2,12 @@
 
 @mixin apply-theme() {
   :root {
-    @include mat.tooltip-overrides((
-      container-color: var(--tooltip-bg-color, var(--color-gray)),
-      supporting-text-color: var(--tooltip-text-color, white),
-    ));
+    @include mat.tooltip-overrides(
+      (
+        container-color: var(--tooltip-bg-color, var(--color-gray)),
+        supporting-text-color: var(--tooltip-text-color, white),
+      )
+    );
   }
   // html {
   //   --mdc-plain-tooltip-container-color: var(
