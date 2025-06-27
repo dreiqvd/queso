@@ -1,14 +1,25 @@
-:host {
-  --mat-dialog-actions-alignment: right;
-  --mat-dialog-headline-padding: 16px;
-  --mdc-dialog-subhead-line-height: normal;
-  --mdc-dialog-supporting-text-color: var(--text-default-color);
-  --mat-dialog-actions-padding: 8px;
-  --mdc-dialog-subhead-tracking: normal;
-  --mdc-dialog-supporting-text-tracking: normal;
-  --mdc-dialog-subhead-weight: 600;
+@use '@angular/material' as mat;
 
-  ::ng-deep {
+::ng-deep {
+  :root {
+    @include mat.dialog-overrides(
+      (
+        headline-padding: 0,
+        actions-alignment: right,
+        actions-padding: 8px,
+        supporting-text-color: var(--text-default-color),
+        subhead-color: var(--color-primary),
+        subhead-line-height: normal,
+        subhead-tracking: normal,
+        subhead-weight: 600,
+        supporting-text-tracking: normal,
+      )
+    );
+
+    .mat-mdc-dialog-surface {
+      position: relative; // This is to make dialog loaders occupy the full dialog area
+    }
+
     .mdc-dialog__title::before {
       display: none;
     }
@@ -24,6 +35,9 @@
 }
 
 .dialog-header {
-  border-top: solid 4px var(--dialog-header-border-color, var(--color-primary));
+  border-top: solid 4px
+    var(--dialog-header-border-top-color, var(--color-primary));
   background-color: var(--dialog-header-background, var(--color-gray-100));
+  border-bottom: solid 1px
+    var(--dialog-header-border-bottom-color, var(--color-gray-100));
 }

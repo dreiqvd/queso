@@ -109,3 +109,13 @@ a {
     }
   }
 }
+
+.rsvp-dialog {
+  .dialog-header {
+    border-bottom: 0 !important;
+  }
+
+  .mat-mdc-dialog-content {
+    padding-top: 0 !important;
+  }
+}
