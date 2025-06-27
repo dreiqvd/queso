@@ -23,6 +23,7 @@
         <a
           class="text-body-light text-2xl no-underline opacity-80 hover:opacity-100 hover:text-[#ffc780]"
           [routerLink]="link.route"
+          (click)="isSidebarOpen.set(false)"
         >
           {{ link.label }}
         </a>
