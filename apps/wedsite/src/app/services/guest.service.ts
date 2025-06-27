@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 
-import { GuestParty } from '../models/Guest';
+import { GuestGroup } from '../models/Guest';
 
 import { GUEST_PARTIES } from './guest.data';
 
@@ -9,16 +9,18 @@ import { GUEST_PARTIES } from './guest.data';
   providedIn: 'root',
 })
 export class GuestService {
-  findGuest(param: string): Observable<GuestParty[] | null> {
+  findGuest(param: string): Observable<GuestGroup | null> {
     // Search by invite code or member name
     return of(
-      GUEST_PARTIES.filter((g) => {
-        return (
-          g.inviteCode === param ||
-          g.members.some((m) => m.toLowerCase().includes(param))
-        );
+      GUEST_PARTIES.find((g) => {
+        return g.inviteCode.toLowerCase() === param;
       }) ?? null
     ).pipe(delay(1000));
+  }
+
+  sendRsvp(guestGroup: GuestGroup): Observable<{ guestGroup: GuestGroup }> {
+    // return throwError(() => new Error('Invalid party ID or response'));
+    return of({ guestGroup }).pipe(delay(1000));
   }
 }
 
@@ -30,10 +32,10 @@ import { getFirestore, collection, query, where, getDocs } from "firebase/firest
 const db = getFirestore();
 
 async function searchGuestParties(inviteCode: string, memberId: string) {
-  const guestPartyRef = collection(db, "guestParties");
+  const guestGroupRef = collection(db, "guestParties");
 
-  const inviteCodeQuery = query(guestPartyRef, where("inviteCode", "==", inviteCode));
-  const membersQuery = query(guestPartyRef, where("members", "array-contains", memberId));
+  const inviteCodeQuery = query(guestGroupRef, where("inviteCode", "==", inviteCode));
+  const membersQuery = query(guestGroupRef, where("members", "array-contains", memberId));
 
   const [inviteCodeSnap, membersSnap] = await Promise.all([
     getDocs(inviteCodeQuery),

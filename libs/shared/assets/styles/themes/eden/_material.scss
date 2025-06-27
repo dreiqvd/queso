@@ -62,3 +62,7 @@ mat-accordion {
     border-width: 2px;
   }
 }
+
+mat-form-field .mat-mdc-form-field-hint-wrapper .mat-mdc-form-field-hint {
+  color: var(--text-default-color);
+}

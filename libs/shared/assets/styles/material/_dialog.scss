@@ -1,0 +1,7 @@
+@mixin apply-theme {
+  :root {
+    .mat-mdc-dialog-surface {
+      position: relative; // This is to make dialog loaders occupy the full dialog area
+    }
+  }
+}

@@ -1,7 +1,11 @@
-export interface GuestParty {
+export interface Guest {
+  name: string;
+  attending: boolean;
+}
+
+export interface GuestGroup {
   id: string;
   inviteCode: string;
-  members: string[];
-  partyName: string;
+  members: Guest[];
   seats: number;
 }

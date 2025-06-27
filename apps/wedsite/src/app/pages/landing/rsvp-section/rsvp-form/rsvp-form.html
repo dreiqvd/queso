@@ -1,0 +1,33 @@
+<div class="max-w-[400px]">
+  @if (rsvpSent()) {
+    <div class="text-center p-4">
+      <app-rsvp-results
+        [isAttending]="isAttending()"
+        (closed)="close()"
+      />
+    </div>
+  } @else {
+    <header class="flex flex-col items-center gap-1">
+      <h3 class="text-xl font-semibold">We Found Your Invite!</h3>
+    </header>
+    <div class="p-4 pb-2">
+      @if (showSubmitError()) {
+        <p class="text-center text-red">Uh-oh. Your response didn't go through. Give it another go—or send us a message the old-fashioned way.</p>
+      }
+
+      @if (guestGroup.seats > 1) {
+        <app-rsvp-group-form [guestGroup]="guestGroup" (sendRsvp)="sendRsvp($event)" />
+      } @else {
+        <app-rsvp-single-form [guestGroup]="guestGroup" (sendRsvp)="sendRsvp($event)" />
+      }
+    </div>
+  }
+
+  @if (isLoading()) {
+    <div
+      class="absolute z-10 top-0 left-0 flex flex-col items-center justify-center w-full h-full bg-transluscent-white backdrop-opacity-10"
+    >
+      <img src="/images/cat-sleep.svg" alt="Cat sleeping" width="100" class="animate-pulse">
+    </div>
+  }
+</div>

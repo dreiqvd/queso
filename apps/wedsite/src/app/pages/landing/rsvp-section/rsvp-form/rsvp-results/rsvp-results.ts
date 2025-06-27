@@ -7,6 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './rsvp-results.html',
 })
 export class RsvpResults {
-  readonly selectedResponse = input.required<'YES' | 'NO'>();
+  readonly isAttending = input.required<boolean>();
   readonly closed = output<void>();
 }

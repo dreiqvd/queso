@@ -3,10 +3,11 @@
     RSVP
   </h2>
 
-  <div class="my-[72px] max-w-[800px]">
-    <h3 class="text-2xl text-center">
+  <div class="text-center mb-12 mt-[72px] max-w-[800px]">
+    <h3 class="text-2xl">
       We're counting down the days to food, fun, and festivities—and it wouldn't be the same without you! Help us set the stage (and the table) by letting us know if you'll be joining the celebration.
     </h3>
+    <h4 class="font-normal text-2xl"><span class="font-semibold">Deadline:</span> August 09 (Saturday)</h4>
   </div>
 
   <form
@@ -18,12 +19,12 @@
     <mat-form-field qsFormField subscriptSizing="dynamic">
       <input
         matInput
-        placeholder="Type your name or invite code"
+        placeholder="Type your invite code"
         type="text"
         formControlName="search"
       >
       @if (rsvpForm.get('search')?.invalid && rsvpForm.get('search')?.errors?.['notFound']) {
-        <mat-error>Peekaboo—we can't see you! Check your name/code or contact us.</mat-error>
+        <mat-error>Peekaboo—we can't see you! Check your invite code or contact us.</mat-error>
       }
 
       @if (isSearching()) {

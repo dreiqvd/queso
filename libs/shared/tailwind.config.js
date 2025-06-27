@@ -1,4 +1,4 @@
-const { fontFamily } = require('tailwindcss/defaultTheme');
+const { fontFamily, zIndex } = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -106,6 +106,7 @@ module.exports = {
       heading: ['var(--font-heading)'],
     }),
     zIndex: {
+      ...zIndex,
       fixed: 'var(--z-fixed)',
       highest: 'var(--z-highest)',
     },
