@@ -1,12 +1,8 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, inject, OnInit, output, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatRadioModule } from '@angular/material/radio';
 
 import { QsDialog } from '@queso/ui-kit/dialog/dialog.component';
-import { QsIcon } from '@queso/ui-kit/icon';
 
 import { GuestGroup } from '../../../../models/Guest';
 import { GuestService } from '../../../../services/guest.service';

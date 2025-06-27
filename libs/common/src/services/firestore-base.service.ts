@@ -20,6 +20,7 @@ import { from, map, Observable, of, switchMap } from 'rxjs';
 export abstract class QsFirestoreBaseService<T> {
   protected readonly firestore = inject(Firestore);
 
+  // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(@Inject(STRING_TYPE) protected resource: string) {}
 
   /**
