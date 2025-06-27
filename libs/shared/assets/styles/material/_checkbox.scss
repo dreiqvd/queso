@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+
+@mixin apply-theme() {
+  :root {
+    @include mat.checkbox-overrides(
+      (
+        label-text-color: var(--text-default-color),
+        label-text-size: 1rem,
+      )
+    );
+
+    .mat-mdc-checkbox.mat-primary {
+      @include mat.checkbox-overrides(
+        (
+          unselected-icon-color: var(--color-primary),
+          unselected-hover-icon-color: var(--color-primary-500),
+          unselected-focus-icon-color: var(--color-primary-500),
+          unselected-focus-state-layer-color: var(--color-primary-600),
+          unselected-hover-state-layer-color: var(--color-primary-600),
+          unselected-pressed-state-layer-color: var(--color-primary-600),
+        )
+      );
+    }
+  }
+}

@@ -35,6 +35,7 @@ $app-theme: mat.m2-define-light-theme(
 @include mat.tooltip-theme($app-theme);
 @include mat.dialog-theme($app-theme);
 @include mat.radio-theme($app-theme);
+@include mat.checkbox-theme($app-theme);
 
 @include eden.apply-theme($app-theme);
 @include eden.apply-variables(eden-palette.$palette);

@@ -2,7 +2,9 @@
 
 @use './accordion' as accordion;
 @use './button' as button;
+@use './checkbox' as checkbox;
 @use './datepicker' as datepicker;
+@use './dialog' as dialog;
 @use './form-field' as form-field;
 @use './input' as input;
 @use './menu' as menu;
@@ -16,7 +18,9 @@
 @mixin overrides() {
   @include accordion.apply-theme();
   @include button.apply-theme();
+  @include checkbox.apply-theme();
   @include datepicker.apply-theme();
+  @include dialog.apply-theme();
   @include form-field.apply-theme();
   @include input.apply-theme();
   @include menu.apply-theme();
