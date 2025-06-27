@@ -10,6 +10,11 @@ import { GIFT_REGISTRY_ITEMS } from './gift-registry.data';
 })
 export class GiftRegistryService {
   getGiftRegistryItems(): Observable<RegistryGift[]> {
-    return of(GIFT_REGISTRY_ITEMS).pipe(delay(0));
+    return of(GIFT_REGISTRY_ITEMS).pipe(delay(1000));
+  }
+
+  reserveGift(gift: RegistryGift): Observable<RegistryGift> {
+    // Simulate a reservation process
+    return of(gift).pipe(delay(1000));
   }
 }

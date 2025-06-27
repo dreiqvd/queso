@@ -56,7 +56,10 @@ export class RSVPSection {
               {
                 guestGroup: res,
               },
-              []
+              [],
+              {
+                panelClass: 'rsvp-dialog',
+              }
             )
             .subscribe();
         } else {

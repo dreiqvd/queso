@@ -1,0 +1,61 @@
+<div class="relative max-w-[400px]">
+  @if (showSubmitError()) {
+    <p class="text-red">
+      Uh-oh. Looks like the reservation didn't go through. Give it another go—or send us a message the old-fashioned way.
+    </p>
+  }
+  <div [innerHTML]="gift.details"></div>
+  <div class="mt-8">
+    <p class="mb-1 text-[0.75rem] flex items-center gap-1">
+      <qs-icon iconName="circle-info" [iconSize]="12" />
+      Your invite code is required to lock in this gift.
+    </p>
+    <div class="flex gap-1">
+      <mat-form-field qsFormField subscriptSizing="dynamic">
+        <input
+          matInput
+          type="text"
+          class="w-full"
+          placeholder="Invite code"
+          [formControl]="inviteCodeControl"
+        >
+        @if (inviteCodeControl.invalid && inviteCodeControl.errors?.['notFound']) {
+          <mat-error>Peekaboo—we can't see you! Check your invite code or contact us.</mat-error>
+        }
+      </mat-form-field>
+      <button
+        matButton="filled"
+        type="button"
+        class="flex-none"
+        color="primary"
+        [disabled]="!inviteCodeControl.value || inviteCodeControl.invalid || isSubmitDisabled()"
+        (click)="reserveGift()"
+      >
+        I got this
+      </button>
+    </div>
+
+    @if (isLocked()) {
+      <div class="absolute top-0 left-0 w-full h-full bg-white z-10 flex flex-col items-center justify-center gap-4">
+        <img src="/images/happy-cat.svg" alt="Happy cat" width="80" class="mb-4 animate-bounce">
+        <p class="text-center">
+          Thank you, thank you, thank you—your gift means a lot to us! ❤️
+        </p>
+        <button
+          matButton="outlined"
+          color="primary"
+          type="button"
+          class="mt-4"
+          (click)="dialogRef.close()"
+        >
+          Close
+        </button>
+      </div>
+    }
+  </div>
+</div>
+
+@if (isLoading()) {
+  <app-loader imageStyle="white" />
+}
+

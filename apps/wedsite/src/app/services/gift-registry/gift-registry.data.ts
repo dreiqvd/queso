@@ -1,14 +1,32 @@
-const WAFFLE_MAKER = {
-  id: 1,
+import { RegistryGift } from '../../models/GiftRegistry';
+
+const WAFFLE_MAKER: RegistryGift = {
+  id: '1',
   name: 'Waffle Maker',
   img: 'waffle',
   minPrice: 5800,
   maxPrice: 6500,
-  details: '<p>TBD</p>',
+  details: `
+    <h4 class="text-accent m-0 mb-2 font-medium text-lg">
+      Cuisinart Vertical Waffle Maker
+    </h4>
+    <p>We found some spots you can snag this gift—feel free to take your pick!</p>
+    <ul>
+      <li>
+        <a href="#" target="_blank" rel="noopener noreferrer">Cuisinart PH (Official)</a>
+      </li>
+      <li>
+        <a href="#" target="_blank" rel="noopener noreferrer">Ansons PH</a>
+      </li>
+      <li>
+        <a href="#" target="_blank" rel="noopener noreferrer">Lazada</a>
+      </li>
+    </ul>
+  `,
 };
 
-const TOASTER = {
-  id: 2,
+const TOASTER: RegistryGift = {
+  id: '2',
   name: 'Toaster',
   img: 'toaster',
   minPrice: 1500,
@@ -16,8 +34,8 @@ const TOASTER = {
   details: '<p>TBD</p>',
 };
 
-const PILLOWS = {
-  id: 3,
+const PILLOWS: RegistryGift = {
+  id: '3',
   name: 'Pillows',
   img: 'pillows',
   minPrice: 800,
@@ -25,8 +43,8 @@ const PILLOWS = {
   details: '<p>TBD</p>',
 };
 
-const BEDSHEETS = {
-  id: 4,
+const BEDSHEETS: RegistryGift = {
+  id: '4',
   name: 'Bedsheet(s)',
   img: 'bedsheet',
   minPrice: 800,
@@ -34,8 +52,8 @@ const BEDSHEETS = {
   details: '<p>TBD</p>',
 };
 
-const BLANKETS = {
-  id: 5,
+const BLANKETS: RegistryGift = {
+  id: '5',
   name: 'Blanket(s)',
   img: 'blanket',
   minPrice: 800,
@@ -43,8 +61,8 @@ const BLANKETS = {
   details: '<p>TBD</p>',
 };
 
-const CCTV = {
-  id: 6,
+const CCTV: RegistryGift = {
+  id: '6',
   name: 'CCTV',
   img: 'cctv',
   minPrice: 800,
@@ -52,8 +70,8 @@ const CCTV = {
   details: '<p>TBD</p>',
 };
 
-const PS5_MEMORY_CARD = {
-  id: 7,
+const PS5_MEMORY_CARD: RegistryGift = {
+  id: '7',
   name: 'PS5 Memory Card',
   img: 'memory-card',
   minPrice: 800,
@@ -61,8 +79,8 @@ const PS5_MEMORY_CARD = {
   details: '<p>TBD</p>',
 };
 
-const PRINTER = {
-  id: 8,
+const PRINTER: RegistryGift = {
+  id: '8',
   name: 'Printer',
   img: 'printer',
   minPrice: 800,
@@ -70,8 +88,8 @@ const PRINTER = {
   details: '<p>TBD</p>',
 };
 
-const HUMIDIFIER = {
-  id: 9,
+const HUMIDIFIER: RegistryGift = {
+  id: '9',
   name: 'Humidifier',
   img: 'humidifier',
   minPrice: 800,
@@ -79,8 +97,8 @@ const HUMIDIFIER = {
   details: '<p>TBD</p>',
 };
 
-const RUGS = {
-  id: 10,
+const RUGS: RegistryGift = {
+  id: '10',
   name: 'Rug(s)',
   img: 'mat',
   minPrice: 800,
@@ -88,14 +106,14 @@ const RUGS = {
   details: '<p>TBD</p>',
 };
 
-const CASH = {
-  id: 11,
+const CASH: RegistryGift = {
+  id: '11',
   name: 'Cash',
   img: 'cash',
   details: '<p>TBD</p>',
 };
 
-export const GIFT_REGISTRY_ITEMS = [
+export const GIFT_REGISTRY_ITEMS: RegistryGift[] = [
   WAFFLE_MAKER,
   TOASTER,
   PILLOWS,

@@ -1,8 +1,12 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
+import { QsDialogService } from '@queso/ui-kit/dialog';
+
 import { RegistryGift } from '../../../models/GiftRegistry';
+
+import { GiftDetails } from './gift-details/gift-details';
 
 @Component({
   selector: 'app-gift-item',
@@ -12,7 +16,16 @@ import { RegistryGift } from '../../../models/GiftRegistry';
 export class GiftItem {
   readonly gift = input.required<RegistryGift>();
 
+  private readonly dialogService = inject(QsDialogService);
+
   openGift(): void {
-    console.log(this.gift());
+    this.dialogService.showCustomComponent(
+      this.gift().name,
+      GiftDetails,
+      {
+        gift: this.gift(),
+      },
+      []
+    );
   }
 }

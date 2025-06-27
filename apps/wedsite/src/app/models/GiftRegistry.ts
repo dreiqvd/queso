@@ -1,5 +1,5 @@
 export interface RegistryGift {
-  id: number;
+  id: string;
   name: string;
   img: string;
   details: string;
