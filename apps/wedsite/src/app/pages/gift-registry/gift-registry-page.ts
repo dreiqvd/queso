@@ -1,86 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+
+import { QsAnimations } from '@queso/common/animations';
+
+import { Loader } from '../../components/loader/loader';
+import { RegistryGift } from '../../models/GiftRegistry';
+import { GiftRegistryService } from '../../services/gift-registry';
 
 import { GiftItem } from './gift-item/gift-item';
 
-export interface RegistryGift {
-  name: string;
-  img: string;
-  price: string; // string price
-  details: string; // HTML string
-}
-
 @Component({
   selector: 'app-gift-registry-page',
-  imports: [GiftItem],
+  imports: [QsAnimations, Loader, GiftItem],
   templateUrl: './gift-registry-page.html',
 })
-export class GiftRegistryPage {
-  readonly gifts: RegistryGift[] = [
-    {
-      name: 'Waffle Maker',
-      img: 'waffle',
-      price: '₱2,500 - ₱3,500',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'Toaster',
-      img: 'toaster',
-      price: '₱1,500 - ₱2,000',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'Pillows',
-      img: 'pillows',
-      price: '₱800 - ₱1,200',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'Bedsheet(s)',
-      img: 'bedsheet',
-      price: '₱800 - ₱1,200',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'Blanket(s)',
-      img: 'blanket',
-      price: '₱800 - ₱1,200',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'CCTV',
-      img: 'cctv',
-      price: '₱800 - ₱1,200',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'PS5 Memory Card',
-      img: 'memory-card',
-      price: '₱800 - ₱1,200',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'Printer',
-      img: 'printer',
-      price: '₱800 - ₱1,200',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'Humidifier',
-      img: 'humidifier',
-      price: '₱800 - ₱1,200',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'Rug(s)',
-      img: 'mat',
-      price: '₱800 - ₱1,200',
-      details: '<p>TBD</p>',
-    },
-    {
-      name: 'Cash',
-      img: 'cash',
-      price: '(any)',
-      details: '<p>TBD</p>',
-    },
-  ];
+export class GiftRegistryPage implements OnInit {
+  private readonly giftRegistryService = inject(GiftRegistryService);
+
+  protected readonly gifts = signal<RegistryGift[]>([]);
+  protected readonly isLoading = signal(true);
+  protected readonly showError = signal(false);
+
+  ngOnInit(): void {
+    this.fetchGifts();
+  }
+
+  private fetchGifts(): void {
+    this.isLoading.set(true);
+    this.giftRegistryService.getGiftRegistryItems().subscribe({
+      next: (gifts) => {
+        this.gifts.set(gifts);
+        this.isLoading.set(false);
+      },
+      error: () => {
+        this.isLoading.set(false);
+        this.showError.set(true);
+      },
+    });
+  }
 }
