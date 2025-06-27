@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 
-import { GuestGroup } from '../models/Guest';
+import { GuestGroup } from '../../models/Guest';
 
 import { GUEST_PARTIES } from './guest.data';
 

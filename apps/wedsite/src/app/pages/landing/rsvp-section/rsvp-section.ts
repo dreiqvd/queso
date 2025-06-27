@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { QsDialogService } from '@queso/ui-kit/dialog';
 import { QsFormField } from '@queso/ui-kit/form-field';
 
-import { GuestService } from '../../../services/guest.service';
+import { GuestService } from '../../../services/guest';
 
 import { RSVPForm } from './rsvp-form/rsvp-form';
 

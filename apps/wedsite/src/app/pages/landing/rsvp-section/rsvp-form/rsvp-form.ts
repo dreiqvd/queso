@@ -5,7 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { QsDialog } from '@queso/ui-kit/dialog/dialog.component';
 
 import { GuestGroup } from '../../../../models/Guest';
-import { GuestService } from '../../../../services/guest.service';
+import { GuestService } from '../../../../services/guest';
 
 import { RsvpGroupForm } from './rsvp-group-form/rsvp-group-form';
 import { RsvpResults } from './rsvp-results/rsvp-results';

@@ -1,4 +1,4 @@
-import { GuestGroup } from '../models/Guest';
+import { GuestGroup } from '../../models/Guest';
 
 export const GuestGroup1: GuestGroup = {
   id: '1',
