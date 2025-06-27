@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 import { QsDialog } from '@queso/ui-kit/dialog/dialog.component';
 
+import { Loader } from '../../../../components/loader/loader';
 import { GuestGroup } from '../../../../models/Guest';
 import { GuestService } from '../../../../services/guest';
 
@@ -13,7 +14,13 @@ import { RsvpSingleForm } from './rsvp-single-form/rsvp-single-form';
 
 @Component({
   selector: 'app-rsvp-form',
-  imports: [MatButtonModule, RsvpResults, RsvpGroupForm, RsvpSingleForm],
+  imports: [
+    MatButtonModule,
+    Loader,
+    RsvpResults,
+    RsvpGroupForm,
+    RsvpSingleForm,
+  ],
   templateUrl: './rsvp-form.html',
 })
 export class RSVPForm {
