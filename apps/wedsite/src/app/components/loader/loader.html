@@ -1,5 +1,10 @@
 <div
   class="absolute z-10 top-0 left-0 flex flex-col items-center justify-center w-full h-full bg-transluscent-white backdrop-opacity-10"
 >
-  <img src="/images/cat-sleep.svg" alt="Cat sleeping" width="100" class="animate-pulse">
+  <div class="flex flex-col items-center gap-2 animate-pulse">
+    <img alt="Cat sleeping" width="100" [src]="'/images/' + loaderImage()">
+    @if (message()) {
+      <p class="text-toupe-400 italic">{{ message() }}</p>
+    }
+  </div>
 </div>
