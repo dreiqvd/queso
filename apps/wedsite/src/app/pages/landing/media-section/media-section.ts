@@ -11,6 +11,6 @@ export class MediaSection {
   protected readonly footerLinks = [
     { label: 'Dress Code', route: '/dress-code' },
     { label: 'Our Story', route: '/our-story' },
-    { label: 'Our Cats', route: '/our-cats' },
+    { label: 'Our Cats', route: '/miming-patrol' },
   ];
 }

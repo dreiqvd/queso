@@ -46,13 +46,14 @@ export class OurStoryPage {
     {
       label: 'How long have you been together?',
       value: `
-        <p class="m-0">Four years and counting...</p>
+        <p class="m-0">Four years and counting... 🤞</p>
       `,
     },
     {
       label: 'How many pets do you have?',
       value: `
-        <p class="m-0">We have plenty… 13 indoor cats, 3 strays who became our regular outdoor team, and 3 more up there in cat paradise. </p>
+        <p>We have plenty… 13 indoor cats, 3 strays who became our regular outdoor team, and 3 more up there in cat paradise.</p>
+        <p class="m-0">We've got a dedicated <a href="/miming-patrol" target="_blank" rel="noopener noreferrer">page</a> where you can get to know them all a little better!</p>
       `,
     },
     {

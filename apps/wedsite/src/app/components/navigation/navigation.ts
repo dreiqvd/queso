@@ -29,6 +29,6 @@ export class Navigation {
     { label: 'Dress Code', route: '/dress-code' },
     { label: 'Registry', route: '/registry' },
     { label: 'Our Story', route: '/our-story' },
-    { label: 'Our Cats', route: '/our-cats' },
+    { label: 'Our Cats', route: '/miming-patrol' },
   ];
 }
