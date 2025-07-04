@@ -28,8 +28,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        'main-heading': ['var(--font-heading)', 'serif'],
-        'sub-heading': ['var(--font-subheading)', 'serif'],
+        'main-heading': ['var(--font-heading)', 'sans-serif'],
+        'sub-heading': ['var(--font-subheading)', 'sans-serif'],
+        retro: ['"Press Start 2P"', 'sans-serif'],
       },
     },
   },

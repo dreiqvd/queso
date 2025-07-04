@@ -11,4 +11,9 @@ export const appRoutes: Route[] = [
         (m) => m.GiftRegistryPage
       ),
   },
+  {
+    path: 'our-story',
+    loadComponent: () =>
+      import('./pages/our-story/our-story-page').then((m) => m.OurStoryPage),
+  },
 ];

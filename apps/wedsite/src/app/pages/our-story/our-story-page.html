@@ -1,0 +1,55 @@
+<div class="flex flex-col items-center p-12">
+  <h2 class="section-header text-center my-12">
+    Our Story
+  </h2>
+  <div class="flex flex-col mt-8 gap-[80px]">
+    @for (person of personas; track $index) {
+      <div class="flex border-2 border-solid border-toupe-400">
+        <div class="relative w-[440px]">
+          <img priority fill [alt]="person.name + 's retro avatar'" [ngSrc]="'/images/' + person.avatar">
+        </div>
+        <div class="w-[380px]">
+          <header class="flex flex-col justify-center items-center text-center bg-[#9A7A68] h-[84px] text-[#E9EBDE]">
+            <h3 class="font-retro text-2xl uppercase">{{ person.name }}</h3>
+            <p class="m-0 mt-1 text-xl font-sub-heading font-light">{{ person.title }}</p>
+          </header>
+          <dl class="flex flex-col m-0">
+            @for (attribute of person.attributes; track $index) {
+              <dt
+                class="flex items-center justify-center bg-toupe-400 font-retro text-body-light uppercase leading-normal h-8 text-[0.625rem]"
+              >
+                {{ attribute.label }}
+              </dt>
+              <dd class="flex items-center justify-center h-10 m-0 bg-[#EDE2CC]">
+                {{ attribute.value }}
+              </dd>
+            }
+          </dl>
+        </div>
+      </div>
+    }
+
+    <div class="w-[820px] border-2 border-solid border-toupe-400 overflow-hidden">
+      <div class="flex flex-col">
+        <img priority alt="Couple Retro Avatar Image" ngSrc="/images/couple-avatar.jpg" width="820" height="314">
+        <header class="flex flex-col justify-center items-center text-center bg-[#9A7A68] h-[68px] text-[#E9EBDE]">
+          <h3 class="font-retro text-2xl uppercase">
+            As A Couple
+          </h3>
+        </header>
+        <dl class="flex flex-col m-0">
+          @for (attribute of coupleAttributes; track $index) {
+            <dt
+              class="flex items-center justify-center bg-toupe-400 font-retro text-body-light uppercase leading-normal h-8 text-[0.625rem]"
+            >
+              {{ attribute.label }}
+            </dt>
+            <dd class="text-center p-6 m-0 bg-[#EDE2CC]">
+              <div [innerHTML]="attribute.value"></div>
+            </dd>
+          }
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
