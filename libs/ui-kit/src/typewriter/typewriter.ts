@@ -1,0 +1,88 @@
+import {
+  afterNextRender,
+  Component,
+  input,
+  OnDestroy,
+  output,
+  signal,
+} from '@angular/core';
+
+@Component({
+  selector: 'qs-typewriter',
+  imports: [],
+  template: '<span class="typewriter">{{ displayedText() }}</span>',
+  styles: [
+    `
+      .typewriter {
+        border-right: 2px solid;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          border-color: transparent;
+        }
+        51%,
+        100% {
+          border-color: currentColor;
+        }
+      }
+    `,
+  ],
+})
+export class TypewriterComponent implements OnDestroy {
+  /**
+   * The text to be displayed with the typing animation.
+   */
+  readonly text = input.required<string>();
+
+  /**
+   * The speed of the typing animation in milliseconds.
+   * A lower value means faster typing.
+   * @defaultValue 100
+   */
+  readonly typingSpeed = input<number>(100);
+
+  /**
+   * Emitted when the typing animation completes.
+   */
+  readonly typingComplete = output<void>();
+
+  protected readonly displayedText = signal('');
+
+  private intervalId?: number;
+
+  constructor() {
+    afterNextRender(() => {
+      this.startTypingAnimation();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
+  private startTypingAnimation(): void {
+    const fullText = this.text();
+    const speed = this.typingSpeed();
+    let currentIndex = 0;
+
+    this.displayedText.set('');
+
+    this.intervalId = window.setInterval(() => {
+      if (currentIndex < fullText.length) {
+        this.displayedText.set(fullText.substring(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        // Animation complete, clear the interval and emit completion
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+        }
+        this.typingComplete.emit();
+      }
+    }, speed);
+  }
+}
