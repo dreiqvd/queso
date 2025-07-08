@@ -8,6 +8,13 @@
         supporting-text-color: var(--tooltip-text-color, white),
       )
     );
+
+    .mat-mdc-tooltip {
+      .mat-mdc-tooltip-surface {
+        // Make text alignment default to center
+        text-align: center;
+      }
+    }
   }
   // html {
   //   --mdc-plain-tooltip-container-color: var(

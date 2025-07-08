@@ -10,12 +10,23 @@ import {
 @Component({
   selector: 'qs-typewriter',
   imports: [],
-  template: '<span class="typewriter">{{ displayedText() }}</span>',
+  template: `
+    <span
+      class="typewriter"
+      [class.no-cursor]="isTypingComplete() && hideCursorOnComplete()"
+    >
+      {{ displayedText() }}
+    </span>
+  `,
   styles: [
     `
       .typewriter {
         border-right: 2px solid;
         animation: blink 1s infinite;
+
+        &.no-cursor {
+          border-right: 0;
+        }
       }
 
       @keyframes blink {
@@ -45,11 +56,18 @@ export class TypewriterComponent implements OnDestroy {
   readonly typingSpeed = input<number>(100);
 
   /**
+   * Whether to hide the blinking cursor after typing completes.
+   * @defaultValue true
+   */
+  readonly hideCursorOnComplete = input<boolean>(true);
+
+  /**
    * Emitted when the typing animation completes.
    */
   readonly typingComplete = output<void>();
 
   protected readonly displayedText = signal('');
+  protected readonly isTypingComplete = signal(false);
 
   private intervalId?: number;
 
@@ -81,6 +99,7 @@ export class TypewriterComponent implements OnDestroy {
         if (this.intervalId) {
           clearInterval(this.intervalId);
         }
+        this.isTypingComplete.set(true);
         this.typingComplete.emit();
       }
     }, speed);

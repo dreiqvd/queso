@@ -16,4 +16,11 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('./pages/our-story/our-story-page').then((m) => m.OurStoryPage),
   },
+  {
+    path: 'celebrate',
+    loadComponent: () =>
+      import('./pages/invitation/invitation-page').then(
+        (m) => m.InvitationPage
+      ),
+  },
 ];

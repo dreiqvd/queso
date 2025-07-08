@@ -1,0 +1,157 @@
+<div class="min-h-dvh max-w-dvw flex flex-col py-12 pt-[210px]">
+  <div class="mb-14 px-12 flex justify-between">
+    <h1 class="font-chalk text-[2rem] opacity-60">
+      #EveryDreiWithTricia
+    </h1>
+    <button
+      matButton="outlined"
+      matTooltip="Get a PDF version of your invitation"
+      color="primary"
+      type="button"
+    >
+      <span class="flex gap-2 items-center">
+        Download PDF <qs-icon iconName="download" iconStyle="custom" [iconSize]="16" />
+      </span>
+    </button>
+  </div>
+  <div #panelsContainer class="panels-container px-12 flex items-center gap-8 overflow-x-auto bg-transparent">
+    <div class="panel">
+      <div class="p-8 h-full flex flex-col justify-center">
+        <span class="italic text-xl">To</span>
+        <div class="flex">
+          <h2 class="font-heading m-0 text-[4rem]" id="invitees">
+            Kevin <span class="font-body">&</span> Mai
+          </h2>
+        </div>
+      </div>
+
+      <img
+        src="/images/wine.svg"
+        alt="Wine"
+        class="absolute bottom-6 right-12"
+        width="120"
+      />
+    </div>
+
+    <div class="panel">
+      <div class="h-full flex justify-center items-center pb-24">
+        <p class="text-center text-2xl max-w-[360px]">
+          We'd love to have you celebrate with us as we begin this next chapter in our life.
+        </p>
+        <img
+          src="/images/guestbook.svg"
+          alt="Guestbook"
+          width="100"
+          class="absolute bottom-12"
+        />
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="flex flex-col justify-between items-center py-8 h-full">
+        <div class="text-center">
+          <h2 class="text-lg text-accent uppercase font-sub-heading m-0">
+            Date and Time
+          </h2>
+          <time datetime="2025-09-13" class="text-xl block">
+            September 13, 2025 (Saturday)
+          </time>
+          <p class="font-light m-0">Ceremony starts at 2:00 PM</p>
+        </div>
+
+        <div class="text-center">
+          <h2 class="text-lg text-accent uppercase font-sub-heading m-0">
+            Ceremony
+          </h2>
+          <h3 class="m-0 text-xl block">
+            St. Michael the Archangel Chapel
+          </h3>
+          <p class="font-light m-0">
+            Virgen Delos Remedios Rd, Brgy. Eden, Toril, Davao City
+          </p>
+          <a
+            href="https://maps.app.goo.gl/i2p51pYxj5HeTDUUA"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-2 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500">
+            <span>Open in Google Maps</span>
+            <qs-icon iconName="arrow-up-right-from-square" [iconSize]="14" />
+          </a>
+        </div>
+
+        <div class="text-center">
+          <h2 class="text-lg text-accent uppercase font-sub-heading m-0">
+            Reception
+          </h2>
+          <h3 class="m-0 text-xl block">
+            Fernwood (Pavilion area)
+          </h3>
+          <p class="font-light m-0">
+            Virgen Delos Remedios Rd, Brgy. Eden, Toril, Davao City
+          </p>
+          <a
+            href="https://maps.app.goo.gl/U27cRqP1hZxGbL9eA"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-2 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500">
+            <span>Open in Google Maps</span>
+            <qs-icon iconName="arrow-up-right-from-square" [iconSize]="14" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="h-full flex flex-col items-center justify-center gap-6">
+        <h2 class="text-accent text-2xl uppercase font-sub-heading m-0">
+          Your Invite Code
+        </h2>
+        <h3 class="font-semibold text-4xl px-8 py-2 m-0 border-4 border-solid border-primary rounded mt-4">
+          ABC123
+        </h3>
+        <p class="text-center my-4 max-w-[360px] ">
+          Use this to confirm your attendance or explore gift options on our registry.
+        </p>
+        <p class="text-2xl font-medium m-0">
+          RSVP <a href="/#rsvp" target="_blank" rel="noopener noreferrer">here!</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="h-full flex flex-col items-center pt-14">
+        <h2 class="text-accent text-2xl uppercase font-sub-heading m-0">
+          The Finer Details
+        </h2>
+        <p class="text-center mb-8 mt-6 text-lg  max-w-[400px]">
+          We've put together a website with everything you might need—<b>FAQs</b>, <b>maps</b>, and <b>more wedding info</b> to help you plan for the day.
+        </p>
+        <p>
+          Check out our homepage <a routerLink="/">here!</a>
+        </p>
+        <img
+          src="/images/arch.svg"
+          alt="Wedding Arch"
+          width="100"
+          class="absolute bottom-6 left-1/2 translate-x-[-50%]"
+        />
+      </div>
+    </div>
+
+    <div class="ml-12">
+      <img src="/images/wedding-car.svg" alt="Wedding Car" width="240" />
+    </div>
+  </div>
+
+  <div class="px-6 w-full mt-12 flex gap-4 justify-end items-center">
+    <div class="flex gap-2 justify-end">
+      <img src="/images/circle-filled.svg" alt="Current page indicator" width="24" />
+      <img src="/images/circle.svg" alt="Current page indicator" width="24" />
+      <img src="/images/circle.svg" alt="Current page indicator" width="24" />
+      <img src="/images/circle.svg" alt="Current page indicator" width="24" />
+      <img src="/images/circle.svg" alt="Current page indicator" width="24" />
+    </div>
+    <img src="/images/arrow-right.svg" alt="Next page indicator" width="40" />
+  </div>
+</div>
+
