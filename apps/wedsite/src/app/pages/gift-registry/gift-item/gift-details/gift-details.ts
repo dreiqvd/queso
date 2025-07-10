@@ -6,15 +6,14 @@ import { MatInputModule } from '@angular/material/input';
 import { filter, switchMap, tap } from 'rxjs';
 
 import { inputDebounce } from '@queso/common/operators';
+import { QsDialogComponent } from '@queso/ui-kit/dialog';
 import { QsFormField } from '@queso/ui-kit/form-field';
+import { QsIcon } from '@queso/ui-kit/icon';
 
 import { Loader } from '../../../../components/loader/loader';
 import { RegistryGift } from '../../../../models/GiftRegistry';
+import { GiftRegistryService } from '../../../../services/gift-registry';
 import { GuestService } from '../../../../services/guest';
-import { QsIcon } from '../../../../../../../../libs/ui-kit/src/icon/icon.component';
-import { MatDialogRef } from '@angular/material/dialog';
-import { QsDialog } from '@queso/ui-kit/dialog/dialog.component';
-import { GiftRegistryService } from 'apps/wedsite/src/app/services/gift-registry';
 
 @Component({
   selector: 'app-gift-details',
@@ -34,10 +33,10 @@ import { GiftRegistryService } from 'apps/wedsite/src/app/services/gift-registry
     }
   `,
 })
-export class GiftDetails implements OnInit {
-  // Properties from/for dialog data
-  protected gift!: RegistryGift;
-  protected dialogRef!: MatDialogRef<QsDialog>;
+export class GiftDetails extends QsDialogComponent implements OnInit {
+  protected data!: {
+    gift: RegistryGift;
+  };
 
   private readonly guestService = inject(GuestService);
   private readonly giftRegistryService = inject(GiftRegistryService);
@@ -92,7 +91,7 @@ export class GiftDetails implements OnInit {
 
   reserveGift(): void {
     this.isLoading.set(true);
-    this.giftRegistryService.reserveGift(this.gift).subscribe({
+    this.giftRegistryService.reserveGift(this.data.gift).subscribe({
       next: () => {
         this.isLoading.set(false);
         this.isLocked.set(true);

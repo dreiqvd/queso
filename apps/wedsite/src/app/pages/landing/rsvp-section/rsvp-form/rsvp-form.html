@@ -15,10 +15,10 @@
         <p class="text-center text-red">Uh-oh. Your response didn't go through. Give it another go—or send us a message the old-fashioned way.</p>
       }
 
-      @if (guestGroup.seats > 1) {
-        <app-rsvp-group-form [guestGroup]="guestGroup" (sendRsvp)="sendRsvp($event)" />
+      @if (data.guestGroup.seats > 1) {
+        <app-rsvp-group-form [guestGroup]="data.guestGroup" (sendRsvp)="sendRsvp($event)" />
       } @else {
-        <app-rsvp-single-form [guestGroup]="guestGroup" (sendRsvp)="sendRsvp($event)" />
+        <app-rsvp-single-form [guestGroup]="data.guestGroup" (sendRsvp)="sendRsvp($event)" />
       }
     </div>
   }

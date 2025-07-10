@@ -1,8 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogRef } from '@angular/material/dialog';
 
-import { QsDialog } from '@queso/ui-kit/dialog/dialog.component';
+import { QsDialogComponent } from '@queso/ui-kit/dialog';
 
 import { Loader } from '../../../../components/loader/loader';
 import { GuestGroup } from '../../../../models/Guest';
@@ -23,10 +22,11 @@ import { RsvpSingleForm } from './rsvp-single-form/rsvp-single-form';
   ],
   templateUrl: './rsvp-form.html',
 })
-export class RSVPForm {
+export class RSVPForm extends QsDialogComponent {
   // Properties from/for dialog data
-  protected guestGroup!: GuestGroup;
-  protected dialogRef!: MatDialogRef<QsDialog>;
+  protected data!: {
+    guestGroup: GuestGroup;
+  };
 
   private readonly guestService = inject(GuestService);
 
