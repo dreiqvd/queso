@@ -68,15 +68,13 @@ export class QsDialog implements OnInit {
       if (this.data.content.type === 'component' && this.componentContainer) {
         const { component, props } = this.data.content;
         const componentRef = this.componentContainer.createComponent(component);
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const componentInstance = componentRef.instance as any;
 
-        if (props) {
-          Object.assign(componentInstance, props);
-        }
-
-        // Assign the dialog reference to the component instance
+        // Assign the global properties to the component instance
         componentInstance.dialogRef = this.dialogRef;
+        componentInstance.data = props;
 
         // If OK action exists, assign specific properties to the OK button
         // dialogOkDisabled$ = handles the disabled state of the OK button
@@ -87,7 +85,6 @@ export class QsDialog implements OnInit {
         if (okAction) {
           setTimeout(() => {
             okAction.disabled$ = componentInstance.dialogOkDisabled$;
-            okAction.data = { ...okAction.data, componentInstance };
             okAction.closeHandler = componentInstance.dialogCloseHandler;
           });
         }

@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ThemePalette } from '@angular/material/core';
-import { MatDialogConfig } from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
+
+import { QsDialog } from './dialog.component';
 
 export const QsBaseDialogConfig: MatDialogConfig = {
   disableClose: true,
@@ -15,25 +17,37 @@ export const QsDialogActionTypes = {
 
 export interface QsDialogData {
   title: string;
-  content: QsDialogMessageProps | QsDialogProps;
+  content: QsDialogMessageContent | QsDialogComponentContent;
   actions?: QsDialogAction[] | null;
 }
 
-export interface QsDialogMessageProps {
+export interface QsDialogMessageContent {
   type: 'message';
   message: string;
 }
 
-export interface QsDialogProps {
+export interface QsDialogComponentContent {
   type: 'component';
   component: any;
   props: any; // extra properties to be passed to the component
 }
 
+/**
+ * This abstract class contains the common properties when
+ * a custom component is used in a dialog.
+ */
+export abstract class QsDialogComponent {
+  dialogRef!: MatDialogRef<QsDialog>;
+}
+
+export interface IQsDialogComponent {
+  dialogOkDisabled$?: BehaviorSubject<boolean>;
+  dialogCloseHandler?: () => Observable<any>;
+}
+
 export interface QsDialogAction {
   label: string;
   type: (typeof QsDialogActionTypes)[keyof typeof QsDialogActionTypes];
-  data?: any;
   className?: string;
   color?: ThemePalette;
   disabled$?: BehaviorSubject<boolean>;

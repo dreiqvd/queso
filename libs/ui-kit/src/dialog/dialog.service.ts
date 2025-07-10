@@ -8,6 +8,7 @@ import {
   QS_DIALOG_BUTTONS,
   QsBaseDialogConfig,
   QsDialogData,
+  QsDialogMessageContent,
 } from './dialog.interface';
 
 @Injectable({
@@ -24,7 +25,7 @@ export class QsDialogService {
   ): QsDialogHandler<QsDialog> {
     const data: QsDialogData = {
       title,
-      content: { type: 'message', message },
+      content: { type: 'message', message } as QsDialogMessageContent,
       actions: [QS_DIALOG_BUTTONS.CLOSE],
     };
 
@@ -45,7 +46,7 @@ export class QsDialogService {
   ): QsDialogHandler<QsDialog> {
     const data: QsDialogData = {
       title,
-      content: { type: 'message', message },
+      content: { type: 'message', message } as QsDialogMessageContent,
       actions: [QS_DIALOG_BUTTONS.CANCEL, QS_DIALOG_BUTTONS.CONFIRM],
     };
 
