@@ -12,6 +12,11 @@ export const appRoutes: Route[] = [
       ),
   },
   {
+    path: 'dress-code',
+    loadComponent: () =>
+      import('./pages/dress-code/dress-code-page').then((m) => m.DressCodePage),
+  },
+  {
     path: 'our-story',
     loadComponent: () =>
       import('./pages/our-story/our-story-page').then((m) => m.OurStoryPage),

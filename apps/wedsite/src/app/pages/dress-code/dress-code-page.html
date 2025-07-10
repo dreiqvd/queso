@@ -1,0 +1,28 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+
+<div class="min-h-dvh flex flex-col items-center justify-center p-12">
+  <h2 class="section-header text-center mb-12">
+    Dress Code
+  </h2>
+  <p class="m-0 text-accent text-center text-2xl leading-8 max-w-[800px]">
+    To help everyone look fab and feel comfy, we've put together a simple guide on what to wear for the big day. Tap on your role and see which colors to roll with!
+  </p>
+
+  <div class="mt-[80px] flex flex-wrap justify-center gap-6 max-w-[600px]">
+    @for (role of roles; track role) {
+      <div
+        #roleElement
+        class="px-4 py-2 cursor-pointer text-xl border border-solid border-primary rounded"
+        [matTooltip]="role.name ?? ''"
+        (click)="showDressCodeDetails(role);"
+        (keydown)="showDressCodeDetails(role);"
+      >
+        <span>{{ role.label }}</span>
+      </div>
+    }
+  </div>
+
+  <div>
+    <img src="/images/couple.svg" alt="Couple" class="mt-[100px] w-[150px]" />
+  </div>
+</div>
