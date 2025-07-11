@@ -6,9 +6,10 @@
     tablet-md:top-5 tablet-md:right-5
     tablet-sm:top-4 tablet-sm:right-4
   "
+  [style.color]="navigationService.menuBtnColor()"
   (click)="isSidebarOpen.set(true)"
 >
-  <img src="/images/menu.svg" alt="Menu icon" width="35">
+   <qs-icon iconName="hamburger-sketch" iconStyle="custom" [iconSize]="35" />
 </button>
 
 <qs-slidebar

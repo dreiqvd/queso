@@ -1,12 +1,18 @@
 import {
   afterNextRender,
   Component,
+  DestroyRef,
   ElementRef,
+  inject,
   OnDestroy,
   QueryList,
   signal,
   ViewChildren,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { debounceTime, distinctUntilChanged, fromEvent } from 'rxjs';
+
+import { NavigationService } from '../../components/navigation/navigation.service';
 
 import { DetailsSection } from './details-section/details-section';
 import { FAQSSection } from './faqs-section/faqs-section';
@@ -33,17 +39,20 @@ import { RSVPSection } from './rsvp-section/rsvp-section';
 export class LandingPage implements OnDestroy {
   @ViewChildren('section') sections!: QueryList<ElementRef<HTMLElement>>;
 
+  private readonly navigationService = inject(NavigationService);
+  private readonly destroyRef = inject(DestroyRef);
+
   protected readonly activeRoute = signal<string>('hello');
   protected readonly isMenuHidden = signal<boolean>(false);
 
   protected readonly navItems = NAV_ITEMS;
   private disableActiveRouteChecking = false;
-  private intersectionObserver$?: IntersectionObserver;
+  private menuIntersectionObs$?: IntersectionObserver;
 
   constructor() {
     afterNextRender(() => {
       // Compute the active fragment when section is scrolled into view
-      this.intersectionObserver$ = new IntersectionObserver(
+      this.menuIntersectionObs$ = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (this.disableActiveRouteChecking) {
@@ -64,11 +73,44 @@ export class LandingPage implements OnDestroy {
       );
 
       this.sections.forEach((section) => {
-        (this.intersectionObserver$ as IntersectionObserver).observe(
+        (this.menuIntersectionObs$ as IntersectionObserver).observe(
           section.nativeElement
         );
       });
+
+      fromEvent(window, 'scroll')
+        .pipe(
+          debounceTime(100),
+          distinctUntilChanged(),
+          takeUntilDestroyed(this.destroyRef)
+        )
+        .subscribe(() => {
+          this.handleScrollEvent();
+        });
     });
+  }
+
+  private handleScrollEvent(): void {
+    // Check color for main navigation menu button
+    const hashtagSection = this.sections.get(4);
+    const giftsSection = this.sections.get(5);
+
+    if (!hashtagSection || !giftsSection) {
+      return;
+    }
+
+    const hashtagRect = hashtagSection.nativeElement.getBoundingClientRect();
+    const giftsRect = giftsSection.nativeElement.getBoundingClientRect();
+
+    const threshold = 38;
+    if (
+      (hashtagRect.y < threshold && hashtagRect.bottom > threshold) ||
+      (giftsRect.y < threshold && giftsRect.bottom > threshold)
+    ) {
+      this.navigationService.updateMenuBtnColor('var(--text-body-light)');
+    } else {
+      this.navigationService.updateMenuBtnColor('var(--color-primary)');
+    }
   }
 
   onMenuItemClick(route: string): void {
@@ -88,9 +130,10 @@ export class LandingPage implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.intersectionObserver$) {
-      this.intersectionObserver$.disconnect();
-      this.intersectionObserver$ = undefined;
+    // Clean up observers
+    if (this.menuIntersectionObs$) {
+      this.menuIntersectionObs$.disconnect();
+      this.menuIntersectionObs$ = undefined;
     }
   }
 }
