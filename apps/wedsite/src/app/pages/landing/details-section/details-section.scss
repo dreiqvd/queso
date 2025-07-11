@@ -1,0 +1,51 @@
+@use 'mixins' as *;
+
+.details-item {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+
+  .detail-main {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    font-weight: normal;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .detail-heading {
+    font-family: var(--font-subheading);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .subdetail {
+    font-weight: 300;
+    line-height: 1.25rem;
+    font-size: 1.125rem;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .detail-link {
+    margin-top: 4px;
+    font-weight: 300;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-toupe-400);
+
+    &:hover {
+      color: var(--color-toupe-500);
+    }
+  }
+
+  @include respond-to('tablet-sm') {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}

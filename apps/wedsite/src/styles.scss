@@ -4,6 +4,7 @@
 @use '_palettes/eden-palette' as eden-palette;
 @use 'base' as base;
 @use 'eden-theme' as eden;
+@use 'mixins' as *;
 
 $primary: mat.m2-define-palette(eden-palette.$green, 400);
 $accent: mat.m2-define-palette(eden-palette.$copper, 400);
@@ -95,6 +96,15 @@ a {
   border: solid 4px var(--color-primary);
   border-radius: 10px;
   padding: 10px 24px;
+
+  @include respond-to('tablet-md') {
+    font-size: 2.5rem;
+  }
+
+  @include respond-to('mobile-sm') {
+    font-size: 2.25rem;
+    padding: 10px 16px;
+  }
 }
 
 .slidebar {

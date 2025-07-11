@@ -1,89 +1,88 @@
-<div class="min-h-dvh flex flex-col items-center justify-center pb-8 pt-[64px] gap-[80px]">
+<div class="min-h-dvh flex flex-col items-center justify-center pb-8 pt-[64px] gap-[80px]
+  tablet-sm:px-8
+">
   <h2 class="section-header text-center">
     DETAILS
   </h2>
 
-  <div class="flex flex-col gap-[64px]">
-    <div class="flex gap-6 items-center">
+  <div class="flex flex-col relative gap-[64px] mb-[150px]">
+    <div class="details-item">
       <div class="w-[90px] h-[90px] flex items-center justify-center">
-        <img src="/images/calendar.svg" alt="Calendar icon" width="90">
+        <img src="/images/calendar.svg" alt="Calendar icon" width="90"
+          class="tablet-sm:w-[80px]"
+        >
       </div>
       <div class="mt-1">
-        <h3
-          class="font-sub-heading text-accent uppercase text-xl">
+        <h3 class="detail-heading">
           Date and Time
         </h3>
         <time
           datetime="2025-09-13"
-          class="text-2xl">
+          class="detail-main"
+        >
           September 13, 2025 (Saturday)
         </time>
-        <p class="font-light text-[1.125rem] m-0">
+        <p class="subdetail">
           Ceremony starts at 2:00 PM
         </p>
       </div>
     </div>
 
-    <div class="flex gap-6 items-center">
+    <div class="details-item">
       <div class="w-[90px] h-[90px] flex items-center justify-center">
         <img src="/images/church.svg" alt="Church icon" width="90">
       </div>
       <div>
-        <h3
-          class="font-sub-heading text-accent uppercase text-xl">
+        <h3 class="detail-heading">
           Ceremony
         </h3>
-        <h4
-          datetime="2025-09-13"
-          class="text-2xl font-normal m-0">
+        <h4 class="detail-main">
           St. Michael the Archangel Chapel
         </h4>
-        <p class="font-light text-[1.125rem] my-[1px]">
+        <p class="subdetail">
           Virgen Delos Remedios Rd, Brgy. Eden, Toril, Davao City
         </p>
         <a
           href="https://maps.app.goo.gl/i2p51pYxj5HeTDUUA"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-1 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500">
+          class="detail-link">
           <span>Open in Google Maps</span>
           <qs-icon iconName="arrow-up-right-from-square" [iconSize]="14" />
         </a>
       </div>
     </div>
 
-    <div class="flex gap-6 items-center">
+    <div class="details-item">
       <div class="w-[90px] h-[90px] flex items-center justify-center">
         <img src="/images/venue.svg" alt="Venue icon" width="100">
       </div>
       <div>
-        <h3
-          class="font-sub-heading text-accent uppercase text-xl">
+        <h3 class="detail-heading">
           Reception
         </h3>
-        <h4
-          datetime="2025-09-13"
-          class="text-2xl font-normal m-0">
+        <h4 class="detail-main">
           Fernwood (Pavilion area)
         </h4>
-        <p class="font-light text-[1.125rem] my-[1px]">
+        <p class="subdetail">
           Virgen Delos Remedios Rd, Brgy. Eden, Toril, Davao City
         </p>
         <a
           href="https://maps.app.goo.gl/U27cRqP1hZxGbL9eA"
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-1 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500">
+          class="detail-link">
           <span>Open in Google Maps</span>
           <qs-icon iconName="arrow-up-right-from-square" [iconSize]="14" />
         </a>
       </div>
     </div>
+
+    <img
+      src="/images/foliage.svg"
+      alt="Foliage"
+      class="absolute bottom-[-200px] left-1/2 -translate-x-1/2"
+    >
   </div>
 
-  <img
-    src="/images/foliage.svg"
-    alt="Foliage"
-    class="mt-auto"
-  >
 </div>

@@ -29,7 +29,7 @@ module.exports = {
       },
       fontFamily: {
         'main-heading': ['var(--font-heading)', 'sans-serif'],
-        'sub-heading': ['var(--font-subheading)', 'sans-serif'],
+        subheading: ['var(--font-subheading)', 'sans-serif'],
         retro: ['"Press Start 2P"', 'sans-serif'],
         serif: ['"IBM Plex Serif"', 'serif'],
         chalk: ['Flapstick', 'sans-serif'],
