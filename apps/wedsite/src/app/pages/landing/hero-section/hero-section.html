@@ -1,28 +1,50 @@
-<div class="min-h-dvh flex flex-col justify-center items-center relative">
-   <img
-      src="/images/wedding-rings.svg"
-      alt="Wedding rings"
-      aria-label="Wedding rings"
-      class="absolute top-[150px] w-[84px]"
-   />
-   <h1>
-      @for(ch of mainHeadingText(); track $index) {
-         @if (ch === ' ') {
-           <span class="inline-block w-10">&nbsp;</span>
-         } @else {
-            <span class="uppercase">{{ ch }}</span>
+<div class="min-h-dvh flex flex-col justify-center items-center relative
+   mobile-md:justify-start
+   ">
+   <div class="relative flex justify-center view-short:mt-[230px]">
+      <img
+         src="/images/wedding-rings.svg"
+         alt="Wedding rings"
+         aria-label="Wedding rings"
+         class="absolute top-[-160px] w-[84px]
+            mobile-md:top-[100px]
+            view-short:top-[-130px]
+         "
+      />
+      <h1 class="mobile-md:text-center mobile-md:text-6xl mobile-md:mt-[230px] mobile-md:mb-16">
+         @for(ch of mainHeadingText(); track $index) {
+            @if(!isMobile()) {
+               @if (ch === ' ') {
+                 <span class="inline-block w-10">&nbsp;</span>
+               } @else {
+                  <span class="uppercase">{{ ch }}</span>
+               }
+            } @else {
+               @if (ch === '+') {
+                  <span class="text-5xl block mb-5 leading-5"><br />{{ ch }}<br /></span>
+               } @else {
+                  <span class="uppercase">{{ ch }}</span>
+               }
+            }
          }
-      }
-   </h1>
-   <div class="mt-6 flex flex-col items-center">
+      </h1>
+   </div>
+   <div class="mt-6 flex flex-col items-center
+      mobile-md:mt-0
+   ">
       <time datetime="2025-09-13" class="text-2xl">
          Sept 13, 2025
       </time>
       <qs-countdown-flip-card />
    </div>
 
-   <div class="absolute bottom-7 flex flex-col items-center">
-      <p class="italic text-primary-300 text-xl">
+   <div class="absolute bottom-7 flex flex-col items-center
+      mobile-md:relative mobile-md:mt-[100px]
+      view-short:relative view-short:top-0 view-short:mt-[80px]
+   ">
+      <p class="italic text-primary-300 text-xl
+         mobile-md:text-lg mobile-md:mb-1
+      ">
          Celebrate with us!
       </p>
       <img

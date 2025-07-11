@@ -13,5 +13,5 @@ $breakpoints: (
   'desktop-sm': (max-width: 1024px),
   "desktop-md": (max-width: 1366px),
   "desktop-lg": (min-width: 1367px),
-  "view-short": (max-height: 768px) // devices with a wide view but not necessarily a tall screen
+  "view-short": (max-height: 768px) and (min-width: 480px) // devices with a wide view but not necessarily a tall screen (e.g. small laptops; landscape phones)
 );

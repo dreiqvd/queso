@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, DestroyRef, inject, input, signal } from '@angular/core';
 
 import { QsCountdownFlipCard } from '@queso/ui-kit/countdown-flip-card';
 
@@ -9,6 +9,10 @@ import { QsCountdownFlipCard } from '@queso/ui-kit/countdown-flip-card';
   imports: [QsCountdownFlipCard],
 })
 export class HeroSection {
+  readonly isMobile = input.required();
+
+  protected readonly destroyRef = inject(DestroyRef);
+
   protected readonly mainHeadingText = signal<string[]>(
     'Drei + Tricia'.split('')
   );

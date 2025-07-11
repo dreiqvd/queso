@@ -1,7 +1,8 @@
 <nav
-  class="fixed top-1/2 left-8 -translate-y-1/2 z-[100]
+  class="hidden-scrollbar overflow-x-auto fixed top-1/2 left-8 -translate-y-1/2 z-[100]
     desktop-sm:left-4
-    tablet-md:left-2 tablet-md:top-6 tablet-md:-translate-y-0
+    tablet-md:left-2 tablet-md:top-[22px] tablet-md:-translate-y-0
+    mobile-md:left-0
   "
   [style.opacity]="isMenuHidden() ? '0' : '1'"
 >
@@ -20,17 +21,18 @@
         "
         [class.active]="activeRoute() === navItem.route"
         [class.text-body-light]="activeRoute() === 'gifts'"
+        [style.display]="isMobile() && navItem.route === 'gifts' ? 'none' : 'block'"
         (click)="onMenuItemClick(navItem.route)"
         (keydown.enter)="onMenuItemClick(navItem.route)"
       >
-        <span>{{ navItem.label }}</span>
+        <span class="inline-block">{{ navItem.label }}</span>
       </li>
     }
   </ul>
 </nav>
 
 <section #section class="min-h-dvh" id="hello">
-  <app-hero-section />
+  <app-hero-section [isMobile]="isMobile()" />
 </section>
 <section #section class="min-h-dvh" id="details">
   <app-details-section />

@@ -1,7 +1,8 @@
+@use 'mixins' as *;
+
 :host {
   qs-countdown-flip-card {
     ::ng-deep {
-
       .card__top,
       .card__bottom,
       .card__back::before,
@@ -11,6 +12,34 @@
 
       .card__bottom {
         background: var(--color-toupe-300);
+      }
+
+      @include respond-to('mobile-md') {
+        $halfHeight: 21px;
+
+        .card {
+          height: 42px;
+          width: 42px;
+          font-size: 1.75rem;
+          padding-bottom: $halfHeight;
+        }
+
+        .card__top,
+        .card__bottom,
+        .card__back::before,
+        .card__back::after {
+          padding: 5px;
+          width: 42px;
+          height: $halfHeight;
+        }
+
+        .card__bottom {
+          &::after {
+            display: block;
+            margin-top: -$halfHeight;
+            content: attr(data-value);
+          }
+        }
       }
     }
   }

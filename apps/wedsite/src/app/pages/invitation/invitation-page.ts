@@ -47,8 +47,8 @@ export class InvitationPage {
     (this.activePanelWidth - this.nonActivePanelWidth) / 2;
 
   constructor() {
-    afterNextRender(() => {
-      this.setupPanels();
+    afterNextRender({
+      write: () => this.setupPanels(),
     });
   }
 

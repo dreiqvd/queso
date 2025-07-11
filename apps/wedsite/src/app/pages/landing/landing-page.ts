@@ -12,6 +12,8 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged, fromEvent } from 'rxjs';
 
+import { BREAKPOINTS, getViewportWidth } from '@queso/common';
+
 import { NavigationService } from '../../components/navigation/navigation.service';
 
 import { DetailsSection } from './details-section/details-section';
@@ -44,50 +46,63 @@ export class LandingPage implements OnDestroy {
 
   protected readonly activeRoute = signal<string>('hello');
   protected readonly isMenuHidden = signal<boolean>(false);
+  protected readonly isMobile = signal<boolean>(false);
 
   protected readonly navItems = NAV_ITEMS;
   private disableActiveRouteChecking = false;
   private menuIntersectionObs$?: IntersectionObserver;
 
   constructor() {
-    afterNextRender(() => {
-      // Compute the active fragment when section is scrolled into view
-      this.menuIntersectionObs$ = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (this.disableActiveRouteChecking) {
-              return;
-            }
-            if (entry.isIntersecting) {
-              const elementId = entry.target.id;
-              if (elementId === 'hashtag') {
-                this.isMenuHidden.set(true);
-              } else {
-                this.isMenuHidden.set(false);
-                this.activeRoute.set(entry.target.id);
+    afterNextRender({
+      read: () => {
+        this.setIsMobileFlag();
+
+        // Compute the active fragment when section is scrolled into view
+        this.menuIntersectionObs$ = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (this.disableActiveRouteChecking) {
+                return;
               }
-            }
-          });
-        },
-        { threshold: 0.6 }
-      );
-
-      this.sections.forEach((section) => {
-        (this.menuIntersectionObs$ as IntersectionObserver).observe(
-          section.nativeElement
+              if (entry.isIntersecting) {
+                const elementId = entry.target.id;
+                if (elementId === 'hashtag') {
+                  this.isMenuHidden.set(true);
+                } else {
+                  this.isMenuHidden.set(false);
+                  this.activeRoute.set(entry.target.id);
+                }
+              }
+            });
+          },
+          { threshold: 0.6 }
         );
-      });
 
-      fromEvent(window, 'scroll')
-        .pipe(
-          debounceTime(100),
-          distinctUntilChanged(),
-          takeUntilDestroyed(this.destroyRef)
-        )
-        .subscribe(() => {
-          this.handleScrollEvent();
+        this.sections.forEach((section) => {
+          (this.menuIntersectionObs$ as IntersectionObserver).observe(
+            section.nativeElement
+          );
         });
+
+        fromEvent(window, 'scroll')
+          .pipe(
+            debounceTime(100),
+            distinctUntilChanged(),
+            takeUntilDestroyed(this.destroyRef)
+          )
+          .subscribe(() => {
+            this.handleScrollEvent();
+          });
+
+        fromEvent(window, 'resize')
+          .pipe(takeUntilDestroyed(this.destroyRef), debounceTime(100))
+          .subscribe(() => this.setIsMobileFlag());
+      },
     });
+  }
+
+  private setIsMobileFlag(): void {
+    this.isMobile.set(getViewportWidth() <= BREAKPOINTS.MOBILE_MD);
   }
 
   private handleScrollEvent(): void {

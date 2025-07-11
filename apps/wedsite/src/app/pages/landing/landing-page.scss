@@ -1,5 +1,11 @@
 @use 'mixins' as *;
 
+nav {
+  @include respond-to('mobile-md') {
+    max-width: calc(100% - 60px);
+  }
+}
+
 .nav-item.active {
   opacity: 1;
 
