@@ -1,21 +1,34 @@
-<div class="min-h-dvh flex flex-col items-center pt-[120px]">
+<div class="min-h-dvh flex flex-col items-center pt-[120px]
+  tablet-sm:px-8
+  mobile-sm:px-4
+">
   <h2 class="section-header text-center">
     RSVP
   </h2>
 
-  <div class="text-center mb-12 mt-[72px] max-w-[800px]">
-    <h3 class="text-2xl">
+  <div class="text-center mb-12 mt-[72px] max-w-[800px]
+    desktop-md:max-w-[740px]
+    desktop-sm:max-w-[550px]
+    tablet-sm:max-w-[100%]
+  ">
+    <h3 class="text-2xl
+      desktop-sm:text-xl
+    ">
       We're counting down the days to food, fun, and festivities—and it wouldn't be the same without you! Help us set the stage (and the table) by letting us know if you'll be joining the celebration.
     </h3>
-    <h4 class="font-normal text-2xl"><span class="font-semibold">Deadline:</span> August 09 (Saturday)</h4>
+    <h4 class="font-normal text-2xl
+      desktop-sm:text-xl
+    ">
+      <span class="font-semibold">Deadline:</span> August 09 (Saturday)
+    </h4>
   </div>
 
   <form
-    class="flex flex-col text-center max-w-[440px]"
+    class="flex flex-col text-center relative max-w-[440px] mb-[180px]"
     [formGroup]="rsvpForm"
     (submit)="onFormSubmit()"
   >
-    <p>RSVP to reserve your spot or that of your entire party.</p>
+    <p class="opacity-90">RSVP to save your spot or your group's.</p>
     <mat-form-field qsFormField subscriptSizing="dynamic">
       <input
         matInput
@@ -42,12 +55,12 @@
     <p class="my-6">
       You can also confirm your attendance by sending us an email <a href="mailto:dreiandtricia@gmail.com">(dreiandtricia&#64;gmail.com)</a>, text (09457764445), or DM.
     </p>
-  </form>
 
-  <img
-    src="/images/pines.svg"
-    alt="Pines illustration"
-    width="90"
-    class="mt-auto mb-[40px]"
-  >
+    <img
+      src="/images/pines.svg"
+      alt="Pines illustration"
+      width="90"
+      class="absolute bottom-[-150px] left-1/2 -translate-x-1/2"
+    >
+  </form>
 </div>
