@@ -5,24 +5,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
   selector: 'app-faqs-section',
   imports: [MatExpansionModule],
   templateUrl: './faqs-section.html',
-  styles: `
-    :host {
-      ::ng-deep {
-        mat-accordion {
-          .mat-expansion-panel-body {
-            p {
-              margin: 0;
-            }
-
-            // p not first child
-            p:not(:first-child) {
-              margin-top: 16px;
-            }
-          }
-        }
-      }
-    }
-  `,
+  styleUrl: './faqs-section.scss',
 })
 export class FAQSSection {
   protected readonly faqs = FAQs;

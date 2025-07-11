@@ -1,0 +1,28 @@
+@use 'mixins' as *;
+
+.nav-item.active {
+  opacity: 1;
+
+  span {
+    padding-left: 16px;
+    position: relative;
+
+    &::before {
+      content: '*';
+      font-family: 'Anonymous Pro', monospace;
+      font-weight: 700;
+      position: absolute;
+      top: -4px;
+      left: 0;
+      margin-right: 4px;
+    }
+
+    @include respond-to('tablet-md') {
+      padding-left: 12px;
+
+      &::before {
+        top: -5px;
+      }
+    }
+  }
+}

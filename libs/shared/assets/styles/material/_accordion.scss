@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use 'mixins' as *;
 
 @mixin apply-theme() {
   :root {
@@ -6,10 +7,12 @@
       (
         container-text-color: var(--text-default-color),
         header-text-size: 1rem,
+        header-text-line-height: 1.25rem,
         container-text-size: 1rem,
         container-shape: 0,
         // removes border-radius around the expansion panel
         header-expanded-state-height: 48px,
+        header-collapsed-state-height: 48px,
       )
     );
   }

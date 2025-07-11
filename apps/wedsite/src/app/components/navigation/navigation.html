@@ -2,7 +2,10 @@
   type="button"
   aria-label="Open menu"
   matTooltip="Open Menu"
-  class="!fixed !z-fixed bg-transparent outline-none border-0 cursor-pointer top-8 right-8 scale-x-[-1]"
+  class="!fixed !z-fixed bg-transparent outline-none border-0 cursor-pointer top-8 right-8 scale-x-[-1]
+    tablet-md:top-5 tablet-md:right-5
+    tablet-sm:top-4 tablet-sm:right-4
+  "
   (click)="isSidebarOpen.set(true)"
 >
   <img src="/images/menu.svg" alt="Menu icon" width="35">

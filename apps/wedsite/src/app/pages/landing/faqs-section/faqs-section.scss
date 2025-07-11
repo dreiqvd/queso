@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+@use 'mixins' as *;
+
+:host {
+  ::ng-deep {
+    mat-accordion {
+      .mat-expansion-panel-body {
+        p {
+          margin: 0;
+        }
+
+        p:not(:first-child) {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+}
+
+mat-accordion {
+  @include respond-to('tablet-sm') {
+    @include mat.expansion-overrides(
+      (
+        header-expanded-state-height: 58px,
+        header-collapsed-state-height: 58px,
+      )
+    );
+  }
+}

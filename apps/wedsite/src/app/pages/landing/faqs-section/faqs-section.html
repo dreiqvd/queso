@@ -2,20 +2,27 @@
   <h2 class="section-header text-center">
     FAQs
   </h2>
-  <div class="flex flex-col items-center w-full relative gap-[104px] max-w-[1000px]">
-    <mat-accordion>
-      @for (item of faqs; track $index) {
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>{{ item.title }}</mat-panel-title>
-          </mat-expansion-panel-header>
+  <div class="flex flex-col items-center w-full relative gap-[104px]">
+    <div class="max-w-[1000px] w-[60%]
+      desktop-md:w-[65%]
+      desktop-sm:w-[100%] desktop-sm:pr-12 desktop-sm:pl-[110px]
+      tablet-md:pr-8 tablet-md:pl-8
+      tablet-sm:pr-6 tablet-sm:pl-6
+      mobile-sm:pr-4 mobile-sm:pl-4">
+      <mat-accordion>
+        @for (item of faqs; track $index) {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{ item.title }}</mat-panel-title>
+            </mat-expansion-panel-header>
 
-          <div>
-            <div [innerHTML]="item.content"></div>
-          </div>
-        </mat-expansion-panel>
-      }
-    </mat-accordion>
+            <div>
+              <div [innerHTML]="item.content"></div>
+            </div>
+          </mat-expansion-panel>
+        }
+      </mat-accordion>
+    </div>
     <img
       src="/images/flowers.svg"
       alt="Flowers illustration"
@@ -25,7 +32,9 @@
       src="/images/faq.svg"
       alt="FAQs illustration"
       width="200"
-      class="mt-8 absolute top-1/2 -translate-y-1/2 left-full ml-[96px] pb-[100px]"
+      class="mt-8 absolute top-1/2 -translate-y-1/2 pb-[140px] right-[2%]
+        desktop-sm:opacity-0
+      "
     >
   </div>
 

@@ -28,26 +28,7 @@ import { RSVPSection } from './rsvp-section/rsvp-section';
   ],
   selector: 'app-landing-page',
   templateUrl: './landing-page.html',
-  styles: `
-    .nav-item.active {
-      opacity: 1;
-
-      span {
-        padding-left: 16px;
-        position: relative;
-
-        &::before {
-          content: '*';
-          font-family: 'Anonymous Pro', monospace;
-          font-weight: 700;
-          position: absolute;
-          top: -4px;
-          left: 0;
-          margin-right: 4px;
-        }
-      }
-    }
-  `,
+  styleUrl: './landing-page.scss',
 })
 export class LandingPage implements OnDestroy {
   @ViewChildren('section') sections!: QueryList<ElementRef<HTMLElement>>;

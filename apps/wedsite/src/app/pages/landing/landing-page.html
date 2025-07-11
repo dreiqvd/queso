@@ -1,13 +1,22 @@
 <nav
-  class="fixed top-1/2 left-8 -translate-y-1/2 z-fixed"
+  class="fixed top-1/2 left-8 -translate-y-1/2 z-[100]
+    desktop-sm:left-4
+    tablet-md:left-2 tablet-md:top-6 tablet-md:-translate-y-0
+  "
   [style.opacity]="isMenuHidden() ? '0' : '1'"
 >
-  <ul class="flex flex-col gap-7 p-0 list-none">
+  <ul class="nav-list-wrapper relative flex flex-col gap-7 m-0 p-0 list-none
+    desktop-sm:gap-5
+    tablet-md:gap-4 tablet-md:flex-row tablet-md:pl-4
+  ">
     @for (navItem of navItems; track $index) {
       <li
         role="navigation"
-        class="nav-item cursor-pointer text-2xl opacity-60
+        class="nav-item cursor-pointer text-2xl opacity-60 z-[200]
           hover:text-primary-300
+          desktop-sm:text-xl
+          tablet-md:text-base tablet-md:text-accent tablet-md:shadow
+          tablet-sm:text-base
         "
         [class.active]="activeRoute() === navItem.route"
         [class.text-primary]="activeRoute() !== 'gifts'"
