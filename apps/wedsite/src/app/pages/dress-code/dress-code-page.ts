@@ -167,7 +167,7 @@ const ROLES: DressCodeRole[] = [
   },
   {
     value: 'secondary-sponsors',
-    label: 'Symbol Bearers',
+    label: 'Veil, Cord, Candle',
     name: 'Secondary Sponsors',
     palette: [
       [
