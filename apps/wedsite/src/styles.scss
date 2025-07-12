@@ -58,6 +58,11 @@ html {
   --font-subheading: 'Anonymous Pro', monospace;
 }
 
+html,
+body {
+  background-color: #dfd4c5;
+}
+
 h1,
 h2,
 h3 {
@@ -119,5 +124,32 @@ a {
 
   .mat-mdc-dialog-content {
     padding-top: 0;
+  }
+}
+
+.page-container {
+  padding: 72px 48px 48px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  align-items: center;
+
+  .page-header {
+    margin: 48px 0;
+    text-align: center;
+
+    .section-header {
+      display: inline-block;
+    }
+  }
+
+  @include respond-to('mobile-md') {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include respond-to('mobile-sm') {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }

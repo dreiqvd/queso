@@ -1,15 +1,15 @@
-<div class="min-h-dvh flex flex-col p-12">
-  <div class="text-center">
-    <h2 class="section-header text-center my-12 inline-block">
+<div class="page-container">
+  <header class="page-header">
+    <h2 class="section-header">
       REGISTRY
     </h2>
-  </div>
+  </header>
 
   @if (isLoading()) {
     <app-loader message="Loading up the goodies..." />
   } @else {
     <div qsAnimation="fadeIn" class="flex flex-col items-center">
-      <h3 class="font-semibold text-accent text-center text-2xl leading-8 max-w-[800px]">
+      <h3 class="text-accent text-center text-2xl leading-8 max-w-[800px]">
         No gifts? Really, no worries! We understand some items can be on the pricey side, so please don't feel obliged—your company means everything to us!
       </h3>
       <div class="my-12 grid grid-cols-4 gap-16
