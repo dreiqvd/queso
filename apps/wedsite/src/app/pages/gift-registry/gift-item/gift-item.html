@@ -1,15 +1,8 @@
-<div class="relative w-[264px] h-[320px] pr-3 pb-4">
-  <img
-    src="/images/frame.svg"
-    alt="Frame"
-    aria-hidden="true"
-    height="100%"
-    width="100%"
-    class="absolute top-0 left-0"
-  >
+<div class="container relative w-[264px] h-[320px] pr-3 pb-8">
   <div class="h-full flex flex-col items-center justify-center">
     <div class="flex items-center justify-center border-solid border-0 border-b-2 border-b-toupe-400 w-[180px] h-[148px]">
       <img
+        loading="lazy"
         class="mt-2"
         [src]="'/images/gifts/' + gift().img + '.svg'"
         [alt]="gift().name"

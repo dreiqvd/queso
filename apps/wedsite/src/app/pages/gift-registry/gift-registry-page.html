@@ -1,7 +1,9 @@
-<div class="min-h-dvh flex flex-col items-center p-12">
-  <h2 class="section-header text-center my-12">
-    REGISTRY
-  </h2>
+<div class="min-h-dvh flex flex-col p-12">
+  <div class="text-center">
+    <h2 class="section-header text-center my-12 inline-block">
+      REGISTRY
+    </h2>
+  </div>
 
   @if (isLoading()) {
     <app-loader message="Loading up the goodies..." />
@@ -10,10 +12,17 @@
       <h3 class="font-semibold text-accent text-center text-2xl leading-8 max-w-[800px]">
         No gifts? Really, no worries! We understand some items can be on the pricey side, so please don't feel obliged—your company means everything to us!
       </h3>
-      <div class="my-12 grid grid-cols-4 gap-16">
+      <div class="my-12 grid grid-cols-4 gap-16
+        desktop-md:grid-cols-3
+        desktop-sm:grid-cols-2
+        tablet-sm:grid-cols-1 tablet-sm:gap-8
+        mobile-md:gap-4
+      ">
         @for (gift of gifts(); track gift.id) {
           <div>
-            <app-gift-item [gift]="gift" />
+            @defer {
+              <app-gift-item [gift]="gift" />
+            }
           </div>
         }
       </div>
