@@ -1,4 +1,4 @@
-<div class="min-h-dvh max-w-dvw flex flex-col py-12 pt-[210px]">
+<div #mainContainer class="min-h-[calc(100dvh_-_52px)] max-w-dvw flex flex-col py-12 pt-[210px]">
   <div class="mb-14 px-12 flex justify-between">
     <h1 class="font-chalk text-[2rem] opacity-60">
       #EveryDreiWithTricia
@@ -15,8 +15,8 @@
     </button>
   </div>
 
-  <div #scrollContainer class="scroll-container overflow-x-auto overflow-y-hidden">
-    <div #panelsContainer class="panels-container px-12 bg-transparent h-[400px]">
+  <div class="scroll-container overflow-x-auto overflow-y-hidden">
+    <div class="panels-container px-12 bg-transparent h-[400px]">
       <div
         #panel
         class="panel"
@@ -155,7 +155,7 @@
         [class.active]="activePanelIdx() === 4"
         (click)="setActivePanel(4)"
         (keydown)="setActivePanel(4)">
-        <div class="h-full flex flex-col items-center pt-14">
+        <div class="h-full flex flex-col items-center pt-14 relative">
           <h2 class="text-accent text-2xl uppercase font-subheading m-0">
             The Finer Details
           </h2>
@@ -171,15 +171,12 @@
             width="100"
             class="absolute bottom-6 left-1/2 translate-x-[-50%]"
           />
+
+          <div class="absolute ml-16 left-[100%] top-1/2 translate-y-[-50%]">
+            <img src="/images/wedding-car.svg" alt="Wedding Car" width="240" />
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      #weddingCar
-      class="absolute right-[80px] top-1/2 translate-y-[-50%]"
-      [style.display]="showWeddingCar() ? 'block' : 'none'"
-    >
-      <img src="/images/wedding-car.svg" alt="Wedding Car" width="240" />
     </div>
   </div>
 

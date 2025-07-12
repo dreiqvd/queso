@@ -13,6 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { animate } from 'animejs';
 
+import { getViewportHeight } from '@queso/common';
 import { QsIcon } from '@queso/ui-kit/icon';
 
 @Component({
@@ -22,13 +23,11 @@ import { QsIcon } from '@queso/ui-kit/icon';
   styleUrl: './invitation-page.scss',
 })
 export class InvitationPage {
-  @ViewChild('scrollContainer') scrollContainer!: ElementRef<HTMLDivElement>;
-  @ViewChild('weddingCar') weddingCar!: ElementRef<HTMLDivElement>;
+  @ViewChild('mainContainer') mainContainer!: ElementRef<HTMLDivElement>;
   @ViewChildren('panel') panels!: QueryList<ElementRef<HTMLDivElement>>;
 
   protected readonly activePanelIdx = signal(0);
   protected readonly disablePanelChange = signal(true);
-  protected readonly showWeddingCar = signal(false);
 
   /**
    * Appearance width of the non-active panels when scaled down.
@@ -54,8 +53,22 @@ export class InvitationPage {
 
   @HostListener('window:wheel', ['$event'])
   onWheel(e: WheelEvent): void {
-    const container = this.scrollContainer?.nativeElement;
-    if (!container) return;
+    /**
+     * Disable scrolling override if:
+     *  - The panel change is disabled
+     *  - The container is not available
+     *  - The container height is greater than the viewport height (means scrollbar is present)
+     * */
+    const container = this.mainContainer?.nativeElement;
+    const containerHeight = container?.getBoundingClientRect().height || 0;
+    const footerHeight = 52;
+    if (
+      this.disablePanelChange() ||
+      !container ||
+      containerHeight + footerHeight > getViewportHeight()
+    ) {
+      return;
+    }
 
     // Convert vertical scroll to horizontal scroll with increased scroll size
     const offset = 7; // The higher the value, the bigger the scroll step
@@ -112,45 +125,62 @@ export class InvitationPage {
 
     /**
      * Panel repositioning logic:
-     * 1. For each active index, set a defined position for the first panel.
-     * Context: First panel will always be on a specific position based on an active index.
-     * Example: If the new active index is 2, the first panel should be at -600px from the left.
+     * 1. Calculate the viewport center and determine target position for the new active panel
+     * 2. Find the current position of the new active panel
+     * 3. Calculate the distance needed to move the new active panel to its target position
+     * 4. Apply this distance to all panels with appropriate offsets for scaling effects
      *
-     * 2. Compute the distance the first panel should move based on the new active index.
-     * In the example above, if the current position of the first panel is at -800px, we then need
-     * to move 200px of distance for it to reach -600px. This distance will be the same for all panels.
-     *
-     * 3. Distance alone is not enough. A varying offset should also be computed based on the
-     * position (to the left or to the right) of other panels relative to the active panel. This
-     * is because, a new active panel will expand in size and the previous active panel will shrink.
-     * There will be different offsets for each panel depending if they exist to the left or right
-     * side of the active panel.
-     *
-     * Drawback: Since the computation is based on the current position of the first panel,
-     * the animation has to be completed first before allowing the user to change the active panel.
-     * This is to ensure that the first panel is always at the correct position before the next change.
+     * Position specifications:
+     * - Panel 0: 48px from left edge
+     * - Panel 1: 300px left of viewport center
+     * - Panel 2: 300px left of viewport center
+     * - Panel 3: 200px left of viewport center
+     * - Panel 4: Computed based on viewport center and last panel width
      */
 
     const previousActiveIdx = this.activePanelIdx();
     const direction = newActiveIdx > this.activePanelIdx() ? '-' : '+';
     this.activePanelIdx.set(newActiveIdx);
 
-    const firstPanelBaseOffset = 48; // This is the left padding of the scroll container
-    const firstPanelPositionMap: { [key: number]: number } = {
-      0: firstPanelBaseOffset,
-      1: 400,
-      2: 600,
-      3: 800,
-      4: 1200,
+    // Calculate viewport center
+    const viewportWidth = window.innerWidth;
+    const viewportCenter = viewportWidth / 2;
+
+    // Get the current position of the new active panel
+    const newActivePanelRect = (
+      this.panels.get(newActiveIdx) as ElementRef<HTMLDivElement>
+    ).nativeElement.getBoundingClientRect();
+    const currentPosition = newActivePanelRect.left;
+
+    // defaults to right of viewport center + 5% of viewport width
+    let lastPanelPosition = viewportCenter + viewportWidth * 0.05;
+    if (newActiveIdx === this.panels.length - 1) {
+      // The last panel has a different handling because of the extra content (e.g., wedding car).
+      // Here, the last panel width is computed and compared to the viewport center.
+      // If the viewport center is less than the last panel width, we adjust the position of
+      // the last panel to be at the left side of the viewport center instead of right.
+      // This makes all the last panel content to be visible in the viewport.
+      const lastPanelWidth = newActivePanelRect.width + 240 + 64;
+      if (viewportCenter < lastPanelWidth) {
+        lastPanelPosition =
+          viewportCenter - (lastPanelWidth - viewportCenter) - 50;
+      }
+    }
+
+    // Define target positions based on specifications
+    const targetPositionMap: { [key: number]: number } = {
+      0: 48, // 48px from left edge
+      1: viewportCenter - 300, // 300px left of center
+      2: viewportCenter - 300, // 300px left of center
+      3: viewportCenter - 200, // 200px left of center
+      4: lastPanelPosition, // 100px left of center
     };
 
-    const firstPanelEl = this.panels.first.nativeElement as HTMLDivElement;
-    const currentFirstPanelPosition = firstPanelEl.getBoundingClientRect().left;
+    // Calculate target position for the new active panel
+    const targetPosition = targetPositionMap[newActiveIdx] || viewportCenter;
 
-    const targetXOffset = firstPanelPositionMap[newActiveIdx] || 0;
-
-    // Compute how far the first panel should move
-    const distance = Math.abs(currentFirstPanelPosition + targetXOffset);
+    // Calculate the distance needed to move the new active panel to its target position
+    const distance = currentPosition - targetPosition;
 
     const pad = this.nonActivePanelInternalPadding; // Imaginary padding of the non-active panel
     this.panels.forEach((panel, panelIdx) => {
@@ -159,7 +189,7 @@ export class InvitationPage {
       const targetScale = isActive ? 1 : 0.8;
       const opacity = isActive ? 1 : 0.8;
 
-      let offsetX = distance; // initialize offsetX with the calculated distance
+      let offsetX = Math.abs(distance); // initialize offsetX with the absolute distance
 
       /** Compute offset based on the direction (to the left or to the right) */
 
@@ -187,9 +217,9 @@ export class InvitationPage {
           offsetX -= pad;
         }
       } else {
-        // Add the first panel base offset to the offsetX. This will make the
-        // reference point to be the original position of the first panel.
-        offsetX += firstPanelBaseOffset * 2;
+        // Handle for right direction (+)
+        // Use the calculated distance directly, adjusting for direction
+        offsetX = Math.abs(distance);
 
         if (previousActiveIdx === panelIdx) {
           // Subtract the padding offset to the previous active panel since it shrunk in size
@@ -218,19 +248,8 @@ export class InvitationPage {
         x: `${direction}=${offsetX}px`,
         scale: [{ from: 0.8, to: targetScale, duration: 800 }],
         opacity: [{ from: 0.8, to: opacity, duration: 800 }],
-        onBegin: () => {
-          this.disablePanelChange.set(true);
-          this.showWeddingCar.set(false);
-        },
-        onComplete: () => {
-          this.disablePanelChange.set(false);
-          if (this.activePanelIdx() === 4) {
-            this.showWeddingCar.set(true);
-            animate(this.weddingCar.nativeElement, {
-              opacity: [{ from: 0, to: 1, duration: 300 }],
-            });
-          }
-        },
+        onBegin: () => this.disablePanelChange.set(true),
+        onComplete: () => this.disablePanelChange.set(false),
       });
     });
   }
