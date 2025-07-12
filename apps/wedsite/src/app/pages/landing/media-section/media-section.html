@@ -1,9 +1,19 @@
-<div class="min-h-dvh flex flex-col items-center relative overflow-hidden gap-[80px]">
-  <h2 class="section-header text-center mt-[120px]">
+<div class="min-h-dvh flex flex-col items-center relative overflow-hidden gap-[80px]
+  tablet-md:px-4
+  tablet-sm:gap-12
+">
+  <h2 class="section-header text-center mt-[120px]
+    mobile-md:max-w-[240px]
+  ">
     PHOTOS & VIDEOS
   </h2>
-  <div class="flex gap-8">
-    <div class="relative">
+  <div class="flex gap-8
+    tablet-md:gap-6
+    tablet-sm:flex-col-reverse items-center
+  ">
+    <div class="relative
+      tablet-sm:text-center
+    ">
       <img
         priority
         ngSrc="/images/highlight.webp"
@@ -19,10 +29,12 @@
         class="absolute -bottom-[60px] -right-[70px]"
       >
     </div>
-    <div class="mt-5">
+    <div class="mt-5
+      tablet-sm:text-center tablet-sm:mt-0
+    ">
       <img src="/images/camera.svg" alt="Camera icon" width="90">
-      <h3 class="text-2xl font-semibold mb-2">
-        We'd love to see the celebration <br />from your POV!
+      <h3 class="text-2xl font-semibold mb-2 max-w-[400px]">
+        We'd love to see the celebration from your POV!
       </h3>
       <p>
         Got any photos/videos you'd love to share? <br />Drop them <a href="#" target="_blank" rel="noreferrer noopener">here!</a>
@@ -30,8 +42,14 @@
     </div>
   </div>
 
-  <nav class="absolute bottom-4 right-8">
-    <ul class="list-none text-right">
+  <nav class="w-full text-right mb-4 pr-8 mt-[80px]
+    desktop-sm:mt-[60px]
+    tablet-sm:pr-0 tablet-sm:mt-[40px]
+    view-short:mt-0
+  ">
+    <ul class="list-none text-right p-0
+      tablet-sm:text-center
+    ">
       @for (link of footerLinks; track $index) {
         <li class="mb-2">
           <a
