@@ -12,6 +12,14 @@ import { GiftDetails } from './gift-details/gift-details';
   selector: 'app-gift-item',
   imports: [CurrencyPipe, MatButtonModule],
   templateUrl: './gift-item.html',
+  styles: `
+    .container {
+      background-image: url('/images/frame.webp');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  `,
 })
 export class GiftItem {
   readonly gift = input.required<RegistryGift>();
