@@ -1,7 +1,29 @@
-<div class="container h-dvh flex justify-center items-center overflow-hidden">
-  <h2 class="text-body-light text-9xl font-chalk">
-    @for(ch of hashtag; track $index) {
-      <span>{{ ch }}</span>
-    }
-  </h2>
+<div class="overflow-hidden relative">
+  @if (isMobile()) {
+    <div class="mobile-container min-h-dvh flex justify-center items-center">
+      <h2 #heading class="text-body-light m-0 text-[16vw] font-chalk text-center leading-1">
+        <div>
+          @for(ch of headingWrapped[0]; track $index) {
+            <span>{{ ch }}</span>
+          }
+        </div>
+        <div class="-mt-5">
+          @for(ch of headingWrapped[1]; track $index) {
+            <span>{{ ch }}</span>
+          }
+        </div>
+      </h2>
+    </div>
+  } @else {
+    <h2 #heading class="text-body-light m-0 text-[9vw] font-chalk text-center absolute left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100]">
+      @for(ch of headingNoWrap; track $index) {
+        <span>{{ ch }}</span>
+      }
+    </h2>
+    <div #photosContainer class="grid grid-cols-3">
+      <img src="/images/couple-img-01.jpg" alt="Couple Image 01" width="100%" />
+      <img src="/images/couple-img-02.jpg" alt="Couple Image 01" width="100%" />
+      <img src="/images/couple-img-03.jpg" alt="Couple Image 01" width="100%" />
+    </div>
+  }
 </div>

@@ -9,7 +9,7 @@ import { QsCountdownFlipCard } from '@queso/ui-kit/countdown-flip-card';
   imports: [QsCountdownFlipCard],
 })
 export class HeroSection {
-  readonly isMobile = input.required();
+  readonly isMobile = input.required<boolean>();
 
   protected readonly destroyRef = inject(DestroyRef);
 
