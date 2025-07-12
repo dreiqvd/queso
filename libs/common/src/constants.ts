@@ -5,6 +5,7 @@
  * - _breakpoints.scss
  */
 export const BREAKPOINTS = {
+  MOBILE_XS: 320,
   MOBILE_SM: 360,
   MOBILE_MD: 480,
   TABLET_SM: 640,

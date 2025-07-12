@@ -20,6 +20,7 @@ module.exports = {
       'tablet-sm': { max: '640px' },
       'mobile-md': { max: '480px' },
       'mobile-sm': { max: '360px' },
+      'mobile-xs': { max: '320px' },
     },
     colors: {
       transparent: 'transparent',

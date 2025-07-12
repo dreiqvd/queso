@@ -6,6 +6,7 @@
 */
 /* prettier-ignore */
 $breakpoints: (
+  "mobile-xs": (max-width: 320px),
   "mobile-sm": (max-width: 360px),
   'mobile-md': (max-width: 480px),
   'tablet-sm': (max-width: 640px),
