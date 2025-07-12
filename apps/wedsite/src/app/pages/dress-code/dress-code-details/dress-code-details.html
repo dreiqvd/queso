@@ -5,7 +5,7 @@
       @case ('bridesmaids') {
         <img
           priority
-          ngSrc="/images/bridesmaid.png"
+          ngSrc="/images/bridesmaid.webp"
           alt="Bridesmaid attire"
           width="150"
           height="225"
@@ -14,7 +14,9 @@
         <p class="text-center m-0 max-w-[400px]">
           We'd be happy to see you in any <span class="font-bold">ankle</span>, or <span class="font-bold">floor-length</span> dress in the colors of this palette!
         </p>
-        <div class="flex gap-8 justify-center">
+        <div class="flex gap-8 justify-center
+          mobile-md:gap-4
+        ">
           @for (item of data.role.palette[0]; track $index) {
             <ng-container *ngTemplateOutlet="paletteTmpl; context: { $implicit: item }" />
           }
@@ -24,7 +26,7 @@
       @case ('groomsmen') {
         <img
           priority
-          ngSrc="/images/groomsmen.png"
+          ngSrc="/images/groomsmen.webp"
           alt="Groomsmen attire"
           width="150"
           height="225"
@@ -46,7 +48,7 @@
       @case ('guests') {
         <img
           priority
-          ngSrc="/images/guests.png"
+          ngSrc="/images/guests.webp"
           alt="Guest attire"
           width="180"
           height="133"
@@ -73,7 +75,9 @@
         </p>
         <div class="flex flex-col gap-4">
           @for (palette of data.role.palette; track $index) {
-            <div class="flex gap-8 justify-center">
+            <div class="flex gap-8 justify-center
+              mobile-md:gap-6
+            ">
               @for (item of palette; track $index) {
                 <ng-container *ngTemplateOutlet="paletteTmpl; context: { $implicit: item }" />
               }
@@ -92,7 +96,7 @@
     height="187"
     class="mb-4"
     [alt]="data.role.label + ' attire'"
-    [ngSrc]="'/images/' + data.role.value + '.png'"
+    [ngSrc]="'/images/' + data.role.value + '.webp'"
   />
   <dl class="flex flex-col m-0 text-center max-w-[400px]">
     <dt class="font-semibold text-accent uppercase">
@@ -112,7 +116,9 @@
   <p class="font-semibold text-accent uppercase my-2 mb-0">
     Palette
   </p>
-  <div class="flex gap-8 justify-center">
+  <div class="flex gap-8 justify-center
+    mobile-md:gap-6
+  ">
     @for (paletteItem of data.role.palette[0]; track $index) {
        <span class="text-center inline-block" [matTooltip]="paletteItem.name">
           <qs-icon
