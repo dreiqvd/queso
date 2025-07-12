@@ -39,7 +39,7 @@ const FAQs: { title: string; content: string }[] = [
   {
     title: 'What should I wear?',
     content: `
-      <p>The dress code is <b>formal wear only</b>, with the ladies wearing their Sunday best and the gentlemen ideally in Barong Tagalog (if you're uncomfortable, a long-sleeved button-down will do!). As for the color, we have designated palettes which you can review <a href="#" target="_blank" rel="noreferrer noopener" >here.</a></p>
+      <p>The dress code is <b>formal wear only</b>, with the ladies wearing their Sunday best and the gentlemen ideally in Barong Tagalog (if you're uncomfortable, a long-sleeved button-down will do!). As for the color, we have designated palettes which you can review <a href="dress-code" target="_blank" rel="noreferrer noopener" >here.</a></p>
       <p>Since both venues are located in the highlands of Eden, Toril, temperatures are expected to drop in the evening. For your comfort, feel free to bring shawls, blazers, and the like.</p>`,
   },
   {
