@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class OurStoryPage {
   protected readonly personas = [
     {
-      avatar: 'drei-avatar.jpg',
+      avatar: 'drei-avatar.webp',
       name: 'Drei',
       title: 'The Tofu Whisperer',
       attributes: [
@@ -21,7 +21,7 @@ export class OurStoryPage {
       ],
     },
     {
-      avatar: 'tricia-avatar.jpg',
+      avatar: 'tricia-avatar.webp',
       name: 'Tricia',
       title: 'The Household CEO',
       attributes: [
