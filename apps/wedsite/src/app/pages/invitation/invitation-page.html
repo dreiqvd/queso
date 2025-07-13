@@ -93,7 +93,9 @@
         [style.width.px]="panelWidth()"
         (click)="setActivePanel(2)"
         (keydown)="setActivePanel(2)">
-        <div class="flex flex-col justify-between items-center py-8 px-4 h-full">
+        <div class="flex flex-col justify-between items-center py-8 px-4 h-full
+          tablet-sm:py-10
+        ">
           <div class="text-center">
             <h2 class="text-lg text-accent uppercase font-subheading m-0">
               Date and Time
@@ -116,7 +118,7 @@
               St. Michael the Archangel Chapel
             </h3>
             <p class="font-light m-0
-              tablet-sm:text-sm
+              tablet-sm:text-[0.9rem] tablet-sm:leading-[1.15rem]
             ">
               Virgen Delos Remedios Rd, Brgy. Eden, Toril, Davao City
             </p>
@@ -124,8 +126,8 @@
               href="https://maps.app.goo.gl/i2p51pYxj5HeTDUUA"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-1 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500
-                tablet-sm:text-sm tablet-sm:mt-0
+              class="mt-1 font-light inline-flex items-center gap-2 text-toupe-500 hover:text-touple-500
+                tablet-sm:text-[0.9rem]
               "
               (click)="$event.stopPropagation()"
             >
@@ -144,7 +146,7 @@
               Fernwood (Pavilion area)
             </h3>
             <p class="font-light m-0
-              tablet-sm:text-sm
+              tablet-sm:text-[0.9rem] tablet-sm:leading-[1.15rem]
             ">
               Virgen Delos Remedios Rd, Brgy. Eden, Toril, Davao City
             </p>
@@ -152,8 +154,8 @@
               href="https://maps.app.goo.gl/U27cRqP1hZxGbL9eA"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-1 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500
-                tablet-sm:text-sm tablet-sm:mt-0
+              class="mt-1 font-light inline-flex items-center gap-2 text-toupe-500 hover:text-touple-500
+                tablet-sm:text-[0.9rem]
               "
               (click)="$event.stopPropagation()"
             >
