@@ -1,9 +1,7 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-our-story-page',
-  imports: [NgOptimizedImage],
   templateUrl: './our-story-page.html',
 })
 export class OurStoryPage {
