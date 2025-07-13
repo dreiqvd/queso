@@ -34,6 +34,10 @@
 
 .scroll-container {
   position: relative;
+  // Temporarily disable scrolling for the container as it conflicts with
+  // the panel positioning computation. Sample scenario is when the user
+  // scrolls with the container and then manually set an active panel.
+  overflow: hidden;
 
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
