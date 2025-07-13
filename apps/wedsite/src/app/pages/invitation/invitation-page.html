@@ -1,8 +1,9 @@
 <div #mainContainer class="min-h-[calc(100dvh_-_52px)] max-w-dvw flex flex-col pb-12 pt-[210px]
-  mobile-md:pt-[96px]
+  tablet-sm:pt-[96px]
   ">
   <div class="mb-14 px-12 flex justify-between gap-4
-    mobile-md:flex-col mobile-md:items-center mobile-md:px-6 mobile-md:gap-8 mobile-md:mb-10
+    tablet-md:px-8
+    tablet-sm:flex-col tablet-sm:items-center tablet-sm:px-6 tablet-sm:gap-8 tablet-sm:mb-10
   ">
     <h1 class="font-chalk text-[2rem] opacity-60">
       #EveryDreiWithTricia
@@ -20,7 +21,9 @@
   </div>
 
   <div class="scroll-container overflow-x-auto overflow-y-hidden">
-    <div class="panels-container bg-transparent h-[400px]"
+    <div class="panels-container bg-transparent h-[400px]
+      mobile-md:h-[460px]
+    "
       [style.paddingLeft.px]="panelsXPadding()"
       [style.paddingRight.px]="panelsXPadding()"
     >
@@ -32,11 +35,19 @@
         [style.width.px]="panelWidth()"
         (click)="setActivePanel(0)"
         (keydown)="setActivePanel(0)">
-        <div class="p-8 h-full flex flex-col justify-center">
-          <span class="italic text-xl">To</span>
+        <div class="p-8 h-full flex flex-col items-center mt-[48px]">
+          <span class="text-xl">To</span>
           <div class="flex">
-            <h2 class="font-heading m-0 text-[4rem]" id="invitees">
-              Kevin <span class="font-body">&</span> Mai
+            <h2 class="font-heading pb-12 mt-4 pr-4 text-center flex items-center gap-4 flex-wrap justify-center m-0 text-[4rem] leading-[3.5rem]
+              tablet-sm:text-[3.5rem] tablet-sm:leading-[3.25rem]
+            ">
+              @for (txt of inviteesTxt(); track $index) {
+                @if (txt === '&') {
+                  <span class="font-body text-4xl">&amp;</span>
+                } @else {
+                  {{ txt }}
+                }
+              }
             </h2>
           </div>
         </div>
@@ -44,8 +55,9 @@
         <img
           src="/images/wine.svg"
           alt="Wine"
-          class="absolute bottom-6 right-12"
-          width="120"
+          class="absolute bottom-6 w-[120px] right-1/2 translate-x-[50%]
+            tablet-sm:w-[100px]
+          "
         />
       </div>
 
@@ -58,7 +70,10 @@
         (click)="setActivePanel(1)"
         (keydown)="setActivePanel(1)">
         <div class="h-full flex justify-center items-center pb-24">
-          <p class="text-center text-2xl max-w-[360px]">
+          <p class="text-center text-2xl max-w-[360px]
+            tablet-sm:max-w-[340px]
+            mobile-md:max-w-[100%] mobile-md:px-6
+          ">
             We'd love to have you celebrate with us as we begin this next chapter in our life.
           </p>
           <img
@@ -78,12 +93,14 @@
         [style.width.px]="panelWidth()"
         (click)="setActivePanel(2)"
         (keydown)="setActivePanel(2)">
-        <div class="flex flex-col justify-between items-center py-8 h-full">
+        <div class="flex flex-col justify-between items-center py-8 px-4 h-full">
           <div class="text-center">
             <h2 class="text-lg text-accent uppercase font-subheading m-0">
               Date and Time
             </h2>
-            <time datetime="2025-09-13" class="text-xl block">
+            <time datetime="2025-09-13" class="text-xl block
+              mobile-md:leading-5 mobile-md:mb-1
+            ">
               September 13, 2025 (Saturday)
             </time>
             <p class="font-light m-0">Ceremony starts at 2:00 PM</p>
@@ -93,17 +110,23 @@
             <h2 class="text-lg text-accent uppercase font-subheading m-0">
               Ceremony
             </h2>
-            <h3 class="m-0 text-xl block">
+            <h3 class="m-0 text-xl block
+              mobile-md:leading-5 mobile-md:mb-1
+            ">
               St. Michael the Archangel Chapel
             </h3>
-            <p class="font-light m-0">
+            <p class="font-light m-0
+              tablet-sm:text-sm
+            ">
               Virgen Delos Remedios Rd, Brgy. Eden, Toril, Davao City
             </p>
             <a
               href="https://maps.app.goo.gl/i2p51pYxj5HeTDUUA"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-2 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500"
+              class="mt-1 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500
+                tablet-sm:text-sm tablet-sm:mt-0
+              "
               (click)="$event.stopPropagation()"
             >
               <span>Open in Google Maps</span>
@@ -115,17 +138,23 @@
             <h2 class="text-lg text-accent uppercase font-subheading m-0">
               Reception
             </h2>
-            <h3 class="m-0 text-xl block">
+            <h3 class="m-0 text-xl block
+              mobile-md:leading-5 mobile-md:mb-1
+            ">
               Fernwood (Pavilion area)
             </h3>
-            <p class="font-light m-0">
+            <p class="font-light m-0
+              tablet-sm:text-sm
+            ">
               Virgen Delos Remedios Rd, Brgy. Eden, Toril, Davao City
             </p>
             <a
               href="https://maps.app.goo.gl/U27cRqP1hZxGbL9eA"
               target="_blank"
               rel="noopener noreferrer"
-              class="mt-2 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500"
+              class="mt-1 font-light inline-flex items-center gap-2 text-toupe-400 hover:text-touple-500
+                tablet-sm:text-sm tablet-sm:mt-0
+              "
               (click)="$event.stopPropagation()"
             >
               <span>Open in Google Maps</span>
@@ -150,7 +179,10 @@
           <h3 class="font-semibold text-4xl px-8 py-2 m-0 border-4 border-solid border-primary rounded mt-4">
             ABC123
           </h3>
-          <p class="text-center my-4 max-w-[360px] ">
+          <p class="text-center my-4 max-w-[360px]
+            tablet-sm:max-w-[320px]
+            mobile-md:max-w-[100%] mobile-md:px-6
+          ">
             Use this to confirm your attendance or explore gift options on our registry.
           </p>
           <p class="text-2xl font-medium m-0">
@@ -171,7 +203,10 @@
           <h2 class="text-accent text-2xl uppercase font-subheading m-0">
             The Finer Details
           </h2>
-          <p class="text-center mb-8 mt-6 text-lg  max-w-[400px]">
+          <p class="text-center mb-8 mt-6 text-lg max-w-[400px]
+            tablet-sm:max-w-[360px]
+            mobile-md:max-w-[100%] mobile-md:px-6
+          ">
             We've put together a website with everything you might need—<b>FAQs</b>, <b>maps</b>, and <b>more wedding info</b> to help you plan for the day.
           </p>
           <p>

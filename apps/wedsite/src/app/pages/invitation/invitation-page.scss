@@ -30,6 +30,10 @@
   &:active {
     background-color: transparent;
   }
+
+  @include respond-to('mobile-md') {
+    height: 460px;
+  }
 }
 
 .scroll-container {
@@ -54,20 +58,6 @@
 .panels-container {
   background-color: transparent;
   position: relative;
-}
-
-#invitees {
-  position: relative;
-  margin-bottom: 48px;
-
-  &::after {
-    content: url('/images/accent-line.svg');
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: block;
-  }
 }
 
 button.pagination-btn {

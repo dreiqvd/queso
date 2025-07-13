@@ -35,6 +35,7 @@ export class InvitationPage {
 
   private readonly destroyRef = inject(DestroyRef);
 
+  protected readonly inviteesTxt = signal('Kevin & Mai'.split(' '));
   protected readonly activePanelIdx = signal(0);
   protected readonly disablePanelChange = signal(true);
   protected readonly panelWidth = signal(600);
@@ -110,6 +111,8 @@ export class InvitationPage {
       this.panelsXPadding.set(16);
     } else if (viewportWidth <= BREAKPOINTS.MOBILE_MD) {
       this.panelsXPadding.set(24);
+    } else if (viewportWidth <= BREAKPOINTS.TABLET_MD) {
+      this.panelsXPadding.set(32);
     } else {
       this.panelsXPadding.set(48);
     }
