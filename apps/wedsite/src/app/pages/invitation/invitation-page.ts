@@ -37,6 +37,7 @@ export class InvitationPage {
 
   protected readonly activePanelIdx = signal(0);
   protected readonly disablePanelChange = signal(true);
+  protected readonly panelWidth = signal(600);
   protected readonly weddingCarWidth = signal(240);
 
   /**
@@ -46,8 +47,7 @@ export class InvitationPage {
    * the element. It will only make it appear smaller but actual
    * occupied width remains the same.
    */
-  private nonActivePanelWidth = 0; // Width of scaled down panels
-  private activePanelWidth = 0; // Width of active panel
+  private nonActivePanelWidth = 0;
 
   /**
    * Imaginary padding of the non-active panel due to scaling.
@@ -60,6 +60,7 @@ export class InvitationPage {
         this.setupPanels();
 
         onWindowResize(this.destroyRef).subscribe(() => {
+          this.activePanelIdx.set(0);
           this.setupPanels();
         });
       },
@@ -101,18 +102,19 @@ export class InvitationPage {
   }
 
   private updatePanelDimensions(): void {
-    if (getViewportWidth() <= BREAKPOINTS.DESKTOP_SM) {
-      this.weddingCarWidth.set(200);
-      this.activePanelWidth = 500;
+    const viewportWidth = getViewportWidth();
+    if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
+      this.panelWidth.set(500);
       this.nonActivePanelWidth = 400;
+      this.weddingCarWidth.set(200);
     } else {
-      this.weddingCarWidth.set(240);
-      this.activePanelWidth = 600;
+      this.panelWidth.set(600);
       this.nonActivePanelWidth = 480;
+      this.weddingCarWidth.set(240);
     }
 
     this.nonActivePanelInternalPadding =
-      (this.activePanelWidth - this.nonActivePanelWidth) / 2;
+      (this.panelWidth() - this.nonActivePanelWidth) / 2;
   }
 
   private setupPanels(): void {
@@ -125,7 +127,7 @@ export class InvitationPage {
         if (idx === this.activePanelIdx() + 1) {
           // If this is the next panel after the active one, use active panel
           // width subtracted by the imaginary padding of the non-active panel.
-          xOffset += this.activePanelWidth - this.nonActivePanelInternalPadding;
+          xOffset += this.panelWidth() - this.nonActivePanelInternalPadding;
         } else {
           xOffset += this.nonActivePanelWidth;
         }

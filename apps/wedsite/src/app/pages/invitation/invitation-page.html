@@ -22,6 +22,7 @@
         class="panel"
         tabindex="0"
         [class.active]="activePanelIdx() === 0"
+        [style.width.px]="panelWidth()"
         (click)="setActivePanel(0)"
         (keydown)="setActivePanel(0)">
         <div class="p-8 h-full flex flex-col justify-center">
@@ -46,6 +47,7 @@
         class="panel"
         tabindex="0"
         [class.active]="activePanelIdx() === 1"
+        [style.width.px]="panelWidth()"
         (click)="setActivePanel(1)"
         (keydown)="setActivePanel(1)">
         <div class="h-full flex justify-center items-center pb-24">
@@ -66,6 +68,7 @@
         class="panel"
         tabindex="0"
         [class.active]="activePanelIdx() === 2"
+        [style.width.px]="panelWidth()"
         (click)="setActivePanel(2)"
         (keydown)="setActivePanel(2)">
         <div class="flex flex-col justify-between items-center py-8 h-full">
@@ -130,6 +133,7 @@
         class="panel"
         tabindex="0"
         [class.active]="activePanelIdx() === 3"
+        [style.width.px]="panelWidth()"
         (click)="setActivePanel(3)"
         (keydown)="setActivePanel(3)">
         <div class="h-full flex flex-col items-center justify-center gap-6">
@@ -153,6 +157,7 @@
         class="panel"
         tabindex="0"
         [class.active]="activePanelIdx() === 4"
+        [style.width.px]="panelWidth()"
         (click)="setActivePanel(4)"
         (keydown)="setActivePanel(4)">
         <div class="h-full flex flex-col items-center pt-14 relative">
@@ -174,6 +179,7 @@
 
           <div class="absolute ml-16 left-[100%] top-1/2 translate-y-[-50%]
             desktop-sm:ml-8
+            tablet-md:hidden
           ">
             <img
               src="/images/wedding-car.svg" alt="Wedding Car"
