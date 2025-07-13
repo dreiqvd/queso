@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [style.display]="isContentVisible() ? 'block' : 'none'">
   <app-navigation />
   <router-outlet />
   <footer>
@@ -9,3 +9,9 @@
     </p>
   </footer>
 </div>
+
+@if (isContentVisible() === false) {
+  <div class="min-h-dvh p-4 text-center flex items-center justify-center">
+    <p class="font-body">Oops. Content is not available at this viewport size.</p>
+  </div>
+}

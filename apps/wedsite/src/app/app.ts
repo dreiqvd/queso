@@ -1,5 +1,13 @@
-import { Component } from '@angular/core';
+import {
+  afterNextRender,
+  Component,
+  DestroyRef,
+  inject,
+  signal,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { BREAKPOINTS, getViewportWidth, onWindowResize } from '@queso/common';
 
 import { Navigation } from './components/navigation/navigation';
 
@@ -18,4 +26,25 @@ import { Navigation } from './components/navigation/navigation';
     }
   `,
 })
-export class App {}
+export class App {
+  private readonly destroyRef = inject(DestroyRef);
+
+  protected readonly isContentVisible = signal<boolean | undefined>(undefined);
+
+  constructor() {
+    afterNextRender({
+      read: () => {
+        this.checkviewportWidth();
+
+        onWindowResize(this.destroyRef).subscribe(() => {
+          this.checkviewportWidth();
+        });
+      },
+    });
+  }
+
+  private checkviewportWidth(): void {
+    // Content is only visible for screens greater than or equal to MOBILE_XS
+    this.isContentVisible.set(getViewportWidth() >= BREAKPOINTS.MOBILE_XS);
+  }
+}
