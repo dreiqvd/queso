@@ -12,7 +12,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { debounceTime, distinctUntilChanged, fromEvent } from 'rxjs';
 
-import { BREAKPOINTS, getViewportWidth } from '@queso/common';
+import { BREAKPOINTS, getViewportWidth, onWindowResize } from '@queso/common';
 
 import { NavigationService } from '../../components/navigation/navigation.service';
 
@@ -94,9 +94,9 @@ export class LandingPage implements OnDestroy {
             this.handleScrollEvent();
           });
 
-        fromEvent(window, 'resize')
-          .pipe(takeUntilDestroyed(this.destroyRef), debounceTime(100))
-          .subscribe(() => this.setIsMobileFlag());
+        onWindowResize(this.destroyRef).subscribe(() => {
+          this.setIsMobileFlag();
+        });
       },
     });
   }

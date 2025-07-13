@@ -8,10 +8,8 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { debounceTime, fromEvent } from 'rxjs';
 
-import { getViewportHeight } from '@queso/common';
+import { getViewportHeight, onWindowResize } from '@queso/common';
 
 @Component({
   selector: 'app-hashtag-section',
@@ -37,11 +35,9 @@ export class HashtagSection {
       read: () => {
         this.setHeadingPosition();
 
-        fromEvent(window, 'resize')
-          .pipe(debounceTime(100), takeUntilDestroyed(this.destroyRef))
-          .subscribe(() => {
-            this.setHeadingPosition();
-          });
+        onWindowResize(this.destroyRef).subscribe(() => {
+          this.setHeadingPosition();
+        });
       },
     });
   }
