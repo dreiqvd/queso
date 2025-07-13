@@ -39,6 +39,7 @@ export class InvitationPage {
   protected readonly disablePanelChange = signal(true);
   protected readonly panelWidth = signal(600);
   protected readonly weddingCarWidth = signal(240);
+  protected readonly panelsXPadding = signal(48);
 
   /**
    * Appearance width of the non-active panels when scaled down.
@@ -103,7 +104,29 @@ export class InvitationPage {
 
   private updatePanelDimensions(): void {
     const viewportWidth = getViewportWidth();
-    if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
+
+    // Padding check
+    if (viewportWidth <= BREAKPOINTS.MOBILE_SM) {
+      this.panelsXPadding.set(16);
+    } else if (viewportWidth <= BREAKPOINTS.MOBILE_MD) {
+      this.panelsXPadding.set(24);
+    } else {
+      this.panelsXPadding.set(48);
+    }
+
+    if (viewportWidth <= BREAKPOINTS.MOBILE_SM) {
+      this.panelWidth.set(290);
+      this.nonActivePanelWidth = 232;
+      this.weddingCarWidth.set(0);
+    } else if (viewportWidth <= BREAKPOINTS.MOBILE_MD) {
+      this.panelWidth.set(320);
+      this.nonActivePanelWidth = 256;
+      this.weddingCarWidth.set(0);
+    } else if (viewportWidth <= BREAKPOINTS.TABLET_SM) {
+      this.panelWidth.set(400);
+      this.nonActivePanelWidth = 320;
+      this.weddingCarWidth.set(0);
+    } else if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
       this.panelWidth.set(500);
       this.nonActivePanelWidth = 400;
       this.weddingCarWidth.set(200);
@@ -134,9 +157,9 @@ export class InvitationPage {
 
         // After computing offset, we add a fixed gap value so
         // that spacing between panels does not look too tight.
-        xOffset += 48;
+        xOffset += this.panelsXPadding();
       } else {
-        xOffset = 48; // Internal padding of the scrolling container;
+        xOffset = this.panelsXPadding(); // Internal padding of the scrolling container;
       }
 
       const isActive = idx === 0;
@@ -189,27 +212,62 @@ export class InvitationPage {
     // defaults to right of viewport center + 5% of viewport width
     let lastPanelPosition = viewportCenter + viewportWidth * 0.05;
     if (newActiveIdx === this.panels.length - 1) {
+      // For some screens:
       // The last panel has a different handling because of the extra content (e.g., wedding car).
       // Here, the last panel width is computed and compared to the viewport center.
       // If the viewport center is less than the last panel width, we adjust the position of
       // the last panel to be at the left side of the viewport center instead of right.
       // This makes all the last panel content to be visible in the viewport.
 
-      let leftMargin = 64; // Left margin of the wedding car
-      if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
-        leftMargin = -8;
-      }
+      if (viewportWidth > BREAKPOINTS.TABLET_MD) {
+        let leftMargin = 64; // Left margin of the wedding car
+        if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
+          leftMargin = -8;
+        }
 
-      const lastPanelWidth =
-        newActivePanelRect.width + this.weddingCarWidth() + leftMargin;
-      if (viewportCenter < lastPanelWidth) {
-        lastPanelPosition =
-          viewportCenter - (lastPanelWidth - viewportCenter) - 50;
+        const lastPanelWidth =
+          newActivePanelRect.width + this.weddingCarWidth() + leftMargin;
+        if (viewportCenter < lastPanelWidth) {
+          lastPanelPosition =
+            viewportCenter - (lastPanelWidth - viewportCenter) - 50;
+        }
+      } else if (viewportWidth <= BREAKPOINTS.MOBILE_SM) {
+        lastPanelPosition = viewportCenter - 80;
+      } else if (viewportWidth <= BREAKPOINTS.MOBILE_MD) {
+        lastPanelPosition = viewportCenter - 90;
+      } else if (viewportWidth <= BREAKPOINTS.TABLET_SM) {
+        lastPanelPosition = viewportCenter - 120;
+      } else if (viewportWidth <= BREAKPOINTS.TABLET_MD) {
+        lastPanelPosition = viewportCenter - 140;
       }
     }
 
     let addedOffset = 0;
-    if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
+    if (viewportWidth <= BREAKPOINTS.MOBILE_SM) {
+      if (newActiveIdx === 3) {
+        addedOffset = direction === '-' ? 110 : 50;
+      } else {
+        addedOffset = direction === '-' ? 210 : 160;
+      }
+    } else if (viewportWidth <= BREAKPOINTS.MOBILE_MD) {
+      if (newActiveIdx === 3) {
+        addedOffset = direction === '-' ? 100 : 40;
+      } else {
+        addedOffset = direction === '-' ? 200 : 140;
+      }
+    } else if (viewportWidth <= BREAKPOINTS.TABLET_SM) {
+      if (newActiveIdx === 3) {
+        addedOffset = direction === '-' ? 80 : 10;
+      } else {
+        addedOffset = direction === '-' ? 180 : 90;
+      }
+    } else if (viewportWidth <= BREAKPOINTS.TABLET_MD) {
+      if (newActiveIdx === 3) {
+        addedOffset = 0;
+      } else {
+        addedOffset = direction === '-' ? 150 : 24;
+      }
+    } else if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
       addedOffset = 150;
       if (newActiveIdx === 3) {
         addedOffset = 0;
@@ -218,7 +276,7 @@ export class InvitationPage {
 
     // Define target positions based on specifications
     const targetPositionMap: { [key: number]: number } = {
-      0: 48, // 48px from left edge
+      0: this.panelsXPadding(),
       1: viewportCenter - 300 + addedOffset,
       2: viewportCenter - 300 + addedOffset,
       3: viewportCenter - 200 + addedOffset,

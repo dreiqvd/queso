@@ -24,6 +24,12 @@
     opacity: 1 !important; // bypass animation opacity set by the animation library in the typescript file
     background-color: #e4dcd1;
   }
+
+  &:focus,
+  &:focus-within,
+  &:active {
+    background-color: transparent;
+  }
 }
 
 .scroll-container {

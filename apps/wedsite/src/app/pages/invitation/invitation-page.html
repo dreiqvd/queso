@@ -1,5 +1,9 @@
-<div #mainContainer class="min-h-[calc(100dvh_-_52px)] max-w-dvw flex flex-col py-12 pt-[210px]">
-  <div class="mb-14 px-12 flex justify-between">
+<div #mainContainer class="min-h-[calc(100dvh_-_52px)] max-w-dvw flex flex-col pb-12 pt-[210px]
+  mobile-md:pt-[96px]
+  ">
+  <div class="mb-14 px-12 flex justify-between gap-4
+    mobile-md:flex-col mobile-md:items-center mobile-md:px-6 mobile-md:gap-8 mobile-md:mb-10
+  ">
     <h1 class="font-chalk text-[2rem] opacity-60">
       #EveryDreiWithTricia
     </h1>
@@ -16,7 +20,10 @@
   </div>
 
   <div class="scroll-container overflow-x-auto overflow-y-hidden">
-    <div class="panels-container px-12 bg-transparent h-[400px]">
+    <div class="panels-container bg-transparent h-[400px]"
+      [style.paddingLeft.px]="panelsXPadding()"
+      [style.paddingRight.px]="panelsXPadding()"
+    >
       <div
         #panel
         class="panel"
