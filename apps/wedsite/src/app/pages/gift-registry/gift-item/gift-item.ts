@@ -15,7 +15,7 @@ import { GiftDetails } from './gift-details/gift-details';
   styles: `
     .container {
       background-image: url('/images/frame.webp');
-      background-size: contain;
+      background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
     }

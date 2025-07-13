@@ -172,8 +172,13 @@
             class="absolute bottom-6 left-1/2 translate-x-[-50%]"
           />
 
-          <div class="absolute ml-16 left-[100%] top-1/2 translate-y-[-50%]">
-            <img src="/images/wedding-car.svg" alt="Wedding Car" width="240" />
+          <div class="absolute ml-16 left-[100%] top-1/2 translate-y-[-50%]
+            desktop-sm:ml-8
+          ">
+            <img
+              src="/images/wedding-car.svg" alt="Wedding Car"
+              [style.width.px]="weddingCarWidth()"
+            />
           </div>
         </div>
       </div>

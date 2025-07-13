@@ -1,8 +1,10 @@
 import {
   afterNextRender,
   Component,
+  DestroyRef,
   ElementRef,
   HostListener,
+  inject,
   QueryList,
   signal,
   ViewChild,
@@ -13,7 +15,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { animate } from 'animejs';
 
-import { getViewportHeight } from '@queso/common';
+import {
+  BREAKPOINTS,
+  getViewportHeight,
+  getViewportWidth,
+  onWindowResize,
+} from '@queso/common';
 import { QsIcon } from '@queso/ui-kit/icon';
 
 @Component({
@@ -26,8 +33,11 @@ export class InvitationPage {
   @ViewChild('mainContainer') mainContainer!: ElementRef<HTMLDivElement>;
   @ViewChildren('panel') panels!: QueryList<ElementRef<HTMLDivElement>>;
 
+  private readonly destroyRef = inject(DestroyRef);
+
   protected readonly activePanelIdx = signal(0);
   protected readonly disablePanelChange = signal(true);
+  protected readonly weddingCarWidth = signal(240);
 
   /**
    * Appearance width of the non-active panels when scaled down.
@@ -36,18 +46,23 @@ export class InvitationPage {
    * the element. It will only make it appear smaller but actual
    * occupied width remains the same.
    */
-  private nonActivePanelWidth = 480; // Width of scaled down panels
-  private activePanelWidth = 600; // Width of active panel
+  private nonActivePanelWidth = 0; // Width of scaled down panels
+  private activePanelWidth = 0; // Width of active panel
 
   /**
    * Imaginary padding of the non-active panel due to scaling.
    */
-  private nonActivePanelInternalPadding =
-    (this.activePanelWidth - this.nonActivePanelWidth) / 2;
+  private nonActivePanelInternalPadding = 0;
 
   constructor() {
     afterNextRender({
-      write: () => this.setupPanels(),
+      write: () => {
+        this.setupPanels();
+
+        onWindowResize(this.destroyRef).subscribe(() => {
+          this.setupPanels();
+        });
+      },
     });
   }
 
@@ -85,7 +100,24 @@ export class InvitationPage {
     }
   }
 
+  private updatePanelDimensions(): void {
+    if (getViewportWidth() <= BREAKPOINTS.DESKTOP_SM) {
+      this.weddingCarWidth.set(200);
+      this.activePanelWidth = 500;
+      this.nonActivePanelWidth = 400;
+    } else {
+      this.weddingCarWidth.set(240);
+      this.activePanelWidth = 600;
+      this.nonActivePanelWidth = 480;
+    }
+
+    this.nonActivePanelInternalPadding =
+      (this.activePanelWidth - this.nonActivePanelWidth) / 2;
+  }
+
   private setupPanels(): void {
+    this.updatePanelDimensions();
+
     let xOffset = 0; // start offset at 0 position
     this.panels.forEach((panel, idx) => {
       const element = panel.nativeElement;
@@ -143,7 +175,7 @@ export class InvitationPage {
     this.activePanelIdx.set(newActiveIdx);
 
     // Calculate viewport center
-    const viewportWidth = window.innerWidth;
+    const viewportWidth = getViewportWidth();
     const viewportCenter = viewportWidth / 2;
 
     // Get the current position of the new active panel
@@ -160,24 +192,39 @@ export class InvitationPage {
       // If the viewport center is less than the last panel width, we adjust the position of
       // the last panel to be at the left side of the viewport center instead of right.
       // This makes all the last panel content to be visible in the viewport.
-      const lastPanelWidth = newActivePanelRect.width + 240 + 64;
+
+      let leftMargin = 64; // Left margin of the wedding car
+      if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
+        leftMargin = -8;
+      }
+
+      const lastPanelWidth =
+        newActivePanelRect.width + this.weddingCarWidth() + leftMargin;
       if (viewportCenter < lastPanelWidth) {
         lastPanelPosition =
           viewportCenter - (lastPanelWidth - viewportCenter) - 50;
       }
     }
 
+    let addedOffset = 0;
+    if (viewportWidth <= BREAKPOINTS.DESKTOP_SM) {
+      addedOffset = 150;
+      if (newActiveIdx === 3) {
+        addedOffset = 0;
+      }
+    }
+
     // Define target positions based on specifications
     const targetPositionMap: { [key: number]: number } = {
       0: 48, // 48px from left edge
-      1: viewportCenter - 300, // 300px left of center
-      2: viewportCenter - 300, // 300px left of center
-      3: viewportCenter - 200, // 200px left of center
-      4: lastPanelPosition, // 100px left of center
+      1: viewportCenter - 300 + addedOffset,
+      2: viewportCenter - 300 + addedOffset,
+      3: viewportCenter - 200 + addedOffset,
+      4: lastPanelPosition,
     };
 
     // Calculate target position for the new active panel
-    const targetPosition = targetPositionMap[newActiveIdx] || viewportCenter;
+    const targetPosition = targetPositionMap[newActiveIdx];
 
     // Calculate the distance needed to move the new active panel to its target position
     const distance = currentPosition - targetPosition;
